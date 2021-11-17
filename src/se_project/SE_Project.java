@@ -17,7 +17,7 @@ public class SE_Project {
         // TODO code application logic here
         System.out.println("hello giggi");
         System.out.println("Hello Gianluca");
-        System.out.println("merge complicata");
+        System.out.println("merge complicatissima");
         System.out.println("hello ida");
         
         System.out.println("Si è sminkiato ubuntu");
