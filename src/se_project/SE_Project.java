@@ -16,7 +16,10 @@ public class SE_Project {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("hello gigginiello");
+
         System.out.println("riga tra 18 e 19");
+
+        System.out.println("peppe");
         System.out.println("Hello Gianluca");
         System.out.println("merge complicatissima");
         
