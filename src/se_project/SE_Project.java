@@ -6,7 +6,7 @@ package se_project;
 
 /**
  *
- * @author lucia
+ * @author idamaruotto
  */
 public class SE_Project {
 
@@ -15,6 +15,11 @@ public class SE_Project {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        System.out.println("hello giggi");
+        System.out.println("Hello Gianluca");
+        System.out.println("hello ida");
+        System.out.println("hello Lucia");
+        System.out.println("Si è sminkiato ubuntu");
     }
     
 }
