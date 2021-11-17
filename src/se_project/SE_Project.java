@@ -15,7 +15,7 @@ public class SE_Project {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("hello giggi");
+        System.out.println("hello gigginiello");
         System.out.println("Hello Gianluca");
         System.out.println("merge complicatissima");
         System.out.println("hello ida");
