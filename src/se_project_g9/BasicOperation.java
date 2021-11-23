@@ -10,4 +10,31 @@ package se_project_g9;
  */
 public class BasicOperation {
     
+    public static Number sum(Number n1,Number n2){
+        
+        double real1 = n1.getRealPart();
+        double imaginary1 = n1.getImaginaryPart();
+        double real2 = n2.getRealPart();
+        double imaginary2 = n2.getImaginaryPart();
+        
+        return new Number(real1+real2,imaginary1+imaginary2);
+        
+    }
+    
+    public static Number sub(Number n1,Number n2){
+        
+        double real1 = n1.getRealPart();
+        double imaginary1 = n1.getImaginaryPart();
+        double real2 = n2.getRealPart();
+        double imaginary2 = n2.getImaginaryPart();
+        
+        return new Number(real1-real2,imaginary1-imaginary2);
+        
+        
+    }
+    
+     
+    
+    
+    
 }

@@ -9,5 +9,5 @@ package se_project_g9;
  * @author luigi
  */
 public class Operation implements ApplicationOperation{
-    
+       
 }
