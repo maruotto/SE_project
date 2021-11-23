@@ -10,9 +10,16 @@ package se_project_g9;
  */
 public class Operation implements ApplicationOperation{
        
-    private PersonalizedStack numberStack;
-    
-      
+    private NumberStack<Number> numberStack;
 
+    public Operation(){
+        this.numberStack = new NumberStack<Number>();
+    }
     
+    public void invert(){
+        Number n1 = numberStack.pop();
+        BasicOperation.invert(n1);
+        
+        numberStack.push(n1);
+    }
 }
