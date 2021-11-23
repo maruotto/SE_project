@@ -34,4 +34,23 @@ public class Number {
             return "" + realPart + " " + imaginaryPart + "j";
         }
     }
+
+    public double getRealPart() {
+        return realPart;
+    }
+
+    public double getImaginaryPart() {
+        return imaginaryPart;
+    }
+
+    public void setRealPart(double realPart) {
+        this.realPart = realPart;
+    }
+
+    public void setImaginaryPart(double imaginaryPart) {
+        this.imaginaryPart = imaginaryPart;
+    }
+    
+    
 }
+
