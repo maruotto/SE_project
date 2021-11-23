@@ -30,6 +30,7 @@ public class FXMLDocumentController implements Initializable {
         ope = new Operation();
     }    
 
+    @FXML
     private void handleInsertAction(ActionEvent event) {
         
         Number num = translate_input(tfInput. getText());
@@ -84,46 +85,62 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void click1(ActionEvent event) {
+        tfInput.setText(tfInput.getText() + "1");
     }
 
     @FXML
     private void click5(ActionEvent event) {
+        tfInput.setText(tfInput.getText() + "5");
     }
 
     @FXML
     private void click2(ActionEvent event) {
+        tfInput.setText(tfInput.getText() + "2");
     }
 
     @FXML
     private void click3(ActionEvent event) {
+        tfInput.setText(tfInput.getText() + "3");
     }
 
     @FXML
     private void click4(ActionEvent event) {
+        tfInput.setText(tfInput.getText() + "4");
     }
 
     @FXML
     private void click9(ActionEvent event) {
+        tfInput.setText(tfInput.getText() + "9");
     }
 
     @FXML
     private void click8(ActionEvent event) {
+        tfInput.setText(tfInput.getText() + "8");
     }
 
     @FXML
     private void click7(ActionEvent event) {
+        tfInput.setText(tfInput.getText() + "7");
     }
 
     @FXML
     private void click6(ActionEvent event) {
+        tfInput.setText(tfInput.getText() + "6");
     }
 
     @FXML
     private void click0(ActionEvent event) {
+        tfInput.setText(tfInput.getText() + "0");
     }
 
     @FXML
-    private void equalclick(ActionEvent event) {
+    private void plusclick(ActionEvent event) {
+        tfInput.setText(tfInput.getText() + "+");      
+    }
+
+    @FXML
+    private void clicki(ActionEvent event) {
+        tfInput.setText(tfInput.getText() + "j");      
     }
     
 }
