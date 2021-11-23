@@ -13,7 +13,7 @@ import javafx.scene.control.Label;
 
 /**
  *
- * @author idamaruotto
+ * @author Gruppo 9
  */
 public class FXMLDocumentController implements Initializable {
     
@@ -23,7 +23,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
-        label.setText("Hello World giggi!");
+        label.setText("Hello World!");
     }
     
     @Override
