@@ -72,9 +72,33 @@ public class BasicOperation {
     
     public static Number sqrt(Number n1){
         
-       if(n1.getImaginaryPart()==0){
-           return new Number(Math.sqrt(n1.getRealPart()),0);
-       }     
+        if(n1.getImaginaryPart()==0){
+           if (n1.getRealPart()>=0){
+                return new Number(Math.sqrt(n1.getRealPart()),0);
+            }else{
+                return new Number(0,Math.sqrt(n1.getRealPart()*(-1)));
+            }
+        }else{     
+            double module = Math.sqrt(Math.pow(n1.getImaginaryPart(), 2) + Math.pow(n1.getRealPart(), 2));
+            double phase;
+            double a = n1.getRealPart();
+            double b = n1.getImaginaryPart();
+            if(a==0 && b>0){
+                phase = Math.PI/2;
+            }
+            else if(a==0 && b<0){
+                phase = (-1)*(Math.PI/2);
+            }
+            else if(a>0){
+                phase = Math.atan(b/a);
+            }
+            else if(a<0 && b>=0){
+                phase = Math.atan(b/a) + Math.PI;
+            }
+            else if(a<0 && b<0){
+                phase = Math.atan(b/a) - Math.PI;
+            }
+        }
         return null;
     }
 }
