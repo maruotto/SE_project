@@ -70,5 +70,11 @@ public class BasicOperation {
         return new Number(real,imaginary);
     }
     
-
+    public static Number sqrt(Number n1){
+        
+       if(n1.getImaginaryPart()==0){
+           return new Number(Math.sqrt(n1.getRealPart()),0);
+       }     
+        return null;
+    }
 }
