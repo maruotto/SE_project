@@ -37,13 +37,14 @@ public class FXMLDocumentController implements Initializable {
         //ATTENTION!!!! if you want to add to the regular expression something like
         // the + sign or other things, use the operator |
         // example: if you want to add to this expression +, this will become " *?+"
-        String[] splittedInput = input.split(" |\\+");  //regex meaning: *? stays for zero or more times
+        String[] splittedInput = input.split("\\+");  //regex meaning: *? stays for zero or more times
         //for (String string : input.split(",")
+        
         double realPart = 0, imaginaryPart = 0, number = 0;
         boolean imaginaryPartNotDone = true, realPartNotDone = true;
         
         for (String s: splittedInput) {
-            if(imaginaryPartNotDone & realPartNotDone)
+            if(!imaginaryPartNotDone & !realPartNotDone)
                 break;
             
             if(s.length() != 0){
@@ -71,35 +72,12 @@ public class FXMLDocumentController implements Initializable {
 
                 }
             }
-            return new Number(realPart, imaginaryPart);
+            
             
         }
 
-   
-        
-            /*if((Character.isDigit(s.charAt(0)) | s.charAt(0) == '-')){
-                
-                if (s.endsWith("j") | s.endsWith("i")){
-                    if (s.length()> 1){
-                        s = s.substring(0, s.length()-2);
-                    }else
-                        imaginaryPart = 1;
-                        imaginaryPartNotDone = false;
-                    }
-                if (imaginaryPartNotDone){
-                    
-                }
-
-                System.out.println(s);
-            }
-        }
-        
-        
-        for (int i = 0; i< input.length(); i++){
-            
-                      
-        }*/
-        return null;
+        System.out.println(realPart + " + " + imaginaryPart);
+        return new Number(realPart, imaginaryPart);
     }
     
 }
