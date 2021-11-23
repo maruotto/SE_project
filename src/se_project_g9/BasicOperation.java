@@ -52,7 +52,7 @@ public class BasicOperation {
         double imaginary2 = n2.getImaginaryPart();
         
         if(real2==0.0 && imaginary2==0.0){
-            throw new Exception("il secondo numero complesso è nullo...");
+            throw new Exception("the second complex number is 0..");
         }
         
         double real = ((real1*real2)+(imaginary1*imaginary2))/((real2*real2)+(imaginary2*imaginary2));
