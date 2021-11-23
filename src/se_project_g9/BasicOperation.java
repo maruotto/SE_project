@@ -33,8 +33,31 @@ public class BasicOperation {
         
     }
     
-     
+    public static Number multiply(Number n1,Number n2){
+        
+        double real1 = n1.getRealPart();
+        double imaginary1 = n1.getImaginaryPart();
+        double real2 = n2.getRealPart();
+        double imaginary2 = n2.getImaginaryPart();
+        
+        return new Number((real1*real2-imaginary1*imaginary2),(real1*imaginary2-imaginary1*real2));
+        
+    }
     
+    public static Number divide(Number n1,Number n2){
+        
+        double real1 = n1.getRealPart();
+        double imaginary1 = n1.getImaginaryPart();
+        double real2 = n2.getRealPart();
+        double imaginary2 = n2.getImaginaryPart();
+        
+        double real = ((real1*real2)+(imaginary1*imaginary2))/((real2*real2)+(imaginary2*imaginary2));
+        double imaginary = ((imaginary1*real2)-(real1*imaginary2))/((real2*real2)+(imaginary2*imaginary2));
+        
+        return new Number(real,imaginary);
+        
+        
+    }
     
     
 }

@@ -10,4 +10,12 @@ package se_project_g9;
  */
 public class Operation implements ApplicationOperation{
        
+    private PersonalizedStack numberStack;
+    
+     
+    
+    
+    
+    
+    
 }
