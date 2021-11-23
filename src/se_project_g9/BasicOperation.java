@@ -59,9 +59,15 @@ public class BasicOperation {
         double imaginary = ((imaginary1*real2)-(real1*imaginary2))/((real2*real2)+(imaginary2*imaginary2));
         
         return new Number(real,imaginary);
-        
-        
     }
     
+    public static void invert(Number n1){
+        if(n1.getRealPart() != 0){
+            n1.setRealPart(n1.getRealPart() * -1);
+        }
+        if(n1.getImaginaryPart() != 0){
+            n1.setImaginaryPart(n1.getImaginaryPart() * -1);
+        }
+    }
     
 }

@@ -16,5 +16,11 @@ public class Operation implements ApplicationOperation{
         this.numberStack = new NumberStack<Number>();
     }
     
-    
+    public void invert(){
+        Number n1 = numberStack.pop();
+        
+        BasicOperation.invert(n1);
+        
+        numberStack.push(n1);
+    }
 }
