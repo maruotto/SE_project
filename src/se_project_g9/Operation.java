@@ -6,7 +6,7 @@ package se_project_g9;
 
 /**
  *
- * @author luigi
+ * @author group
  */
 public class Operation implements ApplicationOperation{
        

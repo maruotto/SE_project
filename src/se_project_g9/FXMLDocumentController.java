@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 
 /**
  *
- * @author gruppo9
+ * @author group9
  */
 public class FXMLDocumentController implements Initializable {
 

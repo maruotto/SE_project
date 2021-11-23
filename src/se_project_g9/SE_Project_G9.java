@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author gruppo9
+ * @author group9
  */
 public class SE_Project_G9 extends Application {
     

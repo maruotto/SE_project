@@ -7,7 +7,7 @@ import java.util.Stack;
 
 /**
  *
- * @author gruppo9
+ * @author group9
  */
 public class NumberStack<E> extends Stack{
     
