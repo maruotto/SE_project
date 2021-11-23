@@ -16,6 +16,22 @@ public class Number {
         this.realPart = realPart;
         this.imaginaryPart = imaginaryPart;
     }
-         
     
+    public Number(double realPart) {
+        this.realPart = realPart;
+        this.imaginaryPart = .0;
+    }
+
+    @Override
+    public String toString() {
+        if(realPart == 0.0){
+            return "" + imaginaryPart + "j";
+        }
+        else if(imaginaryPart == 0.0){
+            return "" + realPart;
+        }
+        else{
+            return "" + realPart + " " + imaginaryPart + "j";
+        }
+    }
 }
