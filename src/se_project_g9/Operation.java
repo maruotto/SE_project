@@ -13,7 +13,6 @@ public class Operation implements ApplicationOperation{
     private PersonalizedStack numberStack;
     
       
-    
-    
+
     
 }
