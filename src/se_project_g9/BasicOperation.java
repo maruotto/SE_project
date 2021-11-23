@@ -44,12 +44,16 @@ public class BasicOperation {
         
     }
     
-    public static Number divide(Number n1,Number n2){
+    public static Number divide(Number n1,Number n2) throws Exception{
         
         double real1 = n1.getRealPart();
         double imaginary1 = n1.getImaginaryPart();
         double real2 = n2.getRealPart();
         double imaginary2 = n2.getImaginaryPart();
+        
+        if(real2==0.0 && imaginary2==0.0){
+            throw new Exception("il secondo numero complesso è nullo...");
+        }
         
         double real = ((real1*real2)+(imaginary1*imaginary2))/((real2*real2)+(imaginary2*imaginary2));
         double imaginary = ((imaginary1*real2)-(real1*imaginary2))/((real2*real2)+(imaginary2*imaginary2));
