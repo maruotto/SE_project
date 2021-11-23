@@ -23,4 +23,13 @@ public class Operation implements ApplicationOperation{
         
         numberStack.push(n1);
     }
+    
+    public void multiply () {
+        
+       Number n1 = numberStack.pop();
+       Number n2 = numberStack.pop();
+       Number n3 = BasicOperation.multiply(n1, n2);
+       numberStack.push(n3);
+        
+    }
 }
