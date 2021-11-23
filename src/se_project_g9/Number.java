@@ -22,19 +22,6 @@ public class Number {
         this.imaginaryPart = .0;
     }
 
-    @Override
-    public String toString() {
-        if(realPart == 0.0){
-            return "" + imaginaryPart + "j";
-        }
-        else if(imaginaryPart == 0.0){
-            return "" + realPart;
-        }
-        else{
-            return "" + realPart + " " + imaginaryPart + "j";
-        }
-    }
-
     public double getRealPart() {
         return realPart;
     }
@@ -51,6 +38,17 @@ public class Number {
         this.imaginaryPart = imaginaryPart;
     }
     
-    
+    @Override
+    public String toString() {
+        if(realPart == 0.0){
+            return "" + imaginaryPart + "j";
+        }
+        else if(imaginaryPart == 0.0){
+            return "" + realPart;
+        }
+        else{
+            return "" + realPart + " " + imaginaryPart + "j";
+        }
+    }
 }
 
