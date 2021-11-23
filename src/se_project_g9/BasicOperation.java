@@ -43,7 +43,7 @@ public class BasicOperation {
         return new Number((real1*real2-imaginary1*imaginary2),(real1*imaginary2-imaginary1*real2));
         
     }
-    
+
     public static void invert(Number n1){
         if(n1.getRealPart() != 0){
             n1.setRealPart(n1.getRealPart() * -1);
@@ -70,5 +70,5 @@ public class BasicOperation {
         return new Number(real,imaginary);
     }
     
-    
+
 }
