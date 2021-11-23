@@ -98,6 +98,7 @@ public class BasicOperation {
             else if(a<0 && b<0){
                 phase = Math.atan(b/a) - Math.PI;
             }
+            
         }
         return null;
     }
