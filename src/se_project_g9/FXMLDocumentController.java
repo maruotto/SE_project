@@ -13,7 +13,7 @@ import javafx.scene.control.Label;
 
 /**
  *
- * @author Gruppo 9
+ * @author gruppo9
  */
 public class FXMLDocumentController implements Initializable {
     

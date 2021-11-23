@@ -6,7 +6,7 @@ package se_project_g9;
 
 /**
  *
- * @author Gruppo 9
+ * @author gruppo9
  */
 public class Number {
     private double realPart;

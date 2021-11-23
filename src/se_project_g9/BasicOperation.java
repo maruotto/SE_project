@@ -6,7 +6,7 @@ package se_project_g9;
 
 /**
  *
- * @author idamaruotto
+ * @author gruppo9
  */
 public class BasicOperation {
     

@@ -6,7 +6,7 @@ package se_project_g9;
 
 /**
  *
- * @author lucia
+ * @author gruppo9
  */
 public interface PersonalizedStack {
     
