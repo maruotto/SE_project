@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 /**
@@ -21,13 +22,14 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private TextField tfInput;
+    @FXML
+    private ListView<?> stackview;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ope = new Operation();
     }    
 
-    @FXML
     private void handleInsertAction(ActionEvent event) {
         
         Number num = translate_input(tfInput. getText());
@@ -78,6 +80,50 @@ public class FXMLDocumentController implements Initializable {
 
         System.out.println(realPart + " + " + imaginaryPart);
         return new Number(realPart, imaginaryPart);
+    }
+
+    @FXML
+    private void click1(ActionEvent event) {
+    }
+
+    @FXML
+    private void click5(ActionEvent event) {
+    }
+
+    @FXML
+    private void click2(ActionEvent event) {
+    }
+
+    @FXML
+    private void click3(ActionEvent event) {
+    }
+
+    @FXML
+    private void click4(ActionEvent event) {
+    }
+
+    @FXML
+    private void click9(ActionEvent event) {
+    }
+
+    @FXML
+    private void click8(ActionEvent event) {
+    }
+
+    @FXML
+    private void click7(ActionEvent event) {
+    }
+
+    @FXML
+    private void click6(ActionEvent event) {
+    }
+
+    @FXML
+    private void click0(ActionEvent event) {
+    }
+
+    @FXML
+    private void equalclick(ActionEvent event) {
     }
     
 }
