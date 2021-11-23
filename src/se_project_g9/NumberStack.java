@@ -9,6 +9,6 @@ import java.util.Stack;
  *
  * @author group9
  */
-public class NumberStack<E> extends Stack implements PersonalizedStack{
+public class NumberStack<E> extends Stack<E> implements PersonalizedStack{
     
 }
