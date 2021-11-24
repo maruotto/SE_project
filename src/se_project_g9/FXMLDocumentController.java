@@ -34,6 +34,7 @@ public class FXMLDocumentController implements Initializable {
     private void handleInsertAction(ActionEvent event) {
         
         Number num = Operation.translate_input(tfInput.getText());
+        tfInput.clear();
     }
 
     @FXML
