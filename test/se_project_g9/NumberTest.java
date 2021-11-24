@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Gianluca
+ * @author group9
  */
 public class NumberTest {
     
@@ -60,8 +60,6 @@ public class NumberTest {
         Number instance = new Number(0,imaginaryPart);
         assertEquals(imaginaryPart, instance.getImaginaryPart(), 0);
         System.out.println("Works\n");
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**
@@ -75,9 +73,6 @@ public class NumberTest {
         instance.setRealPart(realPart);
         assertEquals(realPart, instance.getRealPart(), 0);
         System.out.println("Works\n");
-        
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**
@@ -91,8 +86,6 @@ public class NumberTest {
         instance.setImaginaryPart(imaginaryPart);
         assertEquals(imaginaryPart, instance.getImaginaryPart(), 0);
         System.out.println("Works\n");
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**
@@ -106,8 +99,6 @@ public class NumberTest {
         String result = instance.toString();
         assertEquals(expResult, result);
         System.out.println("Works\n");
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
     
 }

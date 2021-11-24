@@ -33,15 +33,15 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleInsertAction(ActionEvent event) {
         
-        Number num = translate_input(tfInput. getText());
+        Number num = translate_input(tfInput.getText());
     }
     
     private Number translate_input(String input){
         //ATTENTION!!!! if you want to add to the regular expression something like
         // the + sign or other things, use the operator |
         // example: if you want to add to this expression +, this will become " *?+"
-        String[] splittedInput = input.split("\\+");  //regex meaning: *? stays for zero or more times
-        //for (String string : input.split(",")
+        
+        String[] splittedInput = input.split("\\+");  //regex meaning: + once
         
         double realPart = 0, imaginaryPart = 0, number = 0;
         boolean imaginaryPartNotDone = true, realPartNotDone = true;
@@ -75,8 +75,7 @@ public class FXMLDocumentController implements Initializable {
 
                 }
             }
-            
-            
+                        
         }
 
         System.out.println(realPart + " + " + imaginaryPart);
