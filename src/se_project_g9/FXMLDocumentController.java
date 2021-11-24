@@ -115,10 +115,12 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void clicksqrt(ActionEvent event) {
+        tfInput.setText(tfInput.getText() + "sqrt");
     }
 
     @FXML
     private void clickplusminus(ActionEvent event) {
+        tfInput.setText(tfInput.getText() + "+ -");
     }
     
 }
