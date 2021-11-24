@@ -15,11 +15,17 @@ import static org.junit.Assert.*;
  */
 public class OperationTest {
     
+    private Number n1;
+    private Number n2;
+    private Operation op = new Operation();
+    
     public OperationTest() {
     }
     
     @Before
     public void setUp() {
+        n1 = new Number(9,5);
+        n2 = new Number(6,3);
     }
     
     @After

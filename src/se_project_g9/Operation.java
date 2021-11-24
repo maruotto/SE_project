@@ -41,6 +41,37 @@ public class Operation implements ApplicationOperation{
        numberStack.push(n3);
     }
     
+    public void sqrt(){
+        
+        Number top = numberStack.pop();
+        Number sqrt = BasicOperation.sqrt(top);
+        numberStack.push(sqrt);   
+    }
+    
+    public void sum(){
+        Number n1 = numberStack.pop();
+        Number n2 = numberStack.pop();
+        Number n3 = BasicOperation.sum(n1, n2);
+        numberStack.push(n3);
+    }
+    
+    public void sub(){
+        Number n1 = numberStack.pop();
+        Number n2 = numberStack.pop();
+        Number n3 = BasicOperation.sub(n1, n2);
+        numberStack.push(n3);
+    }
+    
+    public void divide() throws Exception{
+        Number n1 = numberStack.pop();
+        Number n2 = numberStack.pop();
+        Number n3 = BasicOperation.divide(n1, n2);
+        numberStack.push(n3);   
+    }
+    
+    
+    
+    
     protected static Number translate_input(String input){
         //ATTENTION!!!! if you want to add to the regular expression something like
         // the + sign or other things, use the operator |
