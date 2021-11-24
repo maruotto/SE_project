@@ -41,13 +41,18 @@ public class Number {
     @Override
     public String toString() {
         if(realPart == 0.0){
-            return "" + imaginaryPart + "j";
+            return "" + imaginaryPart + "i";
         }
         else if(imaginaryPart == 0.0){
             return "" + realPart;
         }
         else{
-            return "" + realPart + " " + imaginaryPart + "j";
+            if(imaginaryPart > 0){
+                return "" + realPart + " +" + imaginaryPart + "i";
+            }
+            else{
+                return "" + realPart + " " + imaginaryPart + "i";
+            }
         }
     }
 }
