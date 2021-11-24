@@ -19,8 +19,11 @@
       <Button layoutX="350.0" layoutY="326.0" mnemonicParsing="false" onAction="#click7" text="7" />
       <Button layoutX="463.0" layoutY="281.0" mnemonicParsing="false" onAction="#click6" text="6" />
       <Button layoutX="408.0" layoutY="369.0" mnemonicParsing="false" onAction="#click0" text="0" />
-      <Button layoutX="463.0" layoutY="369.0" mnemonicParsing="false" onAction="#plusclick" text="+" />
+      <Button layoutX="520.0" layoutY="233.0" mnemonicParsing="false" onAction="#plusclick" text="+" />
       <Button layoutX="520.0" layoutY="171.0" mnemonicParsing="false" onAction="#handleInsertAction" text="Send" />
       <Button layoutX="350.0" layoutY="369.0" mnemonicParsing="false" onAction="#clicki" text="i" />
+      <Button layoutX="521.0" layoutY="281.0" mnemonicParsing="false" onAction="#multiplyclick" text="*" />
+      <Button layoutX="566.0" layoutY="233.0" mnemonicParsing="false" onAction="#minusclick" text="-" />
+      <Button layoutX="567.0" layoutY="281.0" mnemonicParsing="false" onAction="#divideclick" text="/" />
    </children>
 </AnchorPane>
