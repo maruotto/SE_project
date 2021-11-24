@@ -40,7 +40,7 @@ public class BasicOperation {
         double real2 = n2.getRealPart();
         double imaginary2 = n2.getImaginaryPart();
         
-        return new Number((real1*real2-imaginary1*imaginary2),(real1*imaginary2-imaginary1*real2));
+        return new Number((real1*real2-imaginary1*imaginary2),(real1*imaginary2+imaginary1*real2));
         
     }
 
