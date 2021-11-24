@@ -55,5 +55,28 @@ public class Number {
             }
         }
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Number other = (Number) obj;
+        if (Double.doubleToLongBits(this.realPart) != Double.doubleToLongBits(other.realPart)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.imaginaryPart) != Double.doubleToLongBits(other.imaginaryPart)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 }
 
