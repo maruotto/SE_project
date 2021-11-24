@@ -112,6 +112,14 @@ public class FXMLDocumentController implements Initializable {
     private void divideclick(ActionEvent event) {
         tfInput.setText(tfInput.getText() + "/");
     }
+
+    @FXML
+    private void clicksqrt(ActionEvent event) {
+    }
+
+    @FXML
+    private void clickplusminus(ActionEvent event) {
+    }
     
 }
 
