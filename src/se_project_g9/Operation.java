@@ -15,6 +15,18 @@ public class Operation implements ApplicationOperation{
     public Operation(){
         this.numberStack = new NumberStack<Number>();
     }
+
+    protected NumberStack<Number> getNumberStack() {
+        return numberStack;
+    }
+    
+    public boolean pushStack(Number n){
+        return numberStack.add(n);      
+    }
+    
+    public Number popStack(){
+        return numberStack.pop();      
+    }
     
     public void invert(){
         Number n1 = numberStack.pop();      
@@ -71,7 +83,7 @@ public class Operation implements ApplicationOperation{
                         
         }
 
-        System.out.println(realPart + " + " + imaginaryPart);
+        System.out.println(realPart + " + " + imaginaryPart); //TODO remove this line after binding
         return new Number(realPart, imaginaryPart);
     }
 }
