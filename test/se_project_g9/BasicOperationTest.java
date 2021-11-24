@@ -23,7 +23,7 @@ public class BasicOperationTest {
     
     @Before
     public void setUp() {
-        n1 = new Number(9,6);
+        n1 = new Number(0,0);
         n2 = new Number(4,3);
         
     }
@@ -34,7 +34,7 @@ public class BasicOperationTest {
     @Test
     public void testSum() {
         System.out.println("sum");
-        Number expResult = new Number(13,9);
+        Number expResult = new Number(4,3);
         Number result = BasicOperation.sum(n1, n2);
         assertEquals(expResult, result);
         System.out.println("work\n");
@@ -46,7 +46,7 @@ public class BasicOperationTest {
     @Test
     public void testSub() {
         System.out.println("sub");
-        Number expResult = new Number(5,3);
+        Number expResult = new Number(-4,-3);
         Number result = BasicOperation.sub(n1, n2);
         assertEquals(expResult, result);
         System.out.println("work\n");
@@ -58,7 +58,7 @@ public class BasicOperationTest {
     @Test
     public void testMultiply() {
         System.out.println("multiply");
-        Number expResult = new Number(18,51);
+        Number expResult = new Number(0,0);
         Number result = BasicOperation.multiply(n1, n2);
         assertEquals(expResult, result);
          System.out.println("work\n");
@@ -96,5 +96,12 @@ public class BasicOperationTest {
         //Number result = BasicOperation.sqrt(n1);
         //assertEquals(expResult, result);
     }
+    
+    
+    
+    
+    
+    
+    
     
 }
