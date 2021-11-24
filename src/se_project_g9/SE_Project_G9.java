@@ -31,8 +31,7 @@ public class SE_Project_G9 extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-        Number n1 = new Number(3,Math.sqrt(3));
-        n1.toString();
+        
     }
     
 }
