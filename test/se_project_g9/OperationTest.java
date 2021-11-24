@@ -5,9 +5,7 @@
 package se_project_g9;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -65,7 +63,7 @@ public class OperationTest {
         Number expResult = new Number(1.0, 2.0);
         Number result = Operation.translate_input(input);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
+        System.out.println("works\n");
     }
     
      /**
@@ -79,7 +77,7 @@ public class OperationTest {
         Number expResult = new Number(-1.0);
         Number result = Operation.translate_input(input);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
+        System.out.println("works\n");
     }
     
     /**
@@ -93,7 +91,7 @@ public class OperationTest {
         Number expResult = new Number(0.0, -10.0);
         Number result = Operation.translate_input(input);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
+        System.out.println("works\n");
     }
     
     

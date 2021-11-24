@@ -23,7 +23,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextField tfInput;
     @FXML
-    private ListView<?> stackview;
+    private ListView<Number> stackview;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -35,6 +35,7 @@ public class FXMLDocumentController implements Initializable {
         
         Number num = Operation.translate_input(tfInput.getText());
         tfInput.clear();
+        ope.pushStack(num);
     }
 
     @FXML
