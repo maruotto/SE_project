@@ -65,6 +65,7 @@ public class BasicOperationTest {
         expResult = new Number(4, 2);
         result = BasicOperation.multiply(new Number(2,0), new Number(2,1));
         assertEquals(expResult.getRealPart(), result.getRealPart(), 0);
+        assertEquals(expResult.getImaginaryPart(), result.getImaginaryPart(), 0);
         
         System.out.println("work\n");
     }
@@ -96,10 +97,16 @@ public class BasicOperationTest {
      */
     @Test
     public void testSqrt() {
-        //System.out.println("sqrt");
-        //Number expResult = null;
-        //Number result = BasicOperation.sqrt(n1);
-        //assertEquals(expResult, result);
+        System.out.println("sqrt");
+        Number expResult = new Number(2,0);
+        Number result = BasicOperation.sqrt(new Number(4,0));
+        assertEquals(expResult.getRealPart(), result.getRealPart(), 0);
+        
+        expResult = new Number(2,-1);
+        result = BasicOperation.sqrt(new Number(3,-4));
+        assertEquals(expResult.getRealPart(), result.getRealPart(), 0);
+        assertEquals(expResult.getImaginaryPart(), result.getImaginaryPart(), 0);
+        System.out.println("work\n");
     }
     
     
