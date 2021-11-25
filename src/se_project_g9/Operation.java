@@ -4,17 +4,18 @@
  */
 package se_project_g9;
 
+import java.util.EmptyStackException;
+
 /**
  *
  * @author group
  */
 public class Operation implements ApplicationOperation{
        
-    private PersonalizedStack<Number> numberStack;
-    private NumberStack<Number> test;
+    private final NumberStack<Number> numberStack;
 
     public Operation(){
-        this.numberStack = new NumberStack<Number>();
+        this.numberStack = new NumberStack<>();
     }
 
     protected PersonalizedStack<Number> getNumberStack() {
@@ -25,7 +26,7 @@ public class Operation implements ApplicationOperation{
         return numberStack.add(n);      
     }
     
-    public Number popStack(){
+    public Number popStack() throws EmptyStackException{
         return numberStack.pop();      
     }
     
