@@ -76,7 +76,7 @@ public class BasicOperationTest {
     /**
      * Test of divide method, of class BasicOperation.
      */
-    @Test
+    @Test (expected=Exception.class)
     public void testDivide() throws Exception {
         System.out.println("divide");
         Number n = new Number(18,51);
