@@ -120,7 +120,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void clickplusminus(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "+ -");
+        tfInput.setText(tfInput.getText() + "invert");
     }
 
     @FXML
