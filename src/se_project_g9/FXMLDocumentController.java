@@ -127,6 +127,11 @@ public class FXMLDocumentController implements Initializable {
     private void clickclear(ActionEvent event) {
         tfInput.clear();
     }
+
+    @FXML
+    private void clickdrop(ActionEvent event) {
+        tfInput.clear();
+    }
     
 }
 

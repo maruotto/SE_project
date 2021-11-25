@@ -28,5 +28,6 @@
       <Button layoutX="513.0" layoutY="326.0" mnemonicParsing="false" onAction="#clicksqrt" text="sqrt" />
       <Button layoutX="562.0" layoutY="326.0" mnemonicParsing="false" onAction="#clickplusminus" text="+-" />
       <Button layoutX="511.0" layoutY="369.0" mnemonicParsing="false" onAction="#clickclear" text="clear" />
+      <Button layoutX="556.0" layoutY="369.0" mnemonicParsing="false" onAction="#clickdrop" text="drop" />
    </children>
 </AnchorPane>
