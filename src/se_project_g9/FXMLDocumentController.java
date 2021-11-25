@@ -122,6 +122,11 @@ public class FXMLDocumentController implements Initializable {
     private void clickplusminus(ActionEvent event) {
         tfInput.setText(tfInput.getText() + "+ -");
     }
+
+    @FXML
+    private void clickclear(ActionEvent event) {
+        tfInput.clear();
+    }
     
 }
 
