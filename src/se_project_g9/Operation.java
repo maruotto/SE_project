@@ -23,7 +23,7 @@ public class Operation implements ApplicationOperation{
     }
     
     public boolean pushStack(Number n){
-        return numberStack.add(n);      
+        return numberStack.push(n) != null;      
     }
     
     public Number popStack() throws EmptyStackException{
@@ -98,6 +98,7 @@ public class Operation implements ApplicationOperation{
                     }
                     catch(NumberFormatException | NullPointerException e){
                         System.out.println(e);
+                        
                     }
                     
                 }

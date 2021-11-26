@@ -4,14 +4,16 @@
  */
 package se_project_g9;
 
-import javafx.beans.Observable;
+import java.util.List;
+import javafx.collections.ObservableList;
 
 
 
 /**
  *
  * @author group9
+ * @param <E>
  */
-public interface PersonalizedStack<E> {
-    public boolean add(E n);
+public interface PersonalizedStack<E> extends ObservableList<E>{
+    
 }

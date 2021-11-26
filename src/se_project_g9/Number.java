@@ -9,6 +9,7 @@ package se_project_g9;
  * @author gruppo9
  */
 public class Number {
+
     private double realPart;
     private double imaginaryPart;
 
@@ -16,7 +17,7 @@ public class Number {
         this.realPart = realPart;
         this.imaginaryPart = imaginaryPart;
     }
-    
+
     public Number(double realPart) {
         this.realPart = realPart;
         this.imaginaryPart = .0;
@@ -37,20 +38,17 @@ public class Number {
     public void setImaginaryPart(double imaginaryPart) {
         this.imaginaryPart = imaginaryPart;
     }
-    
+
     @Override
     public String toString() {
-        if(realPart == 0.0){
-            return "" + imaginaryPart + "i";
-        }
-        else if(imaginaryPart == 0.0){
+        if (imaginaryPart == 0.0) {
             return "" + realPart;
-        }
-        else{
-            if(imaginaryPart > 0){
+        } else if (realPart == 0.0) {
+            return "" + imaginaryPart + "i";
+        } else {
+            if (imaginaryPart > 0) {
                 return "" + realPart + " +" + imaginaryPart + "i";
-            }
-            else{
+            } else {
                 return "" + realPart + " " + imaginaryPart + "i";
             }
         }
@@ -76,7 +74,5 @@ public class Number {
         }
         return true;
     }
-    
-    
-}
 
+}

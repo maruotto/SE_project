@@ -6,17 +6,15 @@ package se_project_g9;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.beans.binding.ListBinding;
-import javafx.beans.value.ObservableListValue;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  *
@@ -25,18 +23,20 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class FXMLDocumentController implements Initializable {
     
     private Operation ope;
-    private ObservableList stack;
 
     @FXML
     private TextField tfInput;
     @FXML
     private ListView<Number> stackview;
+    @FXML
+    private Button btnSend;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ope = new Operation();
-        stack = FXCollections.observableList(ope.getNumberStack());
-        stackview.setItems(stack);
+        ope = new Operation();              
+        btnSend.disableProperty().bind(Bindings.isEmpty(tfInput.textProperty()));
+        stackview.setItems(ope.getNumberStack());
+        
                 
     }    
 
@@ -44,8 +44,10 @@ public class FXMLDocumentController implements Initializable {
     private void handleInsertAction(ActionEvent event) {
         
         Number num = Operation.translate_input(tfInput.getText());
-        tfInput.clear();
+        tfInput.clear();        
         ope.pushStack(num);
+        stackview.scrollTo(ope.getNumberStack().size()-1);
+        
         
     }
 
