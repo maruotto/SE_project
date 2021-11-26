@@ -45,7 +45,7 @@ public class FXMLDocumentController implements Initializable {
             ope.translate_input(tfInput.getText());
         }
         catch(Exception e){
-            System.out.println("message from exception:" + e); //may be shown also in a window
+            System.out.println("message from exception in send button action catch:" + e); //may be shown also in a window
         }
             
         tfInput.clear();     
