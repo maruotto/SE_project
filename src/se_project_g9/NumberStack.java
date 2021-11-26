@@ -10,5 +10,7 @@ import java.util.Stack;
  * @author group9
  */
 public class NumberStack<Number> extends Stack<Number> implements PersonalizedStack{
-    
+    public void drop(){
+        this.pop();
+    }
 }
