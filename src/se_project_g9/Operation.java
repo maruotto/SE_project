@@ -10,13 +10,14 @@ package se_project_g9;
  */
 public class Operation implements ApplicationOperation{
        
-    private NumberStack<Number> numberStack;
+    private PersonalizedStack<Number> numberStack;
+    private NumberStack<Number> test;
 
     public Operation(){
         this.numberStack = new NumberStack<Number>();
     }
 
-    protected NumberStack<Number> getNumberStack() {
+    protected PersonalizedStack<Number> getNumberStack() {
         return numberStack;
     }
     

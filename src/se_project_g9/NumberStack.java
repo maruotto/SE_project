@@ -9,8 +9,14 @@ import java.util.Stack;
  *
  * @author group9
  */
-public class NumberStack<Number> extends Stack<Number> implements PersonalizedStack{
+public class NumberStack<E> extends Stack<E> implements PersonalizedStack{
     public void drop(){
         this.pop();
     }
+
+    @Override
+    public boolean add(Object n) {
+        return this.add(n);
+    }
+
 }

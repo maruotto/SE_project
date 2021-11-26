@@ -8,6 +8,6 @@ package se_project_g9;
  *
  * @author group9
  */
-public interface PersonalizedStack {
-    
+public interface PersonalizedStack<E> {
+    public boolean add(E n);
 }
