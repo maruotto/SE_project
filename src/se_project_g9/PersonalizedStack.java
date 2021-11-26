@@ -4,10 +4,8 @@
  */
 package se_project_g9;
 
-import java.util.List;
+import java.util.Iterator;
 import javafx.collections.ObservableList;
-
-
 
 /**
  *
@@ -15,5 +13,13 @@ import javafx.collections.ObservableList;
  * @param <E>
  */
 public interface PersonalizedStack<E> extends ObservableList<E>{
+    public E pop();
+    public E push(E item);
+    public E peek();
+    public void drop();
+    @Override
+    public Iterator<E> iterator();
+    @Override
+    public void clear();
     
 }

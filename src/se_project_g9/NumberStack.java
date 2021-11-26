@@ -41,7 +41,7 @@ public class NumberStack<E> extends Stack<E> implements PersonalizedStack<E> {
     }
     
     @Override
-    public E push(E item) {        
+    public synchronized E push(E item) {        
         System.out.println("number stack inside push: " + super.push(item));
         //System.out.println(this);
         informListener(ChangeType.PUSH, item);
@@ -56,19 +56,18 @@ public class NumberStack<E> extends Stack<E> implements PersonalizedStack<E> {
     }
     
     @Override
-    public void clear() {
+    public synchronized void clear() {
         super.clear();
         informListenerWholeStructure(ChangeType.POP);
     }
     
     @Override
-    public synchronized E lastElement() {
-        return super.lastElement(); //To change body of generated methods, choose Tools | Templates.
+    public synchronized E peek() {
+        return super.peek(); 
     }
     
-    public void drop() {
-        informListener(ChangeType.POP, this.pop());
-        
+    public synchronized void drop() {
+        informListener(ChangeType.POP, this.pop());       
     }
 
     /**
