@@ -7,8 +7,6 @@ package se_project_g9;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.binding.Bindings;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -43,11 +41,16 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleInsertAction(ActionEvent event) {
         
-        Number num = Operation.translate_input(tfInput.getText());
-        tfInput.clear();        
-        ope.pushStack(num);
-        stackview.scrollTo(ope.getNumberStack().size()-1);
-        
+        try{
+            ope.translate_input(tfInput.getText());
+        }
+        catch(Exception e){
+            System.out.println("message from exception:" + e); //may be shown also in a window
+        }
+            
+        tfInput.clear();     
+        if (ope.getNumberStack().size() > 11)
+            stackview.scrollTo(ope.getNumberStack().size()-1);      
         
     }
 
@@ -103,12 +106,12 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void plusclick(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "+");      
+        tfInput.setText(tfInput.getText() + "+");  
     }
 
     @FXML
     private void clicki(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "j");      
+        tfInput.setText(tfInput.getText() + "j");  
     }
 
     @FXML
@@ -138,12 +141,13 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void clickclear(ActionEvent event) {
-        tfInput.clear();
+        tfInput.setText(tfInput.getText() + "clear");
     }
 
     @FXML
     private void clickdrop(ActionEvent event) {
-        tfInput.clear();
+        tfInput.clear(); //remove after implementation
+        
     }
     
 }

@@ -17,7 +17,7 @@ public class OperationTest {
     
     private Number n1;
     private Number n2;
-    private Operation op = new Operation();
+    private Operation op;
     
     public OperationTest() {
     }
@@ -26,6 +26,7 @@ public class OperationTest {
     public void setUp() {
         n1 = new Number(9,5);
         n2 = new Number(6,3);
+        op = new Operation();
     }
     
     @After
@@ -75,11 +76,54 @@ public class OperationTest {
      * When inserted numbers in cartesian notation
      */
     @Test
-    public void testTranslate_input_cartesian_notation() {
+    public void testConvertNumber_inputCartesianNotationPlusPlus() {
         System.out.println("translate_input");
         String input = "1 + 2j";
         Number expResult = new Number(1.0, 2.0);
-        Number result = Operation.translate_input(input);
+        Number result = Operation.convert_number(input);
+        assertEquals(expResult, result);
+        System.out.println("works\n");
+    }
+    
+    /**
+     * Test of translate_input method, of class Operation.
+     * When inserted numbers in cartesian notation
+     */
+    @Test
+    public void testConvertNumber_inputCartesianNotationPlusMinus() {
+        System.out.println("translate_input");
+        String input = "1 - 2j";
+        Number expResult = new Number(1.0, -2.0);
+        Number result = Operation.convert_number(input);
+        assertEquals(expResult, result);
+        System.out.println("works\n");
+    }
+    
+    
+    /**
+     * Test of translate_input method, of class Operation.
+     * When inserted numbers in cartesian notation
+     */
+    @Test
+    public void testConvertNumber_inputCartesianNotationMinusMinus() {
+        System.out.println("translate_input");
+        String input = "-1 - 2j";
+        Number expResult = new Number(-1.0, -2.0);
+        Number result = Operation.convert_number(input);
+        assertEquals(expResult, result);
+        System.out.println("works\n");
+    }
+    
+    /**
+     * Test of translate_input method, of class Operation.
+     * When inserted numbers in cartesian notation
+     */
+    @Test
+    public void testConvertNumber_inputCartesianNotationMinusPlus() {
+        System.out.println("translate_input");
+        String input = "-1 + 2j";
+        Number expResult = new Number(-1.0, 2.0);
+        Number result = Operation.convert_number(input);
         assertEquals(expResult, result);
         System.out.println("works\n");
     }
@@ -89,11 +133,25 @@ public class OperationTest {
      * When inserted a number with only real part
      */
     @Test
-    public void testTranslate_input_real() {
+    public void testConvertNumber_inputRealMinus() {
         System.out.println("translate_input");
         String input = "-1";
         Number expResult = new Number(-1.0);
-        Number result = Operation.translate_input(input);
+        Number result = Operation.convert_number(input);
+        assertEquals(expResult, result);
+        System.out.println("works\n");
+    }
+    
+     /**
+     * Test of translate_input method, of class Operation.
+     * When inserted a number with only real part
+     */
+    @Test
+    public void testConvertNumber_inputRealPlus() {
+        System.out.println("translate_input");
+        String input = "+10";
+        Number expResult = new Number(10.0);
+        Number result = Operation.convert_number(input);
         assertEquals(expResult, result);
         System.out.println("works\n");
     }
@@ -103,11 +161,25 @@ public class OperationTest {
      * When inserted a number with only imaginary part
      */
     @Test
-    public void testTranslate_input_imaginary() {
+    public void testConvertNumber_inputImaginaryMinus() {
         System.out.println("translate_input");
         String input = "-10j";
         Number expResult = new Number(0.0, -10.0);
-        Number result = Operation.translate_input(input);
+        Number result = Operation.convert_number(input);
+        assertEquals(expResult, result);
+        System.out.println("works\n");
+    }
+    
+    /**
+     * Test of translate_input method, of class Operation.
+     * When inserted a number with only imaginary part
+     */
+    @Test
+    public void testConvertNumber_inputImaginaryPlus() {
+        System.out.println("translate_input");
+        String input = "+10j";
+        Number expResult = new Number(0.0, +10.0);
+        Number result = Operation.convert_number(input);
         assertEquals(expResult, result);
         System.out.println("works\n");
     }
