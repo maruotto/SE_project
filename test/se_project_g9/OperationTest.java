@@ -50,17 +50,29 @@ public class OperationTest {
      */
     @Test
     public void testMultiply() {
-        /*System.out.println("multiply");
+        System.out.println("multiply");
+        //When insered numbers with only real part 
+        Number expResult = new Number(2,0);
         Operation instance = new Operation();
+        instance.pushStack(new Number(1,0));
+        instance.pushStack(new Number(2,0));
         instance.multiply();
-        // TODO review the generated test code and remove the default call to fail.
-       // fail("The test case is a prototype.");
-        */
+        Number result = instance.popStack();
+        assertEquals(expResult.getRealPart(), result.getRealPart(), 0);
+       //When insered numbers with real part and imaginary part 
+        expResult = new Number(4,2);
+        instance = new Operation();
+        instance.pushStack(new Number(2,0));
+        instance.pushStack(new Number(2,1));
+        instance.multiply();
+        result = instance.popStack();
+        assertEquals(expResult.getRealPart(), result.getRealPart(), 0);
+        
     }
 
     /**
      * Test of translate_input method, of class Operation.
-     * When inserted a number in cartesian notation
+     * When inserted numbers in cartesian notation
      */
     @Test
     public void testTranslate_input_cartesian_notation() {
