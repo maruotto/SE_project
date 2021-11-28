@@ -56,27 +56,36 @@ public class BasicOperationTest {
      * Test of multiply method, of class BasicOperation.
      */
     @Test
-    public void testMultiply() {
+    public void testMultiply_case1() {
         System.out.println("multiply");
         Number expResult = new Number(2,0);
         Number result = BasicOperation.multiply(new Number(2,0), new Number(1,0));
         assertEquals(expResult.getRealPart(), result.getRealPart(), 0);
         
-        expResult = new Number(4, 2);
-        result = BasicOperation.multiply(new Number(2,0), new Number(2,1));
-        assertEquals(expResult.getRealPart(), result.getRealPart(), 0);
-        assertEquals(expResult.getImaginaryPart(), result.getImaginaryPart(), 0);
         
         System.out.println("work\n");
     }
 
+    /**
+     * Test of multiply method, of class BasicOperation.
+     */
+    @Test
+    public void testMultiply_case2() {
+        expResult = new Number(4, 2);
+        Number result = BasicOperation.multiply(new Number(2,0), new Number(2,1));
+        assertEquals(expResult.getRealPart(), result.getRealPart(), 0);
+        assertEquals(expResult.getImaginaryPart(), result.getImaginaryPart(), 0);
+    }  
     /**
      * Test of invert method, of class BasicOperation.
      */
     @Test
     public void testInvert() {
         System.out.println("invert");
-        BasicOperation.invert(n1);
+        Number expResult = new Number(-4,-3);
+        Number result = BasicOperation.invert(n2);
+        assertEquals(expResult, result);
+        
     }
 
     /**
@@ -84,12 +93,12 @@ public class BasicOperationTest {
      */
     @Test (expected=Exception.class)
     public void testDivide() throws Exception {
-        /*System.out.println("divide");
+        System.out.println("divide");
         Number n = new Number(18,51);
         Number expResult = n2;
         Number result = BasicOperation.divide(n, n1);
         assertEquals(expResult, result);
-        System.out.println("work\n");*/
+        System.out.println("work\n");
     }
 
     /**

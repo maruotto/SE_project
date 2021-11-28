@@ -122,57 +122,62 @@ public class Operation implements ApplicationOperation{
             
     }
     
-    protected static Number convert_number(String input){
+    protected static Number convert_number(String input) throws Exception{
         
         String[] splittedInput = input.split("\\+|-");  //regex meaning: + once
+        /*System.out.println(splittedInput.length);
         
-        double realPart = 0, imaginaryPart = 0, number = 0;
+        for (int i = 0; i< splittedInput.length; i++)
+                System.out.println(i + "->"+ splittedInput[i]);*/
+                
+        if (input.length() == 0 || splittedInput.length > 3 || splittedInput.length == 0)
+            throw new Exception("wrong input");
+        
+        double realPart = 0, imaginaryPart = 0;
         boolean imaginaryPartNotDone = true, realPartNotDone = true;
         
         for (String s: splittedInput) {
+            System.out.println("a" + s);
             if(!imaginaryPartNotDone & !realPartNotDone)
-                break;
+                throw new Exception("more input");
             
             if(s.length() != 0){
-                if(imaginaryPartNotDone & ((s.endsWith("i") | s.endsWith("j")))){
-                    try {
-                        int index = input.indexOf(s);
-                        //System.out.println(s.substring(0, s.length()));
-                        
-                        imaginaryPart = Double.parseDouble(s.substring(0, s.length()-1)); 
-                        if (index !=0)
-                            if (Character.compare(input.charAt(index-1), '-')==0 ||
-                                    (Character.compare(input.charAt(index-1), ' ')==0 && Character.compare(input.charAt(index-2), '-')==0)){
-                                imaginaryPart = -imaginaryPart;
-                            }
-                                
-                                    
-                        imaginaryPartNotDone = false;
-                    }
-                    catch(NumberFormatException | NullPointerException e){
-                        System.out.println(e);
-                        
-                    }
-                    
+                System.out.println("a" + s);
+                if(((s.endsWith("i") | s.endsWith("j")))){
+                    if(!imaginaryPartNotDone)
+                        throw new Exception("more input");
+                    int index = input.indexOf(s);
+                    //System.out.println(s.substring(0, s.length()));
+
+                    if(s.length() == 1)
+                        imaginaryPart = 1; 
+                    else imaginaryPart = Double.parseDouble(s.substring(0, s.length()-1)); //can throws NullPointerException or NumberFormatException
+                    if (index !=0)
+                        if (Character.compare(input.charAt(index-1), '-')==0 ||
+                                (Character.compare(input.charAt(index-1), ' ')==0 && Character.compare(input.charAt(index-2), '-')==0)){
+                            imaginaryPart = -imaginaryPart;
+                        }
+
+
+                    imaginaryPartNotDone = false;                  
                 }
-                if (realPartNotDone){
-                    try {
-                        realPart = Double.parseDouble(s);
-                        if (Character.compare(input.charAt(0), '-')==0)
+                else{
+                        if(!realPartNotDone)
+                            throw new Exception("more input");
+                        int index = input.indexOf(s);
+                        realPart = Double.parseDouble(s); //can throws NullPointerException or NumberFormatException
+                        if (Character.compare(input.charAt(index == 0 ? 0: index-1), '-')==0)
                             realPart = -realPart;                            
                         realPartNotDone = false;
-                    }
-                    catch(NumberFormatException | NullPointerException e){
-                        System.out.println(e);
-                        
-                    }
+                    
 
                 }
             }
                         
         }
-        
-        return new Number(realPart, imaginaryPart);
+        Number n = new Number(realPart, imaginaryPart);
+        System.out.println(n);
+        return n;
         
     }
 }

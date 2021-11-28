@@ -44,13 +44,14 @@ public class BasicOperation {
         
     }
 
-    public static void invert(Number n1){
+    public static Number invert(Number n1){
         if(n1.getRealPart() != 0){
             n1.setRealPart(n1.getRealPart() * -1);
         }
         if(n1.getImaginaryPart() != 0){
             n1.setImaginaryPart(n1.getImaginaryPart() * -1);
         }
+        return n1;
     }
     
     public static Number divide(Number n1,Number n2) throws Exception{
