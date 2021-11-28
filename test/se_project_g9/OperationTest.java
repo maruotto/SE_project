@@ -301,8 +301,8 @@ public class OperationTest {
     @Test
     public void testMultiply() {
         System.out.println("multiply");
-        op.pushStack(m1);
         op.pushStack(m3);
+        op.pushStack(m1);
         op.multiply();
         assertEquals(op.popStack(), m1);
 
@@ -325,8 +325,8 @@ public class OperationTest {
     @Test
     public void testSum() {
         System.out.println("sum");
-        op.pushStack(n1);
         op.pushStack(n2);
+        op.pushStack(n1);
         op.sum();
         assertEquals(op.popStack(), r1);
     }
@@ -337,8 +337,8 @@ public class OperationTest {
     @Test
     public void testSub() {
         System.out.println("sub");
-        op.pushStack(n1);
         op.pushStack(r1);
+        op.pushStack(n1);
         op.sub();
         assertEquals(op.popStack(), n2);
     }
@@ -349,8 +349,8 @@ public class OperationTest {
     @Test
     public void testDivide() throws Exception {
         System.out.println("divide");
-        op.pushStack(m3);
         op.pushStack(m1);
+        op.pushStack(m3);
         op.divide();
         assertEquals(op.popStack(), m1);
     }
