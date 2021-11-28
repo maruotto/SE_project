@@ -39,7 +39,7 @@ public class Operation implements ApplicationOperation {
     public void multiply() {
         Number n1 = numberStack.pop();
         Number n2 = numberStack.pop();
-        Number n3 = BasicOperation.multiply(n1, n2);
+        Number n3 = BasicOperation.multiply(n2, n1);
         numberStack.push(n3);
     }
 
@@ -53,21 +53,21 @@ public class Operation implements ApplicationOperation {
     public void sum() {
         Number n1 = numberStack.pop();
         Number n2 = numberStack.pop();
-        Number n3 = BasicOperation.sum(n1, n2);
+        Number n3 = BasicOperation.sum(n2, n1);
         numberStack.push(n3);
     }
 
     public void sub() {
         Number n1 = numberStack.pop();
         Number n2 = numberStack.pop();
-        Number n3 = BasicOperation.sub(n1, n2);
+        Number n3 = BasicOperation.sub(n2, n1);
         numberStack.push(n3);
     }
 
     public void divide() throws Exception {
         Number n1 = numberStack.pop();
         Number n2 = numberStack.pop();
-        Number n3 = BasicOperation.divide(n1, n2);
+        Number n3 = BasicOperation.divide(n2, n1);
         numberStack.push(n3);
     }
 
