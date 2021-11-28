@@ -213,6 +213,19 @@ public class OperationTest {
         System.out.println("works\n");
     }
     
+    /**
+     * Test of translate_input method, of class Operation.
+     */
+    @Test (expected = Exception.class)
+    public void testConvertNumber_wrongFormat() throws Exception {
+        System.out.println("translate_input");
+        String input = "10+";
+        Number expResult = new Number(10.0, 0.0);
+        Number result = Operation.convertNumber(input);
+        assertEquals(expResult, result);
+        System.out.println("works\n");
+    }
+    
 
     /**
      * Test of translateInput method, of class Operation.
