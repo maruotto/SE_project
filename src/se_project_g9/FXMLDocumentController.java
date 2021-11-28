@@ -167,6 +167,11 @@ public class FXMLDocumentController implements Initializable {
         tfInput.setText(tfInput.getText() + "dup");
         
     }
+
+    @FXML
+    private void clickpoint(ActionEvent event) {
+        tfInput.setText(tfInput.getText() + ".");
+    }
     
 }
 

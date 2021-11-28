@@ -87,6 +87,10 @@ public class Operation implements ApplicationOperation {
         numberStack.over();
     }
     
+    private void drop(){
+        numberStack.drop();
+    }
+    
 
     protected void translateInput(String input) throws Exception {
         //ATTENTION!!!! if you want to add to the regular expression something like
@@ -134,7 +138,7 @@ public class Operation implements ApplicationOperation {
                     over();
                     break;
                 case "drop":
-                    over();
+                    drop();
                     break;
                 default:
                     throw new Exception("litteral expression not supported");
@@ -162,13 +166,13 @@ public class Operation implements ApplicationOperation {
         boolean imaginaryPartNotDone = true, realPartNotDone = true;
 
         for (String s : splittedInput) {
-            System.out.println("a" + s);
+            //System.out.println("a" + s);
             if (!imaginaryPartNotDone & !realPartNotDone) {
                 throw new Exception("more input");
             }
 
             if (s.length() != 0) {
-                System.out.println("a" + s);
+                //System.out.println("a" + s);
                 if (((s.endsWith("i") | s.endsWith("j")))) {
                     if (!imaginaryPartNotDone) {
                         throw new Exception("more input");
@@ -206,7 +210,7 @@ public class Operation implements ApplicationOperation {
 
         }
         Number n = new Number(realPart, imaginaryPart);
-        System.out.println(n);
+        //System.out.println(n);
         return n;
 
     }
