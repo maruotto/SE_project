@@ -215,6 +215,34 @@ public class OperationTest {
     
     /**
      * Test of translate_input method, of class Operation.
+     * When inserted a number with only imaginary part
+     */
+    @Test
+    public void testConvertNumber_startsJ() throws Exception {
+        System.out.println("translate_input");
+        String input = "j";
+        Number expResult = new Number(0.0, 1);
+        Number result = Operation.convertNumber(input);
+        assertEquals(expResult, result);
+        System.out.println("works\n");
+    }
+    
+    /**
+     * Test of translate_input method, of class Operation.
+     * When inserted a number with only imaginary part
+     */
+    @Test
+    public void testConvertNumber_startsJ_complex() throws Exception {
+        System.out.println("translate_input");
+        String input = "+j + 4.5";
+        Number expResult = new Number(4.5, 1);
+        Number result = Operation.convertNumber(input);
+        assertEquals(expResult, result);
+        System.out.println("works\n");
+    }
+    
+    /**
+     * Test of translate_input method, of class Operation.
      */
     @Test (expected = Exception.class)
     public void testConvertNumber_wrongFormat() throws Exception {

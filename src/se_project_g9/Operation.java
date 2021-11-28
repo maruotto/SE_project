@@ -116,7 +116,10 @@ public class Operation implements ApplicationOperation {
                     throw new Exception("single charcter operation not supported");
             }
             //find operation
-        } else if (Character.isAlphabetic(input.charAt(0))) {
+        } else if (input.startsWith("j")){
+                numberStack.push(convertNumber(input));
+        }
+        else if (Character.isAlphabetic(input.charAt(0))) {
             //is a function
             switch (input) {
                 case "invert":
@@ -144,7 +147,7 @@ public class Operation implements ApplicationOperation {
                     throw new Exception("litteral expression not supported");
             }
 
-        } else {
+        }else {
             numberStack.push(convertNumber(input));
         }
 
@@ -154,6 +157,7 @@ public class Operation implements ApplicationOperation {
         if (input.length() == 0 || input.endsWith("+")) {
             throw new Exception("wrong input");
         }
+        input = input.trim();
         String[] splittedInput = input.split("\\+|-");  //regex meaning: + once
         /*System.out.println(splittedInput.length);
         
@@ -168,12 +172,14 @@ public class Operation implements ApplicationOperation {
         boolean imaginaryPartNotDone = true, realPartNotDone = true;
 
         for (String s : splittedInput) {
+            
             //System.out.println("a" + s);
             if (!imaginaryPartNotDone & !realPartNotDone) {
                 throw new Exception("more input");
             }
-
+            
             if (s.length() != 0){
+                s = s.trim();
                 //System.out.println("a" + s);
                 if (((s.endsWith("i") | s.endsWith("j")))) {
                     if (!imaginaryPartNotDone) {
