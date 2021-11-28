@@ -67,8 +67,37 @@ public class NumberStack<E> extends Stack<E> implements PersonalizedStack<E> {
         return super.peek(); 
     }
     
+    @Override
     public synchronized void drop() {
-        informListener(ChangeType.POP, this.pop());       
+         informListener(ChangeType.POP, this.pop());       
+    }
+    
+    public synchronized void dup() {
+        E e = this.peek();
+        this.push(e);
+        informListener(ChangeType.PUSH, e);       
+    }
+    
+    public synchronized void swap() {
+         E last = this.pop();
+         informListener(ChangeType.POP, last);    
+         E secondlast = this.pop();
+         informListener(ChangeType.POP, secondlast);     
+         this.push(last);
+         informListener(ChangeType.PUSH, last);
+         this.push(secondlast);
+         informListener(ChangeType.PUSH, secondlast);
+    }
+    
+    public synchronized void over() {
+         E last = this.pop();
+         informListener(ChangeType.POP, last);    
+         E secondlast = this.peek();
+         informListener(ChangeType.POP, secondlast);     
+         this.push(last);
+         informListener(ChangeType.PUSH, last);
+         this.push(secondlast);
+         informListener(ChangeType.PUSH, secondlast);
     }
 
     /**

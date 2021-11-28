@@ -21,5 +21,8 @@ public interface PersonalizedStack<E> extends ObservableList<E>{
     public Iterator<E> iterator();
     @Override
     public void clear();
+    public void dup();
+    public void swap();
+    public void over();
     
 }

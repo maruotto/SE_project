@@ -31,6 +31,7 @@ public class OperationTest {
         op = new Operation();
     }
 
+
     @Before
     public void setUp() {
         n1 = new Number(9,5);
@@ -53,12 +54,12 @@ public class OperationTest {
      */
     @Test
     public void testInvert() {
-        /*System.out.println("invert");
-        Operation instance = new Operation();
-        instance.invert();
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-        */
+        System.out.println("invert");
+        op.pushStack(n1);
+        op.invert();
+        assertEquals(new Number(-9, -5), op.popStack());
+
+        
     }
 
     /**
@@ -107,7 +108,7 @@ public class OperationTest {
         System.out.println("translate_input");
         String input = "1 + 2j";
         Number expResult = new Number(1.0, 2.0);
-        Number result = Operation.convert_number(input);
+        Number result = Operation.convertNumber(input);
         assertEquals(expResult, result);
         System.out.println("works\n");
     }
@@ -121,7 +122,7 @@ public class OperationTest {
         System.out.println("translate_input");
         String input = "1 - 2j";
         Number expResult = new Number(1.0, -2.0);
-        Number result = Operation.convert_number(input);
+        Number result = Operation.convertNumber(input);
         assertEquals(expResult, result);
         System.out.println("works\n");
     }
@@ -136,7 +137,7 @@ public class OperationTest {
         System.out.println("translate_input");
         String input = "-1 - 2j";
         Number expResult = new Number(-1.0, -2.0);
-        Number result = Operation.convert_number(input);
+        Number result = Operation.convertNumber(input);
         assertEquals(expResult, result);
         System.out.println("works\n");
     }
@@ -150,7 +151,7 @@ public class OperationTest {
         System.out.println("translate_input");
         String input = "-1 + 2j";
         Number expResult = new Number(-1.0, 2.0);
-        Number result = Operation.convert_number(input);
+        Number result = Operation.convertNumber(input);
         assertEquals(expResult, result);
         System.out.println("works\n");
     }
@@ -164,7 +165,7 @@ public class OperationTest {
         System.out.println("translate_input");
         String input = "-1";
         Number expResult = new Number(-1.0);
-        Number result = Operation.convert_number(input);
+        Number result = Operation.convertNumber(input);
         assertEquals(expResult, result);
         System.out.println("works\n");
     }
@@ -178,7 +179,7 @@ public class OperationTest {
         System.out.println("translate_input");
         String input = "+10";
         Number expResult = new Number(10.0);
-        Number result = Operation.convert_number(input);
+        Number result = Operation.convertNumber(input);
         assertEquals(expResult, result);
         System.out.println("works\n");
     }
@@ -193,7 +194,7 @@ public class OperationTest {
         System.out.println("translate_input");
         String input = "-j";
         Number expResult = new Number(0.0, -1.0);
-        Number result = Operation.convert_number(input);
+        Number result = Operation.convertNumber(input);
         assertEquals(expResult, result);
         System.out.println("works\n");
     }
@@ -207,59 +208,54 @@ public class OperationTest {
         System.out.println("translate_input");
         String input = "+10j";
         Number expResult = new Number(0.0, +10.0);
-        Number result = Operation.convert_number(input);
+        Number result = Operation.convertNumber(input);
         assertEquals(expResult, result);
         System.out.println("works\n");
     }
     
 
     /**
-     * Test of translate_input method, of class Operation.
+     * Test of translateInput method, of class Operation.
      */
     @Test (expected = Exception.class)
-    public void testTranslate_input() throws Exception {
+    public void testTranslateInput() throws Exception {
         System.out.println("translate_input");
         String input = "abcd";
         Operation instance = new Operation();
-        instance.translate_input(input);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        instance.translateInput(input);
+
     }
 
     /**
-     * Test of convert_number method, of class Operation.
+     * Test of convertNumber method, of class Operation.
      */
     @Test (expected = Exception.class)
-    public void testConvert_number() throws Exception {
-        System.out.println("convert_number");
+    public void testConvertNumber() throws Exception {
+        System.out.println("convertNumber");
         String input = "";
         Number expResult = null;
-        Number result = Operation.convert_number(input);
+        Number result = Operation.convertNumber(input);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+
     }
     
     @Test (expected = Exception.class)
-    public void testConvert_number_wrong_input() throws Exception {
-        System.out.println("convert_number");
+    public void testConvertNumber_wrong_input() throws Exception {
+        System.out.println("convertNumber");
         String input = "abcd";
         Number expResult = null;
-        Number result = Operation.convert_number(input);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        Number result = Operation.convertNumber(input);
+
     }
     
     @Test (expected = Exception.class)
-    public void testConvert_number_more_number() throws Exception {
-        System.out.println("convert_number");
+    public void testConvertNumber_more_number() throws Exception {
+        System.out.println("convertNumber");
         String input = "10 -10j +10";
         Number expResult = null;
-        Number result = Operation.convert_number(input);
+        Number result = Operation.convertNumber(input);
+        assertEquals(expResult, result);
 
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**
@@ -369,6 +365,78 @@ public class OperationTest {
         assertEquals(op.getNumberStack().size(), 0);
     }
     
+    /**
+     * Test of translateInput method, of class Operation.
+     */
+    @Test
+    public void testTranslateInput_clear() throws Exception {
+        System.out.println("translate_input");
+        String input = "clear";
+        op.pushStack(n1);
+        op.translateInput(input);
+        assertEquals(op.getNumberStack().size(), 0);
+    }
+    
+    /**
+     * Test of translateInput method, of class Operation.
+     */
+    @Test
+    public void testTranslateInput_swap() throws Exception {
+        System.out.println("translate_input");
+        String input = "swap";
+        op.pushStack(n1);
+        op.pushStack(n2);
+        op.translateInput(input);
+        assertEquals(n1, op.popStack());
+        assertEquals(n2, op.popStack());
+    }
+    
+    /**
+     * Test of translateInput method, of class Operation.
+     */
+    @Test
+    public void testTranslateInput_drop() throws Exception {
+        System.out.println("translate_input");
+        String input = "drop";
+        op.pushStack(n1);
+        op.pushStack(n2);
+        op.translateInput(input);
+        assertEquals(n1, op.popStack());
+    }
+    
+    
+    /**
+     * Test of translateInput method, of class Operation.
+     * @throws java.lang.Exception
+     */
+    @Test
+    public void testTranslateInput_dup() throws Exception {
+        System.out.println("translate_input");
+        String input = "dup";
+        op.pushStack(n1);
+        op.pushStack(n2);
+        op.translateInput(input);
+        assertEquals(n2, op.popStack());
+        assertEquals(n2, op.popStack());
+        assertEquals(n1, op.popStack());
+    }
+    
+    /**
+     * Test of translateInput method, of class Operation.
+     * @throws java.lang.Exception
+     */
+    @Test
+    public void testTranslateInput_over() throws Exception {
+        System.out.println("translate_input");
+        String input = "over";
+        op.pushStack(n1);
+        op.pushStack(n2);
+        op.translateInput(input);
+        assertEquals(n1, op.popStack());
+        assertEquals(n2, op.popStack());
+        assertEquals(n1, op.popStack());
+    }
+
     
     
     

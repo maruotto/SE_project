@@ -42,7 +42,7 @@ public class FXMLDocumentController implements Initializable {
     private void handleInsertAction(ActionEvent event) {
         
         try{
-            ope.translate_input(tfInput.getText());
+            ope.translateInput(tfInput.getText());
         }
         catch(Exception e){
             System.out.println("message from exception in send button action catch:" + e); //may be shown also in a window
@@ -146,7 +146,25 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void clickdrop(ActionEvent event) {
-        tfInput.clear(); //remove after implementation
+        tfInput.setText(tfInput.getText() + "drop");
+        
+    }
+    
+    @FXML
+    private void clickover(ActionEvent event) {
+        tfInput.setText(tfInput.getText() + "over");
+        
+    }
+    
+    @FXML
+    private void clickswap(ActionEvent event) {
+        tfInput.setText(tfInput.getText() + "swap");
+        
+    }
+    
+    @FXML
+    private void clickdup(ActionEvent event) {
+        tfInput.setText(tfInput.getText() + "dup");
         
     }
     
