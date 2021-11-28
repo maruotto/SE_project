@@ -151,14 +151,16 @@ public class Operation implements ApplicationOperation {
     }
 
     protected static Number convertNumber(String input) throws Exception {
-
+        if (input.length() == 0 || input.endsWith("+")) {
+            throw new Exception("wrong input");
+        }
         String[] splittedInput = input.split("\\+|-");  //regex meaning: + once
         /*System.out.println(splittedInput.length);
         
         for (int i = 0; i< splittedInput.length; i++)
                 System.out.println(i + "->"+ splittedInput[i]);*/
 
-        if (input.length() == 0 || splittedInput.length > 3 || splittedInput.length == 0) {
+        if (input.endsWith("-")|| splittedInput.length > 3 || splittedInput.length == 0) {
             throw new Exception("wrong input");
         }
 
@@ -171,7 +173,7 @@ public class Operation implements ApplicationOperation {
                 throw new Exception("more input");
             }
 
-            if (s.length() != 0) {
+            if (s.length() != 0){
                 //System.out.println("a" + s);
                 if (((s.endsWith("i") | s.endsWith("j")))) {
                     if (!imaginaryPartNotDone) {
