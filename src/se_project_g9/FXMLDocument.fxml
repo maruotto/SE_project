@@ -8,7 +8,7 @@
 <AnchorPane id="AnchorPane" prefHeight="465.0" prefWidth="609.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se_project_g9.FXMLDocumentController">
    <children>
       <ListView fx:id="stackview" layoutX="14.0" layoutY="67.0" prefHeight="354.0" prefWidth="200.0" />
-      <TextField fx:id="tfInput" layoutX="279.0" layoutY="84.0" prefHeight="34.0" prefWidth="235.0" />
+      <TextField fx:id="tfInput" layoutX="279.0" layoutY="84.0" onKeyReleased="#keyReleased" prefHeight="34.0" prefWidth="235.0" />
       <Button layoutX="327.0" layoutY="131.0" mnemonicParsing="false" onAction="#click1" text="1" />
       <Button layoutX="384.0" layoutY="170.0" mnemonicParsing="false" onAction="#click5" text="5" />
       <Button layoutX="384.0" layoutY="131.0" mnemonicParsing="false" onAction="#click2" text="2" />
@@ -21,7 +21,7 @@
       <Button layoutX="384.0" layoutY="246.0" mnemonicParsing="false" onAction="#click0" text="0" />
       <Button layoutX="502.0" layoutY="131.0" mnemonicParsing="false" onAction="#plusclick" text="+" />
       <Button fx:id="btnSend" layoutX="554.0" layoutY="88.0" mnemonicParsing="false" onAction="#handleInsertAction" text="Send" />
-      <Button layoutX="328.0" layoutY="246.0" mnemonicParsing="false" onAction="#clicki" text="j" />
+      <Button layoutX="328.0" layoutY="246.0" mnemonicParsing="false" onAction="#clicki" text="i" />
       <Button layoutX="503.0" layoutY="170.0" mnemonicParsing="false" onAction="#multiplyclick" text="*" />
       <Button layoutX="565.0" layoutY="131.0" mnemonicParsing="false" onAction="#minusclick" text="-" />
       <Button layoutX="567.0" layoutY="170.0" mnemonicParsing="false" onAction="#divideclick" text="/" />

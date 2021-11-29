@@ -13,6 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 /**
  *
@@ -39,18 +41,8 @@ public class FXMLDocumentController implements Initializable {
     }    
 
     @FXML
-    private void handleInsertAction(ActionEvent event) {
-        
-        try{
-            ope.translateInput(tfInput.getText());
-        }
-        catch(Exception e){
-            System.out.println("message from exception in send button action catch:" + e); //may be shown also in a window
-        }
-            
-        tfInput.clear();     
-        if (ope.getNumberStack().size() > 11)
-            stackview.scrollTo(ope.getNumberStack().size()-1);      
+    private void handleInsertAction(ActionEvent event) {      
+             enterInput();
         
     }
 
@@ -171,6 +163,26 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void clickpoint(ActionEvent event) {
         tfInput.setText(tfInput.getText() + ".");
+    }
+
+    @FXML
+    private void keyReleased(KeyEvent event) {
+        if (KeyCode.ENTER == event.getCode())
+            enterInput();
+        System.out.println(event.getCode());
+    }
+    
+    private void enterInput(){
+        try{
+            ope.translateInput(tfInput.getText());
+        }
+        catch(Exception e){
+            System.out.println("message from exception in send button action catch:" + e); //may be shown also in a window
+        }
+            
+        tfInput.clear();     
+        if (ope.getNumberStack().size() > 11)
+            stackview.scrollTo(ope.getNumberStack().size()-1); 
     }
     
 }
