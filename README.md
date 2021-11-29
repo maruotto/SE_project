@@ -7,7 +7,7 @@
 *****
 
 *****
-  ## FIRST SPRINT BACKLOG:
+  ## FIRST SPRINT:
     Sprint backlog:
     https://docs.google.com/document/d/1dEZ50ihrupMXPDWs9hxklKsFJ_Qj5qhmW_KAqMKquyI/edit?usp=sharing
 *****
