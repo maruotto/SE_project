@@ -169,7 +169,6 @@ public class FXMLDocumentController implements Initializable {
     private void keyReleased(KeyEvent event) {
         if (KeyCode.ENTER == event.getCode())
             enterInput();
-        System.out.println(event.getCode());
     }
     
     private void enterInput(){

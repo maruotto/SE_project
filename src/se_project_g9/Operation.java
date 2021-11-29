@@ -159,10 +159,6 @@ public class Operation implements ApplicationOperation {
         }
         input = input.trim();
         String[] splittedInput = input.split("\\+|-");  //regex meaning: + once
-        /*System.out.println(splittedInput.length);
-        
-        for (int i = 0; i< splittedInput.length; i++)
-                System.out.println(i + "->"+ splittedInput[i]);*/
 
         if (input.endsWith("-")|| splittedInput.length > 3 || splittedInput.length == 0) {
             throw new Exception("wrong input");
@@ -180,13 +176,11 @@ public class Operation implements ApplicationOperation {
             
             if (s.length() != 0){
                 s = s.trim();
-                //System.out.println("a" + s);
                 if (((s.endsWith("i") | s.endsWith("j")))) {
                     if (!imaginaryPartNotDone) {
                         throw new Exception("more input");
                     }
                     int index = input.indexOf(s);
-                    //System.out.println(s.substring(0, s.length()));
 
                     if (s.length() == 1) {
                         imaginaryPart = 1;
@@ -218,7 +212,6 @@ public class Operation implements ApplicationOperation {
 
         }
         Number n = new Number(realPart, imaginaryPart);
-        //System.out.println(n);
         return n;
 
     }
