@@ -201,4 +201,23 @@ public class Commands {
             numberStack.swap();
         }
     }
+    
+    public class DupCommand implements Command {
+        private NumberStack<Number> numberStack;
+
+        public DupCommand(NumberStack<Number> numberStack) {
+            assert numberStack != null;
+            this.numberStack = numberStack;
+        }
+
+        @Override
+        public void execute() throws NotEnoughNumbersException {
+            numberStack.dup();
+        }
+
+        @Override
+        public void undo() throws NotEnoughNumbersException {
+            numberStack.drop();
+        }
+    }
 }
