@@ -4,11 +4,13 @@
  */
 package se_project_g9;
 
+import se_project_g9.exceptions.NotEnoughNumbersException;
+
 /**
  *
  * @author group 9
  */
 public interface Command {
-    void execute();
-    void undo();
+    void execute() throws NotEnoughNumbersException;
+    void undo() throws NotEnoughNumbersException;
 }

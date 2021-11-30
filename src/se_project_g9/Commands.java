@@ -182,4 +182,23 @@ public class Commands {
             }
         }
     }
+    
+    public class SwapCommand implements Command {
+        private NumberStack<Number> numberStack;
+
+        public SwapCommand(NumberStack<Number> numberStack) {
+            assert numberStack != null;
+            this.numberStack = numberStack;
+        }
+
+        @Override
+        public void execute() throws NotEnoughNumbersException {
+            numberStack.swap();
+        }
+
+        @Override
+        public void undo() throws NotEnoughNumbersException {
+            numberStack.swap();
+        }
+    }
 }
