@@ -183,6 +183,10 @@ public class FXMLDocumentController implements Initializable {
         if (ope.getNumberStack().size() > 11)
             stackview.scrollTo(ope.getNumberStack().size()-1); 
     }
+
+    @FXML
+    private void savevariableclick(ActionEvent event) {
+    }
     
 }
 
