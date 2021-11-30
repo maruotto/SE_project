@@ -12,7 +12,7 @@ import java.util.Deque;
  * @author group 9
  */
 class UDOperation {
-    private final Deque<String> sequence;
+    private final Deque<Command> sequence;
 
     public UDOperation() {
         this.sequence = new ArrayDeque<>();
