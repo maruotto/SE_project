@@ -5,6 +5,7 @@
 package se_project_g9;
 
 import java.util.EmptyStackException;
+import se_project_g9.exceptions.InputNumberException;
 import se_project_g9.exceptions.NotEnoughNumbersException;
 import se_project_g9.exceptions.OperationNotPresentException;
 import se_project_g9.exceptions.OperationSymbolException;
@@ -89,7 +90,7 @@ public class Operation implements ApplicationOperation {
         numberStack.push(n3);
     }
 
-    public void divide() throws Exception {
+    public void divide() throws InputNumberException {
         Number n1, n2;
         n1 = numberStack.pop(); //throws EmptyStackException
 
@@ -123,7 +124,7 @@ public class Operation implements ApplicationOperation {
         numberStack.drop();
     }
 
-    protected void translateInput(String input) throws Exception {
+    protected void translateInput(String input) throws InputNumberException {
         //ATTENTION!!!! if you want to add to the regular expression something like
         // the + sign or other things, use the operator |
         // example: if you want to add to this expression +, this will become " *?+"
@@ -183,16 +184,16 @@ public class Operation implements ApplicationOperation {
 
     }
 
-    protected static Number convertNumber(String input) throws Exception {
-        if (input.length() == 0 || input.endsWith("+")) {
-            throw new Exception("wrong input");
-        }
+    protected static Number convertNumber(String input) throws InputNumberException {
+        if (input.length() == 0) throw new NumberFormatException("Is not possible to insert nothing");
+        if (input.endsWith("+") || input.endsWith("-")) throw new NumberFormatException("Number ends with a sign");
+        
         input = input.trim();
         String[] splittedInput = input.split("\\+|-");  //regex meaning: + once
 
-        if (input.endsWith("-") || splittedInput.length > 3 || splittedInput.length == 0) {
-            throw new Exception("wrong input");
-        }
+        if (splittedInput.length > 3 || splittedInput.length == 0) throw new TooManyNumbersException("You are trying to insert more than one number!");
+        if (splittedInput.length == 0) throw new TooManyNumbersException("You are trying to insert nothing!");
+        
 
         double realPart = 0, imaginaryPart = 0;
         boolean imaginaryPartNotDone = true, realPartNotDone = true;
@@ -208,7 +209,7 @@ public class Operation implements ApplicationOperation {
                 s = s.trim();
                 if (((s.endsWith("i") | s.endsWith("j")))) {
                     if (!imaginaryPartNotDone) {
-                        throw new Exception("imaginary part already present!");
+                        throw new TooManyNumbersException("imaginary part already present!");
                     }
                     int index = input.indexOf(s);
 

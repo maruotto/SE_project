@@ -4,24 +4,36 @@
  */
 package se_project_g9;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.PopupControl;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Popup;
+import javafx.stage.PopupWindow;
+import javafx.stage.Stage;
+import javafx.stage.Window;
+import se_project_g9.exceptions.InputNumberException;
 
 /**
  *
  * @author group9
  */
 public class FXMLDocumentController implements Initializable {
-    
+
     private Operation ope;
 
     @FXML
@@ -30,20 +42,19 @@ public class FXMLDocumentController implements Initializable {
     private ListView<Number> stackview;
     @FXML
     private Button btnSend;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ope = new Operation();              
+        ope = new Operation();
         btnSend.disableProperty().bind(Bindings.isEmpty(tfInput.textProperty()));
         stackview.setItems(ope.getNumberStack());
-        
-                
-    }    
+
+    }
 
     @FXML
-    private void handleInsertAction(ActionEvent event) {      
-             enterInput();
-        
+    private void handleInsertAction(ActionEvent event) {
+        enterInput();
+
     }
 
     @FXML
@@ -98,12 +109,12 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void plusclick(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "+");  
+        tfInput.setText(tfInput.getText() + "+");
     }
 
     @FXML
     private void clicki(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "i");  
+        tfInput.setText(tfInput.getText() + "i");
     }
 
     @FXML
@@ -139,25 +150,25 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void clickdrop(ActionEvent event) {
         tfInput.setText(tfInput.getText() + "drop");
-        
+
     }
-    
+
     @FXML
     private void clickover(ActionEvent event) {
         tfInput.setText(tfInput.getText() + "over");
-        
+
     }
-    
+
     @FXML
     private void clickswap(ActionEvent event) {
         tfInput.setText(tfInput.getText() + "swap");
-        
+
     }
-    
+
     @FXML
     private void clickdup(ActionEvent event) {
         tfInput.setText(tfInput.getText() + "dup");
-        
+
     }
 
     @FXML
@@ -167,26 +178,41 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void keyReleased(KeyEvent event) {
-        if (KeyCode.ENTER == event.getCode())
+        if (KeyCode.ENTER == event.getCode()) {
             enterInput();
+        }
     }
-    
-    private void enterInput(){
-        try{
+
+    private void enterInput() {
+        try {
             ope.translateInput(tfInput.getText());
+            if (ope.getNumberStack().size() > 11) {
+                stackview.scrollTo(ope.getNumberStack().size() - 1);
+            }
+        } catch (Exception ex) {
+            errorPopup(ex.getMessage());
+        } finally {
+            tfInput.clear();
         }
-        catch(Exception e){
-            System.out.println("message from exception in send button action catch:" + e); //may be shown also in a window
-        }
-            
-        tfInput.clear();     
-        if (ope.getNumberStack().size() > 11)
-            stackview.scrollTo(ope.getNumberStack().size()-1); 
+
     }
-    
+
+    private boolean errorPopup(String message) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Popup.fxml"));
+        Parent parent;
+        try {
+            parent = loader.load();
+            PopupController pc = loader.getController();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(parent));
+            stage.setAlwaysOnTop(true);
+            stage.show();
+            pc.setLabels(message);          
+        } catch (IOException ex) {
+            return false;
+            
+        }
+        return true;
+    }
+
 }
-
-    
-
-    
-
