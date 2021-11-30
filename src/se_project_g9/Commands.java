@@ -269,4 +269,25 @@ public class Commands {
             numberStack.drop();
         }
     }
+    
+    public class ClearCommand implements Command {
+        private NumberStack<Number> numberStack;
+        private NumberStack<Number> copyOfNumberStack;
+
+        public ClearCommand(NumberStack<Number> numberStack) {
+            assert numberStack != null;
+            this.numberStack = numberStack;
+            this.copyOfNumberStack = (NumberStack<Number>) numberStack.clone();
+        }
+
+        @Override
+        public void execute() throws NotEnoughNumbersException {
+            numberStack.clear();
+        }
+
+        @Override
+        public void undo(){
+            numberStack = (NumberStack<Number>) copyOfNumberStack.clone();
+        }
+    }
 }
