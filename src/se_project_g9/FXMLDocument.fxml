@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
@@ -34,8 +36,38 @@
       <Button layoutX="376.0" layoutY="347.0" mnemonicParsing="false" onAction="#clickover" text="over" />
       <Button layoutX="442.0" layoutY="246.0" mnemonicParsing="false" onAction="#clickpoint" text="." />
       <Button layoutX="499.0" layoutY="246.0" mnemonicParsing="false" onAction="#savevariableclick" text="&gt;x" />
-      <Button layoutX="562.0" layoutY="246.0" mnemonicParsing="false" onAction="#pushvariablevalue" text="&lt;x" />
+      <Button layoutX="562.0" layoutY="246.0" mnemonicParsing="false" onAction="#pushvariableclick" text="&lt;x" />
       <Button layoutX="499.0" layoutY="281.0" mnemonicParsing="false" onAction="#addvariableclick" text="+x" />
       <Button layoutX="563.0" layoutY="281.0" mnemonicParsing="false" onAction="#subvariableclick" prefHeight="25.0" prefWidth="30.0" text="-x" />
+      <SplitMenuButton fx:id="variablesMenù" layoutX="23.0" layoutY="25.0" mnemonicParsing="false" text="variables">
+        <items>
+            <MenuItem mnemonicParsing="false" onAction="#clicka" text="a" />
+          <MenuItem mnemonicParsing="false" onAction="#clickb" text="b" />
+          <MenuItem mnemonicParsing="false" onAction="#clickc" text="c" />
+            <MenuItem mnemonicParsing="false" onAction="#clickd" text="d" />
+            <MenuItem mnemonicParsing="false" onAction="#clicke" text="e" />
+            <MenuItem mnemonicParsing="false" onAction="#clickf" text="f" />
+            <MenuItem mnemonicParsing="false" onAction="#clickg" text="g" />
+            <MenuItem mnemonicParsing="false" onAction="#clickh" text="h" />
+            <MenuItem mnemonicParsing="false" onAction="#clickiv" text="i" />
+            <MenuItem mnemonicParsing="false" onAction="#clickj" text="j" />
+            <MenuItem mnemonicParsing="false" onAction="#clickk" text="k" />
+            <MenuItem mnemonicParsing="false" onAction="#clickl" text="l" />
+            <MenuItem mnemonicParsing="false" onAction="#clickm" text="m" />
+            <MenuItem mnemonicParsing="false" onAction="#clickn" text="n" />
+            <MenuItem mnemonicParsing="false" onAction="#clicko" text="o" />
+            <MenuItem mnemonicParsing="false" onAction="#clickp" text="p" />
+            <MenuItem mnemonicParsing="false" onAction="#clickq" text="q" />
+            <MenuItem mnemonicParsing="false" onAction="#clickr" text="r" />
+            <MenuItem mnemonicParsing="false" onAction="#clicks" text="s" />
+            <MenuItem mnemonicParsing="false" onAction="#clickt" text="t" />
+            <MenuItem mnemonicParsing="false" onAction="#clicku" text="u" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="v" />
+            <MenuItem mnemonicParsing="false" onAction="#clickw" text="w" />
+            <MenuItem mnemonicParsing="false" onAction="#clickx" text="x" />
+            <MenuItem mnemonicParsing="false" onAction="#clicky" text="y" />
+            <MenuItem mnemonicParsing="false" onAction="#clickz" text="z" />
+        </items>
+      </SplitMenuButton>
    </children>
 </AnchorPane>

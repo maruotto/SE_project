@@ -281,7 +281,7 @@ public class Operation implements ApplicationOperation {
     public void addToValue(Character variable) throws Exception {
 
         if (variable == null) {
-            throw new NullPointerException("lable of variable not defined");
+            throw new NullPointerException("label of variable not defined");
         }
 
         Number lastValue = variables.getVariableValue(variable);
@@ -293,7 +293,7 @@ public class Operation implements ApplicationOperation {
     public void subToValue(Character variable) throws Exception {
 
         if (variable == null) {
-            throw new NullPointerException("lable of variable not defined");
+            throw new NullPointerException("label of variable not defined");
         }
 
         Number lastValue = variables.getVariableValue(variable);
