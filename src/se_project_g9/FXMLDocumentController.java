@@ -197,6 +197,10 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    @FXML
+    private void savevariableclick(ActionEvent event) {
+    }
+    
     private boolean errorPopup(String message) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Popup.fxml"));
         Parent parent;

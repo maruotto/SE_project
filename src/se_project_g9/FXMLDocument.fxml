@@ -33,5 +33,6 @@
       <Button layoutX="315.0" layoutY="347.0" mnemonicParsing="false" onAction="#clickswap" text="swap" />
       <Button layoutX="376.0" layoutY="347.0" mnemonicParsing="false" onAction="#clickover" text="over" />
       <Button layoutX="442.0" layoutY="246.0" mnemonicParsing="false" onAction="#clickpoint" text="." />
+      <Button layoutX="502.0" layoutY="246.0" mnemonicParsing="false" onAction="#savevariableclick" text="&gt;x" />
    </children>
 </AnchorPane>

@@ -5,6 +5,7 @@
 package se_project_g9;
 
 import java.util.EmptyStackException;
+import java.util.HashMap;
 import se_project_g9.exceptions.InputNumberException;
 import se_project_g9.exceptions.NotEnoughNumbersException;
 import se_project_g9.exceptions.OperationNotPresentException;
@@ -18,9 +19,13 @@ import se_project_g9.exceptions.TooManyNumbersException;
 public class Operation implements ApplicationOperation {
 
     private final NumberStack<Number> numberStack;
+    private final Variables variables;
+    private final HashMap<String, UDOperation> operations;
 
     public Operation() {
         this.numberStack = new NumberStack<>();
+        this.variables = new Variables();
+        this.operations = new HashMap<>();
     }
 
     protected PersonalizedStack<Number> getNumberStack() {
