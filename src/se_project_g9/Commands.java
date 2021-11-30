@@ -105,4 +105,27 @@ public class Commands {
             }
         }
     }
+    
+    public class PushCommand implements Command {
+        private NumberStack<Number> numberStack;
+        private Number n1;
+
+        public PushCommand(NumberStack<Number> numberStack, Number n1) {
+            assert numberStack != null;
+            assert n1 != null;
+            this.numberStack = numberStack;
+        }
+
+        @Override
+        public void execute() {
+            n1 = numberStack.push(n1);
+        }
+
+        @Override
+        public void undo() {
+            if (n1 != null) {
+                numberStack.pop();
+            }
+        }
+    }
 }
