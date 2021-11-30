@@ -9,7 +9,7 @@ import java.util.Stack;
 
 /**
  *
- * @author lucia
+ * @author group 9
  */
 public class Variables {
 
