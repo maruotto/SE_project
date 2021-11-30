@@ -6,6 +6,7 @@ package se_project_g9;
 
 import java.util.EmptyStackException;
 import se_project_g9.exceptions.NotEnoughNumbersException;
+import se_project_g9.exceptions.ZeroDivisionException;
 
 /**
  *
@@ -216,8 +217,37 @@ public class Commands {
         }
 
         @Override
-        public void undo() throws NotEnoughNumbersException {
+        public void undo(){
             numberStack.drop();
+        }
+    }
+    
+    public class DivideCommand implements Command {
+        private NumberStack<Number> numberStack;
+        private Number n1;
+        private Number n2;
+
+        public DivideCommand(NumberStack<Number> numberStack) {
+            assert numberStack != null;
+            this.numberStack = numberStack;
+        }
+
+        @Override
+        public void execute() throws ZeroDivisionException {
+            n1 = numberStack.pop();
+            n2 = numberStack.pop();
+            numberStack.push(BasicOperation.divide(n2, n1));
+        }
+
+        @Override
+        public void undo() {
+            numberStack.drop();
+            if (n2 != null) {
+                numberStack.push(n2);
+            }
+            if (n1 != null) {
+                numberStack.push(n1);
+            }
         }
     }
 }
