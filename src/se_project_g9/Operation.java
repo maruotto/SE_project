@@ -31,6 +31,14 @@ public class Operation implements ApplicationOperation {
     protected PersonalizedStack<Number> getNumberStack() {
         return numberStack;
     }
+    
+    protected Variables getVariables(){
+        return variables;
+    }
+    
+    protected HashMap<String,UDOperation> getOperations(){
+        return operations;
+    }
 
     public boolean pushStack(Number n) {
         return numberStack.push(n) != null;

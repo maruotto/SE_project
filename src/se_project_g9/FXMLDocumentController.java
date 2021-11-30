@@ -202,8 +202,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void savevariableclick(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + ">x");
+    private void savevariableclick(ActionEvent event) throws Exception {
+        Number value = ope.getNumberStack().pop();
+        ope.getVariables().setVariableValue(Character.valueOf(variablesMenù.getText().charAt(0)), value);
     }
     
     private boolean errorPopup(String message) {
@@ -224,9 +225,9 @@ public class FXMLDocumentController implements Initializable {
         return true;
     }
 
-    @FXML
-    private void pushvariablevalue(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "<x");
+    private void pushvariablevalue(ActionEvent event){
+       
+        
     }
 
     @FXML
@@ -367,6 +368,13 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void clickiv(ActionEvent event) {
         variablesMenù.setText("i");
+    }
+
+    @FXML
+    private void pushvariableclick(ActionEvent event) throws Exception {
+        Number value = ope.getVariables().getVariableValue(Character.valueOf(variablesMenù.getText().charAt(0)));
+        System.out.println(value.toString());
+        ope.getNumberStack().push(value);
     }
 
 }
