@@ -26,14 +26,8 @@ public class Commands {
 
         @Override
         public void execute() {
-            n1 = numberStack.pop(); //throws EmptyStackException
-
-            try {
-                n2 = numberStack.pop();
-            } catch (EmptyStackException e) {
-                numberStack.push(n1);
-                //throw new NotEnoughNumbersException();
-            }
+            n1 = numberStack.pop();
+            n2 = numberStack.pop();
             numberStack.push(BasicOperation.sum(n2, n1));
         }
 
@@ -62,14 +56,8 @@ public class Commands {
 
         @Override
         public void execute() {
-            n1 = numberStack.pop(); //throws EmptyStackException
-            
-            try {
-                n2 = numberStack.pop();
-            } catch (EmptyStackException e) {
-                numberStack.push(n1);
-                //throw new NotEnoughNumbersException();
-            }
+            n1 = numberStack.pop();
+            n2 = numberStack.pop();
             numberStack.push(BasicOperation.sub(n2, n1));
         }
 
@@ -96,7 +84,8 @@ public class Commands {
 
         @Override
         public void execute() {
-            n1 = numberStack.pop();
+            n1 = numberStack.peek();
+            numberStack.drop();
         }
 
         @Override
@@ -126,7 +115,7 @@ public class Commands {
         @Override
         public void undo() {
             if (n1 != null) {
-                numberStack.pop();
+                numberStack.drop();
             }
         }
     }
@@ -149,7 +138,7 @@ public class Commands {
         @Override
         public void undo() {
             if (n1 != null) {
-                numberStack.pop();
+                numberStack.drop();
                 numberStack.push(n1);
             }
         }
@@ -248,6 +237,46 @@ public class Commands {
             if (n1 != null) {
                 numberStack.push(n1);
             }
+        }
+    }
+    
+    public class OverCommand implements Command {
+        private NumberStack<Number> numberStack;
+
+        public OverCommand(NumberStack<Number> numberStack) {
+            assert numberStack != null;
+            this.numberStack = numberStack;
+        }
+
+        @Override
+        public void execute() throws NotEnoughNumbersException {
+            numberStack.over();
+        }
+
+        @Override
+        public void undo(){
+            numberStack.drop();
+        }
+    }
+    
+    public class ClearCommand implements Command {
+        private NumberStack<Number> numberStack;
+        private NumberStack<Number> copyOfNumberStack;
+
+        public ClearCommand(NumberStack<Number> numberStack) {
+            assert numberStack != null;
+            this.numberStack = numberStack;
+            this.copyOfNumberStack = (NumberStack<Number>) numberStack.clone();
+        }
+
+        @Override
+        public void execute() throws NotEnoughNumbersException {
+            numberStack.clear();
+        }
+
+        @Override
+        public void undo(){
+            numberStack = (NumberStack<Number>) copyOfNumberStack.clone();
         }
     }
 }
