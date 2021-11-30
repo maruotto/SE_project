@@ -8,22 +8,22 @@ package se_project_g9.exceptions;
  *
  * @author idamaruotto
  */
-public class NotEnoughNumbersException extends InputNumberException{
+public class NotCompleteNumberException extends InputNumberException{
 
     /**
-     * Creates a new instance of <code>NotEnoughNumberException</code> without
+     * Creates a new instance of <code>NotCompleteNumberException</code> without
      * detail message.
      */
-    public NotEnoughNumbersException() {
+    public NotCompleteNumberException() {
     }
 
     /**
-     * Constructs an instance of <code>NotEnoughNumberException</code> with the
-     * specified detail message.
+     * Constructs an instance of <code>NotCompleteNumberException</code> with
+     * the specified detail message.
      *
      * @param msg the detail message.
      */
-    public NotEnoughNumbersException(String msg) {
+    public NotCompleteNumberException(String msg) {
         super(msg);
     }
 }

@@ -8,7 +8,7 @@ package se_project_g9.exceptions;
  *
  * @author idamaruotto
  */
-public class TooManyNumbersException extends Exception{
+public class TooManyNumbersException extends InputNumberException{
 
     /**
      * Creates a new instance of <code>TooManyNumbers</code> without detail

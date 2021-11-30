@@ -4,26 +4,28 @@
  */
 package se_project_g9.exceptions;
 
+import java.io.IOException;
+
 /**
  *
  * @author idamaruotto
  */
-public class NotEnoughNumbersException extends InputNumberException{
+public class InputNumberException extends IOException{
 
     /**
-     * Creates a new instance of <code>NotEnoughNumberException</code> without
+     * Creates a new instance of <code>InputNumberException</code> without
      * detail message.
      */
-    public NotEnoughNumbersException() {
+    public InputNumberException() {
     }
 
     /**
-     * Constructs an instance of <code>NotEnoughNumberException</code> with the
+     * Constructs an instance of <code>InputNumberException</code> with the
      * specified detail message.
      *
      * @param msg the detail message.
      */
-    public NotEnoughNumbersException(String msg) {
+    public InputNumberException(String msg) {
         super(msg);
     }
 }
