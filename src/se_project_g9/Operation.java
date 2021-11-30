@@ -130,6 +130,7 @@ public class Operation implements ApplicationOperation {
     }
 
     protected void translateInput(String input) throws InputNumberException {
+        input = input.trim();
         //ATTENTION!!!! if you want to add to the regular expression something like
         // the + sign or other things, use the operator |
         // example: if you want to add to this expression +, this will become " *?+"
@@ -138,11 +139,9 @@ public class Operation implements ApplicationOperation {
                 case "-":
                     sub();
                     break;
-
                 case "+":
                     sum();
                     break;
-
                 case "*":
                     multiply();
                     break;
@@ -193,7 +192,7 @@ public class Operation implements ApplicationOperation {
         if (input.length() == 0) throw new NumberFormatException("Is not possible to insert nothing");
         if (input.endsWith("+") || input.endsWith("-")) throw new NumberFormatException("Number ends with a sign");
         
-        input = input.trim();
+        
         String[] splittedInput = input.split("\\+|-");  //regex meaning: + once
 
         if (splittedInput.length > 3 || splittedInput.length == 0) throw new TooManyNumbersException("You are trying to insert more than one number!");
