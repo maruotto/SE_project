@@ -26,14 +26,8 @@ public class Commands {
 
         @Override
         public void execute() {
-            n1 = numberStack.pop(); //throws EmptyStackException
-
-            try {
-                n2 = numberStack.pop();
-            } catch (EmptyStackException e) {
-                numberStack.push(n1);
-                //throw new NotEnoughNumbersException();
-            }
+            n1 = numberStack.pop();
+            n2 = numberStack.pop();
             numberStack.push(BasicOperation.sum(n2, n1));
         }
 
@@ -62,14 +56,8 @@ public class Commands {
 
         @Override
         public void execute() {
-            n1 = numberStack.pop(); //throws EmptyStackException
-            
-            try {
-                n2 = numberStack.pop();
-            } catch (EmptyStackException e) {
-                numberStack.push(n1);
-                //throw new NotEnoughNumbersException();
-            }
+            n1 = numberStack.pop();
+            n2 = numberStack.pop();
             numberStack.push(BasicOperation.sub(n2, n1));
         }
 
@@ -96,7 +84,8 @@ public class Commands {
 
         @Override
         public void execute() {
-            n1 = numberStack.pop();
+            n1 = numberStack.peek();
+            numberStack.drop();
         }
 
         @Override
@@ -126,7 +115,7 @@ public class Commands {
         @Override
         public void undo() {
             if (n1 != null) {
-                numberStack.pop();
+                numberStack.drop();
             }
         }
     }
@@ -149,7 +138,7 @@ public class Commands {
         @Override
         public void undo() {
             if (n1 != null) {
-                numberStack.pop();
+                numberStack.drop();
                 numberStack.push(n1);
             }
         }
