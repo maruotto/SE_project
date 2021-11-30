@@ -21,13 +21,13 @@ public class Variables {
         this.variableStack = new Stack<HashMap>();
     }
 
-    public void setVariable(Character key, Number value) throws Exception {
+    public void setVariableValue(Character key, Number value) throws Exception {
         if (variablesMap.put(key, value) == null) {
             throw new Exception("Can't put value in variablesMap");
         }
     }
 
-    public Number getVariable(Character key) throws Exception {
+    public Number getVariableValue(Character key) throws Exception {
         if (variablesMap.containsKey(key)){
            return variablesMap.get(key); 
         }else{
