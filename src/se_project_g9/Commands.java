@@ -129,4 +129,28 @@ public class Commands {
             }
         }
     }
+    
+    public class InvertCommand implements Command {
+        private NumberStack<Number> numberStack;
+        private Number n1;
+
+        public InvertCommand(NumberStack<Number> numberStack) {
+            assert numberStack != null;
+            this.numberStack = numberStack;
+        }
+
+        @Override
+        public void execute() {
+            n1 = numberStack.pop();
+            numberStack.push(BasicOperation.invert(n1));
+        }
+
+        @Override
+        public void undo() {
+            if (n1 != null) {
+                numberStack.pop();
+                numberStack.push(n1);
+            }
+        }
+    }
 }

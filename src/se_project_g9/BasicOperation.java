@@ -47,13 +47,16 @@ public class BasicOperation {
     }
 
     public static Number invert(Number n1){
+        double realpart = .0;
+        double imaginaryPart = .0;
+        
         if(n1.getRealPart() != 0){
-            n1.setRealPart(n1.getRealPart() * -1);
+            realpart = -n1.getRealPart();
         }
         if(n1.getImaginaryPart() != 0){
-            n1.setImaginaryPart(n1.getImaginaryPart() * -1);
+            imaginaryPart = -n1.getImaginaryPart();
         }
-        return n1;
+        return new Number(realpart, imaginaryPart);
     }
     
     public static Number divide(Number n1,Number n2) throws ZeroDivisionException{
