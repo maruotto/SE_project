@@ -251,5 +251,34 @@ public class Operation implements ApplicationOperation {
         return n;
 
     }
-
+    
+    public void addToVariable(Character variable) throws Exception{
+        
+        if(variable == null){
+            throw new Exception("value to add not defined..");
+        }
+        
+        Number value = numberStack.pop();
+        variables.setVariable(variable, value);  
+    }
+    
+    public void pushValueOf(Character variable) throws Exception{
+        
+        if(variable == null){
+            throw new Exception("value to push not defined");
+        }
+        
+        numberStack.push(variables.getVariable(variable));   
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
