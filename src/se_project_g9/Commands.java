@@ -153,4 +153,33 @@ public class Commands {
             }
         }
     }
+    
+    public class MultiplyCommand implements Command {
+        private NumberStack<Number> numberStack;
+        private Number n1;
+        private Number n2;
+
+        public MultiplyCommand(NumberStack<Number> numberStack) {
+            assert numberStack != null;
+            this.numberStack = numberStack;
+        }
+
+        @Override
+        public void execute() {
+            n1 = numberStack.pop();
+            n2 = numberStack.pop();
+            numberStack.push(BasicOperation.multiply(n2, n1));
+        }
+
+        @Override
+        public void undo() {
+            numberStack.pop();
+            if (n2 != null) {
+                numberStack.push(n2);
+            }
+            if (n1 != null) {
+                numberStack.push(n1);
+            }
+        }
+    }
 }
