@@ -17,9 +17,11 @@ import se_project_g9.exceptions.TooManyNumbersException;
 public class Operation implements ApplicationOperation {
 
     private final NumberStack<Number> numberStack;
+    private final Variables variables;
 
     public Operation() {
         this.numberStack = new NumberStack<>();
+        this.variables = new Variables();
     }
 
     protected PersonalizedStack<Number> getNumberStack() {
