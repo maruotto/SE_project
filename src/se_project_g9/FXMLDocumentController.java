@@ -199,6 +199,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void savevariableclick(ActionEvent event) {
+        tfInput.setText(tfInput.getText() + ">x");
     }
     
     private boolean errorPopup(String message) {
@@ -221,6 +222,17 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void pushvariablevalue(ActionEvent event) {
+        tfInput.setText(tfInput.getText() + "<x");
+    }
+
+    @FXML
+    private void addvariableclick(ActionEvent event) {
+        tfInput.setText(tfInput.getText() + "+x");
+    }
+
+    @FXML
+    private void subvariableclick(ActionEvent event) {
+        tfInput.setText(tfInput.getText() + "-x");
     }
 
 }

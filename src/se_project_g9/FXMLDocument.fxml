@@ -5,9 +5,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="465.0" prefWidth="609.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se_project_g9.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="465.0" prefWidth="621.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se_project_g9.FXMLDocumentController">
    <children>
-      <ListView fx:id="stackview" layoutX="14.0" layoutY="67.0" prefHeight="354.0" prefWidth="200.0" />
+      <ListView fx:id="stackview" layoutX="23.0" layoutY="69.0" prefHeight="354.0" prefWidth="200.0" />
       <TextField fx:id="tfInput" layoutX="279.0" layoutY="84.0" onKeyReleased="#keyReleased" prefHeight="34.0" prefWidth="235.0" />
       <Button layoutX="327.0" layoutY="131.0" mnemonicParsing="false" onAction="#click1" text="1" />
       <Button layoutX="384.0" layoutY="170.0" mnemonicParsing="false" onAction="#click5" text="5" />
@@ -35,5 +35,7 @@
       <Button layoutX="442.0" layoutY="246.0" mnemonicParsing="false" onAction="#clickpoint" text="." />
       <Button layoutX="499.0" layoutY="246.0" mnemonicParsing="false" onAction="#savevariableclick" text="&gt;x" />
       <Button layoutX="562.0" layoutY="246.0" mnemonicParsing="false" onAction="#pushvariablevalue" text="&lt;x" />
+      <Button layoutX="499.0" layoutY="281.0" mnemonicParsing="false" onAction="#addvariableclick" text="+x" />
+      <Button layoutX="563.0" layoutY="281.0" mnemonicParsing="false" onAction="#subvariableclick" prefHeight="25.0" prefWidth="30.0" text="-x" />
    </children>
 </AnchorPane>
