@@ -4,8 +4,10 @@
  */
 package se_project_g9;
 
+import java.util.EmptyStackException;
 import java.util.Iterator;
 import javafx.collections.ObservableList;
+import se_project_g9.exceptions.NotEnoughNumbersException;
 
 /**
  *
@@ -13,16 +15,34 @@ import javafx.collections.ObservableList;
  * @param <E>
  */
 public interface PersonalizedStack<E> extends ObservableList<E>{
-    public E pop();
+    public E pop() throws EmptyStackException;
     public E push(E item);
-    public E peek();
-    public void drop();
+    public E peek()throws EmptyStackException;
+    public void drop()throws EmptyStackException;
     @Override
     public Iterator<E> iterator();
+    
     @Override
     public void clear();
-    public void dup();
-    public void swap();
-    public void over();
+    /**
+     *
+     * @throws EmptyStackException
+     * @throws NotEnoughNumbersException
+     */
+    public void dup() throws EmptyStackException, NotEnoughNumbersException;;
+
+    /**
+     *
+     * @throws EmptyStackException
+     * @throws NotEnoughNumbersException
+     */
+    public void swap()throws EmptyStackException, NotEnoughNumbersException;
+
+    /**
+     *
+     * @throws EmptyStackException
+     * @throws NotEnoughNumbersException
+     */
+    public void over()throws EmptyStackException, NotEnoughNumbersException;
     
 }
