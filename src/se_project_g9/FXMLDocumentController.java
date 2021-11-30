@@ -103,7 +103,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void clicki(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "j");  
+        tfInput.setText(tfInput.getText() + "i");  
     }
 
     @FXML

@@ -116,7 +116,7 @@ public class Operation implements ApplicationOperation {
                     throw new Exception("single charcter operation not supported");
             }
             //find operation
-        } else if (input.startsWith("j")){
+        } else if (input.startsWith("j") || input.startsWith("i")){
                 numberStack.push(convertNumber(input));
         }
         else if (Character.isAlphabetic(input.charAt(0))) {
