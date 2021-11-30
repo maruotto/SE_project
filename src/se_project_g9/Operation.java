@@ -255,8 +255,10 @@ public class Operation implements ApplicationOperation {
     public void addToVariable(Character variable) throws Exception{
         
         if(variable == null){
-            throw new Exception("value to add not defined..");
+            throw new NullPointerException("value to add not defined..");
         }
+        
+        //vedere se deve essere controllato se appartiene all'alfabeto
         
         Number value = numberStack.pop();
         variables.setVariable(variable, value);  
@@ -265,8 +267,9 @@ public class Operation implements ApplicationOperation {
     public void pushValueOf(Character variable) throws Exception{
         
         if(variable == null){
-            throw new Exception("value to push not defined");
+            throw new NullPointerException("value to push not defined");
         }
+        //vedere se deve essere controllato se appartiene all'alfabeto
         
         numberStack.push(variables.getVariable(variable));   
     }
