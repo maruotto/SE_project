@@ -373,6 +373,25 @@ public class OperationTest {
         op.sum();
         assertEquals(op.popStack(), r1);
     }
+    
+    /**
+     * Test of sum method, of class Operation.
+     */
+    @Test(expected = NotEnoughNumbersException.class)
+    public void testSum_notEnough() throws EmptyStackException, NotEnoughNumbersException {
+        op.pushStack(n2);
+        op.sum();
+        assertEquals(op.popStack(), r1);
+    }
+    
+    /**
+     * Test of sum method, of class Operation.
+     */
+    @Test(expected = EmptyStackException.class)
+    public void testSum_empty() throws EmptyStackException, NotEnoughNumbersException {
+        op.sum();
+        assertEquals(op.popStack(), r1);
+    }
 
     /**
      * Test of sub method, of class Operation.
@@ -385,6 +404,25 @@ public class OperationTest {
         op.sub();
         assertEquals(op.popStack(), n2);
     }
+    
+    /**
+     * Test of sum method, of class Operation.
+     */
+    @Test(expected = NotEnoughNumbersException.class)
+    public void testSub_notEnough() throws EmptyStackException, NotEnoughNumbersException {
+        op.pushStack(r1);
+        op.sub();
+        assertEquals(op.popStack(), n2);
+    }
+    
+    /**
+     * Test of sum method, of class Operation.
+     */
+    @Test(expected = EmptyStackException.class)
+    public void testSub_empty() throws EmptyStackException, NotEnoughNumbersException {
+        op.sub();
+        assertEquals(op.popStack(), n2);
+    }
 
     /**
      * Test of divide method, of class Operation.
@@ -394,6 +432,18 @@ public class OperationTest {
         System.out.println("divide");
         op.pushStack(m1);
         op.pushStack(m3);
+        op.divide();
+        assertEquals(op.popStack(), m1);
+    }
+    
+    /**
+     * Test of divide method, of class Operation.
+     */
+    @Test (expected = Exception.class)
+    public void testDivide_zero() throws Exception {
+        System.out.println("divide");
+        op.pushStack(m1);
+        op.pushStack(new Number(0,0));
         op.divide();
         assertEquals(op.popStack(), m1);
     }

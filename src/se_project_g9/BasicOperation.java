@@ -4,6 +4,8 @@
  */
 package se_project_g9;
 
+import se_project_g9.exceptions.ZeroDivisionException;
+
 /**
  *
  * @author group9
@@ -54,7 +56,7 @@ public class BasicOperation {
         return n1;
     }
     
-    public static Number divide(Number n1,Number n2) throws Exception{
+    public static Number divide(Number n1,Number n2) throws ZeroDivisionException{
         
         double real1 = n1.getRealPart();
         double imaginary1 = n1.getImaginaryPart();
@@ -62,7 +64,7 @@ public class BasicOperation {
         double imaginary2 = n2.getImaginaryPart();
         
         if(real2==0.0 && imaginary2==0.0){
-            throw new Exception("the second complex number is 0..");
+            throw new ZeroDivisionException("the second complex number is 0..");
         }
         
         double real = ((real1*real2)+(imaginary1*imaginary2))/((real2*real2)+(imaginary2*imaginary2));

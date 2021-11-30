@@ -34,7 +34,7 @@ public class Operation implements ApplicationOperation {
         return numberStack.pop();
     }
 
-    public void invert() {
+    public void invert() throws EmptyStackException{
         Number n1 = numberStack.pop(); //throws EmptyStackException
         n1 = BasicOperation.invert(n1);
         numberStack.push(n1);
@@ -54,7 +54,7 @@ public class Operation implements ApplicationOperation {
         numberStack.push(n3);
     }
 
-    public void sqrt() { //throws EmptyStackException
+    public void sqrt() throws EmptyStackException{ 
 
         Number top = numberStack.pop();
         Number sqrt = BasicOperation.sqrt(top);
