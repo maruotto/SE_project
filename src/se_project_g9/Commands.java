@@ -83,4 +83,50 @@ public class Commands {
             }
         }
     }
+    
+    public class DropCommand implements Command {
+        private NumberStack<Number> numberStack;
+        private Number n1;
+
+        public DropCommand(NumberStack<Number> numberStack) {
+            assert numberStack != null;
+            this.numberStack = numberStack;
+        }
+
+        @Override
+        public void execute() {
+            n1 = numberStack.pop();
+        }
+
+        @Override
+        public void undo() {
+            if (n1 != null) {
+                numberStack.push(n1);
+            }
+        }
+    }
+    
+    public class PushCommand implements Command {
+        private NumberStack<Number> numberStack;
+        private Number n1;
+
+        public PushCommand(NumberStack<Number> numberStack, Number n1) {
+            assert numberStack != null;
+            assert n1 != null;
+            this.numberStack = numberStack;
+            this.n1 = n1;
+        }
+
+        @Override
+        public void execute() {
+            n1 = numberStack.push(n1);
+        }
+
+        @Override
+        public void undo() {
+            if (n1 != null) {
+                numberStack.pop();
+            }
+        }
+    }
 }
