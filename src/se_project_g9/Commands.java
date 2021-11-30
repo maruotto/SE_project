@@ -250,4 +250,23 @@ public class Commands {
             }
         }
     }
+    
+    public class OverCommand implements Command {
+        private NumberStack<Number> numberStack;
+
+        public OverCommand(NumberStack<Number> numberStack) {
+            assert numberStack != null;
+            this.numberStack = numberStack;
+        }
+
+        @Override
+        public void execute() throws NotEnoughNumbersException {
+            numberStack.over();
+        }
+
+        @Override
+        public void undo(){
+            numberStack.drop();
+        }
+    }
 }
