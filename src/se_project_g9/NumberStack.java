@@ -7,6 +7,7 @@ package se_project_g9;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.EmptyStackException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Stack;
@@ -14,6 +15,7 @@ import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import se_project_g9.exceptions.NotEnoughNumbersException;
 
 /**
  *
@@ -33,7 +35,7 @@ public class NumberStack<E> extends Stack<E> implements PersonalizedStack<E> {
     
     @Override
     public synchronized E pop() {   
-        E item = super.pop();
+        E item = super.pop(); //throws EmptyStackException
         informListener(ChangeType.POP, item);
         return item;
     }
@@ -60,40 +62,53 @@ public class NumberStack<E> extends Stack<E> implements PersonalizedStack<E> {
     
     @Override
     public synchronized E peek() {
-        return super.peek(); 
+        return super.peek(); //throws EmptyStackException
     }
     
     @Override
     public synchronized void drop() {
-         informListener(ChangeType.POP, this.pop());       
+         informListener(ChangeType.POP, this.pop());//throws EmptyStackException  
     }
     
+    @Override
     public synchronized void dup() {
-        E e = this.peek();
+        E e = this.peek(); //throws EmptyStackException
         this.push(e);
         informListener(ChangeType.PUSH, e);       
     }
     
-    public synchronized void swap() {
-         E last = this.pop();
-         informListener(ChangeType.POP, last);    
-         E secondlast = this.pop();
-         informListener(ChangeType.POP, secondlast);     
-         this.push(last);
-         informListener(ChangeType.PUSH, last);
-         this.push(secondlast);
-         informListener(ChangeType.PUSH, secondlast);
+    @Override
+    public synchronized void swap() throws NotEnoughNumbersException{
+        E last, secondlast;
+        last = this.pop(); //throws EmptyStackException
+        informListener(ChangeType.POP, last);    
+        try{
+            secondlast = this.pop();
+            informListener(ChangeType.POP, secondlast);  
+        }catch(EmptyStackException e){
+            this.push(last);
+            throw new NotEnoughNumbersException();
+        }
+        this.push(last);
+        informListener(ChangeType.PUSH, last);
+        this.push(secondlast);
+        informListener(ChangeType.PUSH, secondlast);
     }
     
-    public synchronized void over() {
-         E last = this.pop();
+    public synchronized void over() throws NotEnoughNumbersException {
+         E last, secondlast;
+         last = this.pop();
          informListener(ChangeType.POP, last);    
-         E secondlast = this.peek();
-         informListener(ChangeType.POP, secondlast);     
-         this.push(last);
-         informListener(ChangeType.PUSH, last);
-         this.push(secondlast);
-         informListener(ChangeType.PUSH, secondlast);
+         try{
+            secondlast = this.peek(); 
+        }catch(EmptyStackException e){            
+            throw new NotEnoughNumbersException();
+        }finally{
+             this.push(last);
+        }
+        informListener(ChangeType.PUSH, last);
+        this.push(secondlast);
+        informListener(ChangeType.PUSH, secondlast);
     }
 
     /**

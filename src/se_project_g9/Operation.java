@@ -5,6 +5,10 @@
 package se_project_g9;
 
 import java.util.EmptyStackException;
+import se_project_g9.exceptions.NotEnoughNumbersException;
+import se_project_g9.exceptions.OperationNotPresentException;
+import se_project_g9.exceptions.OperationSymbolException;
+import se_project_g9.exceptions.TooManyNumbersException;
 
 /**
  *
@@ -31,42 +35,70 @@ public class Operation implements ApplicationOperation {
     }
 
     public void invert() {
-        Number n1 = numberStack.pop();
+        Number n1 = numberStack.pop(); //throws EmptyStackException
         n1 = BasicOperation.invert(n1);
         numberStack.push(n1);
     }
 
-    public void multiply() {
-        Number n1 = numberStack.pop();
-        Number n2 = numberStack.pop();
+    public void multiply() throws NotEnoughNumbersException {
+        Number n1, n2;
+        n1 = numberStack.pop(); //throws EmptyStackException
+
+        try {
+            n2 = numberStack.pop();
+        } catch (EmptyStackException e) {
+            numberStack.push(n1);
+            throw new NotEnoughNumbersException();
+        }
         Number n3 = BasicOperation.multiply(n2, n1);
         numberStack.push(n3);
     }
 
-    public void sqrt() {
+    public void sqrt() { //throws EmptyStackException
 
         Number top = numberStack.pop();
         Number sqrt = BasicOperation.sqrt(top);
         numberStack.push(sqrt);
     }
 
-    public void sum() {
-        Number n1 = numberStack.pop();
-        Number n2 = numberStack.pop();
+    public void sum() throws EmptyStackException, NotEnoughNumbersException {
+        Number n1, n2;
+        n1 = numberStack.pop(); //throws EmptyStackException
+
+        try {
+            n2 = numberStack.pop();
+        } catch (EmptyStackException e) {
+            numberStack.push(n1);
+            throw new NotEnoughNumbersException();
+        }
         Number n3 = BasicOperation.sum(n2, n1);
         numberStack.push(n3);
     }
 
-    public void sub() {
-        Number n1 = numberStack.pop();
-        Number n2 = numberStack.pop();
+    public void sub() throws EmptyStackException, NotEnoughNumbersException {
+        Number n1, n2;
+        n1 = numberStack.pop(); //throws EmptyStackException
+
+        try {
+            n2 = numberStack.pop();
+        } catch (EmptyStackException e) {
+            numberStack.push(n1);
+            throw new NotEnoughNumbersException();
+        }
         Number n3 = BasicOperation.sub(n2, n1);
         numberStack.push(n3);
     }
 
     public void divide() throws Exception {
-        Number n1 = numberStack.pop();
-        Number n2 = numberStack.pop();
+        Number n1, n2;
+        n1 = numberStack.pop(); //throws EmptyStackException
+
+        try {
+            n2 = numberStack.pop();
+        } catch (EmptyStackException e) {
+            numberStack.push(n1);
+            throw new NotEnoughNumbersException();
+        }
         Number n3 = BasicOperation.divide(n2, n1);
         numberStack.push(n3);
     }
@@ -79,18 +111,17 @@ public class Operation implements ApplicationOperation {
         numberStack.dup();
     }
 
-    private void swap() {
+    private void swap() throws NotEnoughNumbersException {
         numberStack.swap();
     }
 
-    private void over() {
+    private void over() throws NotEnoughNumbersException {
         numberStack.over();
     }
-    
-    private void drop(){
+
+    private void drop() {
         numberStack.drop();
     }
-    
 
     protected void translateInput(String input) throws Exception {
         //ATTENTION!!!! if you want to add to the regular expression something like
@@ -113,13 +144,12 @@ public class Operation implements ApplicationOperation {
                     divide();
                     break;
                 default:
-                    throw new Exception("single charcter operation not supported");
+                    throw new OperationSymbolException("This symbol does not correspond to an operation!");
             }
             //find operation
-        } else if (input.startsWith("j") || input.startsWith("i")){
-                numberStack.push(convertNumber(input));
-        }
-        else if (Character.isAlphabetic(input.charAt(0))) {
+        } else if (input.startsWith("j") || input.startsWith("i")) {
+            numberStack.push(convertNumber(input));
+        } else if (Character.isAlphabetic(input.charAt(0))) {
             //is a function
             switch (input) {
                 case "invert":
@@ -144,10 +174,10 @@ public class Operation implements ApplicationOperation {
                     drop();
                     break;
                 default:
-                    throw new Exception("litteral expression not supported");
+                    throw new OperationNotPresentException("This operation is not supported");
             }
 
-        }else {
+        } else {
             numberStack.push(convertNumber(input));
         }
 
@@ -160,7 +190,7 @@ public class Operation implements ApplicationOperation {
         input = input.trim();
         String[] splittedInput = input.split("\\+|-");  //regex meaning: + once
 
-        if (input.endsWith("-")|| splittedInput.length > 3 || splittedInput.length == 0) {
+        if (input.endsWith("-") || splittedInput.length > 3 || splittedInput.length == 0) {
             throw new Exception("wrong input");
         }
 
@@ -168,17 +198,17 @@ public class Operation implements ApplicationOperation {
         boolean imaginaryPartNotDone = true, realPartNotDone = true;
 
         for (String s : splittedInput) {
-            
+
             //System.out.println("a" + s);
             if (!imaginaryPartNotDone & !realPartNotDone) {
-                throw new Exception("more input");
+                throw new TooManyNumbersException("You are trying to insert more than one number!");
             }
-            
-            if (s.length() != 0){
+
+            if (s.length() != 0) {
                 s = s.trim();
                 if (((s.endsWith("i") | s.endsWith("j")))) {
                     if (!imaginaryPartNotDone) {
-                        throw new Exception("more input");
+                        throw new Exception("imaginary part already present!");
                     }
                     int index = input.indexOf(s);
 
@@ -195,10 +225,10 @@ public class Operation implements ApplicationOperation {
                     }
 
                     imaginaryPartNotDone = false;
-                    
+
                 } else {
                     if (!realPartNotDone) {
-                        throw new Exception("more input");
+                        throw new TooManyNumbersException("real part already present!");
                     }
                     int index = input.indexOf(s);
                     realPart = Double.parseDouble(s); //can throws NullPointerException or NumberFormatException

@@ -11,6 +11,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import java.lang.Exception;
+import java.util.EmptyStackException;
+import se_project_g9.exceptions.NotEnoughNumbersException;
 
 /**
  *
@@ -66,7 +68,7 @@ public class OperationTest {
      * Test of multiply method, of class Operation.
      */
     @Test
-    public void testMultiply_onlyReal() {
+    public void testMultiply_onlyReal() throws NotEnoughNumbersException {
         System.out.println("multiply one");
         //When insered numbers with only real part 
         Number expResult = new Number(2,0);
@@ -86,7 +88,7 @@ public class OperationTest {
      * Test of multiply method, of class Operation.
      */
     @Test
-    public void testMultiply_complete() {
+    public void testMultiply_complete() throws NotEnoughNumbersException {
         System.out.println("multiply two");
         //When insered numbers with real part and imaginary part 
         Number expResult = new Number(4,2);
@@ -340,7 +342,7 @@ public class OperationTest {
      * Test of multiply method, of class Operation.
      */
     @Test
-    public void testMultiply() {
+    public void testMultiply() throws NotEnoughNumbersException {
         System.out.println("multiply");
         op.pushStack(m3);
         op.pushStack(m1);
@@ -364,7 +366,7 @@ public class OperationTest {
      * Test of sum method, of class Operation.
      */
     @Test
-    public void testSum() {
+    public void testSum() throws EmptyStackException, NotEnoughNumbersException {
         System.out.println("sum");
         op.pushStack(n2);
         op.pushStack(n1);
@@ -376,7 +378,7 @@ public class OperationTest {
      * Test of sub method, of class Operation.
      */
     @Test
-    public void testSub() {
+    public void testSub() throws EmptyStackException, NotEnoughNumbersException {
         System.out.println("sub");
         op.pushStack(r1);
         op.pushStack(n1);
