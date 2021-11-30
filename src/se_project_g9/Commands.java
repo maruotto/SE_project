@@ -114,6 +114,7 @@ public class Commands {
             assert numberStack != null;
             assert n1 != null;
             this.numberStack = numberStack;
+            this.n1 = n1;
         }
 
         @Override
