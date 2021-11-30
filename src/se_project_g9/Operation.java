@@ -40,7 +40,7 @@ public class Operation implements ApplicationOperation {
         return numberStack.pop();
     }
 
-    public void invert() throws EmptyStackException{
+    public void invert() throws EmptyStackException {
         Number n1 = numberStack.pop(); //throws EmptyStackException
         n1 = BasicOperation.invert(n1);
         numberStack.push(n1);
@@ -60,7 +60,7 @@ public class Operation implements ApplicationOperation {
         numberStack.push(n3);
     }
 
-    public void sqrt() throws EmptyStackException{ 
+    public void sqrt() throws EmptyStackException {
 
         Number top = numberStack.pop();
         Number sqrt = BasicOperation.sqrt(top);
@@ -189,15 +189,21 @@ public class Operation implements ApplicationOperation {
     }
 
     protected static Number convertNumber(String input) throws InputNumberException {
-        if (input.length() == 0) throw new NumberFormatException("Is not possible to insert nothing");
-        if (input.endsWith("+") || input.endsWith("-")) throw new NumberFormatException("Number ends with a sign");
-        
-        
+        if (input.length() == 0) {
+            throw new NumberFormatException("Is not possible to insert nothing");
+        }
+        if (input.endsWith("+") || input.endsWith("-")) {
+            throw new NumberFormatException("Number ends with a sign");
+        }
+
         String[] splittedInput = input.split("\\+|-");  //regex meaning: + once
 
-        if (splittedInput.length > 3 || splittedInput.length == 0) throw new TooManyNumbersException("You are trying to insert more than one number!");
-        if (splittedInput.length == 0) throw new TooManyNumbersException("You are trying to insert nothing!");
-        
+        if (splittedInput.length > 3 || splittedInput.length == 0) {
+            throw new TooManyNumbersException("You are trying to insert more than one number!");
+        }
+        if (splittedInput.length == 0) {
+            throw new TooManyNumbersException("You are trying to insert nothing!");
+        }
 
         double realPart = 0, imaginaryPart = 0;
         boolean imaginaryPartNotDone = true, realPartNotDone = true;
@@ -250,37 +256,50 @@ public class Operation implements ApplicationOperation {
         return n;
 
     }
-    
-    public void addToVariable(Character variable) throws Exception{
-        
-        if(variable == null){
+
+    public void addToVariable(Character variable) throws Exception {
+
+        if (variable == null) {
             throw new NullPointerException("value to add not defined..");
         }
-        
+
         //vedere se deve essere controllato se appartiene all'alfabeto
-        
         Number value = numberStack.pop();
-        variables.setVariable(variable, value);  
+        variables.setVariableValue(variable, value);
     }
-    
-    public void pushValueOf(Character variable) throws Exception{
-        
-        if(variable == null){
+
+    public void pushValueOf(Character variable) throws Exception {
+
+        if (variable == null) {
             throw new NullPointerException("value to push not defined");
         }
         //vedere se deve essere controllato se appartiene all'alfabeto
-        
-        numberStack.push(variables.getVariable(variable));   
+
+        numberStack.push(variables.getVariableValue(variable));
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+    public void addToValue(Character variable) throws Exception {
+
+        if (variable == null) {
+            throw new NullPointerException("lable of variable not defined");
+        }
+
+        Number lastValue = variables.getVariableValue(variable);
+        Number stackValue = numberStack.pop();
+        variables.setVariableValue(variable, BasicOperation.sum(lastValue, stackValue));
+
+    }
+
+    public void subToValue(Character variable) throws Exception {
+
+        if (variable == null) {
+            throw new NullPointerException("lable of variable not defined");
+        }
+
+        Number lastValue = variables.getVariableValue(variable);
+        Number stackValue = numberStack.pop();
+        variables.setVariableValue(variable, BasicOperation.sub(lastValue, stackValue));
+
+    }
+
 }
