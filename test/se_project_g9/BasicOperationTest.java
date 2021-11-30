@@ -4,10 +4,7 @@
  */
 package se_project_g9;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -92,7 +89,7 @@ public class BasicOperationTest {
      * Test of divide method, of class BasicOperation.
      */
     @Test (expected=Exception.class)
-    public void testDivide() throws Exception {
+    public void testDivide() throws Exception{
         System.out.println("divide");
         Number n = new Number(18,51);
         Number expResult = n2;

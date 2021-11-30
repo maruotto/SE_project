@@ -103,7 +103,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void clicki(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "j");  
+        tfInput.setText(tfInput.getText() + "i");  
     }
 
     @FXML
@@ -182,6 +182,10 @@ public class FXMLDocumentController implements Initializable {
         tfInput.clear();     
         if (ope.getNumberStack().size() > 11)
             stackview.scrollTo(ope.getNumberStack().size()-1); 
+    }
+
+    @FXML
+    private void savevariableclick(ActionEvent event) {
     }
     
 }
