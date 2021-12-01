@@ -5,15 +5,11 @@
 package se_project_g9;
 
 import se_project_g9.commands.SqrtCommand;
-import java.util.EmptyStackException;
 import java.util.HashMap;
 import java.util.Stack;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import se_project_g9.commands.*;
 import se_project_g9.exceptions.ImpossibleUndo;
 import se_project_g9.exceptions.InputNumberException;
-import se_project_g9.exceptions.NotEnoughNumbersException;
 import se_project_g9.exceptions.OperationNotPresentException;
 import se_project_g9.exceptions.OperationSymbolException;
 import se_project_g9.exceptions.TooManyNumbersException;
@@ -34,6 +30,10 @@ public class Operation implements ApplicationOperation {
         this.variables = new Variables();
         this.operations = new HashMap<>();
         this.operationsPerformed = new Stack<>();
+    }
+    
+    protected Stack<Command> getOperationsPerfomed(){
+        return operationsPerformed;
     }
 
     protected PersonalizedStack<Number> getNumberStack() {
@@ -61,6 +61,7 @@ public class Operation implements ApplicationOperation {
     public void performOperation(String input) throws InputNumberException{
         Command op = translateInput(input);
         op.execute();
+        System.out.println("executed");
         operationsPerformed.push(op);
     }
 

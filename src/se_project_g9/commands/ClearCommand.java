@@ -32,6 +32,6 @@ import se_project_g9.exceptions.NotEnoughNumbersException;
 
         @Override
         public void undo(){
-            numberStack = (NumberStack<Number>) copyOfNumberStack.clone();
+            numberStack.addAll(copyOfNumberStack);
         }
     }

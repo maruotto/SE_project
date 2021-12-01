@@ -130,6 +130,15 @@ public class NumberStack<E> extends Stack<E> implements PersonalizedStack<E> {
         }
         
     }
+
+    @Override
+    public boolean addAll(Collection<? extends E> c) {
+        informListenerWholeStructure(ChangeType.PUSH);
+        boolean ret = super.addAll(c);
+        return ret;
+    }
+    
+    
     
     @Override
     public void addListener(ListChangeListener<? super E> listener) {

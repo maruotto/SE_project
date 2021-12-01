@@ -6,9 +6,8 @@ package se_project_g9;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.EmptyStackException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,16 +17,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.PopupControl;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Popup;
-import javafx.stage.PopupWindow;
+
 import javafx.stage.Stage;
-import javafx.stage.Window;
+import se_project_g9.exceptions.ImpossibleUndo;
 import se_project_g9.exceptions.InputNumberException;
 
 /**
@@ -46,12 +42,17 @@ public class FXMLDocumentController implements Initializable {
     private Button btnSend;
     @FXML
     private SplitMenuButton variablesMenù;
+    @FXML
+    private Button undoBtn;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ope = new Operation();
         btnSend.disableProperty().bind(Bindings.isEmpty(tfInput.textProperty()));
         stackview.setItems(ope.getNumberStack());
+        tfInput.selectAll();
+        
+        undoBtn.disableProperty().set(true);
 
     }
 
@@ -189,12 +190,15 @@ public class FXMLDocumentController implements Initializable {
 
     private void enterInput() {
         try {
-            ope.translateInput(tfInput.getText());
+            ope.performOperation(tfInput.getText());
             if (ope.getNumberStack().size() > 11) {
                 stackview.scrollTo(ope.getNumberStack().size() - 1);
             }
-        } catch (Exception ex) {
+            undoBtn.disableProperty().set(false);
+        } catch (InputNumberException | NumberFormatException ex) {
             errorPopup(ex.getMessage());
+        } catch (EmptyStackException e){
+            errorPopup("Operazione non consentita");
         } finally {
             tfInput.clear();
         }
@@ -216,7 +220,7 @@ public class FXMLDocumentController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(new Scene(parent));
             stage.setAlwaysOnTop(true);
-            stage.show();
+            stage.showAndWait();
             pc.setLabels(message);          
         } catch (IOException ex) {
             return false;
@@ -375,6 +379,19 @@ public class FXMLDocumentController implements Initializable {
         Number value = ope.getVariables().getVariableValue(Character.valueOf(variablesMenù.getText().charAt(0)));
         System.out.println(value.toString());
         ope.getNumberStack().push(value);
+    }
+
+    @FXML
+    private void undoclick(ActionEvent event) {
+        try {
+            ope.undo();
+        } catch (ImpossibleUndo ex) {
+            errorPopup(ex.getMessage());
+        }
+        
+        if(ope.getOperationsPerfomed().empty()){
+            undoBtn.disableProperty().set(true);
+        }
     }
 
 }

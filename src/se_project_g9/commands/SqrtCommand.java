@@ -26,7 +26,7 @@ public class SqrtCommand implements Command {
     public void execute() throws EmptyStackException {
         se_project_g9.Number top = numberStack.pop(); //throws empty stackException
         se_project_g9.Number sqrt = BasicOperation.sqrt(top);
-        square = sqrt;
+        square = top;
         numberStack.push(sqrt);
     }
 
