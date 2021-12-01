@@ -4,8 +4,14 @@
  */
 package se_project_g9;
 
+import se_project_g9.commands.SqrtCommand;
 import java.util.EmptyStackException;
 import java.util.HashMap;
+import java.util.Stack;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import se_project_g9.commands.*;
+import se_project_g9.exceptions.ImpossibleUndo;
 import se_project_g9.exceptions.InputNumberException;
 import se_project_g9.exceptions.NotEnoughNumbersException;
 import se_project_g9.exceptions.OperationNotPresentException;
@@ -21,11 +27,13 @@ public class Operation implements ApplicationOperation {
     private final NumberStack<Number> numberStack;
     private final Variables variables;
     private final HashMap<String, UDOperation> operations;
+    private final Stack<Command> operationsPerformed;
 
     public Operation() {
         this.numberStack = new NumberStack<>();
         this.variables = new Variables();
         this.operations = new HashMap<>();
+        this.operationsPerformed = new Stack<>();
     }
 
     protected PersonalizedStack<Number> getNumberStack() {
@@ -40,121 +48,41 @@ public class Operation implements ApplicationOperation {
         return operations;
     }
 
-    public boolean pushStack(Number n) {
-        return numberStack.push(n) != null;
-    }
-
-    public Number popStack() throws EmptyStackException {
-        return numberStack.pop();
-    }
-
-    public void invert() throws EmptyStackException {
-        Number n1 = numberStack.pop(); //throws EmptyStackException
-        n1 = BasicOperation.invert(n1);
-        numberStack.push(n1);
-    }
-
-    public void multiply() throws NotEnoughNumbersException {
-        Number n1, n2;
-        n1 = numberStack.pop(); //throws EmptyStackException
-
+    public void undo() throws ImpossibleUndo{
+        Command op = operationsPerformed.pop(); //throw empty stack exception
         try {
-            n2 = numberStack.pop();
-        } catch (EmptyStackException e) {
-            numberStack.push(n1);
-            throw new NotEnoughNumbersException();
+            op.undo();
+        } catch (InputNumberException ex) {
+            throw new ImpossibleUndo("It's not possible to restore the status");
         }
-        Number n3 = BasicOperation.multiply(n2, n1);
-        numberStack.push(n3);
+        
+    }
+    
+    public void performOperation(String input) throws InputNumberException{
+        Command op = translateInput(input);
+        op.execute();
+        operationsPerformed.push(op);
     }
 
-    public void sqrt() throws EmptyStackException {
-
-        Number top = numberStack.pop();
-        Number sqrt = BasicOperation.sqrt(top);
-        numberStack.push(sqrt);
-    }
-
-    public void sum() throws EmptyStackException, NotEnoughNumbersException {
-        Number n1, n2;
-        n1 = numberStack.pop(); //throws EmptyStackException
-
-        try {
-            n2 = numberStack.pop();
-        } catch (EmptyStackException e) {
-            numberStack.push(n1);
-            throw new NotEnoughNumbersException();
-        }
-        Number n3 = BasicOperation.sum(n2, n1);
-        numberStack.push(n3);
-    }
-
-    public void sub() throws EmptyStackException, NotEnoughNumbersException {
-        Number n1, n2;
-        n1 = numberStack.pop(); //throws EmptyStackException
-
-        try {
-            n2 = numberStack.pop();
-        } catch (EmptyStackException e) {
-            numberStack.push(n1);
-            throw new NotEnoughNumbersException();
-        }
-        Number n3 = BasicOperation.sub(n2, n1);
-        numberStack.push(n3);
-    }
-
-    public void divide() throws InputNumberException {
-        Number n1, n2;
-        n1 = numberStack.pop(); //throws EmptyStackException
-
-        try {
-            n2 = numberStack.pop();
-        } catch (EmptyStackException e) {
-            numberStack.push(n1);
-            throw new NotEnoughNumbersException();
-        }
-        Number n3 = BasicOperation.divide(n2, n1);
-        numberStack.push(n3);
-    }
-
-    public void clear() {
-        numberStack.clear();
-    }
-
-    private void dup() {
-        numberStack.dup();
-    }
-
-    private void swap() throws NotEnoughNumbersException {
-        numberStack.swap();
-    }
-
-    private void over() throws NotEnoughNumbersException {
-        numberStack.over();
-    }
-
-    private void drop() {
-        numberStack.drop();
-    }
-
-    protected void translateInput(String input) throws InputNumberException {
+    protected Command translateInput(String input) throws InputNumberException {
         input = input.trim();
+        Command ret = null;
         //ATTENTION!!!! if you want to add to the regular expression something like
         // the + sign or other things, use the operator |
         // example: if you want to add to this expression +, this will become " *?+"
         if (input.length() == 1 && !Character.isLetterOrDigit(input.charAt(0))) {
             switch (input) {
                 case "-":
-                    sub();
+                    ret = new SubCommand(numberStack);
                     break;
                 case "+":
-                    sum();
+                    ret = new SumCommand(numberStack);
                     break;
                 case "*":
-                    multiply();
+                    ret = new MultiplyCommand(numberStack);
                     break;
                 case "/":
-                    divide();
+                    ret = new DivideCommand(numberStack);
                     break;
                 default:
                     throw new OperationSymbolException("This symbol does not correspond to an operation!");
@@ -166,33 +94,35 @@ public class Operation implements ApplicationOperation {
             //is a function
             switch (input) {
                 case "invert":
-                    invert();
+                    ret = new InvertCommand(numberStack);
                     break;
                 case "sqrt":
-                    sqrt();
+                    ret = new SqrtCommand(numberStack);
                     break;
                 case "clear":
-                    clear();
+                    ret = new ClearCommand(numberStack);
                     break;
                 case "dup":
-                    dup();
+                    ret = new DupCommand(numberStack);
                     break;
                 case "swap":
-                    swap();
+                    ret = new SwapCommand(numberStack);
                     break;
                 case "over":
-                    over();
+                    ret = new OverCommand(numberStack);
                     break;
                 case "drop":
-                    drop();
+                    ret = new DropCommand(numberStack);
                     break;
                 default:
                     throw new OperationNotPresentException("This operation is not supported");
             }
 
-        } else {
-            numberStack.push(convertNumber(input));
+        } else {          
+            ret = new PushCommand(numberStack, convertNumber(input));
         }
+        
+        return ret;
 
     }
 
