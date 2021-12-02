@@ -207,8 +207,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void savevariableclick(ActionEvent event) throws Exception {
-        ComplexNumber value = ope.getNumberStack().pop();
-        ope.getVariables().setVariableValue(Character.valueOf(variablesMenù.getText().charAt(0)), value);
+        ope.addToVariable(Character.valueOf(variablesMenù.getText().charAt(0)));
     }
     
     private boolean errorPopup(String message) {
@@ -229,19 +228,17 @@ public class FXMLDocumentController implements Initializable {
         return true;
     }
 
-    private void pushvariablevalue(ActionEvent event){
-       
-        
+    private void pushvariablevalue(ActionEvent event){  
     }
 
     @FXML
-    private void addvariableclick(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "+x");
+    private void addvariableclick(ActionEvent event) throws Exception {
+        ope.addToValue(Character.valueOf(variablesMenù.getText().charAt(0)));
     }
 
     @FXML
-    private void subvariableclick(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "-x");
+    private void subvariableclick(ActionEvent event) throws Exception {
+        ope.subToValue(Character.valueOf(variablesMenù.getText().charAt(0)));  
     }
 
     @FXML
@@ -377,7 +374,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void pushvariableclick(ActionEvent event) throws Exception {
         ComplexNumber value = ope.getVariables().getVariableValue(Character.valueOf(variablesMenù.getText().charAt(0)));
-        System.out.println(value.toString());
         ope.getNumberStack().push(value);
     }
 

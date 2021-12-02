@@ -257,8 +257,7 @@ public class OperationTest {
         assertEquals(expResult, result);
         
     }
-   
-
+    
     /**
      * Test of multiply method, of class Operation.
      */
