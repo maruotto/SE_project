@@ -9,7 +9,7 @@ import se_project_g9.exceptions.NotEnoughNumbersException;
 
 /**
  *
- * @author group 9
+ * @author group9
  */
     
     
