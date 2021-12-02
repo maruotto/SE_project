@@ -89,14 +89,16 @@ public class Operation implements ApplicationOperation {
                     throw new OperationSymbolException("This symbol does not correspond to an operation!");
             }
             //find operation
-        } else if (input.startsWith("j") || input.startsWith("i")) {
+        } else if (input.startsWith("in")){
+            ret = new InvertCommand(numberStack);
+        }else if (input.startsWith("j") || input.startsWith("i")) {
             numberStack.push(convertNumber(input));
         } else if (Character.isAlphabetic(input.charAt(0))) {
             //is a function
             switch (input) {
-                case "invert":
-                    ret = new InvertCommand(numberStack);
-                    break;
+                //case "invert":
+                //  ret = new InvertCommand(numberStack);
+                //  break;
                 case "sqrt":
                     ret = new SqrtCommand(numberStack);
                     break;
