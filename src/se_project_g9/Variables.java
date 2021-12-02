@@ -22,9 +22,12 @@ public class Variables {
     }
 
     public void setVariableValue(Character key, ComplexNumber value) throws Exception {
-        if (variablesMap.put(key, value) == null) {
-            throw new Exception("Can't put value in variablesMap");
+        if(key == null){
+            throw new Exception("key not specified...");
         }
+        variablesMap.put(key, value); 
+            
+        
     }
 
     public ComplexNumber getVariableValue(Character key) throws Exception {

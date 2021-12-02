@@ -261,4 +261,29 @@ public class OperationTest {
     /**
      * Test of multiply method, of class Operation.
      */
+    
+    @Test
+    public void testaddToVariable() throws Exception{
+        
+        System.out.println("addToVariable");
+        ComplexNumber value = new ComplexNumber(3,4);
+        op.getNumberStack().push(value);
+        op.addToVariable(Character.valueOf('c'));
+        assertEquals(op.getVariables().getVariableValue(Character.valueOf('c')),value);
+        
+        
+    }
+    
+    @Test
+    public void testpushValueOf(){
+        
+        
+        
+        
+        
+    }
+    
+    
+    
+    
 }
