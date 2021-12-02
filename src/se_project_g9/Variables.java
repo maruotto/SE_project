@@ -19,6 +19,7 @@ public class Variables {
     public Variables() {
         this.variablesMap = new HashMap<Character, ComplexNumber>();
         this.variableStack = new Stack<HashMap>();
+        
     }
 
     public void setVariableValue(Character key, ComplexNumber value) throws Exception {
@@ -37,6 +38,10 @@ public class Variables {
             throw new Exception("Key not found");
         }
         
+    }
+    
+    public HashMap<Character, ComplexNumber> getVariablesMap(){
+        return variablesMap;
     }
     
     
