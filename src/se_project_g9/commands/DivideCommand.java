@@ -5,8 +5,9 @@
 package se_project_g9.commands;
 
 import se_project_g9.BasicOperation;
-import se_project_g9.Command;
+import se_project_g9.ComplexNumber;
 import se_project_g9.NumberStack;
+import se_project_g9.PersonalizedStack;
 import se_project_g9.exceptions.ZeroDivisionException;
 
 /**
@@ -14,11 +15,11 @@ import se_project_g9.exceptions.ZeroDivisionException;
  * @author idamaruotto
  */
 public class DivideCommand implements Command {
-        private NumberStack<se_project_g9.ComplexNumber> numberStack;
+        private PersonalizedStack<ComplexNumber> numberStack;
         private se_project_g9.ComplexNumber n1;
         private se_project_g9.ComplexNumber n2;
 
-        public DivideCommand(NumberStack<se_project_g9.ComplexNumber> numberStack) {
+        public DivideCommand(PersonalizedStack<ComplexNumber> numberStack) {
             assert numberStack != null;
             this.numberStack = numberStack;
         }

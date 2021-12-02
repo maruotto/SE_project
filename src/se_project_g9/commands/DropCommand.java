@@ -4,18 +4,18 @@
  */
 package se_project_g9.commands;
 
-import se_project_g9.Command;
-import se_project_g9.NumberStack;
+import se_project_g9.ComplexNumber;
+import se_project_g9.PersonalizedStack;
 
 /**
  *
  * @author idamaruotto
  */
 public class DropCommand implements Command {
-        private NumberStack<se_project_g9.ComplexNumber> numberStack;
+        private PersonalizedStack<ComplexNumber> numberStack;
         private se_project_g9.ComplexNumber n1;
 
-        public DropCommand(NumberStack<se_project_g9.ComplexNumber> numberStack) {
+        public DropCommand(PersonalizedStack<ComplexNumber> numberStack) {
             assert numberStack != null;
             this.numberStack = numberStack;
         }

@@ -4,8 +4,8 @@
  */
 package se_project_g9.commands;
 
-import se_project_g9.Command;
-import se_project_g9.NumberStack;
+import se_project_g9.ComplexNumber;
+import se_project_g9.PersonalizedStack;
 import se_project_g9.exceptions.NotEnoughNumbersException;
 
 /**
@@ -13,9 +13,9 @@ import se_project_g9.exceptions.NotEnoughNumbersException;
  * @author idamaruotto
  */
 public class SwapCommand implements Command {
-        private NumberStack<se_project_g9.ComplexNumber> numberStack;
+        private PersonalizedStack<ComplexNumber> numberStack;
 
-        public SwapCommand(NumberStack<se_project_g9.ComplexNumber> numberStack) {
+        public SwapCommand(PersonalizedStack<ComplexNumber> numberStack) {
             assert numberStack != null;
             this.numberStack = numberStack;
         }

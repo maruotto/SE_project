@@ -4,8 +4,9 @@
  */
 package se_project_g9.commands;
 
-import se_project_g9.Command;
+import se_project_g9.ComplexNumber;
 import se_project_g9.NumberStack;
+import se_project_g9.PersonalizedStack;
 import se_project_g9.exceptions.NotEnoughNumbersException;
 
 /**
@@ -13,9 +14,9 @@ import se_project_g9.exceptions.NotEnoughNumbersException;
  * @author idamaruotto
  */
 public class OverCommand implements Command {
-        private NumberStack<se_project_g9.ComplexNumber> numberStack;
+        private PersonalizedStack<ComplexNumber> numberStack;
 
-        public OverCommand(NumberStack<se_project_g9.ComplexNumber> numberStack) {
+        public OverCommand(PersonalizedStack<ComplexNumber> numberStack) {
             assert numberStack != null;
             this.numberStack = numberStack;
         }

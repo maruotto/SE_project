@@ -4,18 +4,18 @@
  */
 package se_project_g9.commands;
 
-import se_project_g9.Command;
-import se_project_g9.NumberStack;
+import se_project_g9.ComplexNumber;
+import se_project_g9.PersonalizedStack;
 
 /**
  *
  * @author idamaruotto
  */
 public class PushCommand implements Command {
-        private NumberStack<se_project_g9.ComplexNumber> numberStack;
+        private PersonalizedStack<ComplexNumber> numberStack;
         private se_project_g9.ComplexNumber n1;
 
-        public PushCommand(NumberStack<se_project_g9.ComplexNumber> numberStack, se_project_g9.ComplexNumber n1) {
+        public PushCommand(PersonalizedStack<ComplexNumber> numberStack, se_project_g9.ComplexNumber n1) {
             assert numberStack != null;
             assert n1 != null;
             this.numberStack = numberStack;

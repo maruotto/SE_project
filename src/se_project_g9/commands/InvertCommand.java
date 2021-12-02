@@ -5,18 +5,19 @@
 package se_project_g9.commands;
 
 import se_project_g9.BasicOperation;
-import se_project_g9.Command;
+import se_project_g9.ComplexNumber;
 import se_project_g9.NumberStack;
+import se_project_g9.PersonalizedStack;
 
 /**
  *
  * @author idamaruotto
  */
 public class InvertCommand implements Command {
-        private NumberStack<se_project_g9.ComplexNumber> numberStack;
+        private PersonalizedStack<ComplexNumber> numberStack;
         private se_project_g9.ComplexNumber n1;
 
-        public InvertCommand(NumberStack<se_project_g9.ComplexNumber> numberStack) {
+        public InvertCommand(PersonalizedStack<ComplexNumber> numberStack) {
             assert numberStack != null;
             this.numberStack = numberStack;
         }
