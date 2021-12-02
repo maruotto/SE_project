@@ -111,6 +111,13 @@ public class NumberStack<E> extends Stack<E> implements PersonalizedStack<E> {
         informListener(ChangeType.PUSH, secondlast);
     }
 
+    @Override
+    public synchronized Object clone() {
+        return super.clone(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    
     /**
      *
      * @param change the type of change performed, if push or pop

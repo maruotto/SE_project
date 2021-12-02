@@ -45,4 +45,6 @@ public interface PersonalizedStack<E> extends ObservableList<E>{
      */
     public void over()throws EmptyStackException, NotEnoughNumbersException;
     
+    public Object clone();
+    
 }
