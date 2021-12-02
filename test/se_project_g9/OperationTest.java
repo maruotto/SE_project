@@ -275,11 +275,14 @@ public class OperationTest {
     }
     
     @Test
-    public void testpushValueOf(){
+    public void testpushValueOf() throws Exception{
         
-        
-        
-        
+        System.out.println("pushToValue");
+        ComplexNumber value = new ComplexNumber(3,4);
+        op.getNumberStack().push(value);
+        op.addToVariable(Character.valueOf('c'));
+        op.pushValueOf(Character.valueOf('c'));
+        assertEquals(op.getNumberStack().pop(),value);  
         
     }
     
