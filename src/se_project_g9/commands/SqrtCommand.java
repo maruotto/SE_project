@@ -14,18 +14,18 @@ import se_project_g9.NumberStack;
  * @author idamaruotto
  */
 public class SqrtCommand implements Command {
-    private NumberStack<se_project_g9.Number> numberStack;
-    private se_project_g9.Number square; //we could have performed the square operation to make undo, but decimal digits could be problematic
+    private NumberStack<se_project_g9.ComplexNumber> numberStack;
+    private se_project_g9.ComplexNumber square; //we could have performed the square operation to make undo, but decimal digits could be problematic
         
-    public SqrtCommand(NumberStack<se_project_g9.Number> numberStack) {
+    public SqrtCommand(NumberStack<se_project_g9.ComplexNumber> numberStack) {
         assert numberStack != null;
         this.numberStack = numberStack;
     }
 
     @Override
     public void execute() throws EmptyStackException {
-        se_project_g9.Number top = numberStack.pop(); //throws empty stackException
-        se_project_g9.Number sqrt = BasicOperation.sqrt(top);
+        se_project_g9.ComplexNumber top = numberStack.pop(); //throws empty stackException
+        se_project_g9.ComplexNumber sqrt = BasicOperation.sqrt(top);
         square = top;
         numberStack.push(sqrt);
     }

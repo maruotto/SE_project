@@ -13,21 +13,21 @@ import java.util.Stack;
  */
 public class Variables {
 
-    private final HashMap<Character, Number> variablesMap;
+    private final HashMap<Character, ComplexNumber> variablesMap;
     private final Stack<HashMap> variableStack;
 
     public Variables() {
-        this.variablesMap = new HashMap<Character, Number>();
+        this.variablesMap = new HashMap<Character, ComplexNumber>();
         this.variableStack = new Stack<HashMap>();
     }
 
-    public void setVariableValue(Character key, Number value) throws Exception {
+    public void setVariableValue(Character key, ComplexNumber value) throws Exception {
         if (variablesMap.put(key, value) == null) {
             throw new Exception("Can't put value in variablesMap");
         }
     }
 
-    public Number getVariableValue(Character key) throws Exception {
+    public ComplexNumber getVariableValue(Character key) throws Exception {
         if (variablesMap.containsKey(key)){
            return variablesMap.get(key); 
         }else{

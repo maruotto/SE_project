@@ -12,10 +12,10 @@ import se_project_g9.NumberStack;
  * @author idamaruotto
  */
 public class DropCommand implements Command {
-        private NumberStack<se_project_g9.Number> numberStack;
-        private se_project_g9.Number n1;
+        private NumberStack<se_project_g9.ComplexNumber> numberStack;
+        private se_project_g9.ComplexNumber n1;
 
-        public DropCommand(NumberStack<se_project_g9.Number> numberStack) {
+        public DropCommand(NumberStack<se_project_g9.ComplexNumber> numberStack) {
             assert numberStack != null;
             this.numberStack = numberStack;
         }

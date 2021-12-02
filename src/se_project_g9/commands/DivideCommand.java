@@ -14,11 +14,11 @@ import se_project_g9.exceptions.ZeroDivisionException;
  * @author idamaruotto
  */
 public class DivideCommand implements Command {
-        private NumberStack<se_project_g9.Number> numberStack;
-        private se_project_g9.Number n1;
-        private se_project_g9.Number n2;
+        private NumberStack<se_project_g9.ComplexNumber> numberStack;
+        private se_project_g9.ComplexNumber n1;
+        private se_project_g9.ComplexNumber n2;
 
-        public DivideCommand(NumberStack<se_project_g9.Number> numberStack) {
+        public DivideCommand(NumberStack<se_project_g9.ComplexNumber> numberStack) {
             assert numberStack != null;
             this.numberStack = numberStack;
         }

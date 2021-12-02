@@ -20,7 +20,7 @@ import se_project_g9.exceptions.TooManyNumbersException;
  */
 public class Operation implements ApplicationOperation {
 
-    private final NumberStack<Number> numberStack;
+    private final NumberStack<ComplexNumber> numberStack;
     private final Variables variables;
     private final HashMap<String, UDOperation> operations;
     private final Stack<Command> operationsPerformed;
@@ -36,7 +36,7 @@ public class Operation implements ApplicationOperation {
         return operationsPerformed;
     }
 
-    protected PersonalizedStack<Number> getNumberStack() {
+    protected PersonalizedStack<ComplexNumber> getNumberStack() {
         return numberStack;
     }
     
@@ -127,7 +127,7 @@ public class Operation implements ApplicationOperation {
 
     }
 
-    protected static Number convertNumber(String input) throws InputNumberException {
+    protected static ComplexNumber convertNumber(String input) throws InputNumberException {
         if (input.length() == 0) {
             throw new NumberFormatException("Is not possible to insert nothing");
         }
@@ -191,7 +191,7 @@ public class Operation implements ApplicationOperation {
             }
 
         }
-        Number n = new Number(realPart, imaginaryPart);
+        ComplexNumber n = new ComplexNumber(realPart, imaginaryPart);
         return n;
 
     }
@@ -203,7 +203,7 @@ public class Operation implements ApplicationOperation {
         }
 
         //vedere se deve essere controllato se appartiene all'alfabeto
-        Number value = numberStack.pop();
+        ComplexNumber value = numberStack.pop();
         variables.setVariableValue(variable, value);
     }
 
@@ -223,8 +223,8 @@ public class Operation implements ApplicationOperation {
             throw new NullPointerException("label of variable not defined");
         }
 
-        Number lastValue = variables.getVariableValue(variable);
-        Number stackValue = numberStack.pop();
+        ComplexNumber lastValue = variables.getVariableValue(variable);
+        ComplexNumber stackValue = numberStack.pop();
         variables.setVariableValue(variable, BasicOperation.sum(lastValue, stackValue));
 
     }
@@ -235,8 +235,8 @@ public class Operation implements ApplicationOperation {
             throw new NullPointerException("label of variable not defined");
         }
 
-        Number lastValue = variables.getVariableValue(variable);
-        Number stackValue = numberStack.pop();
+        ComplexNumber lastValue = variables.getVariableValue(variable);
+        ComplexNumber stackValue = numberStack.pop();
         variables.setVariableValue(variable, BasicOperation.sub(lastValue, stackValue));
 
     }

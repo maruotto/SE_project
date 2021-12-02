@@ -11,16 +11,16 @@ import static org.junit.Assert.*;
  *
  * @author group9
  */
-public class NumberTest {
+public class ComplexNumberTest {
 
     /**
-     * Test of getRealPart method, of class Number.
+     * Test of getRealPart method, of class ComplexNumber.
      */
     @Test
     public void testGetRealPart() {
         System.out.println("getRealPart");
         double realPart = 3;
-        Number instance = new Number(realPart,0);
+        ComplexNumber instance = new ComplexNumber(realPart,0);
         assertEquals(realPart, instance.getRealPart(), 0);
         System.out.println("Works\n");
         // TODO review the generated test code and remove the default call to fail.
@@ -28,50 +28,50 @@ public class NumberTest {
     }
 
     /**
-     * Test of getImaginaryPart method, of class Number.
+     * Test of getImaginaryPart method, of class ComplexNumber.
      */
     @Test
     public void testGetImaginaryPart() {
         System.out.println("getImaginaryPart");
         double imaginaryPart = 6;
-        Number instance = new Number(0,imaginaryPart);
+        ComplexNumber instance = new ComplexNumber(0,imaginaryPart);
         assertEquals(imaginaryPart, instance.getImaginaryPart(), 0);
         System.out.println("Works\n");
     }
 
     /**
-     * Test of setRealPart method, of class Number.
+     * Test of setRealPart method, of class ComplexNumber.
      */
     @Test
     public void testSetRealPart() {
         System.out.println("setRealPart");
         double realPart = 13;
-        Number instance = new Number(0,0);
+        ComplexNumber instance = new ComplexNumber(0,0);
         instance.setRealPart(realPart);
         assertEquals(realPart, instance.getRealPart(), 0);
         System.out.println("Works\n");
     }
 
     /**
-     * Test of setImaginaryPart method, of class Number.
+     * Test of setImaginaryPart method, of class ComplexNumber.
      */
     @Test
     public void testSetImaginaryPart() {
         System.out.println("setImaginaryPart");
         double imaginaryPart = 5;
-        Number instance = new Number(0,0);
+        ComplexNumber instance = new ComplexNumber(0,0);
         instance.setImaginaryPart(imaginaryPart);
         assertEquals(imaginaryPart, instance.getImaginaryPart(), 0);
         System.out.println("Works\n");
     }
 
     /**
-     * Test of toString method, of class Number.
+     * Test of toString method, of class ComplexNumber.
      */
     @Test
     public void testToString() {
         System.out.println("toString");
-        Number instance = new Number(3, 6);
+        ComplexNumber instance = new ComplexNumber(3, 6);
         String expResult = "3.0 +6.0i";
         String result = instance.toString();
         assertEquals(expResult, result);

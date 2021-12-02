@@ -5,7 +5,7 @@
 package se_project_g9.commands;
 
 import se_project_g9.Command;
-import se_project_g9.Number;
+import se_project_g9.ComplexNumber;
 import se_project_g9.NumberStack;
 import se_project_g9.exceptions.NotEnoughNumbersException;
 
@@ -16,13 +16,13 @@ import se_project_g9.exceptions.NotEnoughNumbersException;
     
     
     public class ClearCommand implements Command {
-        private NumberStack<Number> numberStack;
-        private NumberStack<Number> copyOfNumberStack;
+        private NumberStack<ComplexNumber> numberStack;
+        private NumberStack<ComplexNumber> copyOfNumberStack;
 
-        public ClearCommand(NumberStack<Number> numberStack) {
+        public ClearCommand(NumberStack<ComplexNumber> numberStack) {
             assert numberStack != null;
             this.numberStack = numberStack;
-            this.copyOfNumberStack = (NumberStack<Number>) numberStack.clone();
+            this.copyOfNumberStack = (NumberStack<ComplexNumber>) numberStack.clone();
         }
 
         @Override

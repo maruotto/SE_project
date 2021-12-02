@@ -18,7 +18,7 @@ import se_project_g9.exceptions.NotEnoughNumbersException;
  */
 public class NumberStackTest {
 
-    private Number n1, n2;
+    private ComplexNumber n1, n2;
     private NumberStack stack;
 
     public NumberStackTest() {
@@ -27,8 +27,8 @@ public class NumberStackTest {
 
     @Before
     public void setUp() {
-        n1 = new Number(4, 6);
-        n2 = new Number(29, 6);
+        n1 = new ComplexNumber(4, 6);
+        n2 = new ComplexNumber(29, 6);
 
     }
 
@@ -56,7 +56,7 @@ public class NumberStackTest {
     @Test
     public void testPeek() {
         stack.push(n1);
-        Number peek = (Number) stack.peek();
+        ComplexNumber peek = (ComplexNumber) stack.peek();
         assertEquals(peek, stack.pop());
         assertEquals(peek, n1);
     }
@@ -66,7 +66,7 @@ public class NumberStackTest {
      */
     @Test(expected = EmptyStackException.class)
     public void testPeek_empty() {
-        Number peek = (Number) stack.peek();
+        ComplexNumber peek = (ComplexNumber) stack.peek();
         assertEquals(peek, stack.pop());
         assertEquals(peek, n1);
     }

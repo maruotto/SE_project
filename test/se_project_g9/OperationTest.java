@@ -20,13 +20,13 @@ import se_project_g9.exceptions.NotEnoughNumbersException;
  */
 public class OperationTest {
     
-    private Number n1;
-    private Number n2;
-    private Number m1;
-    private Number m2;
-    private Number m3;
-    private Number s1;
-    private Number r1;
+    private ComplexNumber n1;
+    private ComplexNumber n2;
+    private ComplexNumber m1;
+    private ComplexNumber m2;
+    private ComplexNumber m3;
+    private ComplexNumber s1;
+    private ComplexNumber r1;
     private Operation op;
     
     public OperationTest() {
@@ -36,13 +36,13 @@ public class OperationTest {
 
     @Before
     public void setUp() {
-        n1 = new Number(9,5);
-        n2 = new Number(6,3);
-        m1 = new Number(2,0);
-        m2 = new Number(2,1);
-        m3 = new Number(1,0);
-        s1 = new Number(3, 4);
-        r1 = new Number(15, 8);
+        n1 = new ComplexNumber(9,5);
+        n2 = new ComplexNumber(6,3);
+        m1 = new ComplexNumber(2,0);
+        m2 = new ComplexNumber(2,1);
+        m3 = new ComplexNumber(1,0);
+        s1 = new ComplexNumber(3, 4);
+        r1 = new ComplexNumber(15, 8);
         
         
     }
@@ -54,8 +54,8 @@ public class OperationTest {
     public void testConvertNumber_inputCartesianNotationPlusPlus() throws Exception {
         System.out.println("translate_input");
         String input = "1 + 2j";
-        Number expResult = new Number(1.0, 2.0);
-        Number result = Operation.convertNumber(input);
+        ComplexNumber expResult = new ComplexNumber(1.0, 2.0);
+        ComplexNumber result = Operation.convertNumber(input);
         assertEquals(expResult, result);
         System.out.println("works\n");
     }
@@ -68,8 +68,8 @@ public class OperationTest {
     public void testConvertNumber_inputCartesianNotationPlusMinus() throws Exception {
         System.out.println("translate_input");
         String input = "1 - 2j";
-        Number expResult = new Number(1.0, -2.0);
-        Number result = Operation.convertNumber(input);
+        ComplexNumber expResult = new ComplexNumber(1.0, -2.0);
+        ComplexNumber result = Operation.convertNumber(input);
         assertEquals(expResult, result);
         System.out.println("works\n");
     }
@@ -83,8 +83,8 @@ public class OperationTest {
     public void testConvertNumber_inputCartesianNotationMinusMinus() throws Exception {
         System.out.println("translate_input");
         String input = "-1 - 2j";
-        Number expResult = new Number(-1.0, -2.0);
-        Number result = Operation.convertNumber(input);
+        ComplexNumber expResult = new ComplexNumber(-1.0, -2.0);
+        ComplexNumber result = Operation.convertNumber(input);
         assertEquals(expResult, result);
         System.out.println("works\n");
     }
@@ -97,8 +97,8 @@ public class OperationTest {
     public void testConvertNumber_inputCartesianNotationMinusPlus() throws Exception {
         System.out.println("translate_input");
         String input = "-1 + 2j";
-        Number expResult = new Number(-1.0, 2.0);
-        Number result = Operation.convertNumber(input);
+        ComplexNumber expResult = new ComplexNumber(-1.0, 2.0);
+        ComplexNumber result = Operation.convertNumber(input);
         assertEquals(expResult, result);
         System.out.println("works\n");
     }
@@ -111,8 +111,8 @@ public class OperationTest {
     public void testConvertNumber_inputRealMinus() throws Exception {
         System.out.println("translate_input");
         String input = "-1";
-        Number expResult = new Number(-1.0);
-        Number result = Operation.convertNumber(input);
+        ComplexNumber expResult = new ComplexNumber(-1.0);
+        ComplexNumber result = Operation.convertNumber(input);
         assertEquals(expResult, result);
         System.out.println("works\n");
     }
@@ -125,8 +125,8 @@ public class OperationTest {
     public void testConvertNumber_inputRealPlus() throws Exception {
         System.out.println("translate_input");
         String input = "+10";
-        Number expResult = new Number(10.0);
-        Number result = Operation.convertNumber(input);
+        ComplexNumber expResult = new ComplexNumber(10.0);
+        ComplexNumber result = Operation.convertNumber(input);
         assertEquals(expResult, result);
         System.out.println("works\n");
     }
@@ -140,8 +140,8 @@ public class OperationTest {
     public void testConvertNumber_imaginarySimple() throws Exception {
         System.out.println("translate_input");
         String input = "-j";
-        Number expResult = new Number(0.0, -1.0);
-        Number result = Operation.convertNumber(input);
+        ComplexNumber expResult = new ComplexNumber(0.0, -1.0);
+        ComplexNumber result = Operation.convertNumber(input);
         assertEquals(expResult, result);
         System.out.println("works\n");
     }
@@ -154,8 +154,8 @@ public class OperationTest {
     public void testConvertNumber_inputImaginaryPlus() throws Exception {
         System.out.println("translate_input");
         String input = "+10j";
-        Number expResult = new Number(0.0, +10.0);
-        Number result = Operation.convertNumber(input);
+        ComplexNumber expResult = new ComplexNumber(0.0, +10.0);
+        ComplexNumber result = Operation.convertNumber(input);
         assertEquals(expResult, result);
         System.out.println("works\n");
     }
@@ -168,8 +168,8 @@ public class OperationTest {
     public void testConvertNumber_startsJ() throws Exception {
         System.out.println("translate_input");
         String input = "j";
-        Number expResult = new Number(0.0, 1);
-        Number result = Operation.convertNumber(input);
+        ComplexNumber expResult = new ComplexNumber(0.0, 1);
+        ComplexNumber result = Operation.convertNumber(input);
         assertEquals(expResult, result);
         System.out.println("works\n");
     }
@@ -182,8 +182,8 @@ public class OperationTest {
     public void testConvertNumber_startsJ_complex() throws Exception {
         System.out.println("translate_input");
         String input = "+j + 4.5";
-        Number expResult = new Number(4.5, 1);
-        Number result = Operation.convertNumber(input);
+        ComplexNumber expResult = new ComplexNumber(4.5, 1);
+        ComplexNumber result = Operation.convertNumber(input);
         assertEquals(expResult, result);
         System.out.println("works\n");
     }
@@ -195,8 +195,8 @@ public class OperationTest {
     public void testConvertNumber_wrongFormat() throws Exception {
         System.out.println("translate_input");
         String input = "10+";
-        Number expResult = new Number(10.0, 0.0);
-        Number result = Operation.convertNumber(input);
+        ComplexNumber expResult = new ComplexNumber(10.0, 0.0);
+        ComplexNumber result = Operation.convertNumber(input);
         assertEquals(expResult, result);
         System.out.println("works\n");
     }
@@ -221,8 +221,8 @@ public class OperationTest {
     public void testConvertNumber() throws Exception {
         System.out.println("convertNumber");
         String input = "";
-        Number expResult = null;
-        Number result = Operation.convertNumber(input);
+        ComplexNumber expResult = null;
+        ComplexNumber result = Operation.convertNumber(input);
         assertEquals(expResult, result);
 
     }
@@ -231,8 +231,8 @@ public class OperationTest {
     public void testConvertNumber_wrong_input() throws Exception {
         System.out.println("convertNumber");
         String input = "abcd";
-        Number expResult = null;
-        Number result = Operation.convertNumber(input);
+        ComplexNumber expResult = null;
+        ComplexNumber result = Operation.convertNumber(input);
 
     }
     
@@ -240,8 +240,8 @@ public class OperationTest {
     public void testConvertNumber_more_number() throws Exception {
         System.out.println("convertNumber");
         String input = "10 -10j +10";
-        Number expResult = null;
-        Number result = Operation.convertNumber(input);
+        ComplexNumber expResult = null;
+        ComplexNumber result = Operation.convertNumber(input);
         assertEquals(expResult, result);
 
     }
@@ -252,8 +252,8 @@ public class OperationTest {
     @Test
     public void testGetNumberStack() {
         System.out.println("getNumberStack");
-        PersonalizedStack<Number> expResult = new NumberStack<>();
-        PersonalizedStack<Number> result = op.getNumberStack();
+        PersonalizedStack<ComplexNumber> expResult = new NumberStack<>();
+        PersonalizedStack<ComplexNumber> result = op.getNumberStack();
         assertEquals(expResult, result);
         
     }

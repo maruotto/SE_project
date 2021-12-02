@@ -8,17 +8,17 @@ package se_project_g9;
  *
  * @author gruppo9
  */
-public class Number {
+public class ComplexNumber {
 
     private double realPart;
     private double imaginaryPart;
 
-    public Number(double realPart, double imaginaryPart) {
+    public ComplexNumber(double realPart, double imaginaryPart) {
         this.realPart = realPart;
         this.imaginaryPart = imaginaryPart;
     }
 
-    public Number(double realPart) {
+    public ComplexNumber(double realPart) {
         this.realPart = realPart;
         this.imaginaryPart = .0;
     }
@@ -65,7 +65,7 @@ public class Number {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Number other = (Number) obj;
+        final ComplexNumber other = (ComplexNumber) obj;
         if (Double.doubleToLongBits(this.realPart) != Double.doubleToLongBits(other.realPart)) {
             return false;
         }

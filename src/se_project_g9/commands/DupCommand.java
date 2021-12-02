@@ -13,9 +13,9 @@ import se_project_g9.exceptions.NotEnoughNumbersException;
  * @author idamaruotto
  */
 public class DupCommand implements Command {
-        private NumberStack<se_project_g9.Number> numberStack;
+        private NumberStack<se_project_g9.ComplexNumber> numberStack;
 
-        public DupCommand(NumberStack<se_project_g9.Number> numberStack) {
+        public DupCommand(NumberStack<se_project_g9.ComplexNumber> numberStack) {
             assert numberStack != null;
             this.numberStack = numberStack;
         }

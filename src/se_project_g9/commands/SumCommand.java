@@ -13,11 +13,11 @@ import se_project_g9.NumberStack;
  * @author idamaruotto
  */
 public class SumCommand implements Command {
-        private NumberStack<se_project_g9.Number> numberStack;
-        private se_project_g9.Number n1;
-        private se_project_g9.Number n2;
+        private NumberStack<se_project_g9.ComplexNumber> numberStack;
+        private se_project_g9.ComplexNumber n1;
+        private se_project_g9.ComplexNumber n2;
 
-        public SumCommand(NumberStack<se_project_g9.Number> numberStack) {
+        public SumCommand(NumberStack<se_project_g9.ComplexNumber> numberStack) {
             assert numberStack != null;
             this.numberStack = numberStack;
         }

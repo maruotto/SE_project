@@ -12,10 +12,10 @@ import se_project_g9.NumberStack;
  * @author idamaruotto
  */
 public class PushCommand implements Command {
-        private NumberStack<se_project_g9.Number> numberStack;
-        private se_project_g9.Number n1;
+        private NumberStack<se_project_g9.ComplexNumber> numberStack;
+        private se_project_g9.ComplexNumber n1;
 
-        public PushCommand(NumberStack<se_project_g9.Number> numberStack, se_project_g9.Number n1) {
+        public PushCommand(NumberStack<se_project_g9.ComplexNumber> numberStack, se_project_g9.ComplexNumber n1) {
             assert numberStack != null;
             assert n1 != null;
             this.numberStack = numberStack;

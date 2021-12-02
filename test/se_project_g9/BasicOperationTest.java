@@ -14,14 +14,14 @@ import static org.junit.Assert.*;
  */
 public class BasicOperationTest {
     
-    private Number n1;
-    private Number n2;
-    private Number expResult;
+    private ComplexNumber n1;
+    private ComplexNumber n2;
+    private ComplexNumber expResult;
     
     @Before
     public void setUp() {
-        n1 = new Number(0,0);
-        n2 = new Number(4,3);
+        n1 = new ComplexNumber(0,0);
+        n2 = new ComplexNumber(4,3);
         
     }
     
@@ -31,8 +31,8 @@ public class BasicOperationTest {
     @Test
     public void testSum() {
         System.out.println("sum");
-        Number expResult = new Number(4,3);
-        Number result = BasicOperation.sum(n1, n2);
+        ComplexNumber expResult = new ComplexNumber(4,3);
+        ComplexNumber result = BasicOperation.sum(n1, n2);
         assertEquals(expResult, result);
         System.out.println("work\n");
     }
@@ -43,8 +43,8 @@ public class BasicOperationTest {
     @Test
     public void testSub() {
         System.out.println("sub");
-        Number expResult = new Number(-4,-3);
-        Number result = BasicOperation.sub(n1, n2);
+        ComplexNumber expResult = new ComplexNumber(-4,-3);
+        ComplexNumber result = BasicOperation.sub(n1, n2);
         assertEquals(expResult, result);
         System.out.println("work\n");
     }
@@ -55,8 +55,8 @@ public class BasicOperationTest {
     @Test
     public void testMultiply_case1() {
         System.out.println("multiply");
-        Number expResult = new Number(2,0);
-        Number result = BasicOperation.multiply(new Number(2,0), new Number(1,0));
+        ComplexNumber expResult = new ComplexNumber(2,0);
+        ComplexNumber result = BasicOperation.multiply(new ComplexNumber(2,0), new ComplexNumber(1,0));
         assertEquals(expResult.getRealPart(), result.getRealPart(), 0);
         
         
@@ -68,8 +68,8 @@ public class BasicOperationTest {
      */
     @Test
     public void testMultiply_case2() {
-        expResult = new Number(4, 2);
-        Number result = BasicOperation.multiply(new Number(2,0), new Number(2,1));
+        expResult = new ComplexNumber(4, 2);
+        ComplexNumber result = BasicOperation.multiply(new ComplexNumber(2,0), new ComplexNumber(2,1));
         assertEquals(expResult.getRealPart(), result.getRealPart(), 0);
         assertEquals(expResult.getImaginaryPart(), result.getImaginaryPart(), 0);
     }  
@@ -79,8 +79,8 @@ public class BasicOperationTest {
     @Test
     public void testInvert() {
         System.out.println("invert");
-        Number expResult = new Number(-4,-3);
-        Number result = BasicOperation.invert(n2);
+        ComplexNumber expResult = new ComplexNumber(-4,-3);
+        ComplexNumber result = BasicOperation.invert(n2);
         assertEquals(expResult, result);
         
     }
@@ -91,9 +91,9 @@ public class BasicOperationTest {
     @Test (expected=Exception.class)
     public void testDivide() throws Exception{
         System.out.println("divide");
-        Number n = new Number(18,51);
-        Number expResult = n2;
-        Number result = BasicOperation.divide(n, n1);
+        ComplexNumber n = new ComplexNumber(18,51);
+        ComplexNumber expResult = n2;
+        ComplexNumber result = BasicOperation.divide(n, n1);
         assertEquals(expResult, result);
         System.out.println("work\n");
     }
@@ -104,12 +104,12 @@ public class BasicOperationTest {
     @Test
     public void testSqrt() {
         System.out.println("sqrt");
-        Number expResult = new Number(2,0);
-        Number result = BasicOperation.sqrt(new Number(4,0));
+        ComplexNumber expResult = new ComplexNumber(2,0);
+        ComplexNumber result = BasicOperation.sqrt(new ComplexNumber(4,0));
         assertEquals(expResult.getRealPart(), result.getRealPart(), 0);
         
-        expResult = new Number(2,-1);
-        result = BasicOperation.sqrt(new Number(3,-4));
+        expResult = new ComplexNumber(2,-1);
+        result = BasicOperation.sqrt(new ComplexNumber(3,-4));
         assertEquals(expResult.getRealPart(), result.getRealPart(), 0);
         assertEquals(expResult.getImaginaryPart(), result.getImaginaryPart(), 0);
         System.out.println("work\n");

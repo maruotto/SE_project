@@ -37,7 +37,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextField tfInput;
     @FXML
-    private ListView<Number> stackview;
+    private ListView<ComplexNumber> stackview;
     @FXML
     private Button btnSend;
     @FXML
@@ -207,7 +207,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void savevariableclick(ActionEvent event) throws Exception {
-        Number value = ope.getNumberStack().pop();
+        ComplexNumber value = ope.getNumberStack().pop();
         ope.getVariables().setVariableValue(Character.valueOf(variablesMenù.getText().charAt(0)), value);
     }
     
@@ -376,7 +376,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void pushvariableclick(ActionEvent event) throws Exception {
-        Number value = ope.getVariables().getVariableValue(Character.valueOf(variablesMenù.getText().charAt(0)));
+        ComplexNumber value = ope.getVariables().getVariableValue(Character.valueOf(variablesMenù.getText().charAt(0)));
         System.out.println(value.toString());
         ope.getNumberStack().push(value);
     }
