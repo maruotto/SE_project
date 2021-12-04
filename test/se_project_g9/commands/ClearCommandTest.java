@@ -59,17 +59,17 @@ public class ClearCommandTest {
      * @throws se_project_g9.exceptions.InputNumberException
      */
     
-    /* doesn't work
+    //* doesn't work
     @Test
     public void testUndo() throws InputNumberException {
         clear.undo();
-        System.out.println(stack);
+        //System.out.println(stack);
         assertEquals(2, stack.size());
         ComplexNumber r2 = stack.pop();
         ComplexNumber r1 = stack.pop();
         assertEquals(n2, r2);
         assertEquals(n1, r1);
     }
-    */
+    //*/
     
 }
