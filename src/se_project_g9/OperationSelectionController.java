@@ -7,13 +7,9 @@ package se_project_g9;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.ResourceBundle;
-import java.util.Set;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableObjectValue;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,10 +17,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.MapValueFactory;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
-import se_project_g9.commands.Command;
 
 /**
  * FXML Controller class
@@ -33,13 +25,15 @@ import se_project_g9.commands.Command;
  */
 public class OperationSelectionController implements Initializable {
 
-    private final ObservableList<Map.Entry<String,UDOperation<Command>>> variables  = FXCollections.observableArrayList();
+    private ObservableList<Map.Entry<String,UDOperation>> variables = null;
     @FXML
-    private TableView<Map.Entry<String,UDOperation<Command>>> tableView;
+    private TableView<Map.Entry<String,UDOperation>> tableView;
     @FXML
-    private TableColumn<Map.Entry<String,UDOperation<Command>>, String> nameCln;
+    private TableColumn<Map.Entry<String,UDOperation>, String> nameCln;
     @FXML
-    private TableColumn<Map.Entry<String,UDOperation<Command>>, UDOperation<Command>> OperationsCln;
+    private TableColumn<Map.Entry<String,UDOperation>, UDOperation> OperationsCln;
+    
+    private HashMap<String,UDOperation> vars;
     
     /**
      * Initializes the controller class.
@@ -47,10 +41,23 @@ public class OperationSelectionController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        System.out.println("get" + this.variables);
         tableView.setEditable(true);
         nameCln.setEditable(true);
         OperationsCln.setEditable(true);
+        
+    }    
+
+    @FXML
+    private void removeClick(ActionEvent event) {
+        vars.remove(tableView.getSelectionModel().getSelectedItem().getKey());
+        variables.remove(tableView.getSelectionModel().getFocusedIndex());
+        
+    }
+
+    public void setVariables(HashMap<String, UDOperation> variables) {
+        
+        this.variables = FXCollections.observableArrayList(variables.entrySet());
+        this.vars = variables;
         
         nameCln.setCellValueFactory((param) -> {
             return new SimpleStringProperty(param.getValue().getKey());
@@ -58,101 +65,26 @@ public class OperationSelectionController implements Initializable {
         OperationsCln.setCellValueFactory((param) -> {
             return new SimpleObjectProperty(param.getValue().getValue());
         });
-
-        tableView.setItems(variables);
         
-        
-        
-    }    
-
-    @FXML
-    private void removeClick(ActionEvent event) {
-        
-    }
-
-    public void setVariables(HashMap<String, UDOperation> variables) {
-        Set s = variables.entrySet();
-        this.variables.addAll(s);
-        System.out.println("set" + this.variables);
+        tableView.setItems(this.variables);
     }
 
     @FXML
-    private void modifyCommitName(TableColumn.CellEditEvent<Map.Entry<String,UDOperation<Command>>, String> event) {
-        String oldValue = event.getOldValue();
-        String newValue = event.getNewValue();
+    private void menu(ActionEvent event) {
+    }
+
+    @FXML
+    private void modifyCommitName(TableColumn.CellEditEvent<Map.Entry<String,UDOperation>, String> event) {
         
     }
-    
+
     @FXML
-    private void modifyCommitOperation(TableColumn.CellEditEvent<Map.Entry<String,UDOperation<Command>>, String> event) {
-        String oldValue = event.getOldValue();
-        String newValue = event.getNewValue();
-        
+    private void modifyCommitOperation(TableColumn.CellEditEvent<Map.Entry<String,UDOperation>, UDOperation> event) {
     }
 
     
-    public class Op{
-        private String name;
-        private String udOp;
-
-        public Op(String name, UDOperation<Command> udOp) {
-            this.name = name;
-            this.udOp = udOp.toString();
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getUdOp() {
-            return udOp;
-        }
-
-        public void setUdOp(UDOperation<Command> udOp) {
-            this.udOp = udOp.toString();
-        }
-
-        @Override
-        public String toString() {
-            return name + ", udOp=" + udOp;
-        }
-
-        @Override
-        public int hashCode() {
-            int hash = 3;
-            hash = 37 * hash + Objects.hashCode(this.name);
-            return hash;
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (this == obj) {
-                return true;
-            }
-            if (obj == null) {
-                return false;
-            }
-            if (getClass() != obj.getClass()) {
-                return false;
-            }
-            final Op other = (Op) obj;
-            if (!Objects.equals(this.name, other.name)) {
-                return false;
-            }
-            return true;
-        }
         
         
-        
-        
-        
-        
-        
-    }
     
     
 }

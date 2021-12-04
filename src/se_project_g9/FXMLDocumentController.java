@@ -407,6 +407,7 @@ public class FXMLDocumentController implements Initializable {
             
             String name = pc.getName();
             String sequence = pc.getSequence();
+            
             if(name != null && sequence != null){
                 ope.addUDOperation(name, sequence);
             }

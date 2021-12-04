@@ -51,6 +51,8 @@ public class CustomOperationSelectionController implements Initializable {
     @FXML
     private void releasedSequence(KeyEvent event) {
         if (KeyCode.ENTER == event.getCode()) {
+            name = tfName.getText();
+            sequence = tfSequence.getText();
             close();
         }
         
