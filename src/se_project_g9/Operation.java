@@ -139,11 +139,27 @@ public class Operation implements ApplicationOperation {
                     throw new OperationNotPresentException("This operation is not supported");
             }
 
-        } else if (!operation){          
-                ret = new PushCommand(numberStack, convertNumber(input));
-            } else{
-                throw new OperationNotPresentException("This operation is not present in the library");
+        } else if(input.length() == 2 && Character.isAlphabetic(input.charAt(1))){
+            switch (String.valueOf(input.charAt(0))){
+                case ">":
+                    ret = new VInsertCommand(variables,numberStack, input.charAt(1));
+                    break;
+                case "<":
+                    ret = new VPushCommand(variables, input.charAt(1),numberStack);
+                    break;
+                case "+":
+                    ret = new VAddCommand(variables, input.charAt(1), numberStack);
+                    break;
+                case "-":
+                    ret = new VAddCommand(variables, input.charAt(1), numberStack);
+                    break;
             }
+                   
+        }else if (!operation){          
+            ret = new PushCommand(numberStack, convertNumber(input));
+        } else{
+            throw new OperationNotPresentException("This operation is not present in the library");
+        }
         
         return ret;
 
