@@ -5,6 +5,7 @@
 package se_project_g9;
 
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.Stack;
 
 /**
@@ -52,6 +53,37 @@ public class Variables {
     public Variables clone(){
         return new Variables((HashMap<Character, ComplexNumber>)this.variablesMap.clone(), (Stack<HashMap>) this.variableStack.clone());
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 23 * hash + Objects.hashCode(this.variablesMap);
+        hash = 23 * hash + Objects.hashCode(this.variableStack);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Variables other = (Variables) obj;
+        if (!Objects.equals(this.variablesMap, other.variablesMap)) {
+            return false;
+        }
+        if (!Objects.equals(this.variableStack, other.variableStack)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
     
 
 }

@@ -15,11 +15,12 @@ public class UDOperation<Command> extends Stack<Command>{
 
     @Override
     public synchronized Iterator<Command> iterator() {
-        return super.iterator(); //To change body of generated methods, choose Tools | Templates.
+         return super.iterator();//To change body of generated methods, choose Tools | Templates.
     }
     
     public synchronized Iterator<Command> reverseIterator(){
-        return reverseIterator();
+        
+        return new ReverseIterator<Command>(this);
     }
     
    
