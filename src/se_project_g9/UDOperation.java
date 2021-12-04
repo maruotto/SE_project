@@ -4,18 +4,23 @@
  */
 package se_project_g9;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import se_project_g9.commands.*;
+import java.util.Iterator;
+import java.util.Stack;
 
 /**
  *
  * @author group 9
  */
-class UDOperation {
-    private final Deque<Command> sequence;
+public class UDOperation<Command> extends Stack<Command>{
 
-    public UDOperation() {
-        this.sequence = new ArrayDeque<>();
+    @Override
+    public synchronized Iterator<Command> iterator() {
+        return super.iterator(); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    public synchronized Iterator<Command> reverseIterator(){
+        return reverseIterator();
+    }
+    
+   
 }

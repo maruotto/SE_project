@@ -21,6 +21,11 @@ public class Variables {
         this.variableStack = new Stack<HashMap>();
         
     }
+    
+    private Variables(HashMap<Character, ComplexNumber> variablesMap, Stack<HashMap> variableStack){
+        this.variablesMap = variablesMap;
+        this.variableStack = variableStack;
+    }
 
     public void setVariableValue(Character key, ComplexNumber value) throws Exception {
         if(key == null){
@@ -44,6 +49,9 @@ public class Variables {
         return variablesMap;
     }
     
+    public Variables clone(){
+        return new Variables((HashMap<Character, ComplexNumber>)this.variablesMap.clone(), (Stack<HashMap>) this.variableStack.clone());
+    }
     
 
 }

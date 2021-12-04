@@ -199,7 +199,9 @@ public class FXMLDocumentController implements Initializable {
             errorPopup(ex.getMessage());
         } catch (EmptyStackException e){
             errorPopup("Operazione non consentita");
-        } finally {
+        } catch (Exception e){
+            errorPopup("Operazione non consentita");
+        }finally {
             tfInput.clear();
         }
 
@@ -219,8 +221,8 @@ public class FXMLDocumentController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(new Scene(parent));
             stage.setAlwaysOnTop(true);
-            stage.showAndWait();
-            pc.setLabels(message);          
+            pc.setLabels(message); 
+            stage.showAndWait();                  
         } catch (IOException ex) {
             return false;
             
@@ -383,11 +385,15 @@ public class FXMLDocumentController implements Initializable {
             ope.undo();
         } catch (ImpossibleUndo ex) {
             errorPopup(ex.getMessage());
-        }
-        
+        }      
         if(ope.getOperationsPerfomed().empty()){
             undoBtn.disableProperty().set(true);
         }
+    }
+
+    @FXML
+    private void clickCustom(ActionEvent event) {
+        
     }
 
 }

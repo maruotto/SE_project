@@ -210,7 +210,7 @@ public class OperationTest {
         System.out.println("translate_input");
         String input = "abcd";
         Operation instance = new Operation();
-        instance.translateInput(input);
+        instance.translateInput(input, false);
 
     }
 
