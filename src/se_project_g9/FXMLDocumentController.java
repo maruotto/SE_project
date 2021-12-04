@@ -375,8 +375,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void pushvariableclick(ActionEvent event) throws Exception {
-        ComplexNumber value = ope.getVariables().getVariableValue(Character.valueOf(variablesMenù.getText().charAt(0)));
-        ope.getNumberStack().push(value);
+        ope.pushValueOf(Character.valueOf(variablesMenù.getText().charAt(0)));
     }
 
     @FXML
