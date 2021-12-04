@@ -48,6 +48,22 @@ public class Operation implements ApplicationOperation {
         return operations;
     }
 
+    
+    public void addUDOperation(String name, String input) throws InputNumberException{
+        if (operations.containsKey(input)){
+            throw new InputNumberException("Operation already defined, try with another name");
+        }
+        String[] splittedInput = input.split(" *");
+        UDOperation op = new UDOperation();
+        for (String s: splittedInput){
+            if (s.length() != 0){
+                op.push(translateInput(s, true)); //if exception thrown the execution is blocked
+            }
+        }
+        operations.put(name, op);
+    }
+    
+    
     public void undo() throws ImpossibleUndo{
         Command op = operationsPerformed.pop(); //throw empty stack exception
         try {
@@ -59,19 +75,22 @@ public class Operation implements ApplicationOperation {
     }
     
     public void performOperation(String input) throws InputNumberException{
-        Command op = translateInput(input);
+        Command op = translateInput(input, false);
         op.execute();
-        System.out.println("executed");
         operationsPerformed.push(op);
     }
 
-    protected Command translateInput(String input) throws InputNumberException {
+    protected Command translateInput(String input, boolean operation) throws InputNumberException {
         input = input.trim();
         Command ret = null;
         //ATTENTION!!!! if you want to add to the regular expression something like
         // the + sign or other things, use the operator |
         // example: if you want to add to this expression +, this will become " *?+"
-        if (input.length() == 1 && !Character.isLetterOrDigit(input.charAt(0))) {
+        
+        if (operations.containsKey(input)){
+            ret = new OperationCommand(operations.get(input),variables,numberStack);
+        }
+        else if (input.length() == 1 && !Character.isLetterOrDigit(input.charAt(0))) {
             switch (input) {
                 case "-":
                     ret = new SubCommand(numberStack);
@@ -121,9 +140,11 @@ public class Operation implements ApplicationOperation {
                     throw new OperationNotPresentException("This operation is not supported");
             }
 
-        } else {          
-            ret = new PushCommand(numberStack, convertNumber(input));
-        }
+        } else if (!operation){          
+                ret = new PushCommand(numberStack, convertNumber(input));
+            } else{
+                throw new OperationNotPresentException("This operation is not present in the library");
+            }
         
         return ret;
 
@@ -222,7 +243,7 @@ public class Operation implements ApplicationOperation {
     public void addToValue(Character variable) throws Exception {
 
         if (variable == null) {
-            throw new NullPointerException("label of variable not defined");
+            throw new NullPointerException("Label of variable not defined");
         }
 
         ComplexNumber lastValue = variables.getVariableValue(variable);
@@ -234,7 +255,7 @@ public class Operation implements ApplicationOperation {
     public void subToValue(Character variable) throws Exception {
 
         if (variable == null) {
-            throw new NullPointerException("label of variable not defined");
+            throw new NullPointerException("Label of variable not defined");
         }
 
         ComplexNumber lastValue = variables.getVariableValue(variable);
