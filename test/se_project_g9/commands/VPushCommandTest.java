@@ -19,28 +19,25 @@ import se_project_g9.Variables;
  *
  * @author luigi
  */
-public class VAddCommandTest {
+public class VPushCommandTest {
     
     private PersonalizedStack<ComplexNumber> stack;
     private ComplexNumber n1;
-    private Variables vars;
     private Character key;
+    private Variables vars;
     
-    
-    
-    public VAddCommandTest() throws Exception {
+    public VPushCommandTest() throws Exception {
         stack = new NumberStack();
         n1 = new ComplexNumber(3,4);
-        stack.push(n1);
-        vars = new Variables();
         key = Character.valueOf('c');
-        vars.setVariableValue(key,new ComplexNumber(2,1));
+        vars = new Variables();
+        vars.setVariableValue(key, n1);
+        
     }
     
     
     @Before
     public void setUp() {
-        
     }
     
     @After
@@ -48,33 +45,29 @@ public class VAddCommandTest {
     }
 
     /**
-     * Test of execute method, of class VAddCommand.
+     * Test of execute method, of class VPushCommand.
      */
     @Test
     public void testExecute() throws Exception {
-        System.out.println("VAdd execute");
-        Command cm = new VAddCommand(vars,key,stack);
+        System.out.println("execute");
+        Command cm = new VPushCommand(vars,key,stack);
         cm.execute();
-        ComplexNumber exp = new ComplexNumber(5,5);
-        assertEquals(0,stack.size());
+        ComplexNumber exp = stack.peek();
+        assertEquals(1,stack.size());
         assertEquals(exp,vars.getVariableValue(key));
-        
         
     }
 
     /**
-     * Test of undo method, of class VAddCommand.
+     * Test of undo method, of class VPushCommand.
      */
     @Test
     public void testUndo() throws Exception {
-        System.out.println("VAdd undo");
-        Command cm = new VAddCommand(vars,key,stack);
+        System.out.println("VPush undo");
+        Command cm = new VPushCommand(vars,key,stack);
         cm.execute();
         cm.undo();
-        ComplexNumber exp = new ComplexNumber(2,1);
-        assertEquals(1,stack.size());
-        assertEquals(n1,stack.peek());
-        assertEquals(exp,vars.getVariableValue(key));
+        assertEquals(0,stack.size());
         
     }
     
