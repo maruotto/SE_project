@@ -17,3 +17,8 @@
 
   - [summary document](https://docs.google.com/document/d/1dEZ50ihrupMXPDWs9hxklKsFJ_Qj5qhmW_KAqMKquyI/edit?usp=sharing)
   *****
+  
+  *****
+  ## FIRST SPRINT:
+  - [sprint backlog](https://docs.google.com/document/d/11BhDvv2jHc8awIdORmezzPf1LxMZPrI7f-G5Y1VNCvU/edit?usp=sharing)
+ *****
