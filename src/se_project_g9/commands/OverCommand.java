@@ -14,20 +14,27 @@ import se_project_g9.exceptions.NotEnoughNumbersException;
  * @author idamaruotto
  */
 public class OverCommand implements Command {
-        private PersonalizedStack<ComplexNumber> numberStack;
 
-        public OverCommand(PersonalizedStack<ComplexNumber> numberStack) {
-            assert numberStack != null;
-            this.numberStack = numberStack;
-        }
+    private PersonalizedStack<ComplexNumber> numberStack;
 
-        @Override
-        public void execute() throws NotEnoughNumbersException {
-            numberStack.over();
-        }
-
-        @Override
-        public void undo(){
-            numberStack.drop();
-        }
+    public OverCommand(PersonalizedStack<ComplexNumber> numberStack) {
+        assert numberStack != null;
+        this.numberStack = numberStack;
     }
+
+    @Override
+    public void execute() throws NotEnoughNumbersException {
+        numberStack.over();
+    }
+
+    @Override
+    public void undo() {
+        numberStack.drop();
+    }
+
+    @Override
+    public String toString() {
+        return "over";
+    }
+
+}

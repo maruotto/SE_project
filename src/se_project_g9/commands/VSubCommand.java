@@ -17,15 +17,14 @@ import se_project_g9.BasicOperation;
  *
  * @author luigi
  */
-public class VSubCommand implements Command{
-    
+public class VSubCommand implements Command {
+
     private Variables vars;
     private Character key;
     private PersonalizedStack<ComplexNumber> stack;
     private ComplexNumber elem;
-    
-    
-    public VSubCommand(Variables vars,Character key,PersonalizedStack<ComplexNumber> stack){
+
+    public VSubCommand(Variables vars, Character key, PersonalizedStack<ComplexNumber> stack) {
         this.vars = vars;
         this.key = key;
         this.stack = stack;
@@ -33,28 +32,32 @@ public class VSubCommand implements Command{
 
     @Override
     public void execute() throws InputNumberException {
-        
-         try {
+
+        try {
             elem = stack.pop();
             ComplexNumber lastValue = vars.getVariableValue(key);
-            vars.setVariableValue(key, BasicOperation.sub(lastValue,elem));
-        
+            vars.setVariableValue(key, BasicOperation.sub(lastValue, elem));
+
         } catch (NullPointerException ex) {
             throw new NullPointerException("key not specified");
-        } catch (Exception ex){
+        } catch (Exception ex) {
             throw new EmptyStackException();
         }
-       
+
     }
 
     @Override
     public void undo() throws InputNumberException {
         try {
             stack.push(elem);
-            vars.setVariableValue(key,BasicOperation.sum(vars.getVariableValue(key), elem));
+            vars.setVariableValue(key, BasicOperation.sum(vars.getVariableValue(key), elem));
         } catch (Exception ex) {
             throw new NullPointerException();
         }
     }
-    
+
+    @Override
+    public String toString() {
+        return "-" + key;
+    }
 }

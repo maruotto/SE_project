@@ -18,15 +18,14 @@ import se_project_g9.exceptions.InputNumberException;
  *
  * @author luigi
  */
-public class VAddCommand implements Command{
-    
+public class VAddCommand implements Command {
+
     private Variables vars;
     private Character key;
     private PersonalizedStack<ComplexNumber> stack;
     private ComplexNumber elem;
-    
- 
-    public VAddCommand(Variables vars,Character key,PersonalizedStack<ComplexNumber> stack){
+
+    public VAddCommand(Variables vars, Character key, PersonalizedStack<ComplexNumber> stack) {
         this.vars = vars;
         this.key = key;
         this.stack = stack;
@@ -34,31 +33,35 @@ public class VAddCommand implements Command{
 
     @Override
     public void execute() throws InputNumberException {
-        
+
         try {
             elem = stack.pop();
             ComplexNumber lastValue = vars.getVariableValue(key);
-            vars.setVariableValue(key, BasicOperation.sum(lastValue,elem));
-        
+            vars.setVariableValue(key, BasicOperation.sum(lastValue, elem));
+
         } catch (NullPointerException ex) {
             throw new NullPointerException("key not specified");
-        } catch (Exception ex){
+        } catch (Exception ex) {
             throw new EmptyStackException();
         }
-        
-        
+
     }
 
     @Override
     public void undo() throws InputNumberException {
-        
+
         try {
             stack.push(elem);
-            vars.setVariableValue(key,BasicOperation.sub(vars.getVariableValue(key), elem));
+            vars.setVariableValue(key, BasicOperation.sub(vars.getVariableValue(key), elem));
         } catch (Exception ex) {
             throw new NullPointerException();
         }
-         
+
     }
-    
+
+    @Override
+    public String toString() {
+        return "+" + key;
+    }
+
 }

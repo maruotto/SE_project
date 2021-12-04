@@ -16,60 +16,58 @@ import se_project_g9.exceptions.InputNumberException;
  *
  * @author luigi
  */
-public class VInsertCommand implements Command{
-    
+public class VInsertCommand implements Command {
+
     private PersonalizedStack<ComplexNumber> stack;
     private Character key;
     private ComplexNumber elem;
     private Variables vars;
     private ComplexNumber old;
-    
-    
-    public VInsertCommand(Variables vars,PersonalizedStack<ComplexNumber> stack,Character key){
+
+    public VInsertCommand(Variables vars, PersonalizedStack<ComplexNumber> stack, Character key) {
         this.vars = vars;
         this.stack = stack;
         this.key = key;
     }
-    
 
     @Override
     public void execute() throws InputNumberException {
-        
-        try{
+
+        try {
             elem = stack.pop();
-            if(vars.getVariablesMap().containsKey(key)){
+            if (vars.getVariablesMap().containsKey(key)) {
                 old = vars.getVariableValue(key);
-            }else{
+            } else {
                 old = null;
             }
-                
-            vars.setVariableValue(key,elem);
-            
-            
-        } catch(NullPointerException ex){
+
+            vars.setVariableValue(key, elem);
+
+        } catch (NullPointerException ex) {
             throw new NullPointerException("value to add not defined..");
         } catch (Exception ex) {
             throw new InputNumberException("Empty stack");
         }
-        
-      
+
     }
 
     @Override
     public void undo() throws InputNumberException {
         stack.push(elem);
-        if(old ==  null){
+        if (old == null) {
             vars.getVariablesMap().remove(key);
-        }else{
+        } else {
             try {
-                vars.setVariableValue(key,old);
+                vars.setVariableValue(key, old);
             } catch (Exception ex) {
                 throw new InputNumberException("Impossible undo");
             }
         }
-        
-       
-        
+
     }
-    
+
+    @Override
+    public String toString() {
+        return ">" + key;
+    }
 }

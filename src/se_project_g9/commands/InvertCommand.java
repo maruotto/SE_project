@@ -14,27 +14,32 @@ import se_project_g9.PersonalizedStack;
  * @author idamaruotto
  */
 public class InvertCommand implements Command {
-        private PersonalizedStack<ComplexNumber> numberStack;
-        private se_project_g9.ComplexNumber n1;
 
-        public InvertCommand(PersonalizedStack<ComplexNumber> numberStack) {
-            assert numberStack != null;
-            this.numberStack = numberStack;
-        }
+    private PersonalizedStack<ComplexNumber> numberStack;
+    private se_project_g9.ComplexNumber n1;
 
-        @Override
-        public void execute() {
-            n1 = numberStack.pop();
-            numberStack.push(BasicOperation.invert(n1));
-        }
+    public InvertCommand(PersonalizedStack<ComplexNumber> numberStack) {
+        assert numberStack != null;
+        this.numberStack = numberStack;
+    }
 
-        @Override
-        public void undo() {
-            if (n1 != null) {
-                numberStack.drop();
-                numberStack.push(n1);
-            }
+    @Override
+    public void execute() {
+        n1 = numberStack.pop();
+        numberStack.push(BasicOperation.invert(n1));
+    }
+
+    @Override
+    public void undo() {
+        if (n1 != null) {
+            numberStack.drop();
+            numberStack.push(n1);
         }
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "invert";
+    }
+
+}

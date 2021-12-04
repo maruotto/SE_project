@@ -11,25 +11,30 @@ import se_project_g9.exceptions.NotEnoughNumbersException;
  *
  * @author group9
  */
-    
-    
-    public class ClearCommand implements Command {
-        private PersonalizedStack<ComplexNumber> numberStack;
-        private PersonalizedStack<ComplexNumber> copyOfNumberStack;
+public class ClearCommand implements Command {
 
-        public ClearCommand(PersonalizedStack<ComplexNumber> numberStack) {
-            assert numberStack != null;
-            this.numberStack = numberStack;
-        }
+    private PersonalizedStack<ComplexNumber> numberStack;
+    private PersonalizedStack<ComplexNumber> copyOfNumberStack;
 
-        @Override
-        public void execute() throws NotEnoughNumbersException {
-            this.copyOfNumberStack = (PersonalizedStack<ComplexNumber>) numberStack.clone();
-            numberStack.clear();
-        }
-
-        @Override
-        public void undo(){
-            numberStack.addAll(copyOfNumberStack);
-        }
+    public ClearCommand(PersonalizedStack<ComplexNumber> numberStack) {
+        assert numberStack != null;
+        this.numberStack = numberStack;
     }
+
+    @Override
+    public void execute() throws NotEnoughNumbersException {
+        this.copyOfNumberStack = (PersonalizedStack<ComplexNumber>) numberStack.clone();
+        numberStack.clear();
+    }
+
+    @Override
+    public void undo() {
+        numberStack.addAll(copyOfNumberStack);
+    }
+
+    @Override
+    public String toString() {
+        return "clear";
+    }
+
+}

@@ -14,22 +14,27 @@ import se_project_g9.exceptions.NotEnoughNumbersException;
  * @author idamaruotto
  */
 public class DupCommand implements Command {
-        private PersonalizedStack<ComplexNumber> numberStack;
 
-        public DupCommand(PersonalizedStack<ComplexNumber> numberStack) {
-            assert numberStack != null;
-            this.numberStack = numberStack;
-        }
+    private PersonalizedStack<ComplexNumber> numberStack;
 
-        @Override
-        public void execute() throws NotEnoughNumbersException {
-            numberStack.dup();
-        }
-
-        @Override
-        public void undo(){
-            numberStack.drop();
-        }
+    public DupCommand(PersonalizedStack<ComplexNumber> numberStack) {
+        assert numberStack != null;
+        this.numberStack = numberStack;
     }
-    
-    
+
+    @Override
+    public void execute() throws NotEnoughNumbersException {
+        numberStack.dup();
+    }
+
+    @Override
+    public void undo() {
+        numberStack.drop();
+    }
+
+    @Override
+    public String toString() {
+        return "dup";
+    }
+
+}

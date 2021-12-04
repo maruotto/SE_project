@@ -37,5 +37,9 @@ public class DeleteCommand implements Command{
     public void undo() throws InputNumberException {
         map.put(key, oldValue);
     }
-    
+
+    @Override
+    public String toString() {
+        return "delete";
+    }
 }
