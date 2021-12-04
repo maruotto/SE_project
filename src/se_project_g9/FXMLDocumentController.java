@@ -419,4 +419,24 @@ public class FXMLDocumentController implements Initializable {
         
     }
 
+    @FXML
+    private void clickRemoveOperation(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("OperationSelection.fxml"));
+        Parent parent;
+        try {
+            parent = loader.load();
+            OperationSelectionController pc = loader.getController();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(parent));
+            stage.setAlwaysOnTop(true);
+            pc.setVariables(ope.getOperations());
+            stage.showAndWait();
+            
+        }  catch (InputNumberException e){
+            errorPopup(e.getMessage());
+        }  catch (IOException ex) {
+            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }
