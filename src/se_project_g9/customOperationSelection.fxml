@@ -6,17 +6,16 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="227.0" prefWidth="403.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="se_project_g9.CustomOperationSelectionController">
+<AnchorPane id="AnchorPane" prefHeight="227.0" prefWidth="403.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se_project_g9.CustomOperationSelectionController">
    <children>
       <Label layoutX="56.0" layoutY="40.0" text="Operation Name" />
-      <TextField layoutX="198.0" layoutY="36.0" />
-      <TextField alignment="TOP_LEFT" layoutX="198.0" layoutY="101.0" prefHeight="60.0" prefWidth="160.0" />
+      <TextField fx:id="tfName" layoutX="198.0" layoutY="36.0" onKeyReleased="#releasedName" />
+      <TextField fx:id="tfSequence" alignment="TOP_LEFT" layoutX="198.0" layoutY="101.0" onKeyReleased="#releasedSequence" prefHeight="60.0" prefWidth="160.0" />
       <Label layoutX="46.0" layoutY="123.0" text="Operation sequence" />
       <ButtonBar layoutX="202.0" layoutY="187.0" prefHeight="40.0" prefWidth="200.0">
         <buttons>
-          <Button mnemonicParsing="false" text="Cancel" />
-            <Button mnemonicParsing="false" text="Ok" />
+          <Button mnemonicParsing="false" onAction="#cancelClick" text="Cancel" />
+            <Button fx:id="btnOk" mnemonicParsing="false" onAction="#okClick" text="Ok" />
         </buttons>
       </ButtonBar>
    </children>
