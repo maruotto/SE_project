@@ -9,6 +9,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.Set;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableObjectValue;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,7 +21,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import se_project_g9.commands.Command;
 
 /**
@@ -26,13 +33,13 @@ import se_project_g9.commands.Command;
  */
 public class OperationSelectionController implements Initializable {
 
-    private ObservableList<Op> variables  = FXCollections.observableArrayList();
+    private final ObservableList<Map.Entry<String,UDOperation<Command>>> variables  = FXCollections.observableArrayList();
     @FXML
-    private TableView<Op> tableView;
+    private TableView<Map.Entry<String,UDOperation<Command>>> tableView;
     @FXML
-    private TableColumn<Op, String> nameCln;
+    private TableColumn<Map.Entry<String,UDOperation<Command>>, String> nameCln;
     @FXML
-    private TableColumn<Op, String> OperationsCln;
+    private TableColumn<Map.Entry<String,UDOperation<Command>>, UDOperation<Command>> OperationsCln;
     
     /**
      * Initializes the controller class.
@@ -41,14 +48,21 @@ public class OperationSelectionController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         System.out.println("get" + this.variables);
-        nameCln.setCellValueFactory(new PropertyValueFactory<Op, String>("name"));
-        OperationsCln.setCellValueFactory(new PropertyValueFactory<Op, String>("udOp"));
-        //OperationsCln.setCellFactory((TextFieldTableCell.forTableColumn()));
-        tableView.setItems(variables);
-        
         tableView.setEditable(true);
         nameCln.setEditable(true);
         OperationsCln.setEditable(true);
+        
+        nameCln.setCellValueFactory((param) -> {
+            return new SimpleStringProperty(param.getValue().getKey());
+        });
+        OperationsCln.setCellValueFactory((param) -> {
+            return new SimpleObjectProperty(param.getValue().getValue());
+        });
+
+        tableView.setItems(variables);
+        
+        
+        
     }    
 
     @FXML
@@ -57,18 +71,25 @@ public class OperationSelectionController implements Initializable {
     }
 
     public void setVariables(HashMap<String, UDOperation> variables) {
-        for(String s: variables.keySet()){
-            this.variables.add(new Op(s, variables.get(s)));
-        }
+        Set s = variables.entrySet();
+        this.variables.addAll(s);
         System.out.println("set" + this.variables);
     }
 
     @FXML
-    private void modifyCommitName(TableColumn.CellEditEvent<Op, String> event) {
+    private void modifyCommitName(TableColumn.CellEditEvent<Map.Entry<String,UDOperation<Command>>, String> event) {
         String oldValue = event.getOldValue();
         String newValue = event.getNewValue();
         
     }
+    
+    @FXML
+    private void modifyCommitOperation(TableColumn.CellEditEvent<Map.Entry<String,UDOperation<Command>>, String> event) {
+        String oldValue = event.getOldValue();
+        String newValue = event.getNewValue();
+        
+    }
+
     
     public class Op{
         private String name;

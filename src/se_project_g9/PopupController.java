@@ -6,7 +6,6 @@ package se_project_g9;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import static javafx.application.Platform.exit;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
