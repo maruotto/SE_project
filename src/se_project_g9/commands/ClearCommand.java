@@ -20,11 +20,11 @@ import se_project_g9.exceptions.NotEnoughNumbersException;
         public ClearCommand(PersonalizedStack<ComplexNumber> numberStack) {
             assert numberStack != null;
             this.numberStack = numberStack;
-            this.copyOfNumberStack = (PersonalizedStack<ComplexNumber>) numberStack.clone();
         }
 
         @Override
         public void execute() throws NotEnoughNumbersException {
+            this.copyOfNumberStack = (PersonalizedStack<ComplexNumber>) numberStack.clone();
             numberStack.clear();
         }
 

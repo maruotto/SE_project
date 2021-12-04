@@ -4,6 +4,7 @@
  */
 package se_project_g9.commands;
 
+import java.util.EmptyStackException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import se_project_g9.ComplexNumber;
@@ -34,11 +35,15 @@ public class VAddCommand implements Command{
     @Override
     public void execute() throws InputNumberException {
         
-        elem = stack.pop();
         try {
-            vars.setVariableValue(key, BasicOperation.sum(vars.getVariableValue(key),elem));
-        } catch (Exception ex) {
-            Logger.getLogger(VAddCommand.class.getName()).log(Level.SEVERE, null, ex);
+            elem = stack.pop();
+            ComplexNumber lastValue = vars.getVariableValue(key);
+            vars.setVariableValue(key, BasicOperation.sum(lastValue,elem));
+        
+        } catch (NullPointerException ex) {
+            throw new NullPointerException("key not specified");
+        } catch (Exception ex){
+            throw new EmptyStackException();
         }
         
         
@@ -47,11 +52,11 @@ public class VAddCommand implements Command{
     @Override
     public void undo() throws InputNumberException {
         
-        stack.push(elem);
         try {
+            stack.push(elem);
             vars.setVariableValue(key,BasicOperation.sub(vars.getVariableValue(key), elem));
         } catch (Exception ex) {
-            Logger.getLogger(VAddCommand.class.getName()).log(Level.SEVERE, null, ex);
+            throw new NullPointerException();
         }
          
     }
