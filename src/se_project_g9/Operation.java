@@ -50,13 +50,14 @@ public class Operation implements ApplicationOperation {
 
     
     public void addUDOperation(String name, String input) throws InputNumberException{
-        if (operations.containsKey(input)){
+        if (operations.containsKey(name)){
             throw new InputNumberException("Operation already defined, try with another name");
         }
-        String[] splittedInput = input.split(" *");
+        String[] splittedInput = input.split(" +");
         UDOperation op = new UDOperation();
         for (String s: splittedInput){
-            if (s.length() != 0){
+            if (s.length() > 0){
+                System.out.println(s + " g");
                 op.push(translateInput(s, true)); //if exception thrown the execution is blocked
             }
         }
@@ -110,14 +111,12 @@ public class Operation implements ApplicationOperation {
             //find operation
         } else if (input.startsWith("in")){
             ret = new InvertCommand(numberStack);
-        }else if (input.startsWith("j") || input.startsWith("i")) {
+        }else if ((input.startsWith("j") || input.startsWith("i")) && !operation) {
             numberStack.push(convertNumber(input));
         } else if (Character.isAlphabetic(input.charAt(0))) {
             //is a function
+            System.out.println(input + "g");
             switch (input) {
-                //case "invert":
-                //  ret = new InvertCommand(numberStack);
-                //  break;
                 case "sqrt":
                     ret = new SqrtCommand(numberStack);
                     break;

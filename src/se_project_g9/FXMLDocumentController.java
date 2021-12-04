@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.EmptyStackException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -198,9 +200,9 @@ public class FXMLDocumentController implements Initializable {
         } catch (InputNumberException | NumberFormatException ex) {
             errorPopup(ex.getMessage());
         } catch (EmptyStackException e){
-            errorPopup("Operazione non consentita");
+            errorPopup("Operation not allowed");
         } catch (Exception e){
-            errorPopup("Operazione non consentita");
+            errorPopup("Operation not allowed");
         }finally {
             tfInput.clear();
         }
@@ -393,6 +395,28 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void clickCustom(ActionEvent event) {
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("customOperationSelection.fxml"));
+        Parent parent;
+        try {
+            parent = loader.load();
+            CustomOperationSelectionController pc = loader.getController();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(parent));
+            stage.setAlwaysOnTop(true);
+            stage.showAndWait();
+            
+            String name = pc.getName();
+            String sequence = pc.getSequence();
+            if(name != null && sequence != null){
+                ope.addUDOperation(name, sequence);
+            }
+        }  catch (InputNumberException e){
+            errorPopup(e.getMessage());
+        }  catch (IOException ex) {
+            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         
     }
 
