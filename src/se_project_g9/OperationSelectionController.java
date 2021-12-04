@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -15,6 +16,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
@@ -34,6 +36,8 @@ public class OperationSelectionController implements Initializable {
     private TableColumn<Map.Entry<String,UDOperation>, UDOperation> OperationsCln;
     
     private HashMap<String,UDOperation> vars;
+    @FXML
+    private MenuItem removeBtn;
     
     /**
      * Initializes the controller class.
@@ -44,7 +48,7 @@ public class OperationSelectionController implements Initializable {
         tableView.setEditable(true);
         nameCln.setEditable(true);
         OperationsCln.setEditable(true);
-        
+        removeBtn.disableProperty().bind(Bindings.isEmpty(tableView.selectionModelProperty().get().getSelectedItems()));
     }    
 
     @FXML
