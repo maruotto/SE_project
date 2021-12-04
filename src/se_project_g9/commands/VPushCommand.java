@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import se_project_g9.ComplexNumber;
 import se_project_g9.Operation;
 import se_project_g9.PersonalizedStack;
+import se_project_g9.Variables;
 import se_project_g9.exceptions.InputNumberException;
 
 /**
@@ -17,14 +18,14 @@ import se_project_g9.exceptions.InputNumberException;
  */
 public class VPushCommand implements Command{
     
-    private Operation ope;
     private Character key;
     private PersonalizedStack<ComplexNumber> stack;
+    private Variables vars;
     
     
-    public VPushCommand(Operation ope,Character key,PersonalizedStack<ComplexNumber> stack){
+    public VPushCommand(Variables vars,Character key,PersonalizedStack<ComplexNumber> stack){
         
-        this.ope = ope;
+        this.vars = vars;
         this.key = key;
         this.stack = stack;
         
@@ -34,10 +35,12 @@ public class VPushCommand implements Command{
     @Override
     public void execute() throws InputNumberException {
         
-        try {
-            ope.pushValueOf(key);
+        try{
+            
+        //vedere se deve essere controllato se appartiene all'alfabeto
+        stack.push(vars.getVariableValue(key));
         } catch (Exception ex) {
-            Logger.getLogger(VPushCommand.class.getName()).log(Level.SEVERE, null, ex);
+            throw new NullPointerException("value to push not defined");
         }
     }
     

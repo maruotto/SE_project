@@ -200,46 +200,31 @@ public class Operation implements ApplicationOperation {
 
     public void addToVariable(Character variable) throws Exception {
 
-        if (variable == null) {
-            throw new NullPointerException("value to add not defined..");
-        }
-
-        //vedere se deve essere controllato se appartiene all'alfabeto
-        ComplexNumber value = numberStack.pop();
-        variables.setVariableValue(variable, value);
+        Command cm = new VInsertCommand(variables,numberStack,variable);
+        cm.execute();
+        operationsPerformed.push(cm);
+        
     }
 
     public void pushValueOf(Character variable) throws Exception {
-
-        if (variable == null) {
-            throw new NullPointerException("value to push not defined");
-        }
-        //vedere se deve essere controllato se appartiene all'alfabeto
-
-        numberStack.push(variables.getVariableValue(variable));
+        
+        Command cm = new VPushCommand(variables,variable,numberStack);
+        cm.execute();
+        operationsPerformed.push(cm);
     }
 
     public void addToValue(Character variable) throws Exception {
 
-        if (variable == null) {
-            throw new NullPointerException("label of variable not defined");
-        }
-
-        ComplexNumber lastValue = variables.getVariableValue(variable);
-        ComplexNumber stackValue = numberStack.pop();
-        variables.setVariableValue(variable, BasicOperation.sum(lastValue, stackValue));
-
+        Command cm = new VAddCommand(variables,variable,numberStack);
+        cm.execute();
+        operationsPerformed.push(cm);
     }
 
     public void subToValue(Character variable) throws Exception {
 
-        if (variable == null) {
-            throw new NullPointerException("label of variable not defined");
-        }
-
-        ComplexNumber lastValue = variables.getVariableValue(variable);
-        ComplexNumber stackValue = numberStack.pop();
-        variables.setVariableValue(variable, BasicOperation.sub(lastValue, stackValue));
+        Command cm = new VSubCommand(variables,variable,numberStack);
+        cm.execute();
+        operationsPerformed.push(cm);
 
     }
 

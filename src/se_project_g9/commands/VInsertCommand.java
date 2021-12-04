@@ -4,6 +4,7 @@
  */
 package se_project_g9.commands;
 
+import java.util.EmptyStackException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import se_project_g9.ComplexNumber;
@@ -21,6 +22,7 @@ public class VInsertCommand implements Command{
     private Character key;
     private ComplexNumber elem;
     private Variables vars;
+    private ComplexNumber old;
     
     
     public VInsertCommand(Variables vars,PersonalizedStack<ComplexNumber> stack,Character key){
@@ -33,19 +35,39 @@ public class VInsertCommand implements Command{
     @Override
     public void execute() throws InputNumberException {
         
-        elem = stack.pop();
-        try {
-            vars.setVariableValue(key, elem);
+        try{
+            elem = stack.pop();
+            if(vars.getVariablesMap().containsKey(key)){
+                old = vars.getVariableValue(key);
+            }else{
+                old = null;
+            }
+                
+            vars.setVariableValue(key,elem);
+            
+            
+        } catch(NullPointerException ex){
+            throw new NullPointerException("value to add not defined..");
         } catch (Exception ex) {
-            Logger.getLogger(VInsertCommand.class.getName()).log(Level.SEVERE, null, ex);
+            throw new InputNumberException("Empty stack");
         }
+        
       
     }
 
     @Override
     public void undo() throws InputNumberException {
         stack.push(elem);
-        vars.getVariablesMap().remove(key);
+        if(old ==  null){
+            vars.getVariablesMap().remove(key);
+        }else{
+            try {
+                vars.setVariableValue(key,old);
+            } catch (Exception ex) {
+                throw new InputNumberException("Impossible undo");
+            }
+        }
+        
        
         
     }
