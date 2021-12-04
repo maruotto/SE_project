@@ -430,7 +430,8 @@ public class FXMLDocumentController implements Initializable {
             stage.setScene(new Scene(parent));
             stage.setAlwaysOnTop(true);
             pc.setVariables(ope.getOperations());
-            stage.showAndWait();
+            //stage.showAndWait();
+            stage.show();
             
         }  catch (InputNumberException e){
             errorPopup(e.getMessage());
