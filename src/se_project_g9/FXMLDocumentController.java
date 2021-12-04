@@ -34,7 +34,7 @@ import se_project_g9.exceptions.InputNumberException;
  */
 public class FXMLDocumentController implements Initializable {
 
-    private Operation ope;
+    public static Operation ope;
 
     @FXML
     private TextField tfInput;
