@@ -11,17 +11,26 @@ import java.util.Stack;
  *
  * @author group 9
  */
-public class UDOperation<Command> extends Stack<Command>{
+public class UDOperation<Command> extends Stack<Command> {
 
     @Override
     public synchronized Iterator<Command> iterator() {
-         return super.iterator();//To change body of generated methods, choose Tools | Templates.
+        return super.iterator();//To change body of generated methods, choose Tools | Templates.
     }
-    
-    public synchronized Iterator<Command> reverseIterator(){
-        
+
+    public synchronized Iterator<Command> reverseIterator() {
+
         return new ReverseIterator<Command>(this);
     }
-    
-   
+
+    @Override
+    public String toString() {
+        String s = "";
+        for (Command c : this) {
+            s += c.toString();
+            s += " ";
+        }
+        return s;
+    }
+
 }

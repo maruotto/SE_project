@@ -13,22 +13,27 @@ import se_project_g9.exceptions.NotEnoughNumbersException;
  * @author idamaruotto
  */
 public class SwapCommand implements Command {
-        private PersonalizedStack<ComplexNumber> numberStack;
 
-        public SwapCommand(PersonalizedStack<ComplexNumber> numberStack) {
-            assert numberStack != null;
-            this.numberStack = numberStack;
-        }
+    private PersonalizedStack<ComplexNumber> numberStack;
 
-        @Override
-        public void execute() throws NotEnoughNumbersException {
-            numberStack.swap();
-        }
-
-        @Override
-        public void undo() throws NotEnoughNumbersException {
-            numberStack.swap();
-        }
+    public SwapCommand(PersonalizedStack<ComplexNumber> numberStack) {
+        assert numberStack != null;
+        this.numberStack = numberStack;
     }
-    
-    
+
+    @Override
+    public void execute() throws NotEnoughNumbersException {
+        numberStack.swap();
+    }
+
+    @Override
+    public void undo() throws NotEnoughNumbersException {
+        numberStack.swap();
+    }
+
+    @Override
+    public String toString() {
+        return "swap";
+    }
+
+}

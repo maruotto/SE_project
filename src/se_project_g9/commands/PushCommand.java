@@ -12,27 +12,32 @@ import se_project_g9.PersonalizedStack;
  * @author idamaruotto
  */
 public class PushCommand implements Command {
-        private PersonalizedStack<ComplexNumber> numberStack;
-        private se_project_g9.ComplexNumber n1;
 
-        public PushCommand(PersonalizedStack<ComplexNumber> numberStack, se_project_g9.ComplexNumber n1) {
-            assert numberStack != null;
-            assert n1 != null;
-            this.numberStack = numberStack;
-            this.n1 = n1;
-        }
+    private PersonalizedStack<ComplexNumber> numberStack;
+    private se_project_g9.ComplexNumber n1;
 
-        @Override
-        public void execute() {
-            n1 = numberStack.push(n1);
-        }
+    public PushCommand(PersonalizedStack<ComplexNumber> numberStack, se_project_g9.ComplexNumber n1) {
+        assert numberStack != null;
+        assert n1 != null;
+        this.numberStack = numberStack;
+        this.n1 = n1;
+    }
 
-        @Override
-        public void undo() {
-            if (n1 != null) {
-                numberStack.drop();
-            }
+    @Override
+    public void execute() {
+        n1 = numberStack.push(n1);
+    }
+
+    @Override
+    public void undo() {
+        if (n1 != null) {
+            numberStack.drop();
         }
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "push";
+    }
+
+}

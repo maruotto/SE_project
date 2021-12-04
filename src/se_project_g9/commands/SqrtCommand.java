@@ -15,9 +15,10 @@ import se_project_g9.PersonalizedStack;
  * @author idamaruotto
  */
 public class SqrtCommand implements Command {
+
     private PersonalizedStack<ComplexNumber> numberStack;
     private se_project_g9.ComplexNumber square; //we could have performed the square operation to make undo, but decimal digits could be problematic
-        
+
     public SqrtCommand(PersonalizedStack<ComplexNumber> numberStack) {
         assert numberStack != null;
         this.numberStack = numberStack;
@@ -32,9 +33,14 @@ public class SqrtCommand implements Command {
     }
 
     @Override
-    public void undo(){
+    public void undo() {
         numberStack.pop();
         numberStack.push(square);
     }
-    
+
+    @Override
+    public String toString() {
+        return "sqrt";
+    }
+
 }
