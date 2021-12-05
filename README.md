@@ -20,5 +20,13 @@
   
   *****
   ## SECOND SPRINT:
-  - [sprint backlog](https://docs.google.com/document/d/11BhDvv2jHc8awIdORmezzPf1LxMZPrI7f-G5Y1VNCvU/edit?usp=sharing)
+  - [sprint backlog](https://docs.google.com/document/d/16cqFyrweU-SY8HXMuYLpJkLF7NBbWV55btn3zmdiq1o/edit?usp=sharing)
+
+  - [sprint retrospective report](https://docs.google.com/document/d/1kS9gVX2epuaH9s1JIBclY8kKYKy21pjW9JiiuXOgRG0/edit?usp=sharing)
+  
+  - [sprint review](https://docs.google.com/document/d/1EEwXMov9d2vPP7BTyO3tZtFGu8ltDeebnhnfKpF_do0/edit?usp=sharing)
+
+  - [burndown chart](https://docs.google.com/document/d/1wnU5xUkqT15Ua-eSnscnJbrSsfLGg1t-EkpjpPmXqHM/edit?usp=sharing)
+
+  - [summary document](https://docs.google.com/document/d/11BhDvv2jHc8awIdORmezzPf1LxMZPrI7f-G5Y1VNCvU/edit?usp=sharing)
  *****
