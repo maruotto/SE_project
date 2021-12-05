@@ -157,7 +157,7 @@ public class Operation implements ApplicationOperation {
                     ret = new VAddCommand(variables, input.charAt(1), numberStack);
                     break;
                 case "-":
-                    ret = new VAddCommand(variables, input.charAt(1), numberStack);
+                    ret = new VSubCommand(variables, input.charAt(1), numberStack);
                     break;
             }
                    
