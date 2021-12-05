@@ -70,7 +70,7 @@ public class Variables {
         if (obj == null) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        if (this.getClass() != obj.getClass()) {
             return false;
         }
         final Variables other = (Variables) obj;
@@ -82,6 +82,26 @@ public class Variables {
         }
         return true;
     }
+
+    public boolean addAll(Variables other){
+        if(other.variablesMap==null || other.variableStack == null)
+            return false;
+        this.variableStack.addAll(other.variableStack);
+        this.variablesMap.putAll(other.variablesMap);
+        return true;
+    }
+    
+    @Override
+    public String toString() {
+        return "Variables{" + "variablesMap=" + variablesMap + ", variableStack=" + variableStack + '}';
+    }
+
+    public void clear() {
+        this.variableStack.clear();
+        this.variablesMap.clear();
+    }
+    
+    
     
     
     

@@ -27,17 +27,18 @@ public class OperationCommandTest {
     private OperationCommand cm;
     
     public OperationCommandTest() {
+        
+        
+    }
+    
+    @Before
+    public void setUp() {
         stack = new NumberStack();
         vars = new Variables();
         stack.push(new ComplexNumber(12, 8));
         stack.push(new ComplexNumber(1, 34));
         stack.push(new ComplexNumber(0, -2));
         stack.push(new ComplexNumber(4, 2));
-        
-    }
-    
-    @Before
-    public void setUp() {
         op = new UDOperation<>();
         op.push(new SumCommand(stack));
         op.push(new SubCommand(stack));
@@ -47,6 +48,7 @@ public class OperationCommandTest {
     
     @After
     public void tearDown() {
+        vars = new Variables();
     }
 
     /**
@@ -66,14 +68,19 @@ public class OperationCommandTest {
      */
     @Test
     public void testUndo() throws Exception {
+        System.out.println(vars);
+        cm.execute();
+        System.out.println(vars);
         cm.undo();
+        System.out.println(vars);
         PersonalizedStack expStack = new NumberStack();
         expStack.push(new ComplexNumber(12, 8));
         expStack.push(new ComplexNumber(1, 34));
         expStack.push(new ComplexNumber(0, -2));
         expStack.push(new ComplexNumber(4, 2));
         assertEquals(expStack, stack);
-        assertEquals(new Variables(), vars);
+        Variables expVars = new Variables();
+        assertEquals(expVars, vars);
     }
     
 }

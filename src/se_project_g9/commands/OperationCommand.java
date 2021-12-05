@@ -35,12 +35,15 @@ public class OperationCommand implements Command {
         this.backupStack = (PersonalizedStack) stack.clone();
         this.backupVars = vars.clone();
         
+        
         for (Command c : op) {
             try {
                 c.execute();
             } catch (Exception e) {
+                this.stack.clear();
                 this.stack.addAll(backupStack);
-                this.vars = backupVars.clone();
+                this.vars.clear();
+                this.vars.addAll(backupVars);
                 throw new InputNumberException("Operation not executed successfully");
             }
         }
@@ -51,8 +54,10 @@ public class OperationCommand implements Command {
 
     @Override
     public void undo() throws InputNumberException {
+        this.stack.clear();
         this.stack.addAll(backupStack);
-        this.vars = backupVars.clone();
+        this.vars.clear();
+        this.vars.addAll(backupVars);
     }
 
     @Override

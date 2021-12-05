@@ -116,6 +116,11 @@ public class NumberStack<E> extends Stack<E> implements PersonalizedStack<E> {
         return super.clone(); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public synchronized boolean equals(Object o) {
+        return super.equals(o); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
     
     /**
