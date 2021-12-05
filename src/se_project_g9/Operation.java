@@ -53,6 +53,12 @@ public class Operation implements ApplicationOperation {
         if (operations.containsKey(name)){
             throw new InputNumberException("Operation already defined, try with another name");
         }
+        
+        if (name.contains(" ")){
+            throw new InputNumberException("Space not allowed in operation's name");
+        }
+        
+        
         String[] splittedInput = input.split(" +");
         UDOperation op = new UDOperation();
         for (String s: splittedInput){
@@ -136,7 +142,7 @@ public class Operation implements ApplicationOperation {
                     ret = new DropCommand(numberStack);
                     break;
                 default:
-                    throw new OperationNotPresentException("This operation is not supported");
+                    throw new OperationNotPresentException("This operation is not supported: " + input);
             }
 
         } else if(input.length() == 2 && Character.isAlphabetic(input.charAt(1))){

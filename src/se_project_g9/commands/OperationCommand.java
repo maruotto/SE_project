@@ -26,34 +26,33 @@ public class OperationCommand implements Command {
         this.op = op;
         this.stack = stack;
         this.vars = vars;
-        this.backupStack = (PersonalizedStack) stack.clone();
-        this.backupVars = vars.clone();
+        
 
     }
 
     @Override
     public void execute() throws InputNumberException {
-        boolean done = true;
+        this.backupStack = (PersonalizedStack) stack.clone();
+        this.backupVars = vars.clone();
+        
         for (Command c : op) {
             try {
                 c.execute();
-            } catch (InputNumberException e) {
-                done = false;
-                break;
+            } catch (Exception e) {
+                this.stack.addAll(backupStack);
+                this.vars = backupVars.clone();
+                throw new InputNumberException("Operation not executed successfully");
             }
         }
-        if (done) {
-            return;
-        }
-        this.stack = backupStack;
-        this.vars = backupVars;
+        
+        
 
     }
 
     @Override
     public void undo() throws InputNumberException {
-        this.stack = backupStack;
-        this.vars = backupVars;
+        this.stack.addAll(backupStack);
+        this.vars = backupVars.clone();
     }
 
     @Override

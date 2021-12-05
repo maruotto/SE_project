@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.TextFieldTableCell;
 
 /**
  * FXML Controller class
@@ -33,7 +34,7 @@ public class OperationSelectionController implements Initializable {
     @FXML
     private TableColumn<Map.Entry<String,UDOperation>, String> nameCln;
     @FXML
-    private TableColumn<Map.Entry<String,UDOperation>, UDOperation> OperationsCln;
+    private TableColumn<Map.Entry<String,UDOperation>, String> OperationsCln;
     
     private HashMap<String,UDOperation> vars;
     @FXML
@@ -44,10 +45,7 @@ public class OperationSelectionController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        tableView.setEditable(true);
-        nameCln.setEditable(true);
-        OperationsCln.setEditable(true);
+         
         removeBtn.disableProperty().bind(Bindings.isEmpty(tableView.selectionModelProperty().get().getSelectedItems()));
     }    
 
@@ -67,8 +65,15 @@ public class OperationSelectionController implements Initializable {
             return new SimpleStringProperty(param.getValue().getKey());
         });
         OperationsCln.setCellValueFactory((param) -> {
-            return new SimpleObjectProperty(param.getValue().getValue());
+            return new SimpleStringProperty(param.getValue().getValue().toString());
         });
+        
+        tableView.setEditable(true);
+        nameCln.setEditable(true);
+        OperationsCln.setEditable(true);
+        
+        nameCln.setCellFactory((TextFieldTableCell.forTableColumn()));
+        OperationsCln.setCellFactory((TextFieldTableCell.forTableColumn()));
         
         tableView.setItems(this.variables);
     }
