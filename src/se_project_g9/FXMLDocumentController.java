@@ -200,7 +200,7 @@ public class FXMLDocumentController implements Initializable {
         } catch (InputNumberException | NumberFormatException ex) {
             errorPopup(ex.getMessage());
         } catch (EmptyStackException e){
-            errorPopup("Operation not allowed");
+            errorPopup("Operation not allowed!");
         } catch (Exception e){
             errorPopup("Operation not allowed");
         }finally {

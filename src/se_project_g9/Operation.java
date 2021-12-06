@@ -83,6 +83,7 @@ public class Operation implements ApplicationOperation {
     
     public void performOperation(String input) throws InputNumberException{
         Command op = translateInput(input, false);
+        System.out.println("op"+op);
         op.execute();
         operationsPerformed.push(op);
     }
@@ -118,7 +119,7 @@ public class Operation implements ApplicationOperation {
         } else if (input.startsWith("in")){
             ret = new InvertCommand(numberStack);
         }else if ((input.startsWith("j") || input.startsWith("i")) && !operation) {
-            numberStack.push(convertNumber(input));
+            ret = new PushCommand(numberStack, convertNumber(input));
         } else if (Character.isAlphabetic(input.charAt(0))) {
             //is a function
             System.out.println(input + "g");
