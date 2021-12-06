@@ -62,7 +62,7 @@ public class OperationCommand implements Command {
 
     @Override
     public String toString() {
-        String commands = "Commands:\n";
+        String commands = "";
         for (Command c : op) {
             commands += c.toString();
             commands += "\n";
