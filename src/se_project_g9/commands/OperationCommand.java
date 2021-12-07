@@ -12,7 +12,7 @@ import se_project_g9.Variables;
 
 /**
  *
- * @author idamaruotto
+ * @author group 9
  */
 public class OperationCommand implements Command {
 

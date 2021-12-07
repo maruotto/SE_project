@@ -11,7 +11,7 @@ import se_project_g9.exceptions.InputNumberException;
 
 /**
  *
- * @author luigi
+ * @author group 9
  */
 public class DeleteCommand implements Command{
     
@@ -24,8 +24,6 @@ public class DeleteCommand implements Command{
     public DeleteCommand(UDAllOp map,String key){
         this.map = map;
         this.key = key;
-        
-        
     }
 
     @Override
