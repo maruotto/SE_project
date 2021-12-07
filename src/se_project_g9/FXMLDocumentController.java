@@ -450,6 +450,5 @@ public class FXMLDocumentController implements Initializable {
     private void clickrestorevariables(ActionEvent event) {
          tfInput.setText(tfInput.getText() + "restore");
     }
-
 }
 
