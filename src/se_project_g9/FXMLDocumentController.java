@@ -441,5 +441,15 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    @FXML
+    private void clicksavevariables(ActionEvent event) {
+         tfInput.setText(tfInput.getText() + "save");
+    }
+
+    @FXML
+    private void clickrestorevariables(ActionEvent event) {
+         tfInput.setText(tfInput.getText() + "restore");
+    }
+
 }
 
