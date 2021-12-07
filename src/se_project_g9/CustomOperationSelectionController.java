@@ -11,7 +11,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -38,7 +37,7 @@ public class CustomOperationSelectionController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         tfName.selectHome();
-        btnOk.disableProperty().bind(Bindings.isEmpty(tfName.textProperty()).and(Bindings.isEmpty(tfSequence.textProperty())));
+        btnOk.disableProperty().bind(Bindings.isEmpty(tfName.textProperty()).or(Bindings.isEmpty(tfSequence.textProperty())));
     }    
 
     @FXML

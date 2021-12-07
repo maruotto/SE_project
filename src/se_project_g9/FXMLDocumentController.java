@@ -151,30 +151,75 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void clickclear(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "clear");
+        try {
+            ope.clear();
+        } catch (Exception ex) {
+            String message = "";
+            if(ex.getMessage() == null)
+                message = "An error has occurred";
+            else message = ex.getMessage();
+                
+            CustomPopup.errorPopup(message);
+        }
     }
 
     @FXML
     private void clickdrop(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "drop");
+        try {
+            ope.drop();
+        } catch (Exception ex) {
+            String message = "";
+            if(ex.getMessage() == null)
+                message = "An error has occurred";
+            else message = ex.getMessage();
+                
+            CustomPopup.errorPopup(message);
+        }
 
     }
 
     @FXML
     private void clickover(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "over");
+        try {
+            ope.over();
+        } catch (Exception ex) {
+            String message = "";
+            if(ex.getMessage() == null)
+                message = "An error has occurred";
+            else message = ex.getMessage();
+                
+            CustomPopup.errorPopup(message);
+        }
 
     }
 
     @FXML
     private void clickswap(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "swap");
+        try {
+            ope.swap();
+        } catch (Exception ex) {
+            String message = "";
+            if(ex.getMessage() == null)
+                message = "An error has occurred";
+            else message = ex.getMessage();
+                
+            CustomPopup.errorPopup(message);
+        }
 
     }
 
     @FXML
     private void clickdup(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "dup");
+        try {
+            ope.dup();
+        } catch (Exception ex) {
+            String message = "";
+            if(ex.getMessage() == null)
+                message = "An error has occurred";
+            else message = ex.getMessage();
+                
+            CustomPopup.errorPopup(message);
+        }
 
     }
 
@@ -190,59 +235,30 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-    private void enterInput() {
-        try {
-            ope.performOperation(tfInput.getText());
-            if (ope.getNumberStack().size() > 11) {
-                stackview.scrollTo(ope.getNumberStack().size() - 1);
-            }
-            undoBtn.disableProperty().set(false);
-        } catch (InputNumberException | NumberFormatException ex) {
-            errorPopup(ex.getMessage());
-        } catch (EmptyStackException e){
-            errorPopup("Operation not allowed!");
-        } catch (Exception e){
-            errorPopup("Operation not allowed");
-        }finally {
-            tfInput.clear();
-        }
-
-    }
+    
 
     @FXML
     private void savevariableclick(ActionEvent event) throws Exception {
         ope.addToVariable(Character.valueOf(variablesMenù.getText().charAt(0)));
+        undoBtn.disableProperty().set(false);      
     }
     
-    private boolean errorPopup(String message) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Popup.fxml"));
-        Parent parent;
-        try {
-            parent = loader.load();
-            PopupController pc = loader.getController();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(parent));
-            stage.setAlwaysOnTop(true);
-            pc.setLabels(message); 
-            stage.showAndWait();                  
-        } catch (IOException ex) {
-            return false;
-            
-        }
-        return true;
-    }
-
-    private void pushvariablevalue(ActionEvent event){  
-    }
-
     @FXML
     private void addvariableclick(ActionEvent event) throws Exception {
         ope.addToValue(Character.valueOf(variablesMenù.getText().charAt(0)));
+        undoBtn.disableProperty().set(false);      
     }
 
     @FXML
     private void subvariableclick(ActionEvent event) throws Exception {
         ope.subToValue(Character.valueOf(variablesMenù.getText().charAt(0)));  
+        undoBtn.disableProperty().set(false);      
+    }
+    
+    @FXML
+    private void pushvariableclick(ActionEvent event) throws Exception {
+        ope.pushValueOf(Character.valueOf(variablesMenù.getText().charAt(0)));
+        undoBtn.disableProperty().set(false);
     }
 
     @FXML
@@ -376,69 +392,53 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void pushvariableclick(ActionEvent event) throws Exception {
-        ope.pushValueOf(Character.valueOf(variablesMenù.getText().charAt(0)));
-    }
-
-    @FXML
     private void undoclick(ActionEvent event) {
         try {
             ope.undo();
         } catch (ImpossibleUndo ex) {
-            errorPopup(ex.getMessage());
+            CustomPopup.errorPopup(ex.getMessage());
         }      
         if(ope.getOperationsPerfomed().empty()){
             undoBtn.disableProperty().set(true);
         }
     }
+    
+    private void enterInput() {
+        try {
+            ope.performOperation(tfInput.getText());
+            if (ope.getNumberStack().size() > 11) {
+                stackview.scrollTo(ope.getNumberStack().size() - 1);
+            }
+            undoBtn.disableProperty().set(false);
+        } catch (InputNumberException | NumberFormatException ex) {
+            CustomPopup.errorPopup(ex.getMessage());
+        } catch (EmptyStackException e){
+            CustomPopup.errorPopup("Operation not allowed!");
+        } catch (Exception e){
+            CustomPopup.errorPopup("Operation not allowed");
+        }finally {
+            tfInput.clear();
+        }
+
+    }
 
     @FXML
     private void clickCustom(ActionEvent event) {
-        
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("customOperationSelection.fxml"));
-        Parent parent;
         try {
-            parent = loader.load();
-            CustomOperationSelectionController pc = loader.getController();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(parent));
-            stage.setAlwaysOnTop(true);
-            stage.showAndWait();
-            
-            String name = pc.getName();
-            String sequence = pc.getSequence();
-            
-            if(name != null && sequence != null){
-                ope.addUDOperation(name, sequence);
-            }
+            CustomPopup.customDefinition();
         }  catch (InputNumberException e){
-            errorPopup(e.getMessage());
+            CustomPopup.errorPopup(e.getMessage());
         }  catch (IOException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+ 
         
     }
 
     @FXML
     private void clickRemoveOperation(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("OperationSelection.fxml"));
-        Parent parent;
-        try {
-            parent = loader.load();
-            OperationSelectionController pc = loader.getController();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(parent));
-            stage.setAlwaysOnTop(true);
-            pc.setVariables(ope.getOperations());
-            stage.showAndWait();
-            //stage.show();
-            
-        }  catch (InputNumberException e){
-            errorPopup(e.getMessage());
-        }  catch (IOException ex) {
-            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        CustomPopup.operationView();
+        undoBtn.disableProperty().set(false);      
     }
 
 }

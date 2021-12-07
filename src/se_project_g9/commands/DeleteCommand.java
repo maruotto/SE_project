@@ -5,6 +5,7 @@
 package se_project_g9.commands;
 
 import java.util.HashMap;
+import se_project_g9.UDAllOp;
 import se_project_g9.UDOperation;
 import se_project_g9.exceptions.InputNumberException;
 
@@ -14,13 +15,13 @@ import se_project_g9.exceptions.InputNumberException;
  */
 public class DeleteCommand implements Command{
     
-    private HashMap<String,UDOperation> map;
+    private UDAllOp map;
     private String key;
     private UDOperation oldValue;
     
     
     
-    public DeleteCommand(HashMap<String,UDOperation> map,String key){
+    public DeleteCommand(UDAllOp map,String key){
         this.map = map;
         this.key = key;
         
@@ -40,6 +41,6 @@ public class DeleteCommand implements Command{
 
     @Override
     public String toString() {
-        return "delete";
+        return "delete Operation";
     }
 }

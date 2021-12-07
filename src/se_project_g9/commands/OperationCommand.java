@@ -26,7 +26,6 @@ public class OperationCommand implements Command {
         this.op = op;
         this.stack = stack;
         this.vars = vars;
-        
 
     }
 
@@ -34,8 +33,7 @@ public class OperationCommand implements Command {
     public void execute() throws InputNumberException {
         this.backupStack = (PersonalizedStack) stack.clone();
         this.backupVars = vars.clone();
-        
-        
+
         for (Command c : op) {
             try {
                 c.execute();
@@ -47,8 +45,6 @@ public class OperationCommand implements Command {
                 throw new InputNumberException("Operation not executed successfully");
             }
         }
-        
-        
 
     }
 

@@ -4,10 +4,13 @@
  */
 package se_project_g9;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -15,11 +18,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.Stage;
+import se_project_g9.exceptions.InputNumberException;
 
 /**
  * FXML Controller class
@@ -29,6 +37,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 public class OperationSelectionController implements Initializable {
 
     private ObservableList<Map.Entry<String,UDOperation>> variables = null;
+    private Operation ope;
     @FXML
     private TableView<Map.Entry<String,UDOperation>> tableView;
     @FXML
@@ -36,7 +45,6 @@ public class OperationSelectionController implements Initializable {
     @FXML
     private TableColumn<Map.Entry<String,UDOperation>, String> OperationsCln;
     
-    private HashMap<String,UDOperation> vars;
     @FXML
     private MenuItem removeBtn;
     
@@ -50,16 +58,20 @@ public class OperationSelectionController implements Initializable {
     }    
 
     @FXML
-    private void removeClick(ActionEvent event) {
-        vars.remove(tableView.getSelectionModel().getSelectedItem().getKey());
+    private void removeClick(ActionEvent event){
+        try {
+            ope.removeOperation(tableView.getSelectionModel().getSelectedItem().getKey());
+        } catch (InputNumberException ex) {
+            CustomPopup.errorPopup("An error has occurred while removing");
+        }
         variables.remove(tableView.getSelectionModel().getFocusedIndex());
         
     }
 
-    public void setVariables(HashMap<String, UDOperation> variables) {
+    public void setVariables(Operation ope) {
         
-        this.variables = FXCollections.observableArrayList(variables.entrySet());
-        this.vars = variables;
+        this.variables = FXCollections.observableArrayList(ope.getOperations().entrySet());
+        this.ope = ope;
         
         nameCln.setCellValueFactory((param) -> {
             return new SimpleStringProperty(param.getValue().getKey());
@@ -90,8 +102,6 @@ public class OperationSelectionController implements Initializable {
     @FXML
     private void modifyCommitOperation(TableColumn.CellEditEvent<Map.Entry<String,UDOperation>, UDOperation> event) {
     }
-
-    
         
         
     
