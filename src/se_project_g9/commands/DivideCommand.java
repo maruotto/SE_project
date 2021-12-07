@@ -11,7 +11,7 @@ import se_project_g9.exceptions.ZeroDivisionException;
 
 /**
  *
- * @author idamaruotto
+ * @author group 9
  */
 public class DivideCommand implements Command {
 

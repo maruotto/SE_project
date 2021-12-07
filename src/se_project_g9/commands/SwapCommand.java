@@ -10,7 +10,7 @@ import se_project_g9.exceptions.NotEnoughNumbersException;
 
 /**
  *
- * @author idamaruotto
+ * @author group 9
  */
 public class SwapCommand implements Command {
 

@@ -31,59 +31,56 @@ public class Operation implements ApplicationOperation {
         this.operations = new HashMap<>();
         this.operationsPerformed = new Stack<>();
     }
-    
-    protected Stack<Command> getOperationsPerfomed(){
+
+    protected Stack<Command> getOperationsPerfomed() {
         return operationsPerformed;
     }
 
     protected PersonalizedStack<ComplexNumber> getNumberStack() {
         return numberStack;
     }
-    
-    protected Variables getVariables(){
+
+    protected Variables getVariables() {
         return variables;
     }
-    
-    protected HashMap<String,UDOperation> getOperations(){
+
+    protected HashMap<String, UDOperation> getOperations() {
         return operations;
     }
 
-    
-    public void addUDOperation(String name, String input) throws InputNumberException{
-        if (operations.containsKey(name)){
+    public void addUDOperation(String name, String input) throws InputNumberException {
+        if (operations.containsKey(name)) {
             throw new InputNumberException("Operation already defined, try with another name");
         }
-        
-        if (name.contains(" ")){
+
+        if (name.contains(" ")) {
             throw new InputNumberException("Space not allowed in operation's name");
         }
-        
-        
+
         String[] splittedInput = input.split(" +");
         UDOperation op = new UDOperation();
-        for (String s: splittedInput){
-            if (s.length() > 0){
+        for (String s : splittedInput) {
+            if (s.length() > 0) {
                 System.out.println(s + " g");
                 op.push(translateInput(s, true)); //if exception thrown the execution is blocked
             }
         }
         operations.put(name, op);
     }
-    
-    
-    public void undo() throws ImpossibleUndo{
+
+    public void undo() throws ImpossibleUndo {
         Command op = operationsPerformed.pop(); //throw empty stack exception
         try {
             op.undo();
         } catch (InputNumberException ex) {
             throw new ImpossibleUndo("It's not possible to restore the status");
         }
-        
+
     }
-    
-    public void performOperation(String input) throws InputNumberException{
+
+    public void performOperation(String input) throws InputNumberException {
         Command op = translateInput(input, false);
-        System.out.println("op"+op);
+        System.out.println("op" + op);
         op.execute();
         operationsPerformed.push(op);
     }
@@ -94,11 +91,10 @@ public class Operation implements ApplicationOperation {
         //ATTENTION!!!! if you want to add to the regular expression something like
         // the + sign or other things, use the operator |
         // example: if you want to add to this expression +, this will become " *?+"
-        
-        if (operations.containsKey(input)){
-            ret = new OperationCommand(operations.get(input),variables,numberStack);
-        }
-        else if (input.length() == 1 && !Character.isLetterOrDigit(input.charAt(0))) {
+
+        if (operations.containsKey(input)) {
+            ret = new OperationCommand(operations.get(input), variables, numberStack);
+        } else if (input.length() == 1 && !Character.isLetterOrDigit(input.charAt(0))) {
             switch (input) {
                 case "-":
                     ret = new SubCommand(numberStack);
@@ -116,9 +112,9 @@ public class Operation implements ApplicationOperation {
                     throw new OperationSymbolException("This symbol does not correspond to an operation!");
             }
             //find operation
-        } else if (input.startsWith("in")){
+        } else if (input.startsWith("in")) {
             ret = new InvertCommand(numberStack);
-        }else if ((input.startsWith("j") || input.startsWith("i")) && !operation) {
+        } else if ((input.startsWith("j") || input.startsWith("i")) && !operation) {
             ret = new PushCommand(numberStack, convertNumber(input));
         } else if (Character.isAlphabetic(input.charAt(0))) {
             //is a function
@@ -142,17 +138,25 @@ public class Operation implements ApplicationOperation {
                 case "drop":
                     ret = new DropCommand(numberStack);
                     break;
+                case "save":
+                    System.out.println("Save command\n");
+                    ret = new SaveVariablesCommand(variables);
+                    break;
+                case "restore":
+                    System.out.println("Restore command\n");
+                    ret = new RestoreVariablesCommand(variables);
+                    break;
                 default:
                     throw new OperationNotPresentException("This operation is not supported: " + input);
             }
 
-        } else if(input.length() == 2 && Character.isAlphabetic(input.charAt(1))){
-            switch (String.valueOf(input.charAt(0))){
+        } else if (input.length() == 2 && Character.isAlphabetic(input.charAt(1))) {
+            switch (String.valueOf(input.charAt(0))) {
                 case ">":
-                    ret = new VInsertCommand(variables,numberStack, input.charAt(1));
+                    ret = new VInsertCommand(variables, numberStack, input.charAt(1));
                     break;
                 case "<":
-                    ret = new VPushCommand(variables, input.charAt(1),numberStack);
+                    ret = new VPushCommand(variables, input.charAt(1), numberStack);
                     break;
                 case "+":
                     ret = new VAddCommand(variables, input.charAt(1), numberStack);
@@ -161,15 +165,13 @@ public class Operation implements ApplicationOperation {
                     ret = new VSubCommand(variables, input.charAt(1), numberStack);
                     break;
             }
-                   
-        }else if (!operation){          
+        } else if (!operation) {
             ret = new PushCommand(numberStack, convertNumber(input));
-        } else{
+        } else {
             throw new OperationNotPresentException("This operation is not present in the library");
         }
-        
+
         return ret;
-        
 
     }
 
@@ -244,29 +246,29 @@ public class Operation implements ApplicationOperation {
 
     public void addToVariable(Character variable) throws Exception {
 
-        Command cm = new VInsertCommand(variables,numberStack,variable);
+        Command cm = new VInsertCommand(variables, numberStack, variable);
         cm.execute();
         operationsPerformed.push(cm);
-        
+
     }
 
     public void pushValueOf(Character variable) throws Exception {
-        
-        Command cm = new VPushCommand(variables,variable,numberStack);
+
+        Command cm = new VPushCommand(variables, variable, numberStack);
         cm.execute();
         operationsPerformed.push(cm);
     }
 
     public void addToValue(Character variable) throws Exception {
 
-        Command cm = new VAddCommand(variables,variable,numberStack);
+        Command cm = new VAddCommand(variables, variable, numberStack);
         cm.execute();
         operationsPerformed.push(cm);
     }
 
     public void subToValue(Character variable) throws Exception {
 
-        Command cm = new VSubCommand(variables,variable,numberStack);
+        Command cm = new VSubCommand(variables, variable, numberStack);
         cm.execute();
         operationsPerformed.push(cm);
 

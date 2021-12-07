@@ -15,7 +15,7 @@ import se_project_g9.BasicOperation;
 
 /**
  *
- * @author luigi
+ * @author group 9
  */
 public class VSubCommand implements Command {
 

@@ -14,7 +14,7 @@ import se_project_g9.exceptions.InputNumberException;
 
 /**
  *
- * @author luigi
+ * @author group 9
  */
 public class VPushCommand implements Command {
 

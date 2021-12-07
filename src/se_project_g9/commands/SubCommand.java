@@ -10,7 +10,7 @@ import se_project_g9.PersonalizedStack;
 
 /**
  *
- * @author idamaruotto
+ * @author group 9
  */
 public class SubCommand implements Command {
 

@@ -4,6 +4,7 @@
  */
 package se_project_g9;
 
+import java.util.EmptyStackException;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.Stack;
@@ -14,7 +15,7 @@ import java.util.Stack;
  */
 public class Variables {
 
-    private final HashMap<Character, ComplexNumber> variablesMap;
+    private HashMap<Character, ComplexNumber> variablesMap;
     private final Stack<HashMap> variableStack;
 
     public Variables() {
@@ -89,6 +90,21 @@ public class Variables {
         this.variableStack.addAll(other.variableStack);
         this.variablesMap.putAll(other.variablesMap);
         return true;
+    }
+    
+    public void saveVar() {
+        this.variableStack.push((HashMap) variablesMap.clone());
+    }
+    
+    public void insertVar(HashMap<Character, ComplexNumber> v) {
+        this.variablesMap = (HashMap) v.clone();
+    }
+    
+    public HashMap<Character, ComplexNumber> restoreVar() throws EmptyStackException{
+        HashMap<Character, ComplexNumber> tmp = new HashMap<Character, ComplexNumber>();
+        tmp = (HashMap<Character, ComplexNumber>) this.variablesMap.clone();
+        this.variablesMap = this.variableStack.pop();
+        return tmp;
     }
     
     @Override
