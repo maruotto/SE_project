@@ -426,6 +426,7 @@ public class FXMLDocumentController implements Initializable {
     private void clickCustom(ActionEvent event) {
         try {
             CustomPopup.customDefinition();
+            undoBtn.disableProperty().set(false); 
         }  catch (InputNumberException e){
             CustomPopup.errorPopup(e.getMessage());
         }  catch (IOException ex) {

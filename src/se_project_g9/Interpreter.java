@@ -32,14 +32,14 @@ import se_project_g9.exceptions.TooManyNumbersException;
  * @author idamaruotto
  */
 public class Interpreter {
-    
-    PersonalizedStack<ComplexNumber> numberStack;
-    Variables variables;
-    UDAllOp operations;
 
-    protected Interpreter(Operation ope) {
+    private final PersonalizedStack<ComplexNumber> numberStack;
+    private final Variables variables;
+    private final UDAllOp operations;
+
+    public Interpreter(Operation ope) {
         numberStack = ope.getNumberStack();
-        variables = ope.getVariables();  
+        variables = ope.getVariables();
         operations = ope.getOperations();
     }
 
@@ -48,21 +48,20 @@ public class Interpreter {
         this.variables = variables;
         this.operations = operations;
     }
-    
-    
+
+
     protected Command translateInput(String input, boolean operation) throws InputNumberException {
-        if(numberStack == null || variables == null || operations == null)
-        
-        input = input.trim();
+        if (numberStack == null || variables == null || operations == null) {
+            input = input.trim();
+        }
         Command ret = null;
         //ATTENTION!!!! if you want to add to the regular expression something like
         // the + sign or other things, use the operator |
         // example: if you want to add to this expression +, this will become " *?+"
-        
-        if (operations.containsKey(input)){
-            ret = new OperationCommand(operations.get(input),variables,numberStack);
-        }
-        else if (input.length() == 1 && !Character.isLetterOrDigit(input.charAt(0))) {
+
+        if (operations.containsKey(input)) {
+            ret = new OperationCommand(operations.get(input), variables, numberStack);
+        } else if (input.length() == 1 && !Character.isLetterOrDigit(input.charAt(0))) {
             switch (input) {
                 case "-":
                     ret = new SubCommand(numberStack);
@@ -80,13 +79,12 @@ public class Interpreter {
                     throw new OperationSymbolException("This symbol does not correspond to an operation!");
             }
             //find operation
-        } else if (input.startsWith("in")){
+        } else if (input.startsWith("in")) {
             ret = new InvertCommand(numberStack);
-        }else if ((input.startsWith("j") || input.startsWith("i")) && !operation) {
+        } else if ((input.startsWith("j") || input.startsWith("i")) && !operation) {
             ret = new PushCommand(numberStack, convertNumber(input));
         } else if (Character.isAlphabetic(input.charAt(0))) {
             //is a function
-            System.out.println(input + "g");
             switch (input) {
                 case "sqrt":
                     ret = new SqrtCommand(numberStack);
@@ -110,13 +108,13 @@ public class Interpreter {
                     throw new OperationNotPresentException("This operation is not supported: " + input);
             }
 
-        } else if(input.length() == 2 && Character.isAlphabetic(input.charAt(1))){
-            switch (String.valueOf(input.charAt(0))){
+        } else if (input.length() == 2 && Character.isAlphabetic(input.charAt(1))) {
+            switch (String.valueOf(input.charAt(0))) {
                 case ">":
-                    ret = new VInsertCommand(variables,numberStack, input.charAt(1));
+                    ret = new VInsertCommand(variables, numberStack, input.charAt(1));
                     break;
                 case "<":
-                    ret = new VPushCommand(variables, input.charAt(1),numberStack);
+                    ret = new VPushCommand(variables, input.charAt(1), numberStack);
                     break;
                 case "+":
                     ret = new VAddCommand(variables, input.charAt(1), numberStack);
@@ -125,15 +123,14 @@ public class Interpreter {
                     ret = new VSubCommand(variables, input.charAt(1), numberStack);
                     break;
             }
-                   
-        }else if (!operation){          
+
+        } else if (!operation) {
             ret = new PushCommand(numberStack, convertNumber(input));
-        } else{
+        } else {
             throw new OperationNotPresentException("This operation is not present in the library");
         }
-        
+
         return ret;
-        
 
     }
 
@@ -159,7 +156,6 @@ public class Interpreter {
 
         for (String s : splittedInput) {
 
-            //System.out.println("a" + s);
             if (!imaginaryPartNotDone & !realPartNotDone) {
                 throw new TooManyNumbersException("You are trying to insert more than one number!");
             }

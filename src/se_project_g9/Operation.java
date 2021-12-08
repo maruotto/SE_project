@@ -28,6 +28,8 @@ public class Operation implements ApplicationOperation {
         this.operations = new UDAllOp();
         this.i = new Interpreter(numberStack, variables, operations);
         this.operations.addInterpreter(i);
+        UDOperation.addInterpreter(i);
+                
         
     }
 
@@ -48,7 +50,9 @@ public class Operation implements ApplicationOperation {
     }
 
     public void addUDOperation(String name, String input) throws InputNumberException {
-        operations.addOperation(name, input);
+        Command cm = new AddOperationCommand(operations,name,input);
+        cm.execute();
+        operationsPerformed.push(cm);
     }
 
     public void undo() throws ImpossibleUndo {
@@ -63,7 +67,6 @@ public class Operation implements ApplicationOperation {
 
     public void performOperation(String input) throws InputNumberException {
         Command op = i.translateInput(input, false);
-        System.out.println("op" + op);
         op.execute();
         operationsPerformed.push(op);
     }
@@ -104,6 +107,25 @@ public class Operation implements ApplicationOperation {
         operationsPerformed.push(cm);
     }
     
+    public void modifyOperation(String key, String newValue) throws InputNumberException {
+        Command cm = new ModifyOperationCommand(operations, key, new UDOperation(newValue));
+        cm.execute();
+        operationsPerformed.push(cm);
+    }
+    
+    public void modifyOperationName(String key, String newKey) throws InputNumberException {   
+        UDOperation op = new UDOperation();
+  
+        Command cmA = new AddOperationCommand(operations, newKey, operations.get(key));
+        Command cmR = new DeleteCommand(operations, key);
+        op.push(cmR);
+        op.push(cmA);
+        Command cm = new OperationCommand(op, variables, numberStack);
+        
+        cm.execute();
+        operationsPerformed.push(cm);
+    }
+    
     public void drop() throws InputNumberException{
         Command cm = new DropCommand(numberStack);
         cm.execute();
@@ -133,6 +155,5 @@ public class Operation implements ApplicationOperation {
         cm.execute();
         operationsPerformed.push(cm);
     }
-    
 
 }

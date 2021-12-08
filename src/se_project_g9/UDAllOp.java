@@ -27,15 +27,8 @@ public class UDAllOp extends HashMap<String, UDOperation>{
         if (name.contains(" ")) {
             throw new InputNumberException("Space not allowed in operation's name");
         }
-
-        String[] splittedInput = input.split(" +");
-        UDOperation op = new UDOperation();
-        for (String s : splittedInput) {
-            if (s.length() > 0) {
-                System.out.println(s + " g");
-                op.push(i.translateInput(s, true)); //if exception thrown the execution is blocked
-            }
-        }
+        
+        UDOperation op = new UDOperation<>(input);
         this.put(name, op);
     }
 

@@ -6,12 +6,15 @@ package se_project_g9;
 
 import java.util.Iterator;
 import java.util.Stack;
+import se_project_g9.exceptions.InputNumberException;
 
 /**
  *
  * @author group 9
  */
 public class UDOperation<Command> extends Stack<Command> {
+
+    static private Interpreter i;
 
     @Override
     public synchronized Iterator<Command> iterator() {
@@ -21,6 +24,24 @@ public class UDOperation<Command> extends Stack<Command> {
     public synchronized Iterator<Command> reverseIterator() {
 
         return new ReverseIterator<Command>(this);
+    }
+
+    public UDOperation() {
+        super();
+    }
+
+    public UDOperation(String input) throws InputNumberException {
+        super();
+        String[] splittedInput = input.split(" +");
+        for (String s : splittedInput) {
+            if (s.length() > 0) {
+                this.push((Command) i.translateInput(s, true)); //if exception thrown the execution is blocked
+            }
+        }
+    }
+
+    public static void addInterpreter(Interpreter i) {
+        UDOperation.i = i;
     }
 
     @Override
