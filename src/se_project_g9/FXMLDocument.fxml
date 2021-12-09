@@ -8,34 +8,34 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" onKeyPressed="#controlZ" prefHeight="465.0" prefWidth="621.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se_project_g9.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="AnchorPane" onKeyPressed="#controlZ" prefHeight="465.0" prefWidth="621.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se_project_g9.FXMLDocumentController">
    <children>
       <ListView fx:id="stackview" layoutX="23.0" layoutY="69.0" prefHeight="354.0" prefWidth="241.0" />
       <TextField fx:id="tfInput" layoutX="279.0" layoutY="84.0" onKeyReleased="#keyReleased" prefHeight="34.0" prefWidth="263.0" />
-      <Button layoutX="327.0" layoutY="131.0" mnemonicParsing="false" onAction="#click1" text="1" />
-      <Button layoutX="384.0" layoutY="170.0" mnemonicParsing="false" onAction="#click5" text="5" />
-      <Button layoutX="384.0" layoutY="131.0" mnemonicParsing="false" onAction="#click2" text="2" />
-      <Button layoutX="439.0" layoutY="131.0" mnemonicParsing="false" onAction="#click3" text="3" />
-      <Button layoutX="326.0" layoutY="170.0" mnemonicParsing="false" onAction="#click4" text="4" />
-      <Button layoutX="439.0" layoutY="207.0" mnemonicParsing="false" onAction="#click9" text="9" />
-      <Button layoutX="384.0" layoutY="207.0" mnemonicParsing="false" onAction="#click8" text="8" />
-      <Button layoutX="326.0" layoutY="207.0" mnemonicParsing="false" onAction="#click7" text="7" />
-      <Button layoutX="439.0" layoutY="170.0" mnemonicParsing="false" onAction="#click6" text="6" />
-      <Button layoutX="384.0" layoutY="246.0" mnemonicParsing="false" onAction="#click0" text="0" />
-      <Button layoutX="502.0" layoutY="131.0" mnemonicParsing="false" onAction="#plusclick" text="+" />
+      <Button layoutX="327.0" layoutY="131.0" mnemonicParsing="false" onAction="#click" text="1" />
+      <Button layoutX="384.0" layoutY="170.0" mnemonicParsing="false" onAction="#click" text="5" />
+      <Button layoutX="384.0" layoutY="131.0" mnemonicParsing="false" onAction="#click" text="2" />
+      <Button layoutX="439.0" layoutY="131.0" mnemonicParsing="false" onAction="#click" text="3" />
+      <Button layoutX="326.0" layoutY="170.0" mnemonicParsing="false" onAction="#click" text="4" />
+      <Button layoutX="439.0" layoutY="207.0" mnemonicParsing="false" onAction="#click" text="9" />
+      <Button layoutX="384.0" layoutY="207.0" mnemonicParsing="false" onAction="#click" text="8" />
+      <Button layoutX="326.0" layoutY="207.0" mnemonicParsing="false" onAction="#click" text="7" />
+      <Button layoutX="439.0" layoutY="170.0" mnemonicParsing="false" onAction="#click" text="6" />
+      <Button layoutX="384.0" layoutY="246.0" mnemonicParsing="false" onAction="#click" text="0" />
+      <Button layoutX="502.0" layoutY="131.0" mnemonicParsing="false" onAction="#click" text="+" />
       <Button fx:id="btnSend" layoutX="554.0" layoutY="88.0" mnemonicParsing="false" onAction="#handleInsertAction" text="Send" />
-      <Button layoutX="328.0" layoutY="246.0" mnemonicParsing="false" onAction="#clicki" text="i" />
-      <Button layoutX="503.0" layoutY="170.0" mnemonicParsing="false" onAction="#multiplyclick" text="*" />
-      <Button layoutX="565.0" layoutY="131.0" mnemonicParsing="false" onAction="#minusclick" text="-" />
-      <Button layoutX="567.0" layoutY="170.0" mnemonicParsing="false" onAction="#divideclick" text="/" />
-      <Button layoutX="495.0" layoutY="207.0" mnemonicParsing="false" onAction="#clicksqrt" text="sqrt" />
+      <Button layoutX="328.0" layoutY="246.0" mnemonicParsing="false" onAction="#click" text="i" />
+      <Button layoutX="503.0" layoutY="170.0" mnemonicParsing="false" onAction="#click" text="*" />
+      <Button layoutX="565.0" layoutY="131.0" mnemonicParsing="false" onAction="#click" text="-" />
+      <Button layoutX="567.0" layoutY="170.0" mnemonicParsing="false" onAction="#click" text="/" />
+      <Button layoutX="495.0" layoutY="207.0" mnemonicParsing="false" onAction="#click" text="sqrt" />
       <Button layoutX="562.0" layoutY="207.0" mnemonicParsing="false" onAction="#clickplusminus" text="+-" />
       <Button layoutX="375.0" layoutY="313.0" mnemonicParsing="false" onAction="#clickclear" text="clear" />
       <Button layoutX="430.0" layoutY="313.0" mnemonicParsing="false" onAction="#clickdrop" text="drop" />
       <Button layoutX="319.0" layoutY="313.0" mnemonicParsing="false" onAction="#clickdup" text="dup" />
       <Button layoutX="553.0" layoutY="313.0" mnemonicParsing="false" onAction="#clickswap" text="swap" />
       <Button layoutX="494.0" layoutY="313.0" mnemonicParsing="false" onAction="#clickover" text="over" />
-      <Button layoutX="442.0" layoutY="246.0" mnemonicParsing="false" onAction="#clickpoint" text="." />
+      <Button layoutX="442.0" layoutY="246.0" mnemonicParsing="false" onAction="#click" text="." />
       <Button layoutX="335.0" layoutY="397.0" mnemonicParsing="false" onAction="#savevariableclick" text="&gt;x" />
       <Button layoutX="279.0" layoutY="397.0" mnemonicParsing="false" onAction="#pushvariableclick" text="&lt;x" />
       <Button layoutX="499.0" layoutY="397.0" mnemonicParsing="false" onAction="#addvariableclick" text="+x" />

@@ -50,9 +50,7 @@ public class Operation implements ApplicationOperation {
     }
 
     public void addUDOperation(String name, String input) throws InputNumberException {
-        Command cm = new AddOperationCommand(operations,name,input);
-        cm.execute();
-        operationsPerformed.push(cm);
+        performCommand(new AddOperationCommand(operations,name,input));
     }
 
     public void undo() throws ImpossibleUndo {
@@ -66,7 +64,10 @@ public class Operation implements ApplicationOperation {
     }
 
     public void performOperation(String input) throws InputNumberException {
-        Command op = i.translateInput(input, false);
+        performCommand(i.translateInput(input, false));
+    }
+    
+    public void performCommand(Command op) throws InputNumberException {
         op.execute();
         operationsPerformed.push(op);
     }
@@ -74,43 +75,29 @@ public class Operation implements ApplicationOperation {
     public void addToVariable(Character variable) throws Exception {
 
         Command cm = new VInsertCommand(variables, numberStack, variable);
-        cm.execute();
-        operationsPerformed.push(cm);
+        performCommand(cm);
 
     }
 
     public void pushValueOf(Character variable) throws Exception {
-
-        Command cm = new VPushCommand(variables, variable, numberStack);
-        cm.execute();
-        operationsPerformed.push(cm);
+        performCommand(new VPushCommand(variables, variable, numberStack));
     }
 
     public void addToValue(Character variable) throws Exception {
-
-        Command cm = new VAddCommand(variables, variable, numberStack);
-        cm.execute();
-        operationsPerformed.push(cm);
+        performCommand(new VAddCommand(variables, variable, numberStack));
     }
 
     public void subToValue(Character variable) throws Exception {
-
-        Command cm = new VSubCommand(variables, variable, numberStack);
-        cm.execute();
-        operationsPerformed.push(cm);
+        performCommand(new VSubCommand(variables, variable, numberStack));
 
     }
 
     public void removeOperation(String key) throws InputNumberException {
-        Command cm = new DeleteCommand(operations, key);
-        cm.execute();
-        operationsPerformed.push(cm);
+        performCommand(new DeleteCommand(operations, key));
     }
     
     public void modifyOperation(String key, String newValue) throws InputNumberException {
-        Command cm = new ModifyOperationCommand(operations, key, new UDOperation(newValue));
-        cm.execute();
-        operationsPerformed.push(cm);
+        performCommand(new ModifyOperationCommand(operations, key, new UDOperation(newValue)));
     }
     
     public void modifyOperationName(String key, String newKey) throws InputNumberException {   
@@ -123,38 +110,31 @@ public class Operation implements ApplicationOperation {
         op.add(cmA);
         Command cm = new OperationCommand(op, variables, numberStack);
         
-        cm.execute();
-        operationsPerformed.push(cm);
+        performCommand(cm);
     }
     
     public void drop() throws InputNumberException{
-        Command cm = new DropCommand(numberStack);
-        cm.execute();
-        operationsPerformed.push(cm);
+        performCommand(new DropCommand(numberStack));
     }
 
     public void dup() throws InputNumberException {
-        Command cm = new DupCommand(numberStack);
-        cm.execute();
-        operationsPerformed.push(cm);
+        performCommand(new DupCommand(numberStack));
     }
 
     public void swap() throws InputNumberException {
-        Command cm = new SwapCommand(numberStack);
-        cm.execute();
-        operationsPerformed.push(cm);
+        performCommand(new SwapCommand(numberStack));
     }
 
     public void clear() throws InputNumberException {
-        Command cm = new ClearCommand(numberStack);
-        cm.execute();
-        operationsPerformed.push(cm);
+        performCommand(new ClearCommand(numberStack));
     }
 
     void over() throws InputNumberException {
-        Command cm = new OverCommand(numberStack);
-        cm.execute();
-        operationsPerformed.push(cm);
+        performCommand(new OverCommand(numberStack));
+    }
+
+    void invert() throws InputNumberException {
+        performCommand(new InvertCommand(numberStack));
     }
 
 }

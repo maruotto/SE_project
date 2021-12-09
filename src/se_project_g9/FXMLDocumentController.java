@@ -13,8 +13,10 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -28,6 +30,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 
 import javafx.stage.Stage;
@@ -52,13 +56,23 @@ public class FXMLDocumentController implements Initializable {
     private SplitMenuButton variablesMenù;
     @FXML
     private Button undoBtn;
+    @FXML
+    private AnchorPane AnchorPane;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ope = new Operation();
         btnSend.disableProperty().bind(Bindings.isEmpty(tfInput.textProperty()));
         stackview.setItems(ope.getNumberStack());
-        tfInput.selectAll();
+        Platform.runLater(() -> {
+            tfInput.requestFocus();
+        });
+
+        AnchorPane.setOnMouseMoved((MouseEvent event) -> {
+            tfInput.requestFocus();
+            tfInput.selectEnd();
+        });
+        
         
         undoBtn.disableProperty().set(true);
 
@@ -71,88 +85,27 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void click1(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "1");
-    }
-
-    @FXML
-    private void click5(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "5");
-    }
-
-    @FXML
-    private void click2(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "2");
-    }
-
-    @FXML
-    private void click3(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "3");
-    }
-
-    @FXML
-    private void click4(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "4");
-    }
-
-    @FXML
-    private void click9(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "9");
-    }
-
-    @FXML
-    private void click8(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "8");
-    }
-
-    @FXML
-    private void click7(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "7");
-    }
-
-    @FXML
-    private void click6(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "6");
-    }
-
-    @FXML
-    private void click0(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "0");
-    }
-
-    @FXML
-    private void plusclick(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "+");
-    }
-
-    @FXML
-    private void clicki(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "i");
-    }
-
-    @FXML
-    private void multiplyclick(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "*");
-    }
-
-    @FXML
-    private void minusclick(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "-");
-    }
-
-    @FXML
-    private void divideclick(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "/");
-    }
-
-    @FXML
-    private void clicksqrt(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "sqrt");
+    private void click(ActionEvent event) {
+        Button b = (Button) event.getSource();
+        tfInput.setText(tfInput.getText() + b.getText());
+        tfInput.requestFocus();
+        tfInput.selectEnd();
     }
 
     @FXML
     private void clickplusminus(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "invert");
+        try {
+            ope.invert();
+        } catch (Exception ex) {
+            String message = "";
+            if (ex.getMessage() == null) {
+                message = "An error has occurred";
+            } else {
+                message = ex.getMessage();
+            }
+
+            CustomPopup.errorPopup(message);
+        }
     }
 
     @FXML
@@ -161,10 +114,12 @@ public class FXMLDocumentController implements Initializable {
             ope.clear();
         } catch (Exception ex) {
             String message = "";
-            if(ex.getMessage() == null)
+            if (ex.getMessage() == null) {
                 message = "An error has occurred";
-            else message = ex.getMessage();
-                
+            } else {
+                message = ex.getMessage();
+            }
+
             CustomPopup.errorPopup(message);
         }
     }
@@ -175,10 +130,12 @@ public class FXMLDocumentController implements Initializable {
             ope.drop();
         } catch (Exception ex) {
             String message = "";
-            if(ex.getMessage() == null)
+            if (ex.getMessage() == null) {
                 message = "An error has occurred";
-            else message = ex.getMessage();
-                
+            } else {
+                message = ex.getMessage();
+            }
+
             CustomPopup.errorPopup(message);
         }
 
@@ -190,10 +147,12 @@ public class FXMLDocumentController implements Initializable {
             ope.over();
         } catch (Exception ex) {
             String message = "";
-            if(ex.getMessage() == null)
+            if (ex.getMessage() == null) {
                 message = "An error has occurred";
-            else message = ex.getMessage();
-                
+            } else {
+                message = ex.getMessage();
+            }
+
             CustomPopup.errorPopup(message);
         }
 
@@ -205,10 +164,12 @@ public class FXMLDocumentController implements Initializable {
             ope.swap();
         } catch (Exception ex) {
             String message = "";
-            if(ex.getMessage() == null)
+            if (ex.getMessage() == null) {
                 message = "An error has occurred";
-            else message = ex.getMessage();
-                
+            } else {
+                message = ex.getMessage();
+            }
+
             CustomPopup.errorPopup(message);
         }
 
@@ -220,18 +181,15 @@ public class FXMLDocumentController implements Initializable {
             ope.dup();
         } catch (Exception ex) {
             String message = "";
-            if(ex.getMessage() == null)
+            if (ex.getMessage() == null) {
                 message = "An error has occurred";
-            else message = ex.getMessage();
-                
+            } else {
+                message = ex.getMessage();
+            }
+
             CustomPopup.errorPopup(message);
         }
 
-    }
-
-    @FXML
-    private void clickpoint(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + ".");
     }
 
     @FXML
@@ -241,26 +199,24 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-    
-
     @FXML
     private void savevariableclick(ActionEvent event) throws Exception {
         ope.addToVariable(Character.valueOf(variablesMenù.getText().charAt(0)));
-        undoBtn.disableProperty().set(false);      
+        undoBtn.disableProperty().set(false);
     }
-    
+
     @FXML
     private void addvariableclick(ActionEvent event) throws Exception {
         ope.addToValue(Character.valueOf(variablesMenù.getText().charAt(0)));
-        undoBtn.disableProperty().set(false);      
+        undoBtn.disableProperty().set(false);
     }
 
     @FXML
     private void subvariableclick(ActionEvent event) throws Exception {
-        ope.subToValue(Character.valueOf(variablesMenù.getText().charAt(0)));  
-        undoBtn.disableProperty().set(false);      
+        ope.subToValue(Character.valueOf(variablesMenù.getText().charAt(0)));
+        undoBtn.disableProperty().set(false);
     }
-    
+
     @FXML
     private void pushvariableclick(ActionEvent event) throws Exception {
         ope.pushValueOf(Character.valueOf(variablesMenù.getText().charAt(0)));
@@ -397,12 +353,11 @@ public class FXMLDocumentController implements Initializable {
         variablesMenù.setText("i");
     }
 
-    
     @FXML
     private void undoclick(ActionEvent event) {
         undo();
     }
-    
+
     private void enterInput() {
         try {
             ope.performOperation(tfInput.getText());
@@ -412,11 +367,11 @@ public class FXMLDocumentController implements Initializable {
             undoBtn.disableProperty().set(false);
         } catch (InputNumberException | NumberFormatException ex) {
             CustomPopup.errorPopup(ex.getMessage());
-        } catch (EmptyStackException e){
+        } catch (EmptyStackException e) {
             CustomPopup.errorPopup("Operation not allowed!");
-        } catch (Exception e){
+        } catch (Exception e) {
             CustomPopup.errorPopup("Operation not allowed");
-        }finally {
+        } finally {
             tfInput.clear();
         }
 
@@ -426,48 +381,48 @@ public class FXMLDocumentController implements Initializable {
     private void clickCustom(ActionEvent event) {
         try {
             CustomPopup.customDefinition();
-            undoBtn.disableProperty().set(false); 
-        }  catch (InputNumberException e){
+            undoBtn.disableProperty().set(false);
+        } catch (InputNumberException e) {
             CustomPopup.errorPopup(e.getMessage());
-        }  catch (IOException ex) {
+        } catch (IOException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
- 
-        
+
     }
 
     @FXML
     private void clickRemoveOperation(ActionEvent event) {
         CustomPopup.operationView();
-        undoBtn.disableProperty().set(false);      
+        undoBtn.disableProperty().set(false);
     }
 
     @FXML
     private void clicksavevariables(ActionEvent event) {
-         tfInput.setText(tfInput.getText() + "save");
+        tfInput.setText(tfInput.getText() + "save");
     }
 
     @FXML
     private void clickrestorevariables(ActionEvent event) {
-         tfInput.setText(tfInput.getText() + "restore");
-    }
-    @FXML
-    private void saveoperations(ActionEvent event) throws IOException {
-        FileChooser chooser = new FileChooser();
-        File file = chooser.showSaveDialog(null);     
-        if(file != null){
-            FileOperations.writeIn(file,ope.getOperations());
-        }
-               
+        tfInput.setText(tfInput.getText() + "restore");
     }
 
     @FXML
-    private void getoperations(ActionEvent event) throws FileNotFoundException{
+    private void saveoperations(ActionEvent event) throws IOException {
+        FileChooser chooser = new FileChooser();
+        File file = chooser.showSaveDialog(null);
+        if (file != null) {
+            FileOperations.writeIn(file, ope.getOperations());
+        }
+
+    }
+
+    @FXML
+    private void getoperations(ActionEvent event) throws FileNotFoundException {
         FileChooser chooser = new FileChooser();
         File file = chooser.showOpenDialog(null);
-            if(file != null){
-                FileOperations.loadFrom(file, ope); //l'oggetto ObservableListWrapper non è serializabile
-            } 
+        if (file != null) {
+            FileOperations.loadFrom(file, ope); //l'oggetto ObservableListWrapper non è serializabile
+        }
     }
 
     private void undo() {
@@ -475,8 +430,8 @@ public class FXMLDocumentController implements Initializable {
             ope.undo();
         } catch (ImpossibleUndo ex) {
             CustomPopup.errorPopup(ex.getMessage());
-        }      
-        if(ope.getOperationsPerfomed().empty()){
+        }
+        if (ope.getOperationsPerfomed().empty()) {
             undoBtn.disableProperty().set(true);
         }
     }
@@ -484,9 +439,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void controlZ(KeyEvent event) {
         KeyCodeCombination comb = new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN);
-        if(comb.match(event))
+        if (comb.match(event)) {
             undo();
+        }
     }
-
 }
-
