@@ -81,5 +81,6 @@
       </MenuButton>
       <Button layoutX="316.0" layoutY="353.0" mnemonicParsing="false" onAction="#clicksavevariables" prefHeight="25.0" prefWidth="67.0" text="SaveVar" />
       <Button layoutX="395.0" layoutY="353.0" mnemonicParsing="false" onAction="#clickrestorevariables" prefHeight="25.0" prefWidth="87.0" text="RestoreVar" />
+      <Button layoutX="495.0" layoutY="353.0" mnemonicParsing="false" onAction="#clickmod" text="mod" />
    </children>
 </AnchorPane>

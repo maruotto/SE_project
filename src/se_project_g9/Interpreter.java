@@ -10,6 +10,7 @@ import se_project_g9.commands.DivideCommand;
 import se_project_g9.commands.DropCommand;
 import se_project_g9.commands.DupCommand;
 import se_project_g9.commands.InvertCommand;
+import se_project_g9.commands.ModCommand;
 import se_project_g9.commands.MultiplyCommand;
 import se_project_g9.commands.OperationCommand;
 import se_project_g9.commands.OverCommand;
@@ -119,6 +120,9 @@ public class Interpreter {
                     break;
                 case "drop":
                     ret = new DropCommand(numberStack);
+                    break;
+                case "mod":
+                    ret = new ModCommand(numberStack);
                     break;
                 default:
                     throw new OperationNotPresentException("This operation is not supported: " + input);

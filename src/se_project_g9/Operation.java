@@ -136,4 +136,8 @@ public class Operation implements ApplicationOperation {
         performCommand(new InvertCommand(numberStack));
     }
 
+    void mod() throws InputNumberException {
+       performCommand(new ModCommand(numberStack));
+    }
+
 }
