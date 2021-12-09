@@ -60,6 +60,11 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private AnchorPane AnchorPane;
 
+    /**
+     *
+     * @param url 
+     * @param rb
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ope = new Operation();

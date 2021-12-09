@@ -13,32 +13,61 @@ public class ComplexNumber {
     private double realPart;
     private double imaginaryPart;
 
+    /**
+     *
+     * @param realPart the real part of the number
+     * @param imaginaryPart the imaginary part of the number
+     */
     public ComplexNumber(double realPart, double imaginaryPart) {
         this.realPart = realPart;
         this.imaginaryPart = imaginaryPart;
     }
 
+    /**
+     *
+     * @param realPart the real part
+     */
     public ComplexNumber(double realPart) {
         this.realPart = realPart;
         this.imaginaryPart = .0;
     }
 
+    /**
+     *
+     * @return the real part
+     */
     public double getRealPart() {
         return realPart;
     }
 
+    /**
+     *
+     * @return the imaginary part
+     */
     public double getImaginaryPart() {
         return imaginaryPart;
     }
 
+    /**
+     *
+     * @param realPart the new real part
+     */
     public void setRealPart(double realPart) {
         this.realPart = realPart;
     }
 
+    /**
+     *
+     * @param imaginaryPart the new imaginary part
+     */
     public void setImaginaryPart(double imaginaryPart) {
         this.imaginaryPart = imaginaryPart;
     }
 
+    /**
+     *
+     * @return an object rappresentation as String
+     */
     @Override
     public String toString() {
         if (imaginaryPart == 0.0) {
@@ -54,6 +83,11 @@ public class ComplexNumber {
         }
     }
 
+    /**
+     *
+     * @param obj the object we want to verify with.
+     * @return if this object and obj are equals or not
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
