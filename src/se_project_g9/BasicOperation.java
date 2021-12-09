@@ -108,4 +108,10 @@ public class BasicOperation {
             return new ComplexNumber((Math.sqrt(module)*Math.cos(phase/2)),(Math.sqrt(module)*Math.sin(phase/2)));
         }
     }
+    
+    public static ComplexNumber mod(ComplexNumber n1){
+        double real1 = n1.getRealPart();
+        double imaginary1 = n1.getImaginaryPart();
+        return new ComplexNumber((Math.sqrt((Math.pow(real1, 2))+(Math.pow(imaginary1, 2)))));
+    }
 }
