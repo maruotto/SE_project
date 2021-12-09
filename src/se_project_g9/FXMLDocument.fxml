@@ -75,6 +75,8 @@
         <items>
           <MenuItem mnemonicParsing="false" onAction="#clickCustom" text="Add" />
           <MenuItem mnemonicParsing="false" onAction="#clickRemoveOperation" text="Modify/Remove" />
+            <MenuItem mnemonicParsing="false" onAction="#saveoperations" text="Save" />
+            <MenuItem mnemonicParsing="false" onAction="#getoperations" text="Open" />
         </items>
       </MenuButton>
    </children>

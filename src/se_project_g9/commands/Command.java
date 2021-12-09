@@ -5,12 +5,13 @@
 package se_project_g9.commands;
 
 import se_project_g9.exceptions.InputNumberException;
+import java.io.Serializable;
 
 /**
  *
  * @author group 9
  */
-public interface Command {
+public interface Command extends Serializable{
     void execute() throws InputNumberException;
     void undo() throws InputNumberException;
 }

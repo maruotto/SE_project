@@ -4,9 +4,12 @@
  */
 package se_project_g9;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.EmptyStackException;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +26,7 @@ import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.FileChooser;
 
 import javafx.stage.Stage;
 import se_project_g9.exceptions.ImpossibleUndo;
@@ -438,6 +442,28 @@ public class FXMLDocumentController implements Initializable {
             errorPopup(e.getMessage());
         }  catch (IOException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void saveoperations(ActionEvent event) throws IOException {
+        FileChooser chooser = new FileChooser();
+        File file = chooser.showSaveDialog(null);
+        String filename = file.getName();
+        if(file != null){
+            FileOperations.writeIn(file,ope.getOperations());
+        }
+               
+    }
+
+    @FXML
+    private void getoperations(ActionEvent event) throws FileNotFoundException {
+        FileChooser chooser = new FileChooser();
+        File file = chooser.showOpenDialog(null);
+        if(file != null){
+            HashMap<String,UDOperation> map = ope.getOperations();
+            map = FileOperations.loadFrom(file); //l'oggetto ObservableListWrapper non è serializabile
+            
         }
     }
 

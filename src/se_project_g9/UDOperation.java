@@ -4,6 +4,7 @@
  */
 package se_project_g9;
 
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.Stack;
 
@@ -11,7 +12,7 @@ import java.util.Stack;
  *
  * @author group 9
  */
-public class UDOperation<Command> extends Stack<Command> {
+public class UDOperation<Command> extends Stack<Command> implements Serializable{
 
     @Override
     public synchronized Iterator<Command> iterator() {
