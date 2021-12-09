@@ -46,6 +46,9 @@ public class OperationCommandTest {
         cm = new OperationCommand(op, vars, stack);
     }
     
+    /**
+     *
+     */
     @After
     public void tearDown() {
         vars = new Variables();

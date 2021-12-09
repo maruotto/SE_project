@@ -29,6 +29,10 @@ public class OperationCommand implements Command {
 
     }
 
+    /**
+     *
+     * @throws InputNumberException
+     */
     @Override
     public void execute() throws InputNumberException {
         this.backupStack = (PersonalizedStack) stack.clone();
@@ -48,6 +52,10 @@ public class OperationCommand implements Command {
 
     }
 
+    /**
+     *
+     * @throws InputNumberException
+     */
     @Override
     public void undo() throws InputNumberException {
         Iterator<Command> i = op.reverseIterator();
@@ -56,6 +64,10 @@ public class OperationCommand implements Command {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         String commands = "";

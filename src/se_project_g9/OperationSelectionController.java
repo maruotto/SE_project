@@ -61,6 +61,11 @@ public class OperationSelectionController implements Initializable {
 
     }
 
+    /**
+     * set the data underlying this GUI
+     *
+     * @param ope the Operation that will be shown in the popup
+     */
     public void setVariables(Operation ope) {
 
         this.variables = FXCollections.observableArrayList(ope.getOperations().entrySet());
@@ -89,7 +94,7 @@ public class OperationSelectionController implements Initializable {
             ope.modifyOperationName(event.getOldValue(), event.getNewValue());
         } catch (InputNumberException ex) {
             CustomPopup.errorPopup(ex.getMessage());
-            
+
         } catch (Exception ex) {
             CustomPopup.errorPopup("It's not possible to modify");
         } finally {

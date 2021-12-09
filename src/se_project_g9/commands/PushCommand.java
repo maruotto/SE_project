@@ -23,11 +23,17 @@ public class PushCommand implements Command {
         this.n1 = n1;
     }
 
+    /**
+     *
+     */
     @Override
     public void execute() {
         n1 = numberStack.push(n1);
     }
 
+    /**
+     *
+     */
     @Override
     public void undo() {
         if (n1 != null) {
@@ -35,6 +41,10 @@ public class PushCommand implements Command {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return n1.toString();

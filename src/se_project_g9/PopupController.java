@@ -28,16 +28,20 @@ public class PopupController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void okPressed(ActionEvent event) {
         Stage stage = (Stage) label.getScene().getWindow();
         stage.close();
     }
-    
-    protected void setLabels (String message){
+
+    /**
+     *
+     * @param message message that is shown in the popup
+     */
+    protected void setLabels(String message) {
         label.setText(message);
     }
-    
+
 }
