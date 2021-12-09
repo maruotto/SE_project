@@ -12,6 +12,12 @@ import se_project_g9.exceptions.ZeroDivisionException;
  */
 public class BasicOperation {
     
+    /**
+     *  this method takes in input two complex number and returns their sum
+     * @param n1 first complex number
+     * @param n2 second complex number
+     * @return the sum of n1 and n2
+     */
     public static ComplexNumber sum(ComplexNumber n1,ComplexNumber n2){
         
         double real1 = n1.getRealPart();
@@ -23,6 +29,12 @@ public class BasicOperation {
         
     }
     
+    /**
+     * this method takes in input two complex number and returns their subtraction
+     * @param n1 first complex number
+     * @param n2 second complex number
+     * @return the subtraction of n1 and n2
+     */
     public static ComplexNumber sub(ComplexNumber n1,ComplexNumber n2){
         
         double real1 = n1.getRealPart();
@@ -35,6 +47,12 @@ public class BasicOperation {
         
     }
     
+    /**
+     * this method takes in input two complex number and returns their multiply
+     * @param n1 the first complex number 
+     * @param n2 the second complex number
+     * @return the multiply of n1 and n2
+     */
     public static ComplexNumber multiply(ComplexNumber n1,ComplexNumber n2){
         
         double real1 = n1.getRealPart();
@@ -46,6 +64,11 @@ public class BasicOperation {
         
     }
 
+    /**
+     * this method takes in input a complex number and returns the number inverted
+     * @param n1 the complex number
+     * @return the complex number n1 with its sign inverted
+     */
     public static ComplexNumber invert(ComplexNumber n1){
         double realpart = .0;
         double imaginaryPart = .0;
@@ -59,6 +82,13 @@ public class BasicOperation {
         return new ComplexNumber(realpart, imaginaryPart);
     }
     
+    /**
+     * this method takes in input two complex number and returns their division
+     * @param n1 the first complex number
+     * @param n2 the second complex number
+     * @return the division of n1 and n2
+     * @throws ZeroDivisionException if the second number is equal to 0
+     */
     public static ComplexNumber divide(ComplexNumber n1,ComplexNumber n2) throws ZeroDivisionException{
         
         double real1 = n1.getRealPart();
@@ -76,6 +106,11 @@ public class BasicOperation {
         return new ComplexNumber(real,imaginary);
     }
     
+    /**
+     * this method takes in input a complex number and returns its square root
+     * @param n1 the complex number 
+     * @return the complex number square root
+     */
     public static ComplexNumber sqrt(ComplexNumber n1){
         
         if(n1.getImaginaryPart()==0){
