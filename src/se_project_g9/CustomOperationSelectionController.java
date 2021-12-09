@@ -80,7 +80,7 @@ public class CustomOperationSelectionController implements Initializable {
 
     /**
      *
-     * @return the sequenze of operations inserted
+     * @return the sequence of operations inserted
      */
     protected String getSequence() {
         return sequence;
