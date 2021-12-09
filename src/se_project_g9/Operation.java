@@ -119,8 +119,8 @@ public class Operation implements ApplicationOperation {
             throw new InputNumberException("Choose another key, the new key already exists");
         Command cmA = new AddOperationCommand(operations, newKey, operations.get(key));
         Command cmR = new DeleteCommand(operations, key);
-        op.push(cmR);
-        op.push(cmA);
+        op.add(cmR);
+        op.add(cmA);
         Command cm = new OperationCommand(op, variables, numberStack);
         
         cm.execute();

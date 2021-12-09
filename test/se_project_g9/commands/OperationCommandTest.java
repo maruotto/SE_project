@@ -40,9 +40,9 @@ public class OperationCommandTest {
         stack.push(new ComplexNumber(0, -2));
         stack.push(new ComplexNumber(4, 2));
         op = new UDOperation<>();
-        op.push(new SumCommand(stack));
-        op.push(new SubCommand(stack));
-        op.push(new VInsertCommand(vars,stack,'a'));
+        op.add(new SumCommand(stack));
+        op.add(new SubCommand(stack));
+        op.add(new VInsertCommand(vars,stack,'a'));
         cm = new OperationCommand(op, vars, stack);
     }
     
