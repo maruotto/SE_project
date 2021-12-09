@@ -23,6 +23,11 @@ import se_project_g9.exceptions.InputNumberException;
  */
 public class CustomPopup {
     
+    /**
+     *
+     * @param message the message to show 
+     * @return true if none exception has been thrown, false otherwise
+     */
     protected static boolean errorPopup(String message) {
         FXMLLoader loader = new FXMLLoader(FXMLDocumentController.class.getResource("Popup.fxml"));
         Parent parent;

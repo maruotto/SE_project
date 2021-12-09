@@ -33,6 +33,10 @@ public class NumberStack<E> extends Stack<E> implements PersonalizedStack<E> {
         obList = FXCollections.observableList(this);
     }
     
+    /**
+     * this method remove the stack first element 
+     * @return the element removed 
+     */
     @Override
     public synchronized E pop() {   
         E item = super.pop(); //throws EmptyStackException
@@ -40,6 +44,11 @@ public class NumberStack<E> extends Stack<E> implements PersonalizedStack<E> {
         return item;
     }
     
+    /**
+     * this method takes in input the element to insert and insert it in the stack
+     * @param item the element to insert 
+     * @return the element inserted
+     */
     @Override
     public synchronized E push(E item) {      
         super.push(item);
@@ -48,28 +57,45 @@ public class NumberStack<E> extends Stack<E> implements PersonalizedStack<E> {
         
     }
     
+    /**
+       this method returns an iterator on the stack
+     * @return an iterator that start from the end 
+     */
     @Override
     public synchronized Iterator<E> iterator() {
         return new ReverseIterator<>(this);
         //return super.iterator();       
     }
     
+    /**
+     * this method removes all the elements from the stack
+     */
     @Override
     public synchronized void clear() {
         super.clear();
         informListenerWholeStructure(ChangeType.POP);
     }
     
+    /**
+     *
+     * @return the stack top element 
+     */
     @Override
     public synchronized E peek() {
         return super.peek(); //throws EmptyStackException
     }
     
+    /**
+     * this method 
+     */
     @Override
     public synchronized void drop() {
          informListener(ChangeType.POP, this.pop());//throws EmptyStackException  
     }
     
+    /**
+     * this method duplicates the stack top element
+     */
     @Override
     public synchronized void dup() {
         E e = this.peek(); //throws EmptyStackException
@@ -77,6 +103,10 @@ public class NumberStack<E> extends Stack<E> implements PersonalizedStack<E> {
         informListener(ChangeType.PUSH, e);       
     }
     
+    /**
+     * this method swaps the stack first two elements
+     * @throws NotEnoughNumbersException
+     */
     @Override
     public synchronized void swap() throws NotEnoughNumbersException{
         E last, secondlast;
@@ -95,6 +125,10 @@ public class NumberStack<E> extends Stack<E> implements PersonalizedStack<E> {
         informListener(ChangeType.PUSH, secondlast);
     }
     
+    /**
+     * this method takes the stack second element and insert it on the top
+     * @throws NotEnoughNumbersException
+     */
     public synchronized void over() throws NotEnoughNumbersException {
          E last, secondlast;
          last = this.pop();
@@ -111,11 +145,20 @@ public class NumberStack<E> extends Stack<E> implements PersonalizedStack<E> {
         informListener(ChangeType.PUSH, secondlast);
     }
 
+    /**
+     * this method clones this object
+     * @return
+     */
     @Override
     public synchronized Object clone() {
         return super.clone(); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     * @param o the object we want to compare with this.
+     * @return if o and this object are equals or not
+     */
     @Override
     public synchronized boolean equals(Object o) {
         return super.equals(o); //To change body of generated methods, choose Tools | Templates.

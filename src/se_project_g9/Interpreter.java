@@ -37,18 +37,35 @@ public class Interpreter {
     private final Variables variables;
     private final UDAllOp operations;
 
+    /**
+     *
+     * @param ope the operation object
+     */
     public Interpreter(Operation ope) {
         numberStack = ope.getNumberStack();
         variables = ope.getVariables();
         operations = ope.getOperations();
     }
 
+    /**
+     *
+     * @param numberStack the number stack
+     * @param variables the set of variables 
+     * @param operations the operations
+     */
     protected Interpreter(NumberStack<ComplexNumber> numberStack, Variables variables, UDAllOp operations) {
         this.numberStack = numberStack;
         this.variables = variables;
         this.operations = operations;
     }
 
+    /**
+     *
+     * @param input the input string to translate
+     * @param operation true if input is an operation,false otherwise
+     * @return the Command to execute
+     * @throws InputNumberException
+     */
     protected Command translateInput(String input, boolean operation) throws InputNumberException {
         if (numberStack == null || variables == null || operations == null) {
             input = input.trim();
@@ -136,6 +153,12 @@ public class Interpreter {
 
     }
 
+    /**
+     *
+     * @param input the input to string to convert
+     * @return a complex number that represents the input
+     * @throws InputNumberException
+     */
     protected static ComplexNumber convertNumber(String input) throws InputNumberException {
         if (input.length() == 0) {
             throw new NumberFormatException("Is not possible to insert nothing");
