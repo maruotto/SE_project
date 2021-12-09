@@ -167,7 +167,7 @@ public class NumberStack<E> extends Stack<E> implements PersonalizedStack<E> {
     
     
     /**
-     *
+     * inform observers about modification on modified element
      * @param change the type of change performed, if push or pop
      * @param modified the element that has been modified
      */
@@ -178,6 +178,12 @@ public class NumberStack<E> extends Stack<E> implements PersonalizedStack<E> {
         }
     }
     
+    /**
+     * inform observers about modification on the whole structure
+     * 
+     * @param modified the element that has been modified
+     */
+    
     void informListenerWholeStructure(ChangeType change) {        
         change.setChangedObj(Collections.singletonList(this));        
         for (ListChangeListener observer : this.observers) {
@@ -186,6 +192,11 @@ public class NumberStack<E> extends Stack<E> implements PersonalizedStack<E> {
         
     }
 
+    /**
+     * Appends the specified element to the end of this Stack
+     * @param c elements to be inserted into this Vector
+     * @return true if this Vector changed as a result of the call
+     */
     @Override
     public boolean addAll(Collection<? extends E> c) {
         informListenerWholeStructure(ChangeType.PUSH);
@@ -193,53 +204,107 @@ public class NumberStack<E> extends Stack<E> implements PersonalizedStack<E> {
         return ret;
     }
     
-    
-    
+    /**
+     * add listener to observers that will be informed about changes on structure
+     * @param listener
+     */
     @Override
     public void addListener(ListChangeListener<? super E> listener) {
         observers.add(listener);
     }
     
+    /**
+     * remove listener from observers and it will be no longer informed about changes on structure
+     * @param listener
+     */
     @Override
     public void removeListener(ListChangeListener<? super E> listener) {
         observers.remove(listener);
     }
     
+    /**
+     * Appends all of the elements in the specified collection to the end of this list,
+     * in the order that they are returned by the specified collection's iterator 
+     * @param elements
+     * @return
+     */
     @Override
     public boolean addAll(E... elements) {
         return obList.addAll(elements);
     }
     
+    /**
+     * Replaces the element at the specified position in this list with the 
+     * specified element (optional operation).
+     * @param elements
+     * @return
+     */
     @Override
     public boolean setAll(E... elements) {
         return obList.setAll(elements);
     }
     
+    /**
+     * Clears the ObservableList and adds all elements from the collection.
+     * @param clctn
+     * @return
+     */
     @Override
     public boolean setAll(Collection<? extends E> clctn) {
         return obList.setAll(clctn);
     }
     
+    /**
+     * Removes the first occurrence of the specified element from this list, 
+     * if it is present (optional operation). If this list does not contain 
+     * the element, it is unchanged.
+     * @param elements
+     * @return
+     */
     @Override
     public boolean removeAll(E... elements) {
         return obList.removeAll(elements);
     }
     
+    /**
+     * Retains only the elements in this list that are contained in the 
+     * specified collection
+     * @param elements
+     * @return
+     */
     @Override
     public boolean retainAll(E... elements) {
         return obList.retainAll(elements);
     }
     
+    /**
+     * Removes the first occurrence of the specified element from this list, 
+     * if it is present
+     * @param from
+     * @param to
+     */
     @Override
     public void remove(int from, int to) {
         obList.remove(from, to);
     }
     
+    /**
+     * Adds an InvalidationListener which will be notified whenever the 
+     * Observable becomes invalid. If the same listener is added more than once, 
+     * then it will be notified more than once. That is, no check is made to 
+     * ensure uniqueness.
+
+     * @param listener
+     */
     @Override
     public void addListener(InvalidationListener listener) {
         obList.addListener(listener);
     }
     
+    /**
+     * Removes the first occurrence of the specified element from this list, if it is present
+     * @param listener
+     */
     @Override
     public void removeListener(InvalidationListener listener) {
         obList.removeListener(listener);
