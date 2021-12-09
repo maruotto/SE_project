@@ -42,32 +42,32 @@
       <Button layoutX="563.0" layoutY="397.0" mnemonicParsing="false" onAction="#subvariableclick" prefHeight="25.0" prefWidth="30.0" text="-x" />
       <SplitMenuButton fx:id="variablesMenù" layoutX="384.0" layoutY="397.0" maxHeight="1.7976931348623157E308" mnemonicParsing="false" text="variables">
         <items>
-            <MenuItem mnemonicParsing="false" onAction="#clicka" text="a" />
-          <MenuItem mnemonicParsing="false" onAction="#clickb" text="b" />
-          <MenuItem mnemonicParsing="false" onAction="#clickc" text="c" />
-            <MenuItem mnemonicParsing="false" onAction="#clickd" text="d" />
-            <MenuItem mnemonicParsing="false" onAction="#clicke" text="e" />
-            <MenuItem mnemonicParsing="false" onAction="#clickf" text="f" />
-            <MenuItem mnemonicParsing="false" onAction="#clickg" text="g" />
-            <MenuItem mnemonicParsing="false" onAction="#clickh" text="h" />
-            <MenuItem mnemonicParsing="false" onAction="#clickiv" text="i" />
-            <MenuItem mnemonicParsing="false" onAction="#clickj" text="j" />
-            <MenuItem mnemonicParsing="false" onAction="#clickk" text="k" />
-            <MenuItem mnemonicParsing="false" onAction="#clickl" text="l" />
-            <MenuItem mnemonicParsing="false" onAction="#clickm" text="m" />
-            <MenuItem mnemonicParsing="false" onAction="#clickn" text="n" />
-            <MenuItem mnemonicParsing="false" onAction="#clicko" text="o" />
-            <MenuItem mnemonicParsing="false" onAction="#clickp" text="p" />
-            <MenuItem mnemonicParsing="false" onAction="#clickq" text="q" />
-            <MenuItem mnemonicParsing="false" onAction="#clickr" text="r" />
-            <MenuItem mnemonicParsing="false" onAction="#clicks" text="s" />
-            <MenuItem mnemonicParsing="false" onAction="#clickt" text="t" />
-            <MenuItem mnemonicParsing="false" onAction="#clicku" text="u" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="a" />
+          <MenuItem mnemonicParsing="false" onAction="#clickv" text="b" />
+          <MenuItem mnemonicParsing="false" onAction="#clickv" text="c" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="d" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="e" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="f" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="g" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="h" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="i" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="j" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="k" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="l" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="m" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="n" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="o" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="p" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="q" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="r" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="s" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="t" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="u" />
             <MenuItem mnemonicParsing="false" onAction="#clickv" text="v" />
-            <MenuItem mnemonicParsing="false" onAction="#clickw" text="w" />
-            <MenuItem mnemonicParsing="false" onAction="#clickx" text="x" />
-            <MenuItem mnemonicParsing="false" onAction="#clicky" text="y" />
-            <MenuItem mnemonicParsing="false" onAction="#clickz" text="z" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="w" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="x" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="y" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="z" />
         </items>
       </SplitMenuButton>
       <Button fx:id="undoBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#undoclick" text="Undo" />
