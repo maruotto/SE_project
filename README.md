@@ -29,4 +29,7 @@
   - [burndown chart](https://docs.google.com/document/d/1wnU5xUkqT15Ua-eSnscnJbrSsfLGg1t-EkpjpPmXqHM/edit?usp=sharing)
 
   - [summary document](https://docs.google.com/document/d/11BhDvv2jHc8awIdORmezzPf1LxMZPrI7f-G5Y1VNCvU/edit?usp=sharing)
+  
  *****
+ ## THIRD SPRINT:
+  - [summary document](https://docs.google.com/document/d/187J44Xf8ys10BPKtmCR81lG9RfnmzFVyegAVpOA6udQ/edit?usp=sharing)
