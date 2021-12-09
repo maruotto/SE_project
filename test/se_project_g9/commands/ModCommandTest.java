@@ -5,7 +5,9 @@
 package se_project_g9.commands;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import se_project_g9.BasicOperation;
@@ -16,23 +18,24 @@ import se_project_g9.exceptions.InputNumberException;
 
 /**
  *
- * @author idamaruotto
+ * @author lucia
  */
-public class SqrtCommandTest {
+public class ModCommandTest {
     
-    private Command sqrt;
+    private Command mod;
     private PersonalizedStack<ComplexNumber> stack;
     private ComplexNumber n1;
+
     
-    public SqrtCommandTest() {
+    public ModCommandTest() {
         stack = new NumberStack<>();
-        sqrt = new SqrtCommand(stack);
-        
+        mod = new ModCommand(stack);
     }
+    
     
     @Before
     public void setUp() {
-       n1 = new ComplexNumber(3,5);
+        n1 = new ComplexNumber(2,3);
     }
     
     @After
@@ -40,24 +43,24 @@ public class SqrtCommandTest {
     }
 
     /**
-     * Test of execute method, of class SqrtCommand.
+     * Test of execute method, of class ModCommand.
      */
     @Test
     public void testExecute() throws Exception {
         stack.push(n1);
-        sqrt.execute();
-        assertEquals(stack.pop(), BasicOperation.sqrt(n1));
+        mod.execute();
+        assertEquals(stack.pop(), BasicOperation.mod(n1));
     }
 
     /**
-     * Test of undo method, of class SqrtCommand.
+     * Test of undo method, of class ModCommand.
      */
     @Test
     public void testUndo() throws InputNumberException {
-        stack.push(n1);
-        sqrt.execute();
-        sqrt.undo();
+       stack.push(n1);
+        mod.execute();
+        mod.undo();
         assertEquals(stack.pop(), n1);
     }
-    
+
 }
