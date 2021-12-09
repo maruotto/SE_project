@@ -24,6 +24,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -72,8 +73,7 @@ public class FXMLDocumentController implements Initializable {
             tfInput.requestFocus();
             tfInput.selectEnd();
         });
-        
-        
+
         undoBtn.disableProperty().set(true);
 
     }
@@ -224,133 +224,10 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void clickb(ActionEvent event) {
-        variablesMenù.setText("b");
-    }
-
-    @FXML
-    private void clickc(ActionEvent event) {
-        variablesMenù.setText("c");
-    }
-
-    @FXML
-    private void clickd(ActionEvent event) {
-        variablesMenù.setText("d");
-    }
-
-    @FXML
-    private void clicke(ActionEvent event) {
-        variablesMenù.setText("e");
-    }
-
-    @FXML
-    private void clickf(ActionEvent event) {
-        variablesMenù.setText("f");
-    }
-
-    @FXML
-    private void clickg(ActionEvent event) {
-        variablesMenù.setText("g");
-    }
-
-    @FXML
-    private void clickh(ActionEvent event) {
-        variablesMenù.setText("h");
-    }
-
-    @FXML
-    private void clickj(ActionEvent event) {
-        variablesMenù.setText("j");
-    }
-
-    @FXML
-    private void clickk(ActionEvent event) {
-        variablesMenù.setText("k");
-    }
-
-    @FXML
-    private void clickl(ActionEvent event) {
-        variablesMenù.setText("l");
-    }
-
-    @FXML
-    private void clickm(ActionEvent event) {
-        variablesMenù.setText("m");
-    }
-
-    @FXML
-    private void clickn(ActionEvent event) {
-        variablesMenù.setText("n");
-    }
-
-    @FXML
-    private void clicko(ActionEvent event) {
-        variablesMenù.setText("o");
-    }
-
-    @FXML
-    private void clickp(ActionEvent event) {
-        variablesMenù.setText("p");
-    }
-
-    @FXML
-    private void clickq(ActionEvent event) {
-        variablesMenù.setText("q");
-    }
-
-    @FXML
-    private void clickr(ActionEvent event) {
-        variablesMenù.setText("r");
-    }
-
-    @FXML
-    private void clicks(ActionEvent event) {
-        variablesMenù.setText("s");
-    }
-
-    @FXML
-    private void clickt(ActionEvent event) {
-        variablesMenù.setText("t");
-    }
-
-    @FXML
-    private void clicku(ActionEvent event) {
-        variablesMenù.setText("u");
-    }
-
-    @FXML
     private void clickv(ActionEvent event) {
-        variablesMenù.setText("v");
-    }
-
-    @FXML
-    private void clickw(ActionEvent event) {
-        variablesMenù.setText("w");
-    }
-
-    @FXML
-    private void clickx(ActionEvent event) {
-        variablesMenù.setText("x");
-    }
-
-    @FXML
-    private void clicky(ActionEvent event) {
-        variablesMenù.setText("y");
-    }
-
-    @FXML
-    private void clickz(ActionEvent event) {
-        variablesMenù.setText("z");
-    }
-
-    @FXML
-    private void clicka(ActionEvent event) {
-        variablesMenù.setText("a");
-    }
-
-    @FXML
-    private void clickiv(ActionEvent event) {
-        variablesMenù.setText("i");
+        //variablesMenù.setText("v");
+        MenuItem btn = (MenuItem) event.getSource();
+        variablesMenù.setText(btn.getText());
     }
 
     @FXML
