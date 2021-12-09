@@ -115,7 +115,8 @@ public class Operation implements ApplicationOperation {
     
     public void modifyOperationName(String key, String newKey) throws InputNumberException {   
         UDOperation op = new UDOperation();
-  
+        if(this.operations.containsKey(newKey))
+            throw new InputNumberException("Choose another key, the new key already exists");
         Command cmA = new AddOperationCommand(operations, newKey, operations.get(key));
         Command cmR = new DeleteCommand(operations, key);
         op.push(cmR);

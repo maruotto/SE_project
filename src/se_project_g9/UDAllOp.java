@@ -1,5 +1,6 @@
 package se_project_g9;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import se_project_g9.exceptions.InputNumberException;
 

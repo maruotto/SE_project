@@ -17,7 +17,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
          <contextMenu>
-            <ContextMenu onAction="#menu">
+            <ContextMenu>
                <items>
                   <MenuItem fx:id="removeBtn" mnemonicParsing="false" onAction="#removeClick" text="Remove" />
                </items>

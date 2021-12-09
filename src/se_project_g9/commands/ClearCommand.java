@@ -4,6 +4,7 @@
  */
 package se_project_g9.commands;
 
+
 import se_project_g9.*;
 import se_project_g9.exceptions.NotEnoughNumbersException;
 
@@ -11,7 +12,7 @@ import se_project_g9.exceptions.NotEnoughNumbersException;
  *
  * @author group9
  */
-public class ClearCommand implements Command {
+public class ClearCommand implements Command{
 
     private PersonalizedStack<ComplexNumber> numberStack;
     private PersonalizedStack<ComplexNumber> copyOfNumberStack;

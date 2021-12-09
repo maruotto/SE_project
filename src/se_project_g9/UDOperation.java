@@ -4,6 +4,7 @@
  */
 package se_project_g9;
 
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.Stack;
 import se_project_g9.exceptions.InputNumberException;
@@ -12,7 +13,7 @@ import se_project_g9.exceptions.InputNumberException;
  *
  * @author group 9
  */
-public class UDOperation<Command> extends Stack<Command> {
+public class UDOperation<Command> extends Stack<Command> implements Serializable{
 
     static private Interpreter i;
 

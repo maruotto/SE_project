@@ -84,20 +84,18 @@ public class OperationSelectionController implements Initializable {
     }
 
     @FXML
-    private void menu(ActionEvent event) {
-    }
-
-    @FXML
     private void modifyCommitName(TableColumn.CellEditEvent<Map.Entry<String, String>, String> event) {
         try {
             ope.modifyOperationName(event.getOldValue(), event.getNewValue());
         } catch (InputNumberException ex) {
             CustomPopup.errorPopup(ex.getMessage());
+            
         } catch (Exception ex) {
             CustomPopup.errorPopup("It's not possible to modify");
         } finally {
             this.variables = FXCollections.observableArrayList(ope.getOperations().entrySet());
-            tableView.setItems(this.variables);
+            tableView.setItems(variables);
+            tableView.refresh();
         }
 
     }
@@ -112,6 +110,8 @@ public class OperationSelectionController implements Initializable {
             CustomPopup.errorPopup("It's not possible to modify");
         } finally {
             this.variables = FXCollections.observableArrayList(ope.getOperations().entrySet());
+            tableView.setItems(variables);
+            tableView.refresh();
         }
     }
 
