@@ -8,18 +8,10 @@ import se_project_g9.exceptions.InputNumberException;
  *
  * @author idamaruotto
  */
-public class UDAllOp extends HashMap<String, UDOperation> implements Serializable{
-    private Interpreter i;
-
-    public UDAllOp() {
-        this.i = null;
-    }
+public class UDAllOp extends HashMap<String, UDOperation>{
     
     
     public void addOperation(String name, String input) throws InputNumberException {
-        if(i==null){
-            throw new NullPointerException("Interpreter of class UDAllOp not setted");
-        }
         
         if (this.containsKey(name)) {
             throw new InputNumberException("Operation already defined, try with another name");
@@ -31,10 +23,6 @@ public class UDAllOp extends HashMap<String, UDOperation> implements Serializabl
         
         UDOperation op = new UDOperation<>(input);
         this.put(name, op);
-    }
-
-    void addInterpreter(Interpreter i) {
-        this.i = i;
     }
     
 }

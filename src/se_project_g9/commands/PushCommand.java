@@ -37,7 +37,7 @@ public class PushCommand implements Command {
 
     @Override
     public String toString() {
-        return "push";
+        return n1.toString();
     }
 
 }

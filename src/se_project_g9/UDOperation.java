@@ -39,6 +39,16 @@ public class UDOperation<Command> extends ArrayList<Command>{
             }
         }
     }
+    
+    public UDOperation(String input, Interpreter in) throws InputNumberException {
+        super();
+        String[] splittedInput = input.split(" +");
+        for (String s : splittedInput) {
+            if (s.length() > 0) {
+                this.add((Command) in.translateInput(s, true)); //if exception thrown the execution is blocked
+            }
+        }
+    }
 
     public static void addInterpreter(Interpreter i) {
         UDOperation.i = i;

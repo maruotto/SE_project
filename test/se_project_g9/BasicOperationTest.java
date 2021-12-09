@@ -4,9 +4,12 @@
  */
 package se_project_g9;
 
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.BeforeClass;
 
 /**
  *
@@ -17,12 +20,24 @@ public class BasicOperationTest {
     private ComplexNumber n1;
     private ComplexNumber n2;
     private ComplexNumber expResult;
+
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
+
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
     
     @Before
     public void setUp() {
         n1 = new ComplexNumber(0,0);
         n2 = new ComplexNumber(4,3);
         
+    }
+
+    @After
+    public void tearDown() throws Exception {
     }
     
     /**
@@ -112,6 +127,24 @@ public class BasicOperationTest {
         result = BasicOperation.sqrt(new ComplexNumber(3,-4));
         assertEquals(expResult.getRealPart(), result.getRealPart(), 0);
         assertEquals(expResult.getImaginaryPart(), result.getImaginaryPart(), 0);
+        System.out.println("work\n");
+    }
+
+    
+    /**
+     * Test of mod method, of class BasicOperation.
+     */
+    @Test
+    public void testMod() {
+        System.out.println("mod");
+        ComplexNumber expResult = new ComplexNumber(5,0);
+        ComplexNumber result = BasicOperation.mod(new ComplexNumber(3,4));
+        assertEquals(expResult.getRealPart(), result.getRealPart(), 0);
+        
+        
+        expResult = new ComplexNumber(Math.pow(13, 0.5));
+        result = BasicOperation.mod(new ComplexNumber(-2,3));
+        assertEquals(expResult.getRealPart(), result.getRealPart(), 0.001*Math.pow(13, 0.5));
         System.out.println("work\n");
     }
     
