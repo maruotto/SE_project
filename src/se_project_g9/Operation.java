@@ -27,7 +27,6 @@ public class Operation implements ApplicationOperation {
         this.operationsPerformed = new Stack<>();
         this.operations = new UDAllOp();
         this.i = new Interpreter(numberStack, variables, operations);
-        this.operations.addInterpreter(i);
         UDOperation.addInterpreter(i);
                 
         
