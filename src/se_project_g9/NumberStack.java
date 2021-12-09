@@ -68,7 +68,7 @@ public class NumberStack<E> extends Stack<E> implements PersonalizedStack<E> {
     }
     
     /**
-     *
+     * this method removes all the elements from the stack
      */
     @Override
     public synchronized void clear() {

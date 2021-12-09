@@ -45,34 +45,34 @@ public interface PersonalizedStack<E> extends ObservableList<E>{
      */
     public void drop()throws EmptyStackException;
 
-    /**
-     * 
-     * @return
+   /**
+       this method returns an iterator on the stack
+     * @return an iterator that start from the end 
      */
     @Override
     public Iterator<E> iterator();
     
     /**
-     *
+     * this method removes all the elements from the stack
      */
     @Override
     public void clear();
     /**
-     *
-     * @throws EmptyStackException
+     * this method duplicates the stack top element
      * @throws NotEnoughNumbersException
+     * @throws EmptyStackException
      */
     public void dup() throws EmptyStackException, NotEnoughNumbersException;;
 
     /**
-     *
+     * this method swaps the stack first two elements
      * @throws EmptyStackException
      * @throws NotEnoughNumbersException
      */
     public void swap()throws EmptyStackException, NotEnoughNumbersException;
 
     /**
-     *  takes the second last element and put it on top of the stack
+     * this method takes the stack second element and insert it on the top
      * @throws EmptyStackException
      * @throws NotEnoughNumbersException
      */
