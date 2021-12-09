@@ -25,6 +25,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 
@@ -398,14 +400,7 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void undoclick(ActionEvent event) {
-        try {
-            ope.undo();
-        } catch (ImpossibleUndo ex) {
-            CustomPopup.errorPopup(ex.getMessage());
-        }      
-        if(ope.getOperationsPerfomed().empty()){
-            undoBtn.disableProperty().set(true);
-        }
+        undo();
     }
     
     private void enterInput() {
@@ -473,6 +468,24 @@ public class FXMLDocumentController implements Initializable {
             if(file != null){
                 FileOperations.loadFrom(file, ope); //l'oggetto ObservableListWrapper non è serializabile
             } 
+    }
+
+    private void undo() {
+        try {
+            ope.undo();
+        } catch (ImpossibleUndo ex) {
+            CustomPopup.errorPopup(ex.getMessage());
+        }      
+        if(ope.getOperationsPerfomed().empty()){
+            undoBtn.disableProperty().set(true);
+        }
+    }
+
+    @FXML
+    private void controlZ(KeyEvent event) {
+        KeyCodeCombination comb = new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN);
+        if(comb.match(event))
+            undo();
     }
 
 }
