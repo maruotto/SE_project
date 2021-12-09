@@ -25,6 +25,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 
@@ -395,16 +397,10 @@ public class FXMLDocumentController implements Initializable {
         variablesMenù.setText("i");
     }
 
+    
     @FXML
     private void undoclick(ActionEvent event) {
-        try {
-            ope.undo();
-        } catch (ImpossibleUndo ex) {
-            CustomPopup.errorPopup(ex.getMessage());
-        }      
-        if(ope.getOperationsPerfomed().empty()){
-            undoBtn.disableProperty().set(true);
-        }
+        undo();
     }
     
     private void enterInput() {
@@ -458,8 +454,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void saveoperations(ActionEvent event) throws IOException {
         FileChooser chooser = new FileChooser();
-        File file = chooser.showSaveDialog(null);
-        String filename = file.getName();
+        File file = chooser.showSaveDialog(null);     
         if(file != null){
             FileOperations.writeIn(file,ope.getOperations());
         }
@@ -467,14 +462,30 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void getoperations(ActionEvent event) throws FileNotFoundException {
+    private void getoperations(ActionEvent event) throws FileNotFoundException{
         FileChooser chooser = new FileChooser();
         File file = chooser.showOpenDialog(null);
-        if(file != null){
-            HashMap<String,UDOperation> map = ope.getOperations();
-            map = FileOperations.loadFrom(file); //l'oggetto ObservableListWrapper non è serializabile
-            
+            if(file != null){
+                FileOperations.loadFrom(file, ope); //l'oggetto ObservableListWrapper non è serializabile
+            } 
+    }
+
+    private void undo() {
+        try {
+            ope.undo();
+        } catch (ImpossibleUndo ex) {
+            CustomPopup.errorPopup(ex.getMessage());
+        }      
+        if(ope.getOperationsPerfomed().empty()){
+            undoBtn.disableProperty().set(true);
         }
+    }
+
+    @FXML
+    private void controlZ(KeyEvent event) {
+        KeyCodeCombination comb = new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN);
+        if(comb.match(event))
+            undo();
     }
 
 }

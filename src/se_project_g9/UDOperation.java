@@ -4,16 +4,15 @@
  */
 package se_project_g9;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Stack;
 import se_project_g9.exceptions.InputNumberException;
 
 /**
  *
  * @author group 9
  */
-public class UDOperation<Command> extends Stack<Command> implements Serializable{
+public class UDOperation<Command> extends ArrayList<Command>{
 
     static private Interpreter i;
 
@@ -36,7 +35,7 @@ public class UDOperation<Command> extends Stack<Command> implements Serializable
         String[] splittedInput = input.split(" +");
         for (String s : splittedInput) {
             if (s.length() > 0) {
-                this.push((Command) i.translateInput(s, true)); //if exception thrown the execution is blocked
+                this.add((Command) i.translateInput(s, true)); //if exception thrown the execution is blocked
             }
         }
     }
