@@ -14,6 +14,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import se_project_g9.ComplexNumber;
 import se_project_g9.NumberStack;
+import se_project_g9.UDAllOp;
 import se_project_g9.UDOperation;
 
 /**
@@ -23,7 +24,7 @@ import se_project_g9.UDOperation;
 public class DeleteCommandTest {
     
     private String key;
-    private HashMap<String,UDOperation> map;
+    private UDAllOp map;
     private UDOperation oldValue;
     private NumberStack<ComplexNumber> stack;
     
@@ -31,7 +32,7 @@ public class DeleteCommandTest {
     public DeleteCommandTest() {
         
         UDOperation op = new UDOperation();
-        map = new HashMap<>();
+        map = new UDAllOp();
         map.put(key, op);
 
         

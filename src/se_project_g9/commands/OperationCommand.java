@@ -6,6 +6,7 @@ package se_project_g9.commands;
 
 import java.util.Iterator;
 import se_project_g9.PersonalizedStack;
+import se_project_g9.UDAllOp;
 import se_project_g9.exceptions.InputNumberException;
 import se_project_g9.UDOperation;
 import se_project_g9.Variables;
@@ -21,12 +22,10 @@ public class OperationCommand implements Command {
     private Variables vars;
     private PersonalizedStack backupStack;
     private Variables backupVars;
-
     public OperationCommand(UDOperation op, Variables vars, PersonalizedStack stack) {
         this.op = op;
         this.stack = stack;
         this.vars = vars;
-        
 
     }
 
@@ -34,8 +33,7 @@ public class OperationCommand implements Command {
     public void execute() throws InputNumberException {
         this.backupStack = (PersonalizedStack) stack.clone();
         this.backupVars = vars.clone();
-        
-        
+
         for (Command c : op) {
             try {
                 c.execute();
@@ -47,17 +45,15 @@ public class OperationCommand implements Command {
                 throw new InputNumberException("Operation not executed successfully");
             }
         }
-        
-        
 
     }
 
     @Override
     public void undo() throws InputNumberException {
-        this.stack.clear();
-        this.stack.addAll(backupStack);
-        this.vars.clear();
-        this.vars.addAll(backupVars);
+        Iterator<Command> i = op.reverseIterator();
+        while(i.hasNext()){
+            i.next().undo();
+        }
     }
 
     @Override
