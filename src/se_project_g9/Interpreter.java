@@ -49,7 +49,6 @@ public class Interpreter {
         this.operations = operations;
     }
 
-
     protected Command translateInput(String input, boolean operation) throws InputNumberException {
         if (numberStack == null || variables == null || operations == null) {
             input = input.trim();
@@ -122,13 +121,16 @@ public class Interpreter {
                 case "-":
                     ret = new VSubCommand(variables, input.charAt(1), numberStack);
                     break;
+                default:
+                    throw new OperationNotPresentException("Operation on variables not defined");
             }
 
-        } else if (!operation) {
+        } else 
+            try {
             ret = new PushCommand(numberStack, convertNumber(input));
-        } else {
-            throw new OperationNotPresentException("This operation is not present in the library");
-        }
+            } catch (InputNumberException e) {
+                throw new OperationNotPresentException("This operation is not present in the library");
+            }
 
         return ret;
 

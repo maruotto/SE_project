@@ -326,6 +326,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void clickw(ActionEvent event) {
         variablesMenù.setText("w");
+        
     }
 
     @FXML
@@ -351,6 +352,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void clickiv(ActionEvent event) {
         variablesMenù.setText("i");
+        
     }
 
     @FXML
