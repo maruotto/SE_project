@@ -1,5 +1,6 @@
 package se_project_g9;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import se_project_g9.exceptions.InputNumberException;
 
@@ -7,7 +8,7 @@ import se_project_g9.exceptions.InputNumberException;
  *
  * @author idamaruotto
  */
-public class UDAllOp extends HashMap<String, UDOperation>{
+public class UDAllOp extends HashMap<String, UDOperation> implements Serializable{
     private Interpreter i;
 
     public UDAllOp() {

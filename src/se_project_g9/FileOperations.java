@@ -27,7 +27,7 @@ import java.util.Scanner;
  */
 public class FileOperations {
     
-    public static void writeIn(File filename,HashMap<String,UDOperation> map) throws IOException{
+    public static void writeIn(File filename,UDAllOp map) throws IOException{
         
         try(ObjectOutputStream writer = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(filename)))){
                 
@@ -40,13 +40,13 @@ public class FileOperations {
                 
     }
     
-    public static HashMap<String,UDOperation> loadFrom(File filename) throws FileNotFoundException{
+    public static UDAllOp loadFrom(File filename) throws FileNotFoundException{
           
-        HashMap<String,UDOperation> m = null;
+        UDAllOp m = null;
        
         try(ObjectInputStream reader = new ObjectInputStream(new BufferedInputStream(new FileInputStream(filename)))){
             
-            m = (HashMap<String,UDOperation>) reader.readObject();
+            m = (UDAllOp) reader.readObject();
             
             
         }catch(Exception ex){

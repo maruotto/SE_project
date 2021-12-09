@@ -455,6 +455,7 @@ public class FXMLDocumentController implements Initializable {
     private void clickrestorevariables(ActionEvent event) {
          tfInput.setText(tfInput.getText() + "restore");
     }
+    @FXML
     private void saveoperations(ActionEvent event) throws IOException {
         FileChooser chooser = new FileChooser();
         File file = chooser.showSaveDialog(null);
