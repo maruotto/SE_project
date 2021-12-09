@@ -4,10 +4,8 @@
  */
 package se_project_g9;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Stack;
 import se_project_g9.exceptions.InputNumberException;
 
 /**
