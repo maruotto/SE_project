@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 import se_project_g9.exceptions.CalculatorException;
-import se_project_g9.exceptions.InputNumberException;
 
 /**
  *

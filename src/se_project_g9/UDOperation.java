@@ -7,7 +7,6 @@ package se_project_g9;
 import java.util.ArrayList;
 import java.util.Iterator;
 import se_project_g9.exceptions.CalculatorException;
-import se_project_g9.exceptions.InputNumberException;
 
 /**
  *
@@ -49,7 +48,7 @@ public class UDOperation<Command> extends ArrayList<Command> {
      * sequence of operations and return the respective object
      *
      * @param input the string that will be translated
-     * @throws InputNumberException
+     * @throws CalculatorException
      */
     public UDOperation(String input) throws CalculatorException {
         super();
@@ -68,7 +67,7 @@ public class UDOperation<Command> extends ArrayList<Command> {
      *
      * @param input the string that will be translated
      * @param in the interpreter that should be used to translate the input
-     * @throws InputNumberException
+     * @throws CalculatorException
      */
     public UDOperation(String input, Interpreter in) throws CalculatorException {
         super();

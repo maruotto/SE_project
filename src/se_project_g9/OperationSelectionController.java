@@ -93,7 +93,7 @@ public class OperationSelectionController implements Initializable {
     private void modifyCommitName(TableColumn.CellEditEvent<Map.Entry<String, String>, String> event) {
         try {
             ope.modifyOperationName(event.getOldValue(), event.getNewValue());
-        } catch (InputNumberException ex) {
+        } catch (CalculatorException ex) {
             CustomPopup.errorPopup(ex.getMessage());
 
         } catch (Exception ex) {
@@ -110,7 +110,7 @@ public class OperationSelectionController implements Initializable {
     private void modifyCommitOperation(TableColumn.CellEditEvent<Map.Entry<String, String>, String> event) {
         try {
             ope.modifyOperation(event.getRowValue().getKey(), event.getNewValue().toString());
-        } catch (InputNumberException ex) {
+        } catch (CalculatorException ex) {
             CustomPopup.errorPopup(ex.getMessage());
         } catch (Exception ex) {
             CustomPopup.errorPopup("It's not possible to modify");

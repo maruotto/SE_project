@@ -54,7 +54,7 @@ public class AddOperationCommand implements Command{
     }
 
     @Override
-    public void undo() throws InputNumberException {
+    public void undo(){
         op.remove(key);
     }
     

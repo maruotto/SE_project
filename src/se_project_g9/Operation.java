@@ -6,9 +6,10 @@ package se_project_g9;
 
 import java.util.Stack;
 import se_project_g9.commands.*;
-import se_project_g9.exceptions.CalculatorException;
 import se_project_g9.exceptions.ImpossibleUndo;
+import se_project_g9.exceptions.CalculatorException;
 import se_project_g9.exceptions.InputNumberException;
+import se_project_g9.exceptions.OperationException;
 
 /**
  *
@@ -72,7 +73,7 @@ public class Operation implements ApplicationOperation {
      *
      * @param name the custom operation name
      * @param input the commands sequence
-     * @throws InputNumberException
+     * @throws CalculatorException
      */
     public void addUDOperation(String name, String input) throws CalculatorException {
         performCommand(new AddOperationCommand(operations,name,input));
@@ -95,7 +96,7 @@ public class Operation implements ApplicationOperation {
     /**
      * this method translate the input and execute the operation
      * @param input the operation name 
-     * @throws InputNumberException
+     * @throws CalculatorException
      */
     public void performOperation(String input) throws CalculatorException {
         performCommand(i.translateInput(input, false));
@@ -104,7 +105,7 @@ public class Operation implements ApplicationOperation {
     /**
      * this method execute the command passed as parameter
      * @param op the command to execute
-     * @throws InputNumberException
+     * @throws CalculatorException
      */
     public void performCommand(Command op) throws CalculatorException {
         op.execute();
@@ -154,7 +155,7 @@ public class Operation implements ApplicationOperation {
     /**
      * this method remove a defined operation
      * @param key the operation name
-     * @throws InputNumberException
+     * @throws CalculatorException
      */
     public void removeOperation(String key) throws CalculatorException {
         performCommand(new DeleteCommand(operations, key));
@@ -164,7 +165,7 @@ public class Operation implements ApplicationOperation {
      * this method takes in input the operation name and the new operation sequence and modifies it
      * @param key the operation name
      * @param newValue the new sequence of operations to do
-     * @throws InputNumberException
+     * @throws CalculatorException
      */
     public void modifyOperation(String key, String newValue) throws CalculatorException {
         performCommand(new ModifyOperationCommand(operations, key, new UDOperation(newValue)));
@@ -174,12 +175,12 @@ public class Operation implements ApplicationOperation {
      * this method takes in input the operation name and the new name and modifies it
      * @param key the operation name
      * @param newKey the new operation name
-     * @throws InputNumberException
+     * @throws OperationException
      */
     public void modifyOperationName(String key, String newKey) throws CalculatorException {   
         UDOperation op = new UDOperation();
         if(this.operations.containsKey(newKey))
-            throw new InputNumberException("Choose another key, the new key already exists");
+            throw new OperationException("Choose another key, the new key already exists");
         Command cmA = new AddOperationCommand(operations, newKey, operations.get(key));
         Command cmR = new DeleteCommand(operations, key);
         op.add(cmR);
@@ -191,7 +192,7 @@ public class Operation implements ApplicationOperation {
     
     /**
      * this method executes the drop operation
-     * @throws InputNumberException
+     * @throws CalculatorException
      */
     public void drop() throws CalculatorException{
         performCommand(new DropCommand(numberStack));
@@ -199,7 +200,7 @@ public class Operation implements ApplicationOperation {
 
     /**
      * this method executes the dup operation
-     * @throws InputNumberException
+     * @throws CalculatorException
      */
     public void dup() throws CalculatorException {
         performCommand(new DupCommand(numberStack));
@@ -207,7 +208,7 @@ public class Operation implements ApplicationOperation {
 
     /**
      * this method executes the swap operation
-     * @throws InputNumberException
+     * @throws CalculatorException
      */
     public void swap() throws CalculatorException {
         performCommand(new SwapCommand(numberStack));
@@ -215,14 +216,14 @@ public class Operation implements ApplicationOperation {
 
     /**
      * this method executes the clear operation
-     * @throws InputNumberException
+     * @throws CalculatorException
      */
     public void clear() throws CalculatorException {
         performCommand(new ClearCommand(numberStack));
     }
     /**
      * this method executes the over operation
-     * @throws InputNumberException 
+     * @throws CalculatorException 
      */
     
     void over() throws CalculatorException {
@@ -230,7 +231,7 @@ public class Operation implements ApplicationOperation {
     }
     /**
      * this method executes the invert operation
-     * @throws InputNumberException 
+     * @throws CalculatorException 
      */
     void invert() throws CalculatorException {
         performCommand(new InvertCommand(numberStack));

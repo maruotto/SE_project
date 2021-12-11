@@ -17,9 +17,9 @@ public class UDAllOp extends HashMap<String, UDOperation> {
      *
      * @param name name of the operation
      * @param input the string that represent the sequence of operations
-     * @throws InputNumberException
+     * @throws CalculatorException
      */
-    public void addOperation(String name, String input) throws OperationException, CalculatorException {
+    public void addOperation(String name, String input) throws CalculatorException {
 
         if (this.containsKey(name)) {
             throw new OperationException("Operation already defined, try with another name");

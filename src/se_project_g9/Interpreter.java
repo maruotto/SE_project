@@ -66,7 +66,7 @@ public class Interpreter {
      * @param input the input string to translate
      * @param operation true if input is an operation,false otherwise
      * @return the Command to execute
-     * @throws InputNumberException
+     * @throws CalculatorException
      */
     protected Command translateInput(String input, boolean operation) throws CalculatorException {
         if (numberStack == null || variables == null || operations == null) {

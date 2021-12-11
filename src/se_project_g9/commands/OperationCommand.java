@@ -56,7 +56,7 @@ public class OperationCommand implements Command {
 
     /**
      *
-     * @throws InputNumberException
+     * @throws CalculatorException
      */
     @Override
     public void undo() throws CalculatorException {
