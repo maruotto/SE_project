@@ -6,6 +6,7 @@ package se_project_g9;
 
 import java.util.Stack;
 import se_project_g9.commands.*;
+import se_project_g9.exceptions.CalculatorException;
 import se_project_g9.exceptions.ImpossibleUndo;
 import se_project_g9.exceptions.InputNumberException;
 
@@ -73,7 +74,7 @@ public class Operation implements ApplicationOperation {
      * @param input the commands sequence
      * @throws InputNumberException
      */
-    public void addUDOperation(String name, String input) throws InputNumberException {
+    public void addUDOperation(String name, String input) throws CalculatorException {
         performCommand(new AddOperationCommand(operations,name,input));
     }
 
@@ -82,10 +83,10 @@ public class Operation implements ApplicationOperation {
      * @throws ImpossibleUndo
      */
     public void undo() throws ImpossibleUndo {
-        Command op = operationsPerformed.pop(); //throw empty stack exception
+        Command op = operationsPerformed.pop(); //throw empty stack CalculatorException
         try {
             op.undo();
-        } catch (InputNumberException ex) {
+        } catch (CalculatorException ex) {
             throw new ImpossibleUndo("It's not possible to restore the status");
         }
 
@@ -96,7 +97,7 @@ public class Operation implements ApplicationOperation {
      * @param input the operation name 
      * @throws InputNumberException
      */
-    public void performOperation(String input) throws InputNumberException {
+    public void performOperation(String input) throws CalculatorException {
         performCommand(i.translateInput(input, false));
     }
     
@@ -105,7 +106,7 @@ public class Operation implements ApplicationOperation {
      * @param op the command to execute
      * @throws InputNumberException
      */
-    public void performCommand(Command op) throws InputNumberException {
+    public void performCommand(Command op) throws CalculatorException {
         op.execute();
         operationsPerformed.push(op);
     }
@@ -113,9 +114,9 @@ public class Operation implements ApplicationOperation {
     /**
      * this method takes the stack first element and add it into variable
      * @param variable the variable name
-     * @throws Exception
+     * @throws CalculatorException
      */
-    public void addToVariable(Character variable) throws Exception {
+    public void addToVariable(Character variable) throws CalculatorException {
 
         Command cm = new VInsertCommand(variables, numberStack, variable);
         performCommand(cm);
@@ -125,27 +126,27 @@ public class Operation implements ApplicationOperation {
     /**
      * this method takes the variable value and push it into the stack
      * @param variable the variable name
-     * @throws Exception
+     * @throws CalculatorException
      */
-    public void pushValueOf(Character variable) throws Exception {
+    public void pushValueOf(Character variable) throws CalculatorException {
         performCommand(new VPushCommand(variables, variable, numberStack));
     }
 
     /**
      * this method takes the stack first element and sums it with the variable value
      * @param variable the variable name
-     * @throws Exception
+     * @throws CalculatorException
      */
-    public void addToValue(Character variable) throws Exception {
+    public void addToValue(Character variable) throws CalculatorException {
         performCommand(new VAddCommand(variables, variable, numberStack));
     }
 
     /**
      * this method takes the stack first element and subtracts it with the variable value
      * @param variable the variable name
-     * @throws Exception
+     * @throws CalculatorException
      */
-    public void subToValue(Character variable) throws Exception {
+    public void subToValue(Character variable) throws CalculatorException {
         performCommand(new VSubCommand(variables, variable, numberStack));
 
     }
@@ -155,7 +156,7 @@ public class Operation implements ApplicationOperation {
      * @param key the operation name
      * @throws InputNumberException
      */
-    public void removeOperation(String key) throws InputNumberException {
+    public void removeOperation(String key) throws CalculatorException {
         performCommand(new DeleteCommand(operations, key));
     }
     
@@ -165,7 +166,7 @@ public class Operation implements ApplicationOperation {
      * @param newValue the new sequence of operations to do
      * @throws InputNumberException
      */
-    public void modifyOperation(String key, String newValue) throws InputNumberException {
+    public void modifyOperation(String key, String newValue) throws CalculatorException {
         performCommand(new ModifyOperationCommand(operations, key, new UDOperation(newValue)));
     }
     
@@ -175,7 +176,7 @@ public class Operation implements ApplicationOperation {
      * @param newKey the new operation name
      * @throws InputNumberException
      */
-    public void modifyOperationName(String key, String newKey) throws InputNumberException {   
+    public void modifyOperationName(String key, String newKey) throws CalculatorException {   
         UDOperation op = new UDOperation();
         if(this.operations.containsKey(newKey))
             throw new InputNumberException("Choose another key, the new key already exists");
@@ -192,7 +193,7 @@ public class Operation implements ApplicationOperation {
      * this method executes the drop operation
      * @throws InputNumberException
      */
-    public void drop() throws InputNumberException{
+    public void drop() throws CalculatorException{
         performCommand(new DropCommand(numberStack));
     }
 
@@ -200,7 +201,7 @@ public class Operation implements ApplicationOperation {
      * this method executes the dup operation
      * @throws InputNumberException
      */
-    public void dup() throws InputNumberException {
+    public void dup() throws CalculatorException {
         performCommand(new DupCommand(numberStack));
     }
 
@@ -208,7 +209,7 @@ public class Operation implements ApplicationOperation {
      * this method executes the swap operation
      * @throws InputNumberException
      */
-    public void swap() throws InputNumberException {
+    public void swap() throws CalculatorException {
         performCommand(new SwapCommand(numberStack));
     }
 
@@ -216,7 +217,7 @@ public class Operation implements ApplicationOperation {
      * this method executes the clear operation
      * @throws InputNumberException
      */
-    public void clear() throws InputNumberException {
+    public void clear() throws CalculatorException {
         performCommand(new ClearCommand(numberStack));
     }
     /**
@@ -224,18 +225,18 @@ public class Operation implements ApplicationOperation {
      * @throws InputNumberException 
      */
     
-    void over() throws InputNumberException {
+    void over() throws CalculatorException {
         performCommand(new OverCommand(numberStack));
     }
     /**
      * this method executes the invert operation
      * @throws InputNumberException 
      */
-    void invert() throws InputNumberException {
+    void invert() throws CalculatorException {
         performCommand(new InvertCommand(numberStack));
     }
 
-    void mod() throws InputNumberException {
+    void mod() throws CalculatorException {
        performCommand(new ModCommand(numberStack));
     }
 

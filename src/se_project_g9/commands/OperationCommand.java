@@ -10,6 +10,8 @@ import se_project_g9.UDAllOp;
 import se_project_g9.exceptions.InputNumberException;
 import se_project_g9.UDOperation;
 import se_project_g9.Variables;
+import se_project_g9.exceptions.CalculatorException;
+import se_project_g9.exceptions.OperationException;
 
 /**
  *
@@ -57,7 +59,7 @@ public class OperationCommand implements Command {
      * @throws InputNumberException
      */
     @Override
-    public void undo() throws InputNumberException {
+    public void undo() throws CalculatorException {
         Iterator<Command> i = op.reverseIterator();
         while(i.hasNext()){
             i.next().undo();

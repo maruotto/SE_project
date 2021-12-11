@@ -12,7 +12,7 @@ import se_project_g9.Interpreter;
 import se_project_g9.Operation;
 import se_project_g9.UDAllOp;
 import se_project_g9.UDOperation;
-import se_project_g9.exceptions.InputNumberException;
+import se_project_g9.exceptions.CalculatorException;
 
 /**
  *
@@ -33,7 +33,7 @@ public class ModifyOperationCommandTest {
         map.put(key, op);
         try {
             value = new UDOperation("+ -");
-        } catch (InputNumberException ex) {
+        } catch (CalculatorException ex) {
             Logger.getLogger(ModifyOperationCommandTest.class.getName()).log(Level.SEVERE, null, ex);
         }
 

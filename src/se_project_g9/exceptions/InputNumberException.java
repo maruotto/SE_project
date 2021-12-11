@@ -10,7 +10,7 @@ import java.io.IOException;
  *
  * @author idamaruotto
  */
-public class InputNumberException extends IOException{
+public class InputNumberException extends CalculatorException{
 
     /**
      * Creates a new instance of <code>InputNumberException</code> without

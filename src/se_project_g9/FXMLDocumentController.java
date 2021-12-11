@@ -36,6 +36,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 
 import javafx.stage.Stage;
+import se_project_g9.exceptions.CalculatorException;
 import se_project_g9.exceptions.ImpossibleUndo;
 import se_project_g9.exceptions.InputNumberException;
 
@@ -264,7 +265,7 @@ public class FXMLDocumentController implements Initializable {
         try {
             CustomPopup.customDefinition();
             undoBtn.disableProperty().set(false);
-        } catch (InputNumberException e) {
+        } catch (CalculatorException e) {
             CustomPopup.errorPopup(e.getMessage());
         } catch (IOException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);

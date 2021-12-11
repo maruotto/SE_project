@@ -2,7 +2,9 @@ package se_project_g9;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import se_project_g9.exceptions.CalculatorException;
 import se_project_g9.exceptions.InputNumberException;
+import se_project_g9.exceptions.OperationException;
 
 /**
  *
@@ -17,14 +19,14 @@ public class UDAllOp extends HashMap<String, UDOperation> {
      * @param input the string that represent the sequence of operations
      * @throws InputNumberException
      */
-    public void addOperation(String name, String input) throws InputNumberException {
+    public void addOperation(String name, String input) throws OperationException, CalculatorException {
 
         if (this.containsKey(name)) {
-            throw new InputNumberException("Operation already defined, try with another name");
+            throw new OperationException("Operation already defined, try with another name");
         }
 
         if (name.contains(" ")) {
-            throw new InputNumberException("Space not allowed in operation's name");
+            throw new OperationException("Space not allowed in operation's name");
         }
 
         UDOperation op = new UDOperation<>(input);

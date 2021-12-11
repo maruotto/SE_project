@@ -13,6 +13,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
+import se_project_g9.exceptions.CalculatorException;
 import se_project_g9.exceptions.InputNumberException;
 
 /**
@@ -56,7 +57,7 @@ public class FileOperations {
                 key = splitted[0];
                 try {
                     ope.addUDOperation(key, splitted[splitted.length - 1]);
-                } catch (InputNumberException ex) {
+                } catch (CalculatorException ex) {
                     System.out.println("operation " + key + " already exists");
                 }
             }

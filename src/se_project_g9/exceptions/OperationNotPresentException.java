@@ -8,7 +8,7 @@ package se_project_g9.exceptions;
  *
  * @author idamaruotto
  */
-public class OperationNotPresentException extends InputNumberException{
+public class OperationNotPresentException extends OperationException{
 
     /**
      * Creates a new instance of <code>OperationNotPresentException</code>

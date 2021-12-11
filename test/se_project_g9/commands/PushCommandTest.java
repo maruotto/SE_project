@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 import se_project_g9.ComplexNumber;
 import se_project_g9.NumberStack;
 import se_project_g9.PersonalizedStack;
-import se_project_g9.exceptions.InputNumberException;
+import se_project_g9.exceptions.CalculatorException;
 
 /**
  *
@@ -42,7 +42,7 @@ public class PushCommandTest {
      * Test of execute method, of class PushCommand.
      */
     @Test
-    public void testExecute() throws InputNumberException {
+    public void testExecute() throws CalculatorException {
         push.execute();
         assertEquals(1, stack.size());
         assertEquals(n1, stack.pop());
@@ -52,7 +52,7 @@ public class PushCommandTest {
      * Test of undo method, of class PushCommand.
      */
     @Test
-    public void testUndo() throws InputNumberException {
+    public void testUndo() throws CalculatorException {
         push.execute();
         push.undo();
         assertEquals(0, stack.size());

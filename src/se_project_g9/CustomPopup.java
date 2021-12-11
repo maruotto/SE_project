@@ -7,16 +7,13 @@ package se_project_g9;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import static se_project_g9.FXMLDocumentController.ope;
-import se_project_g9.commands.Command;
-import se_project_g9.exceptions.InputNumberException;
-
+import se_project_g9.exceptions.CalculatorException;
 /**
  *
  * @author idamaruotto
@@ -47,7 +44,7 @@ public class CustomPopup {
     }
     
     @FXML
-    static void customDefinition() throws InputNumberException, IOException {
+    static void customDefinition() throws IOException, CalculatorException {
         
         FXMLLoader loader = new FXMLLoader(FXMLDocumentController.class.getResource("customOperationSelection.fxml"));
         Parent parent;
@@ -83,8 +80,6 @@ public class CustomPopup {
             stage.showAndWait();
             //stage.show();
             
-        }  catch (InputNumberException e){
-            CustomPopup.errorPopup(e.getMessage());
         }  catch (IOException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }

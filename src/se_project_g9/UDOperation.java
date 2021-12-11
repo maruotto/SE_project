@@ -6,6 +6,7 @@ package se_project_g9;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import se_project_g9.exceptions.CalculatorException;
 import se_project_g9.exceptions.InputNumberException;
 
 /**
@@ -50,7 +51,7 @@ public class UDOperation<Command> extends ArrayList<Command> {
      * @param input the string that will be translated
      * @throws InputNumberException
      */
-    public UDOperation(String input) throws InputNumberException {
+    public UDOperation(String input) throws CalculatorException {
         super();
         String[] splittedInput = input.split(" +");
         for (String s : splittedInput) {
@@ -69,7 +70,7 @@ public class UDOperation<Command> extends ArrayList<Command> {
      * @param in the interpreter that should be used to translate the input
      * @throws InputNumberException
      */
-    public UDOperation(String input, Interpreter in) throws InputNumberException {
+    public UDOperation(String input, Interpreter in) throws CalculatorException {
         super();
         String[] splittedInput = input.split(" +");
         for (String s : splittedInput) {

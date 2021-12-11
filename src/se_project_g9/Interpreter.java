@@ -23,6 +23,7 @@ import se_project_g9.commands.VAddCommand;
 import se_project_g9.commands.VInsertCommand;
 import se_project_g9.commands.VPushCommand;
 import se_project_g9.commands.VSubCommand;
+import se_project_g9.exceptions.CalculatorException;
 import se_project_g9.exceptions.InputNumberException;
 import se_project_g9.exceptions.OperationNotPresentException;
 import se_project_g9.exceptions.OperationSymbolException;
@@ -67,7 +68,7 @@ public class Interpreter {
      * @return the Command to execute
      * @throws InputNumberException
      */
-    protected Command translateInput(String input, boolean operation) throws InputNumberException {
+    protected Command translateInput(String input, boolean operation) throws CalculatorException {
         if (numberStack == null || variables == null || operations == null) {
             input = input.trim();
         }

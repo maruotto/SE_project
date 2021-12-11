@@ -8,22 +8,22 @@ package se_project_g9.exceptions;
  *
  * @author idamaruotto
  */
-public class OperationSymbolException extends OperationException{
+public class CalculatorException extends Exception{
 
     /**
-     * Creates a new instance of <code>OperationSymbolException</code> without
-     * detail message.
+     * Creates a new instance of <code>CalculatorException</code> without detail
+     * message.
      */
-    public OperationSymbolException() {
+    public CalculatorException() {
     }
 
     /**
-     * Constructs an instance of <code>OperationSymbolException</code> with the
+     * Constructs an instance of <code>CalculatorException</code> with the
      * specified detail message.
      *
      * @param msg the detail message.
      */
-    public OperationSymbolException(String msg) {
+    public CalculatorException(String msg) {
         super(msg);
     }
 }

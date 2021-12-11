@@ -20,6 +20,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.TextFieldTableCell;
+import se_project_g9.exceptions.CalculatorException;
 import se_project_g9.exceptions.InputNumberException;
 
 /**
@@ -54,7 +55,7 @@ public class OperationSelectionController implements Initializable {
     private void removeClick(ActionEvent event) {
         try {
             ope.removeOperation(tableView.getSelectionModel().getSelectedItem().getKey());
-        } catch (InputNumberException ex) {
+        } catch (CalculatorException ex) {
             CustomPopup.errorPopup("An error has occurred while removing");
         }
         variables.remove(tableView.getSelectionModel().getFocusedIndex());

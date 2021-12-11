@@ -4,14 +4,14 @@
  */
 package se_project_g9.commands;
 
-import se_project_g9.exceptions.InputNumberException;
 import java.io.Serializable;
+import se_project_g9.exceptions.CalculatorException;
 
 /**
  *
  * @author group 9
  */
 public interface Command extends Serializable{
-    void execute() throws InputNumberException;
-    void undo() throws InputNumberException;
+    void execute() throws CalculatorException;
+    void undo() throws CalculatorException;
 }

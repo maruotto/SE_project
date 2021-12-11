@@ -14,7 +14,7 @@ import se_project_g9.BasicOperation;
 import se_project_g9.ComplexNumber;
 import se_project_g9.NumberStack;
 import se_project_g9.PersonalizedStack;
-import se_project_g9.exceptions.InputNumberException;
+import se_project_g9.exceptions.CalculatorException;
 
 /**
  *
@@ -56,7 +56,7 @@ public class ModCommandTest {
      * Test of undo method, of class ModCommand.
      */
     @Test
-    public void testUndo() throws InputNumberException {
+    public void testUndo() throws CalculatorException {
        stack.push(n1);
         mod.execute();
         mod.undo();
