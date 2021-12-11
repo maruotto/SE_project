@@ -24,12 +24,22 @@ public class VInsertCommand implements Command {
     private Variables vars;
     private ComplexNumber old;
 
+    /**
+     * Constructs a new VInsertCommand
+     * @param vars the reference Variables that contains the map of all variables
+     * @param key the reference Character that represent the label of variable
+     * @param stack the reference PersonalizedStack taht contains all the ComplexNumber
+     */
     public VInsertCommand(Variables vars, PersonalizedStack<ComplexNumber> stack, Character key) {
         this.vars = vars;
         this.stack = stack;
         this.key = key;
     }
 
+    /**
+     * Execute of the VInsertCommand
+     * @throws InputNumberException
+     */
     @Override
     public void execute() throws InputNumberException {
 
@@ -51,6 +61,10 @@ public class VInsertCommand implements Command {
 
     }
 
+    /**
+     * Undo of the VInsertCommand
+     * @throws InputNumberException
+     */
     @Override
     public void undo() throws InputNumberException {
         stack.push(elem);
@@ -66,6 +80,10 @@ public class VInsertCommand implements Command {
 
     }
 
+    /**
+     * Returns a string representation of VInsertCommand
+     * @return
+     */    
     @Override
     public String toString() {
         return ">" + key;

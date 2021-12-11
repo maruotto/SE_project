@@ -18,11 +18,18 @@ public class SubCommand implements Command {
     private se_project_g9.ComplexNumber n1;
     private se_project_g9.ComplexNumber n2;
 
+    /**
+     * Constructs a new SubCommand
+     * @param numberStack the reference PersonalizedStack taht contains all the ComplexNumber
+     */
     public SubCommand(PersonalizedStack<ComplexNumber> numberStack) {
         assert numberStack != null;
         this.numberStack = numberStack;
     }
 
+    /**
+     * Execute of the SubCommand
+     */
     @Override
     public void execute() {
         n1 = numberStack.pop();
@@ -30,6 +37,9 @@ public class SubCommand implements Command {
         numberStack.push(BasicOperation.sub(n2, n1));
     }
 
+    /**
+     * Undo of the SubCommand
+     */
     @Override
     public void undo() {
         numberStack.pop();
@@ -41,6 +51,10 @@ public class SubCommand implements Command {
         }
     }
 
+    /**
+     * Returns a string representation of SubCommand
+     * @return
+     */ 
     @Override
     public String toString() {
         return "-";

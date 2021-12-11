@@ -22,32 +22,45 @@ public class VPushCommand implements Command {
     private PersonalizedStack<ComplexNumber> stack;
     private Variables vars;
 
+    /**
+     * Constructs a new VPushCommand
+     * @param vars the reference Variables that contains the map of all variables
+     * @param key the reference Character that represent the label of variable
+     * @param stack the reference PersonalizedStack taht contains all the ComplexNumber
+     */
     public VPushCommand(Variables vars, Character key, PersonalizedStack<ComplexNumber> stack) {
-
         this.vars = vars;
         this.key = key;
         this.stack = stack;
-
     }
-
+    
+    /**
+     * Execute of the VPushCommand
+     * @throws InputNumberException
+     */
     @Override
     public void execute() throws InputNumberException {
-
         try {
-
             //vedere se deve essere controllato se appartiene all'alfabeto
             stack.push(vars.getVariableValue(key));
         } catch (Exception ex) {
             throw new NullPointerException("value to push not defined");
         }
     }
-
+    
+    /**
+     * Undo of the VPushCommand
+     * @throws InputNumberException
+     */
     @Override
     public void undo() throws InputNumberException {
         stack.pop();
-
     }
 
+    /**
+     * Returns a string representation of VPushCommand
+     * @return
+     */
     @Override
     public String toString() {
         return "<" + key;

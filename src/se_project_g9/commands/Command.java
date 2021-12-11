@@ -12,6 +12,14 @@ import java.io.Serializable;
  * @author group 9
  */
 public interface Command extends Serializable{
-    void execute() throws InputNumberException;
+    /**
+     * Execute of the Command
+     * @throws InputNumberException
+     */
+    void execute() throws InputNumberException; 
+    /**
+     * Undo of the Command
+     * @throws InputNumberException
+     */
     void undo() throws InputNumberException;
 }

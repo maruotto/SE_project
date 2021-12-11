@@ -24,12 +24,22 @@ public class VSubCommand implements Command {
     private PersonalizedStack<ComplexNumber> stack;
     private ComplexNumber elem;
 
+    /**
+     * Constructs a new VSubCommand
+     * @param vars the reference Variables that contains the map of all variables
+     * @param key the reference Character that represent the label of variable
+     * @param stack the reference PersonalizedStack taht contains all the ComplexNumber
+     */
     public VSubCommand(Variables vars, Character key, PersonalizedStack<ComplexNumber> stack) {
         this.vars = vars;
         this.key = key;
         this.stack = stack;
     }
 
+    /**
+     * Execute of the VSubCommand
+     * @throws InputNumberException
+     */
     @Override
     public void execute() throws InputNumberException {
 
@@ -46,6 +56,10 @@ public class VSubCommand implements Command {
 
     }
 
+    /**
+     * Undo of the VSubCommand
+     * @throws InputNumberException
+     */
     @Override
     public void undo() throws InputNumberException {
         try {
@@ -56,6 +70,10 @@ public class VSubCommand implements Command {
         }
     }
 
+    /**
+     * Returns a string representation of VSubCommand
+     * @return
+     */
     @Override
     public String toString() {
         return "-" + key;

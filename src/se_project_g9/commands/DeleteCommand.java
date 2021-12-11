@@ -20,23 +20,39 @@ public class DeleteCommand implements Command{
     private UDOperation oldValue;
     
     
-    
+    /**
+     * Constructs a new DeleteCommand
+     * @param map the reference UDAllOp that contains all the commands
+     * @param key the reference String that contains the label of command
+     */
     public DeleteCommand(UDAllOp map,String key){
         this.map = map;
         this.key = key;
     }
 
+    /**
+     * Execute of the DeleteCommand
+     * @throws InputNumberException
+     */
     @Override
     public void execute() throws InputNumberException {
        oldValue = map.get(key);
        map.remove(key);
     }
 
+    /**
+     * Undo of the DeleteCommand
+     * @throws InputNumberException
+     */
     @Override
     public void undo() throws InputNumberException {
         map.put(key, oldValue);
     }
 
+    /**
+     * Returns a string representation of DeleteCommand
+     * @return
+     */ 
     @Override
     public String toString() {
         return "delete Operation";

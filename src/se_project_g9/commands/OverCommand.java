@@ -17,21 +17,36 @@ public class OverCommand implements Command {
 
     private PersonalizedStack<ComplexNumber> numberStack;
 
+    /**
+     * Constructs a new OverCommand
+     * @param numberStack the reference PersonalizedStack that contains all the ComplexNumber
+     */
     public OverCommand(PersonalizedStack<ComplexNumber> numberStack) {
         assert numberStack != null;
         this.numberStack = numberStack;
     }
 
+    /**
+     * Execute of the OverCommand
+     * @throws NotEnoughNumbersException
+     */
     @Override
     public void execute() throws NotEnoughNumbersException {
         numberStack.over();
     }
 
+    /**
+     * Undo of the OverCommand
+     */
     @Override
     public void undo() {
         numberStack.drop();
     }
 
+    /**
+     * Returns a string representation of OverCommand
+     * @return
+     */ 
     @Override
     public String toString() {
         return "over";

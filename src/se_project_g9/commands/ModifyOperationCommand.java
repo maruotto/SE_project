@@ -21,6 +21,12 @@ public class ModifyOperationCommand implements Command {
     private final UDOperation newValue;
     private final UDAllOp operations;
     
+    /**
+     * Constructs a new OperationCommand
+     * @param operations the reference UDAllOp that contains all the commands
+     * @param key the reference String that contains the label of command
+     * @param newValue the reference UDOperation that contains the list of all commands of an operation
+     */
     public ModifyOperationCommand(UDAllOp operations, String key, UDOperation newValue) {
         
         this.key = key;
@@ -28,6 +34,10 @@ public class ModifyOperationCommand implements Command {
         this.newValue = newValue;
     }
 
+    /**
+     * Execute of the ModifyOperationCommand
+     * @throws NotEnoughNumbersException
+     */
     @Override
     public void execute() throws InputNumberException {
         if(!operations.containsKey(key))
@@ -35,6 +45,9 @@ public class ModifyOperationCommand implements Command {
         oldValue = operations.put(key, newValue);
     }
 
+    /**
+     * Undo of the ModifyOperationCommand
+     */
     @Override
     public void undo() throws InputNumberException {
         operations.put(key, oldValue);

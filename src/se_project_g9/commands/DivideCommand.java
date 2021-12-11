@@ -19,11 +19,19 @@ public class DivideCommand implements Command {
     private se_project_g9.ComplexNumber n1;
     private se_project_g9.ComplexNumber n2;
 
+    /**
+     * Constructs a new DivideCommand
+     * @param numberStack the reference PersonalizedStack that contains all the ComplexNumber
+     */
     public DivideCommand(PersonalizedStack<ComplexNumber> numberStack) {
         assert numberStack != null;
         this.numberStack = numberStack;
     }
 
+    /**
+     * Execute of the DivideCommand
+     * @throws ZeroDivisionException
+     */
     @Override
     public void execute() throws ZeroDivisionException {
         n1 = numberStack.pop();
@@ -31,6 +39,9 @@ public class DivideCommand implements Command {
         numberStack.push(BasicOperation.divide(n2, n1));
     }
 
+    /**
+     * Undo of the DivideCommand
+     */
     @Override
     public void undo() {
         numberStack.drop();
@@ -42,6 +53,10 @@ public class DivideCommand implements Command {
         }
     }
 
+    /**
+     * Returns a string representation of DivideCommand
+     * @return
+     */ 
     @Override
     public String toString() {
         return "/";

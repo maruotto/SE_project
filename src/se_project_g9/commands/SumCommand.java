@@ -18,11 +18,18 @@ public class SumCommand implements Command {
     private se_project_g9.ComplexNumber n1;
     private se_project_g9.ComplexNumber n2;
 
+    /**
+     * Constructs a new SumCommand
+     * @param numberStack the reference PersonalizedStack taht contains all the ComplexNumber
+     */
     public SumCommand(PersonalizedStack<ComplexNumber> numberStack) {
         assert numberStack != null;
         this.numberStack = numberStack;
     }
 
+    /**
+     * Execute of the SumCommand
+     */
     @Override
     public void execute() {
         n1 = numberStack.pop();
@@ -30,6 +37,9 @@ public class SumCommand implements Command {
         numberStack.push(BasicOperation.sum(n2, n1));
     }
 
+    /**
+     * Undo of the SumCommand
+     */
     @Override
     public void undo() {
         numberStack.pop();
@@ -41,6 +51,10 @@ public class SumCommand implements Command {
         }
     }
 
+    /**
+     * Returns a string representation of SumCommand
+     * @return
+     */ 
     @Override
     public String toString() {
         return "+";

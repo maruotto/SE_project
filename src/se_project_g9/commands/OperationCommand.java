@@ -22,13 +22,24 @@ public class OperationCommand implements Command {
     private Variables vars;
     private PersonalizedStack backupStack;
     private Variables backupVars;
+    
+    
+    /**
+     * Constructs a new OperationCommand
+     * @param op the reference UDOperation that contains the list of all commands of an operation
+     * @param vars the reference Variables that contains the map of all variables
+     * @param stack the reference PersonalizedStack taht contains all the ComplexNumber
+     */
     public OperationCommand(UDOperation op, Variables vars, PersonalizedStack stack) {
         this.op = op;
         this.stack = stack;
         this.vars = vars;
-
     }
 
+    /**
+     * Execute of the OperationCommand
+     * @throws InputNumberException
+     */
     @Override
     public void execute() throws InputNumberException {
         this.backupStack = (PersonalizedStack) stack.clone();
@@ -48,6 +59,10 @@ public class OperationCommand implements Command {
 
     }
 
+    /**
+     * Undo of the OperationCommand
+     * @throws InputNumberException
+     */
     @Override
     public void undo() throws InputNumberException {
         Iterator<Command> i = op.reverseIterator();
@@ -56,6 +71,10 @@ public class OperationCommand implements Command {
         }
     }
 
+    /**
+     * Returns a string representation of VSubCommand
+     * @return
+     */
     @Override
     public String toString() {
         String commands = "";

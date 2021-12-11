@@ -17,20 +17,35 @@ public class RestoreVariablesCommand implements Command {
     private Variables variables;
     private HashMap<Character, ComplexNumber> tmp = new HashMap<Character, ComplexNumber>();
 
+    /**
+     * Constructs a new RestoreVariablesCommand
+     * @param var the reference Variables that contains the map of all variables
+     */
     public RestoreVariablesCommand(Variables var) {
         this.variables = var;
     }
 
+    /**
+     * Execute of the RestoreVariablesCommand
+     * @throws EmptyStackException
+     */
     @Override
     public void execute() throws EmptyStackException {
         tmp = this.variables.restoreVar();
     }
     
+    /**
+     * Undo of the RestoreVariablesCommand
+     */
     @Override
     public void undo() {
         this.variables.insertVar(tmp);
     }
 
+    /**
+     * Returns a string representation of RestoreVariablesCommand
+     * @return
+     */ 
     @Override
     public String toString() {
         return "restore";

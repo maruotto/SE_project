@@ -18,17 +18,28 @@ public class InvertCommand implements Command {
     private PersonalizedStack<ComplexNumber> numberStack;
     private se_project_g9.ComplexNumber n1;
 
+    /**
+     * Constructs a new InvertCommand
+     * @param numberStack the reference PersonalizedStack that contains all the ComplexNumber
+     */
     public InvertCommand(PersonalizedStack<ComplexNumber> numberStack) {
         assert numberStack != null;
         this.numberStack = numberStack;
     }
 
+    /**
+     * Execute of the InvertCommand
+     * @throws NotEnoughNumbersException
+     */
     @Override
     public void execute() {
         n1 = numberStack.pop();
         numberStack.push(BasicOperation.invert(n1));
     }
 
+    /**
+     * Undo of the InvertCommand
+     */
     @Override
     public void undo() {
         if (n1 != null) {
@@ -37,6 +48,10 @@ public class InvertCommand implements Command {
         }
     }
 
+    /**
+     * Returns a string representation of InvertCommand
+     * @return
+     */ 
     @Override
     public String toString() {
         return "invert";

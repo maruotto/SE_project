@@ -16,17 +16,28 @@ public class DropCommand implements Command {
     private PersonalizedStack<ComplexNumber> numberStack;
     private se_project_g9.ComplexNumber n1;
 
+    /**
+     * Constructs a new DropCommand
+     * @param numberStack the reference PersonalizedStack that contains all the ComplexNumber
+     */
     public DropCommand(PersonalizedStack<ComplexNumber> numberStack) {
         assert numberStack != null;
         this.numberStack = numberStack;
     }
 
+    /**
+     * Execute of the DropCommand
+     * @throws NotEnoughNumbersException
+     */
     @Override
     public void execute() {
         n1 = numberStack.peek();
         numberStack.drop();
     }
 
+    /**
+     * Undo of the DropCommand
+     */
     @Override
     public void undo() {
         if (n1 != null) {
@@ -34,6 +45,10 @@ public class DropCommand implements Command {
         }
     }
 
+    /**
+     * Returns a string representation of DropCommand
+     * @return
+     */ 
     @Override
     public String toString() {
         return "drop";

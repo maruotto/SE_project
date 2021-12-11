@@ -17,21 +17,36 @@ public class DupCommand implements Command {
 
     private PersonalizedStack<ComplexNumber> numberStack;
 
+    /**
+     * Constructs a new DupCommand
+     * @param numberStack the reference PersonalizedStack that contains all the ComplexNumber
+     */
     public DupCommand(PersonalizedStack<ComplexNumber> numberStack) {
         assert numberStack != null;
         this.numberStack = numberStack;
     }
 
+    /**
+     * Execute of the DupCommand
+     * @throws NotEnoughNumbersException
+     */
     @Override
     public void execute() throws NotEnoughNumbersException {
         numberStack.dup();
     }
 
+    /**
+     * Undo of the DupCommand
+     */
     @Override
     public void undo() {
         numberStack.drop();
     }
 
+    /**
+     * Returns a string representation of DupCommand
+     * @return
+     */ 
     @Override
     public String toString() {
         return "dup";

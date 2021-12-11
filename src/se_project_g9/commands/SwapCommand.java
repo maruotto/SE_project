@@ -16,21 +16,37 @@ public class SwapCommand implements Command {
 
     private PersonalizedStack<ComplexNumber> numberStack;
 
+    /**
+     * Constructs a new SwapCommand
+     * @param numberStack the reference PersonalizedStack taht contains all the ComplexNumber
+     */
     public SwapCommand(PersonalizedStack<ComplexNumber> numberStack) {
         assert numberStack != null;
         this.numberStack = numberStack;
     }
 
+    /**
+     * Execute of the SwapCommand
+     * @throws NotEnoughNumbersException
+     */
     @Override
     public void execute() throws NotEnoughNumbersException {
         numberStack.swap();
     }
 
+    /**
+     * Undo of the SwapCommand
+     * @throws NotEnoughNumbersException
+     */
     @Override
     public void undo() throws NotEnoughNumbersException {
         numberStack.swap();
     }
 
+    /**
+     * Returns a string representation of SwapCommand
+     * @return
+     */  
     @Override
     public String toString() {
         return "swap";

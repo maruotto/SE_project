@@ -25,12 +25,22 @@ public class VAddCommand implements Command {
     private PersonalizedStack<ComplexNumber> stack;
     private ComplexNumber elem;
 
+    /**
+     * Constructs a new VAddCommand
+     * @param vars the reference Variables that contains the map of all variables
+     * @param key the reference Character that represent the label of variable
+     * @param stack the reference PersonalizedStack taht contains all the ComplexNumber
+     */
     public VAddCommand(Variables vars, Character key, PersonalizedStack<ComplexNumber> stack) {
         this.vars = vars;
         this.key = key;
         this.stack = stack;
     }
 
+    /**
+     * Execute of the VAddCommand
+     * @throws InputNumberException
+     */
     @Override
     public void execute() throws InputNumberException {
 
@@ -47,6 +57,10 @@ public class VAddCommand implements Command {
 
     }
 
+    /**
+     * Undo of the VAddCommand
+     * @throws InputNumberException
+     */
     @Override
     public void undo() throws InputNumberException {
 
@@ -59,6 +73,10 @@ public class VAddCommand implements Command {
 
     }
 
+    /**
+     * Returns a string representation of VAddCommand
+     * @return
+     */  
     @Override
     public String toString() {
         return "+" + key;

@@ -19,11 +19,18 @@ public class MultiplyCommand implements Command {
     private se_project_g9.ComplexNumber n1;
     private se_project_g9.ComplexNumber n2;
 
+    /**
+     * Constructs a new MultiplyCommand
+     * @param numberStack the reference PersonalizedStack that contains all the ComplexNumber
+     */
     public MultiplyCommand(PersonalizedStack<ComplexNumber> numberStack) {
         assert numberStack != null;
         this.numberStack = numberStack;
     }
 
+    /**
+     * Execute of the MultiplyCommand
+     */
     @Override
     public void execute() {
         n1 = numberStack.pop();
@@ -31,6 +38,9 @@ public class MultiplyCommand implements Command {
         numberStack.push(BasicOperation.multiply(n2, n1));
     }
 
+    /**
+     * Undo of the MultiplyCommand
+     */
     @Override
     public void undo() {
         numberStack.pop();
@@ -42,6 +52,10 @@ public class MultiplyCommand implements Command {
         }
     }
 
+    /**
+     * Returns a string representation of MultiplyCommand
+     * @return
+     */ 
     @Override
     public String toString() {
         return "*";
