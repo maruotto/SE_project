@@ -76,6 +76,14 @@ public class Variables {
     public HashMap<Character, ComplexNumber> getVariablesMap() {
         return variablesMap;
     }
+    
+    /**
+     *
+     * @return variableStack
+     */
+    public Stack<HashMap> getVariableStack(){
+        return variableStack;
+    }
 
     /**
      *
