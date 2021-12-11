@@ -16,7 +16,7 @@ public class UDAllOp extends HashMap<String, UDOperation> {
      * insert an operation represented by a name and a sequence of operations
      *
      * @param name name of the operation
-     * @param input the string that represent the sequence of operations
+     * @param input the string that represents the sequence of operations
      * @throws CalculatorException
      */
     public void addOperation(String name, String input) throws CalculatorException {
@@ -28,7 +28,6 @@ public class UDAllOp extends HashMap<String, UDOperation> {
         if (name.contains(" ")) {
             throw new OperationException("Space not allowed in operation's name");
         }
-
         UDOperation op = new UDOperation<>(input);
         this.put(name, op);
     }
