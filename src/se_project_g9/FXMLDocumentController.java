@@ -201,25 +201,41 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void savevariableclick(ActionEvent event) throws Exception {
-        ope.addToVariable(Character.valueOf(variablesMenù.getText().charAt(0)));
+        try {
+            ope.addToVariable(Character.valueOf(variablesMenù.getText().charAt(0)));
+        }catch (CalculatorException ex) {
+            CustomPopup.errorPopup(ex.getMessage());
+        }
         undoBtn.disableProperty().set(false);
     }
 
     @FXML
     private void addvariableclick(ActionEvent event) throws Exception {
-        ope.addToValue(Character.valueOf(variablesMenù.getText().charAt(0)));
+        try{
+            ope.addToValue(Character.valueOf(variablesMenù.getText().charAt(0)));
+        } catch (CalculatorException e) {
+            CustomPopup.errorPopup(e.getMessage());
+        }
         undoBtn.disableProperty().set(false);
     }
 
     @FXML
     private void subvariableclick(ActionEvent event) throws Exception {
-        ope.subToValue(Character.valueOf(variablesMenù.getText().charAt(0)));
+        try{
+            ope.subToValue(Character.valueOf(variablesMenù.getText().charAt(0)));
+        } catch (CalculatorException e) {
+            CustomPopup.errorPopup(e.getMessage());
+        }
         undoBtn.disableProperty().set(false);
     }
 
     @FXML
     private void pushvariableclick(ActionEvent event) throws Exception {
-        ope.pushValueOf(Character.valueOf(variablesMenù.getText().charAt(0)));
+        try {
+            ope.pushValueOf(Character.valueOf(variablesMenù.getText().charAt(0)));
+        } catch (CalculatorException e) {
+            CustomPopup.errorPopup(e.getMessage());
+        }
         undoBtn.disableProperty().set(false);
     }
 
@@ -242,11 +258,11 @@ public class FXMLDocumentController implements Initializable {
                 stackview.scrollTo(ope.getNumberStack().size() - 1);
             }
             undoBtn.disableProperty().set(false);
-        } catch (InputNumberException | NumberFormatException ex) {
+        } catch (NumberFormatException | CalculatorException ex) {
             CustomPopup.errorPopup(ex.getMessage());
         } catch (EmptyStackException e) {
             CustomPopup.errorPopup("Operation not allowed!");
-        } catch (Exception e) {
+        }catch (Exception e) {
             CustomPopup.errorPopup("Operation not allowed");
         } finally {
             tfInput.clear();

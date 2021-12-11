@@ -10,6 +10,7 @@ import se_project_g9.ComplexNumber;
 import se_project_g9.Operation;
 import se_project_g9.PersonalizedStack;
 import se_project_g9.Variables;
+import se_project_g9.exceptions.CalculatorException;
 import se_project_g9.exceptions.InputNumberException;
 
 /**
@@ -36,15 +37,15 @@ public class VPushCommand implements Command {
     
     /**
      * Execute of the VPushCommand
-     * @throws InputNumberException
+     * @throws CalculatorException
      */
     @Override
-    public void execute() throws InputNumberException {
+    public void execute() throws CalculatorException {
         try {
             //vedere se deve essere controllato se appartiene all'alfabeto
             stack.push(vars.getVariableValue(key));
         } catch (Exception ex) {
-            throw new NullPointerException("value to push not defined");
+            throw new CalculatorException("variable to push not defined");
         }
     }
     

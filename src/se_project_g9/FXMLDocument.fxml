@@ -31,16 +31,16 @@
       <Button layoutX="495.0" layoutY="207.0" mnemonicParsing="false" onAction="#click" text="sqrt" />
       <Button layoutX="562.0" layoutY="207.0" mnemonicParsing="false" onAction="#clickplusminus" text="+-" />
       <Button layoutX="375.0" layoutY="313.0" mnemonicParsing="false" onAction="#clickclear" text="clear" />
-      <Button layoutX="430.0" layoutY="313.0" mnemonicParsing="false" onAction="#clickdrop" text="drop" />
+      <Button layoutX="435.0" layoutY="313.0" mnemonicParsing="false" onAction="#clickdrop" text="drop" />
       <Button layoutX="319.0" layoutY="313.0" mnemonicParsing="false" onAction="#clickdup" text="dup" />
       <Button layoutX="553.0" layoutY="313.0" mnemonicParsing="false" onAction="#clickswap" text="swap" />
-      <Button layoutX="494.0" layoutY="313.0" mnemonicParsing="false" onAction="#clickover" text="over" />
+      <Button layoutX="496.0" layoutY="313.0" mnemonicParsing="false" onAction="#clickover" text="over" />
       <Button layoutX="442.0" layoutY="246.0" mnemonicParsing="false" onAction="#click" text="." />
-      <Button layoutX="335.0" layoutY="397.0" mnemonicParsing="false" onAction="#savevariableclick" text="&gt;x" />
-      <Button layoutX="279.0" layoutY="397.0" mnemonicParsing="false" onAction="#pushvariableclick" text="&lt;x" />
-      <Button layoutX="499.0" layoutY="397.0" mnemonicParsing="false" onAction="#addvariableclick" text="+x" />
-      <Button layoutX="563.0" layoutY="397.0" mnemonicParsing="false" onAction="#subvariableclick" prefHeight="25.0" prefWidth="30.0" text="-x" />
-      <SplitMenuButton fx:id="variablesMenù" layoutX="384.0" layoutY="397.0" maxHeight="1.7976931348623157E308" mnemonicParsing="false" text="variables">
+      <Button layoutX="380.0" layoutY="397.0" mnemonicParsing="false" onAction="#savevariableclick" text="&gt;x" />
+      <Button layoutX="323.0" layoutY="397.0" mnemonicParsing="false" onAction="#pushvariableclick" text="&lt;x" />
+      <Button layoutX="501.0" layoutY="397.0" mnemonicParsing="false" onAction="#addvariableclick" text="+x" />
+      <Button layoutX="560.0" layoutY="397.0" mnemonicParsing="false" onAction="#subvariableclick" prefHeight="25.0" prefWidth="30.0" text="-x" />
+      <SplitMenuButton fx:id="variablesMenù" layoutX="428.0" layoutY="397.0" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="a">
         <items>
             <MenuItem mnemonicParsing="false" onAction="#clickv" text="a" />
           <MenuItem mnemonicParsing="false" onAction="#clickv" text="b" />
