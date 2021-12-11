@@ -4,11 +4,9 @@
  */
 package se_project_g9.commands;
 
-import com.sun.nio.sctp.PeerAddressChangeNotification;
-import se_project_g9.Operation;
 import se_project_g9.UDAllOp;
 import se_project_g9.UDOperation;
-import se_project_g9.exceptions.InputNumberException;
+import se_project_g9.exceptions.OperationException;
 
 /**
  *
@@ -36,12 +34,12 @@ public class ModifyOperationCommand implements Command {
 
     /**
      * Execute of the ModifyOperationCommand
-     * @throws NotEnoughNumbersException
+     * @throws OperationException
      */
     @Override
-    public void execute() throws InputNumberException {
+    public void execute() throws OperationException {
         if(!operations.containsKey(key))
-            throw new InputNumberException("Operation not present in map");
+            throw new OperationException("Operation not present in map");
         oldValue = operations.put(key, newValue);
     }
 
@@ -49,7 +47,7 @@ public class ModifyOperationCommand implements Command {
      * Undo of the ModifyOperationCommand
      */
     @Override
-    public void undo() throws InputNumberException {
+    public void undo(){
         operations.put(key, oldValue);
     }
 

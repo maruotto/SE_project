@@ -5,9 +5,12 @@
 package se_project_g9.commands;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import se_project_g9.BasicOperation;
 import se_project_g9.ComplexNumber;
 import se_project_g9.NumberStack;
 import se_project_g9.PersonalizedStack;
@@ -15,24 +18,24 @@ import se_project_g9.exceptions.CalculatorException;
 
 /**
  *
- * @author idamaruotto
+ * @author lucia
  */
-public class DupCommandTest {
-    private Command dup;
+public class ModCommandTest {
+    
+    private Command mod;
     private PersonalizedStack<ComplexNumber> stack;
     private ComplexNumber n1;
-    private ComplexNumber n2;
+
     
-    public DupCommandTest() {
+    public ModCommandTest() {
         stack = new NumberStack<>();
-        dup = new DupCommand(stack);
-        
+        mod = new ModCommand(stack);
     }
+    
     
     @Before
     public void setUp() {
-       n1 = new ComplexNumber(3,5);
-       n2 = new ComplexNumber(5,8);
+        n1 = new ComplexNumber(2,3);
     }
     
     @After
@@ -40,36 +43,24 @@ public class DupCommandTest {
     }
 
     /**
-     * Test of execute method, of class DupCommand.
+     * Test of execute method, of class ModCommand.
      */
     @Test
-    public void testExecute() throws CalculatorException {
+    public void testExecute() throws Exception {
         stack.push(n1);
-        System.out.println(stack);
-        dup.execute();
-        assertEquals(2, stack.size());
-        assertEquals(n1, stack.pop());
-        assertEquals(n1, stack.pop());
-    }
-    
-    @Test (expected = Exception.class)
-    public void testExecute_void() throws Exception {
-        dup.execute();
+        mod.execute();
+        assertEquals(stack.pop(), BasicOperation.mod(n1));
     }
 
     /**
-     * Test of undo method, of class DupCommand.
+     * Test of undo method, of class ModCommand.
      */
     @Test
     public void testUndo() throws CalculatorException {
-        stack.push(n1);
-        dup.execute();
-        dup.undo();
-        assertEquals(1, stack.size());
+       stack.push(n1);
+        mod.execute();
+        mod.undo();
         assertEquals(stack.pop(), n1);
-        
     }
-    
-    
-    
+
 }

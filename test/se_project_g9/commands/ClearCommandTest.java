@@ -10,6 +10,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import se_project_g9.*;
 import se_project_g9.PersonalizedStack;
+import se_project_g9.exceptions.CalculatorException;
 import se_project_g9.exceptions.InputNumberException;
 
 /**
@@ -31,7 +32,7 @@ public class ClearCommandTest {
     }
     
     @Before
-    public void setUp() throws InputNumberException {       
+    public void setUp() throws CalculatorException {       
         
         n1 = new ComplexNumber(18, 34);
         n2 =  new ComplexNumber(29, 102);
@@ -61,7 +62,7 @@ public class ClearCommandTest {
     
     //* doesn't work
     @Test
-    public void testUndo() throws InputNumberException {
+    public void testUndo() throws CalculatorException {
         clear.undo();
         //System.out.println(stack);
         assertEquals(2, stack.size());

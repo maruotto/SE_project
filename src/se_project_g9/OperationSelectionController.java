@@ -20,6 +20,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.TextFieldTableCell;
+import se_project_g9.exceptions.CalculatorException;
 import se_project_g9.exceptions.InputNumberException;
 
 /**
@@ -54,13 +55,18 @@ public class OperationSelectionController implements Initializable {
     private void removeClick(ActionEvent event) {
         try {
             ope.removeOperation(tableView.getSelectionModel().getSelectedItem().getKey());
-        } catch (InputNumberException ex) {
+        } catch (CalculatorException ex) {
             CustomPopup.errorPopup("An error has occurred while removing");
         }
         variables.remove(tableView.getSelectionModel().getFocusedIndex());
 
     }
 
+    /**
+     * set the data underlying this GUI
+     *
+     * @param ope the Operation that will be shown in the popup
+     */
     public void setVariables(Operation ope) {
 
         this.variables = FXCollections.observableArrayList(ope.getOperations().entrySet());
@@ -87,9 +93,9 @@ public class OperationSelectionController implements Initializable {
     private void modifyCommitName(TableColumn.CellEditEvent<Map.Entry<String, String>, String> event) {
         try {
             ope.modifyOperationName(event.getOldValue(), event.getNewValue());
-        } catch (InputNumberException ex) {
+        } catch (CalculatorException ex) {
             CustomPopup.errorPopup(ex.getMessage());
-            
+
         } catch (Exception ex) {
             CustomPopup.errorPopup("It's not possible to modify");
         } finally {
@@ -104,7 +110,7 @@ public class OperationSelectionController implements Initializable {
     private void modifyCommitOperation(TableColumn.CellEditEvent<Map.Entry<String, String>, String> event) {
         try {
             ope.modifyOperation(event.getRowValue().getKey(), event.getNewValue().toString());
-        } catch (InputNumberException ex) {
+        } catch (CalculatorException ex) {
             CustomPopup.errorPopup(ex.getMessage());
         } catch (Exception ex) {
             CustomPopup.errorPopup("It's not possible to modify");

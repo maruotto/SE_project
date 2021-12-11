@@ -18,43 +18,86 @@ public class Variables {
     private HashMap<Character, ComplexNumber> variablesMap;
     private final Stack<HashMap> variableStack;
 
+    /**
+     * constructor of class Variables
+     */
     public Variables() {
         this.variablesMap = new HashMap<Character, ComplexNumber>();
         this.variableStack = new Stack<HashMap>();
-        
+
     }
-    
-    private Variables(HashMap<Character, ComplexNumber> variablesMap, Stack<HashMap> variableStack){
+
+    /**
+     * constructor of class Variables
+     *
+     * @param variablesMap
+     * @param variableStack
+     */
+    private Variables(HashMap<Character, ComplexNumber> variablesMap, Stack<HashMap> variableStack) {
         this.variablesMap = variablesMap;
         this.variableStack = variableStack;
     }
 
+    /**
+     *
+     * insert a new variable with name key and value
+     *
+     * @param key
+     * @param value
+     * @throws Exception
+     */
     public void setVariableValue(Character key, ComplexNumber value) throws Exception {
-        if(key == null){
+        if (key == null) {
             throw new Exception("key not specified...");
         }
-        variablesMap.put(key, value); 
-            
-        
+        variablesMap.put(key, value);
+
     }
 
+    /**
+     *
+     * @param key
+     * @return the value associated with key
+     * @throws Exception
+     */
     public ComplexNumber getVariableValue(Character key) throws Exception {
-        if (variablesMap.containsKey(key)){
-           return variablesMap.get(key); 
-        }else{
+        if (variablesMap.containsKey(key)) {
+            return variablesMap.get(key);
+        } else {
             throw new Exception("Key not found");
         }
-        
+
     }
-    
-    public HashMap<Character, ComplexNumber> getVariablesMap(){
+
+    /**
+     *
+     * @return variablesMap
+     */
+    public HashMap<Character, ComplexNumber> getVariablesMap() {
         return variablesMap;
     }
     
-    public Variables clone(){
-        return new Variables((HashMap<Character, ComplexNumber>)this.variablesMap.clone(), (Stack<HashMap>) this.variableStack.clone());
+    /**
+     *
+     * @return variableStack
+     */
+    public Stack<HashMap> getVariableStack(){
+        return variableStack;
     }
 
+    /**
+     *
+     * @return a clone of this object
+     */
+    @Override
+    public Variables clone() {
+        return new Variables((HashMap<Character, ComplexNumber>) this.variablesMap.clone(), (Stack<HashMap>) this.variableStack.clone());
+    }
+
+    /**
+     *
+     * @return int code associated with this object
+     */
     @Override
     public int hashCode() {
         int hash = 7;
@@ -63,6 +106,13 @@ public class Variables {
         return hash;
     }
 
+    /**
+     *
+     *
+     * @param obj
+     * @return true if the two objects contains the same values in map and in
+     * stack
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -84,39 +134,66 @@ public class Variables {
         return true;
     }
 
-    public boolean addAll(Variables other){
-        if(other.variablesMap==null || other.variableStack == null)
+    /**
+     *
+     * Add all values of other in this object
+     *
+     * @param other
+     * @return
+     */
+    public boolean addAll(Variables other) {
+        if (other.variablesMap == null || other.variableStack == null) {
             return false;
+        }
         this.variableStack.addAll(other.variableStack);
         this.variablesMap.putAll(other.variablesMap);
         return true;
     }
-    
+
+    /**
+     * save a copy of all variables on the stack
+     */
     public void saveVar() {
         this.variableStack.push((HashMap) variablesMap.clone());
     }
-    
+
+    /**
+     *
+     * @param v contains the values that will be substituted to the ones inside
+     * the variables map
+     */
     public void insertVar(HashMap<Character, ComplexNumber> v) {
-        this.variablesMap = (HashMap) v.clone();
+        this.variablesMap.clear();
+        this.variablesMap.putAll((HashMap<Character, ComplexNumber>) v.clone());
     }
-    
-    public HashMap<Character, ComplexNumber> restoreVar() throws EmptyStackException{
+
+    /**
+     *
+     * @return restores the last value of variables saved on the stack
+     * @throws EmptyStackException
+     */
+    public HashMap<Character, ComplexNumber> restoreVar() throws EmptyStackException {
         HashMap<Character, ComplexNumber> tmp = new HashMap<Character, ComplexNumber>();
         tmp = (HashMap<Character, ComplexNumber>) this.variablesMap.clone();
         this.variablesMap = this.variableStack.pop();
         return tmp;
     }
-    
+
+    /**
+     *
+     * @return Variables{variablesMap=Map, variableStack=Stack}
+     */
     @Override
     public String toString() {
         return "Variables{" + "variablesMap=" + variablesMap + ", variableStack=" + variableStack + '}';
     }
 
+    /**
+     * clear all the value in variable stack and variable map
+     */
     public void clear() {
         this.variableStack.clear();
         this.variablesMap.clear();
     }
-    
-    
 
 }

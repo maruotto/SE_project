@@ -4,9 +4,13 @@
  */
 package se_project_g9.commands;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import se_project_g9.UDAllOp;
 import se_project_g9.UDOperation;
+import se_project_g9.exceptions.CalculatorException;
 import se_project_g9.exceptions.InputNumberException;
+import se_project_g9.exceptions.OperationException;
 
 /**
  *
@@ -32,18 +36,25 @@ public class AddOperationCommand implements Command{
         this.operations = null;
     }
     
-    
+    /**
+     *
+     * @throws OperationException
+     */
     @Override
-    public void execute() throws InputNumberException {
+    public void execute() throws OperationException {
         if(operations == null){
             op.put(key, udOp);
         } else {
-            op.addOperation(this.key, this.operations);
+            try {
+                op.addOperation(this.key, this.operations);
+            } catch (CalculatorException ex) {
+                throw new OperationException("Error in sintax of operations' sequence");
+            }
         }
     }
 
     @Override
-    public void undo() throws InputNumberException {
+    public void undo(){
         op.remove(key);
     }
     

@@ -31,6 +31,7 @@ public class CustomOperationSelectionController implements Initializable {
     private TextField tfSequence;
     @FXML
     private Button btnOk;
+    
     /**
      * Initializes the controller class.
      */
@@ -69,10 +70,18 @@ public class CustomOperationSelectionController implements Initializable {
         close();
     }
 
+    /**
+     *
+     * @return the name of operation inserted 
+     */
     protected String getName() {
         return name;
     }
 
+    /**
+     *
+     * @return the sequence of operations inserted
+     */
     protected String getSequence() {
         return sequence;
     }

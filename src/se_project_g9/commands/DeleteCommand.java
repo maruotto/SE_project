@@ -4,10 +4,8 @@
  */
 package se_project_g9.commands;
 
-import java.util.HashMap;
 import se_project_g9.UDAllOp;
 import se_project_g9.UDOperation;
-import se_project_g9.exceptions.InputNumberException;
 
 /**
  *
@@ -32,20 +30,18 @@ public class DeleteCommand implements Command{
 
     /**
      * Execute of the DeleteCommand
-     * @throws InputNumberException
      */
     @Override
-    public void execute() throws InputNumberException {
+    public void execute(){
        oldValue = map.get(key);
        map.remove(key);
     }
 
     /**
      * Undo of the DeleteCommand
-     * @throws InputNumberException
      */
     @Override
-    public void undo() throws InputNumberException {
+    public void undo(){
         map.put(key, oldValue);
     }
 

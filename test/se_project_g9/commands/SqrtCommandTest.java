@@ -12,7 +12,7 @@ import se_project_g9.BasicOperation;
 import se_project_g9.ComplexNumber;
 import se_project_g9.NumberStack;
 import se_project_g9.PersonalizedStack;
-import se_project_g9.exceptions.InputNumberException;
+import se_project_g9.exceptions.CalculatorException;
 
 /**
  *
@@ -23,7 +23,6 @@ public class SqrtCommandTest {
     private Command sqrt;
     private PersonalizedStack<ComplexNumber> stack;
     private ComplexNumber n1;
-    private ComplexNumber n2;
     
     public SqrtCommandTest() {
         stack = new NumberStack<>();
@@ -54,7 +53,7 @@ public class SqrtCommandTest {
      * Test of undo method, of class SqrtCommand.
      */
     @Test
-    public void testUndo() throws InputNumberException {
+    public void testUndo() throws CalculatorException {
         stack.push(n1);
         sqrt.execute();
         sqrt.undo();

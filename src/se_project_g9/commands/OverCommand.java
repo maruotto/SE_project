@@ -5,7 +5,6 @@
 package se_project_g9.commands;
 
 import se_project_g9.ComplexNumber;
-import se_project_g9.NumberStack;
 import se_project_g9.PersonalizedStack;
 import se_project_g9.exceptions.NotEnoughNumbersException;
 

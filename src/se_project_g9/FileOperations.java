@@ -4,20 +4,16 @@
  */
 package se_project_g9;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
-import se_project_g9.exceptions.InputNumberException;
+import se_project_g9.exceptions.CalculatorException;
 
 /**
  *
@@ -25,6 +21,12 @@ import se_project_g9.exceptions.InputNumberException;
  */
 public class FileOperations {
 
+    /**
+     *
+     * @param filename the file object.
+     * @param map the operations to save
+     * @throws IOException 
+     */
     public static void writeIn(File filename, UDAllOp map) throws IOException {
 
         try ( PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(filename)))) {
@@ -34,17 +36,14 @@ public class FileOperations {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-
-        /*try(ObjectOutputStream writer = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(filename)))){
-                
-            writer.writeObject(map);
-                
-                
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }*/
     }
 
+    /**
+     *
+     * @param filename the file object
+     * @param ope the operation class to load a command
+     * @throws FileNotFoundException
+     */
     public static void loadFrom(File filename, Operation ope) throws FileNotFoundException {
 
         String key;
@@ -57,20 +56,11 @@ public class FileOperations {
                 key = splitted[0];
                 try {
                     ope.addUDOperation(key, splitted[splitted.length - 1]);
-                } catch (InputNumberException ex) {
+                } catch (CalculatorException ex) {
                     System.out.println("operation " + key + " already exists");
                 }
             }
         }
-
-        /*try(ObjectInputStream reader = new ObjectInputStream(new BufferedInputStream(new FileInputStream(filename)))){
-            
-            m = (UDAllOp) reader.readObject();
-            
-            
-        }catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }*/
     }
 
 }

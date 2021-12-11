@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 import se_project_g9.ComplexNumber;
 import se_project_g9.NumberStack;
 import se_project_g9.PersonalizedStack;
-import se_project_g9.exceptions.InputNumberException;
+import se_project_g9.exceptions.CalculatorException;
 
 /**
  *
@@ -43,7 +43,7 @@ public class SwapCommandTest {
      * Test of execute method, of class SwapCommand.
      */
     @Test
-    public void testExecute() throws InputNumberException {
+    public void testExecute() throws CalculatorException {
         stack.push(n1);
         stack.push(n2);
         System.out.println(stack);
@@ -62,7 +62,7 @@ public class SwapCommandTest {
      * Test of undo method, of class SwapCommand.
      */
     @Test
-    public void testUndo() throws InputNumberException {
+    public void testUndo() throws CalculatorException {
         stack.push(n1);
         stack.push(n2);
         swap.execute();

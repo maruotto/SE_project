@@ -62,7 +62,7 @@ public class VAddCommand implements Command {
      * @throws InputNumberException
      */
     @Override
-    public void undo() throws InputNumberException {
+    public void undo() throws InputNumberException{
 
         try {
             stack.push(elem);

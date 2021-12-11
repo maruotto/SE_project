@@ -4,8 +4,8 @@
  */
 package se_project_g9.commands;
 
-import se_project_g9.exceptions.InputNumberException;
 import java.io.Serializable;
+import se_project_g9.exceptions.CalculatorException;
 
 /**
  *
@@ -14,12 +14,12 @@ import java.io.Serializable;
 public interface Command extends Serializable{
     /**
      * Execute of the Command
-     * @throws InputNumberException
+     * @throws CalculatorException
      */
-    void execute() throws InputNumberException; 
+    void execute() throws CalculatorException; 
     /**
      * Undo of the Command
-     * @throws InputNumberException
+     * @throws CalculatorException
      */
-    void undo() throws InputNumberException;
+    void undo() throws CalculatorException;
 }

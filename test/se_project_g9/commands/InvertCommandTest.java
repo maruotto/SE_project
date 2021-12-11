@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 import se_project_g9.ComplexNumber;
 import se_project_g9.NumberStack;
 import se_project_g9.PersonalizedStack;
-import se_project_g9.exceptions.InputNumberException;
+import se_project_g9.exceptions.CalculatorException;
 
 /**
  *
@@ -44,7 +44,7 @@ public class InvertCommandTest {
      * Test of execute method, of class InvertCommand.
      */
     @Test
-    public void testExecute() throws InputNumberException {
+    public void testExecute() throws CalculatorException {
         stack.push(n1);
         invert.execute();
         assertEquals(1, stack.size());
@@ -60,7 +60,7 @@ public class InvertCommandTest {
      * Test of undo method, of class InvertCommand.
      */
     @Test
-    public void testUndo() throws InputNumberException {
+    public void testUndo() throws CalculatorException {
         stack.push(n1);
         invert.execute();
         invert.undo();

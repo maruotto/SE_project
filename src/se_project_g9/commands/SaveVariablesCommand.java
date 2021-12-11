@@ -5,10 +5,7 @@
 package se_project_g9.commands;
 
 import java.util.EmptyStackException;
-import java.util.HashMap;
-import se_project_g9.ComplexNumber;
 import se_project_g9.Variables;
-import se_project_g9.exceptions.InputNumberException;
 
 /**
  *

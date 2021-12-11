@@ -6,31 +6,51 @@ package se_project_g9;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import se_project_g9.exceptions.InputNumberException;
+import se_project_g9.exceptions.CalculatorException;
 
 /**
  *
  * @author group 9
+ * @param <Command>
  */
-public class UDOperation<Command> extends ArrayList<Command>{
+public class UDOperation<Command> extends ArrayList<Command> {
 
     static private Interpreter i;
 
+    /**
+     *
+     * @return the iterator of UDOperation
+     */
     @Override
     public synchronized Iterator<Command> iterator() {
         return super.iterator();//To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     * @return the backward iterator of UDOperation
+     */
     public synchronized Iterator<Command> reverseIterator() {
 
-        return new ReverseIterator<Command>(this);
+        return new ReverseIterator<>(this);
     }
 
+    /**
+     * constructor of class UDOperation
+     */
     public UDOperation() {
         super();
     }
 
-    public UDOperation(String input) throws InputNumberException {
+    /**
+     * constructor of class UDOperator, using the interpreter that should be
+     * setted with addInterpreter method, it translate the string input into a
+     * sequence of operations and return the respective object
+     *
+     * @param input the string that will be translated
+     * @throws CalculatorException
+     */
+    public UDOperation(String input) throws CalculatorException {
         super();
         String[] splittedInput = input.split(" +");
         for (String s : splittedInput) {
@@ -39,8 +59,17 @@ public class UDOperation<Command> extends ArrayList<Command>{
             }
         }
     }
-    
-    public UDOperation(String input, Interpreter in) throws InputNumberException {
+
+    /**
+     * constructor of class UDOperator, using the interpreter in, it translate
+     * the string input into a sequence of operations and return the respective
+     * object
+     *
+     * @param input the string that will be translated
+     * @param in the interpreter that should be used to translate the input
+     * @throws CalculatorException
+     */
+    public UDOperation(String input, Interpreter in) throws CalculatorException {
         super();
         String[] splittedInput = input.split(" +");
         for (String s : splittedInput) {
@@ -50,10 +79,18 @@ public class UDOperation<Command> extends ArrayList<Command>{
         }
     }
 
+    /**
+     *
+     * @param i interpreter
+     */
     public static void addInterpreter(Interpreter i) {
         UDOperation.i = i;
     }
 
+    /**
+     *
+     * @return string representation of this command
+     */
     @Override
     public String toString() {
         String s = "";

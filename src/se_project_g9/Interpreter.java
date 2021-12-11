@@ -10,6 +10,7 @@ import se_project_g9.commands.DivideCommand;
 import se_project_g9.commands.DropCommand;
 import se_project_g9.commands.DupCommand;
 import se_project_g9.commands.InvertCommand;
+import se_project_g9.commands.ModCommand;
 import se_project_g9.commands.MultiplyCommand;
 import se_project_g9.commands.OperationCommand;
 import se_project_g9.commands.OverCommand;
@@ -22,6 +23,7 @@ import se_project_g9.commands.VAddCommand;
 import se_project_g9.commands.VInsertCommand;
 import se_project_g9.commands.VPushCommand;
 import se_project_g9.commands.VSubCommand;
+import se_project_g9.exceptions.CalculatorException;
 import se_project_g9.exceptions.InputNumberException;
 import se_project_g9.exceptions.OperationNotPresentException;
 import se_project_g9.exceptions.OperationSymbolException;
@@ -37,19 +39,36 @@ public class Interpreter {
     private final Variables variables;
     private final UDAllOp operations;
 
-    public Interpreter(Operation ope) {
+    /**
+     *
+     * @param ope the operation object
+     */
+    public Interpreter(ApplicationOperation ope) {
         numberStack = ope.getNumberStack();
         variables = ope.getVariables();
         operations = ope.getOperations();
     }
 
+    /**
+     *
+     * @param numberStack the number stack
+     * @param variables the set of variables 
+     * @param operations the operations
+     */
     protected Interpreter(NumberStack<ComplexNumber> numberStack, Variables variables, UDAllOp operations) {
         this.numberStack = numberStack;
         this.variables = variables;
         this.operations = operations;
     }
 
-    protected Command translateInput(String input, boolean operation) throws InputNumberException {
+    /**
+     *
+     * @param input the input string to translate
+     * @param operation true if input is an operation,false otherwise
+     * @return the Command to execute
+     * @throws CalculatorException
+     */
+    protected Command translateInput(String input, boolean operation) throws CalculatorException {
         if (numberStack == null || variables == null || operations == null) {
             input = input.trim();
         }
@@ -103,6 +122,9 @@ public class Interpreter {
                 case "drop":
                     ret = new DropCommand(numberStack);
                     break;
+                case "mod":
+                    ret = new ModCommand(numberStack);
+                    break;
                 default:
                     throw new OperationNotPresentException("This operation is not supported: " + input);
             }
@@ -136,6 +158,12 @@ public class Interpreter {
 
     }
 
+    /**
+     *
+     * @param input the input to string to convert
+     * @return a complex number that represents the input
+     * @throws InputNumberException
+     */
     protected static ComplexNumber convertNumber(String input) throws InputNumberException {
         if (input.length() == 0) {
             throw new NumberFormatException("Is not possible to insert nothing");

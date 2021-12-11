@@ -9,19 +9,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.EmptyStackException;
-import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
@@ -35,7 +30,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 
-import javafx.stage.Stage;
+import se_project_g9.exceptions.CalculatorException;
 import se_project_g9.exceptions.ImpossibleUndo;
 import se_project_g9.exceptions.InputNumberException;
 
@@ -60,6 +55,11 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private AnchorPane AnchorPane;
 
+    /**
+     *
+     * @param url 
+     * @param rb
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ope = new Operation();
@@ -259,7 +259,7 @@ public class FXMLDocumentController implements Initializable {
         try {
             CustomPopup.customDefinition();
             undoBtn.disableProperty().set(false);
-        } catch (InputNumberException e) {
+        } catch (CalculatorException e) {
             CustomPopup.errorPopup(e.getMessage());
         } catch (IOException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
@@ -318,6 +318,22 @@ public class FXMLDocumentController implements Initializable {
         KeyCodeCombination comb = new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_DOWN);
         if (comb.match(event)) {
             undo();
+        }
+    }
+
+    @FXML
+    private void clickmod(ActionEvent event) {
+       try {
+            ope.mod();
+        } catch (Exception ex) {
+            String message = "";
+            if (ex.getMessage() == null) {
+                message = "An error has occurred";
+            } else {
+                message = ex.getMessage();
+            }
+
+            CustomPopup.errorPopup(message);
         }
     }
 }
