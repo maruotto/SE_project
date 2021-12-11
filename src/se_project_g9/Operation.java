@@ -8,7 +8,6 @@ import java.util.Stack;
 import se_project_g9.commands.*;
 import se_project_g9.exceptions.ImpossibleUndo;
 import se_project_g9.exceptions.CalculatorException;
-import se_project_g9.exceptions.InputNumberException;
 import se_project_g9.exceptions.OperationException;
 
 /**
@@ -49,7 +48,8 @@ public class Operation implements ApplicationOperation {
      * this method returns the number stack
      * @return
      */
-    protected PersonalizedStack<ComplexNumber> getNumberStack() {
+    @Override
+    public PersonalizedStack<ComplexNumber> getNumberStack() {
         return numberStack;
     }
 
@@ -57,7 +57,8 @@ public class Operation implements ApplicationOperation {
      * this method returns the variables
      * @return
      */
-    protected Variables getVariables() {
+    @Override
+    public Variables getVariables() {
         return variables;
     }
 
@@ -65,7 +66,8 @@ public class Operation implements ApplicationOperation {
      * this methods returns the operations
      * @return
      */
-    protected UDAllOp getOperations() {
+    @Override
+    public UDAllOp getOperations() {
         return operations;
     }
 

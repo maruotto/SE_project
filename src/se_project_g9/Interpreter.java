@@ -43,7 +43,7 @@ public class Interpreter {
      *
      * @param ope the operation object
      */
-    public Interpreter(Operation ope) {
+    public Interpreter(ApplicationOperation ope) {
         numberStack = ope.getNumberStack();
         variables = ope.getVariables();
         operations = ope.getOperations();
