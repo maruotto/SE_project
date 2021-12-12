@@ -13,6 +13,7 @@ import se_project_g9.PersonalizedStack;
 import se_project_g9.Variables;
 import se_project_g9.BasicOperation;
 import se_project_g9.exceptions.InputNumberException;
+import se_project_g9.exceptions.NotEnoughNumbersException;
 
 /**
  *
@@ -51,8 +52,12 @@ public class VAddCommand implements Command {
 
         } catch (NullPointerException ex) {
             throw new NullPointerException("key not specified");
+        } catch(EmptyStackException e){
+            throw new NotEnoughNumbersException("Stack is empty");
+        } catch(RuntimeException e){
+            throw new NotEnoughNumbersException("Error in add");
         } catch (Exception ex) {
-            throw new EmptyStackException();
+            throw new NotEnoughNumbersException("Error in add");
         }
 
     }
@@ -72,7 +77,6 @@ public class VAddCommand implements Command {
         }
 
     }
-
     /**
      * Returns a string representation of VAddCommand
      * @return

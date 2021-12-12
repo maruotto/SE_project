@@ -291,12 +291,22 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void clicksavevariables(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "save");
+        try {
+            ope.saveVariables();
+            CustomPopup.errorPopup("Saved");
+        } catch (CalculatorException ex) {
+            CustomPopup.errorPopup(ex.getMessage());
+        }
     }
 
     @FXML
     private void clickrestorevariables(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "restore");
+        try {
+            ope.restoreVariables();
+            CustomPopup.errorPopup("Restored");
+        } catch (CalculatorException ex) {
+            CustomPopup.errorPopup(ex.getMessage());
+        }
     }
 
     @FXML
@@ -341,6 +351,22 @@ public class FXMLDocumentController implements Initializable {
     private void clickmod(ActionEvent event) {
        try {
             ope.mod();
+        } catch (Exception ex) {
+            String message = "";
+            if (ex.getMessage() == null) {
+                message = "An error has occurred";
+            } else {
+                message = ex.getMessage();
+            }
+
+            CustomPopup.errorPopup(message);
+        }
+    }
+
+    @FXML
+    private void clicksqrt(ActionEvent event) {
+        try {
+            ope.sqrt();
         } catch (Exception ex) {
             String message = "";
             if (ex.getMessage() == null) {

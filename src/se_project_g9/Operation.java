@@ -280,4 +280,16 @@ public class Operation implements ApplicationOperation {
         performCommand(new ModCommand(numberStack));
     }
 
+    void sqrt() throws CalculatorException {
+        performCommand(new SqrtCommand(numberStack));
+    }
+
+    void saveVariables() throws CalculatorException {
+        performCommand(new SaveVariablesCommand(variables));
+    }
+
+    void restoreVariables() throws CalculatorException {
+        performCommand(new RestoreVariablesCommand(variables));
+    }
+
 }
