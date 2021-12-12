@@ -40,5 +40,3 @@
   - [sprint review](https://docs.google.com/document/d/1Nvn9rL74J5kebGSrxiYR60gtIyLR8yu15MePzx8SQyM/edit?usp=sharing)
 
   - [burndown chart](https://docs.google.com/document/d/1blFERTHKkx_nhyaroiqtqaQXFKt4gUj-qhLHuIJp5dI/edit?usp=sharing)
-
-  - [summary document](https://docs.google.com/document/d/187J44Xf8ys10BPKtmCR81lG9RfnmzFVyegAVpOA6udQ/edit?usp=sharing)
