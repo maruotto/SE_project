@@ -53,7 +53,7 @@
                   <Button id="button-calculator" mnemonicParsing="false" onAction="#click" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="-" GridPane.columnIndex="4" GridPane.rowIndex="3" />
                   <Button id="button-calculator" mnemonicParsing="false" onAction="#click" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="÷" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                   <Button id="button-calculator" mnemonicParsing="false" onAction="#clickplusminus" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="±" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <Button id="button-calculator" mnemonicParsing="false" onAction="#click" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="√x" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Button id="button-calculator" mnemonicParsing="false" onAction="#clicksqrt" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="√x" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                   <SplitMenuButton id="button-calculator-var-chooser" fx:id="variablesMenù" alignment="CENTER" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefHeight="42.0" prefWidth="60.0" stylesheets="@Style/button.css" text="a" GridPane.rowIndex="5">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#clickv" text="a" />

@@ -352,4 +352,20 @@ public class FXMLDocumentController implements Initializable {
             CustomPopup.errorPopup(message);
         }
     }
+
+    @FXML
+    private void clicksqrt(ActionEvent event) {
+        try {
+            ope.sqrt();
+        } catch (Exception ex) {
+            String message = "";
+            if (ex.getMessage() == null) {
+                message = "An error has occurred";
+            } else {
+                message = ex.getMessage();
+            }
+
+            CustomPopup.errorPopup(message);
+        }
+    }
 }
