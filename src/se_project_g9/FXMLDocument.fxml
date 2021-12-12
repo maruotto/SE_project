@@ -12,11 +12,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="AnchorPane" onKeyPressed="#controlZ" prefHeight="424.0" prefWidth="546.0" style="-fx-background-color: #f8f8f8;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se_project_g9.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="AnchorPane" onKeyPressed="#controlZ" prefHeight="359.0" prefWidth="546.0" style="-fx-background-color: #f8f8f8;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se_project_g9.FXMLDocumentController">
    <children>
-      <ListView fx:id="stackview" layoutX="23.0" layoutY="55.0" prefHeight="354.0" prefWidth="241.0" />
-      <TextField fx:id="tfInput" layoutX="277.0" layoutY="54.0" onKeyReleased="#keyReleased" prefHeight="33.0" prefWidth="254.0" />
-      <AnchorPane layoutX="258.0" layoutY="90.0" prefHeight="250.0" prefWidth="273.0">
+      <ListView fx:id="stackview" layoutX="23.0" layoutY="13.0" prefHeight="338.0" prefWidth="241.0" />
+      <TextField fx:id="tfInput" layoutX="277.0" layoutY="16.0" onKeyReleased="#keyReleased" prefHeight="33.0" prefWidth="254.0" />
+      <AnchorPane layoutX="258.0" layoutY="91.0" prefHeight="250.0" prefWidth="273.0">
          <children>
             <GridPane layoutX="20.0" layoutY="45.0">
               <columnConstraints>
@@ -35,18 +35,18 @@
                   <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button id="number-calculator" mnemonicParsing="false" onAction="#click" prefHeight="35.0" prefWidth="50.0" stylesheets="@Style/button.css" text="1" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Button id="number-calculator" mnemonicParsing="false" onAction="#click" prefHeight="35.0" prefWidth="50.0" stylesheets="@Style/button.css" text="5" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                  <Button id="number-calculator" mnemonicParsing="false" onAction="#click" prefHeight="35.0" prefWidth="50.0" stylesheets="@Style/button.css" text="2" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                  <Button id="number-calculator" mnemonicParsing="false" onAction="#click" prefHeight="35.0" prefWidth="50.0" stylesheets="@Style/button.css" text="3" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                  <Button id="number-calculator" mnemonicParsing="false" onAction="#click" prefHeight="35.0" prefWidth="50.0" stylesheets="@Style/button.css" text="4" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Button id="number-calculator" mnemonicParsing="false" onAction="#click" prefHeight="35.0" prefWidth="50.0" stylesheets="@Style/button.css" text="9" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                  <Button id="number-calculator" mnemonicParsing="false" onAction="#click" prefHeight="35.0" prefWidth="50.0" stylesheets="@Style/button.css" text="8" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <Button id="number-calculator" mnemonicParsing="false" onAction="#click" prefHeight="35.0" prefWidth="50.0" stylesheets="@Style/button.css" text="7" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Button id="number-calculator" mnemonicParsing="false" onAction="#click" prefHeight="35.0" prefWidth="50.0" stylesheets="@Style/button.css" text="6" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                  <Button id="number-calculator" mnemonicParsing="false" onAction="#click" prefHeight="35.0" prefWidth="50.0" stylesheets="@Style/button.css" text="0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                  <Button id="number-calculator" mnemonicParsing="false" onAction="#click" prefHeight="35.0" prefWidth="50.0" stylesheets="@Style/button.css" text="i" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <Button id="number-calculator" mnemonicParsing="false" onAction="#click" prefHeight="35.0" prefWidth="50.0" stylesheets="@Style/button.css" text="." GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                  <Button id="number-calculator" mnemonicParsing="false" onAction="#click" prefHeight="33.0" prefWidth="48.0" stylesheets="@Style/button.css" text="1" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                  <Button id="number-calculator" mnemonicParsing="false" onAction="#click" prefHeight="33.0" prefWidth="48.0" stylesheets="@Style/button.css" text="5" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                  <Button id="number-calculator" mnemonicParsing="false" onAction="#click" prefHeight="33.0" prefWidth="48.0" stylesheets="@Style/button.css" text="2" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                  <Button id="number-calculator" mnemonicParsing="false" onAction="#click" prefHeight="33.0" prefWidth="48.0" stylesheets="@Style/button.css" text="3" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                  <Button id="number-calculator" mnemonicParsing="false" onAction="#click" prefHeight="33.0" prefWidth="48.0" stylesheets="@Style/button.css" text="4" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                  <Button id="number-calculator" mnemonicParsing="false" onAction="#click" prefHeight="33.0" prefWidth="48.0" stylesheets="@Style/button.css" text="9" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <Button id="number-calculator" mnemonicParsing="false" onAction="#click" prefHeight="33.0" prefWidth="48.0" stylesheets="@Style/button.css" text="8" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <Button id="number-calculator" mnemonicParsing="false" onAction="#click" prefHeight="33.0" prefWidth="48.0" stylesheets="@Style/button.css" text="7" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <Button id="number-calculator" mnemonicParsing="false" onAction="#click" prefHeight="33.0" prefWidth="48.0" stylesheets="@Style/button.css" text="6" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                  <Button id="number-calculator" mnemonicParsing="false" onAction="#click" prefHeight="33.0" prefWidth="48.0" stylesheets="@Style/button.css" text="0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                  <Button id="number-calculator" mnemonicParsing="false" onAction="#click" prefHeight="33.0" prefWidth="48.0" stylesheets="@Style/button.css" text="i" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                  <Button id="number-calculator" mnemonicParsing="false" onAction="#click" prefHeight="33.0" prefWidth="48.0" stylesheets="@Style/button.css" text="." GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
                   <Button id="button-calculator" mnemonicParsing="false" onAction="#click" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="+" GridPane.columnIndex="4" GridPane.rowIndex="4" />
                   <Button id="button-enter" fx:id="btnSend" alignment="CENTER" mnemonicParsing="false" onAction="#handleInsertAction" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" GridPane.columnIndex="4" GridPane.rowIndex="5" />
                   <Button id="button-calculator" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#click" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="*" GridPane.columnIndex="4" GridPane.rowIndex="2" />
@@ -54,7 +54,7 @@
                   <Button id="button-calculator" mnemonicParsing="false" onAction="#click" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="/" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                   <Button id="button-calculator" mnemonicParsing="false" onAction="#clickplusminus" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="±" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <Button id="button-calculator" mnemonicParsing="false" onAction="#clicksqrt" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="√x" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                  <SplitMenuButton id="button-calculator-var-chooser" fx:id="variablesMenù" alignment="CENTER" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefHeight="42.0" prefWidth="60.0" stylesheets="@Style/button.css" text="a" GridPane.rowIndex="5">
+                  <SplitMenuButton id="button-calculator-var-chooser" fx:id="variablesMenù" alignment="CENTER" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefHeight="35.0" prefWidth="50.0" stylesheets="@Style/button.css" text="a" GridPane.rowIndex="5">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#clickv" text="a" />
                       <MenuItem mnemonicParsing="false" onAction="#clickv" text="b" />
@@ -87,10 +87,10 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </SplitMenuButton>
-                  <Button id="button-calculator-var" mnemonicParsing="false" onAction="#savevariableclick" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="&gt;x" GridPane.rowIndex="4" />
-                  <Button id="button-calculator-var" mnemonicParsing="false" onAction="#pushvariableclick" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="&lt;x" GridPane.rowIndex="3" />
-                  <Button id="button-calculator-var" mnemonicParsing="false" onAction="#addvariableclick" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="+x" GridPane.rowIndex="1" />
-                  <Button id="button-calculator-var" mnemonicParsing="false" onAction="#subvariableclick" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="-x" GridPane.rowIndex="2" />
+                  <Button id="button-calculator-var" mnemonicParsing="false" onAction="#savevariableclick" prefHeight="33.0" prefWidth="48.0" stylesheets="@Style/button.css" text="&gt;x" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                  <Button id="button-calculator-var" mnemonicParsing="false" onAction="#pushvariableclick" prefHeight="33.0" prefWidth="48.0" stylesheets="@Style/button.css" text="&lt;x" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                  <Button id="button-calculator-var" alignment="CENTER" mnemonicParsing="false" onAction="#addvariableclick" prefHeight="33.0" prefWidth="48.0" stylesheets="@Style/button.css" text="+x" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Button id="button-calculator-var" mnemonicParsing="false" onAction="#subvariableclick" prefHeight="33.0" prefWidth="48.0" stylesheets="@Style/button.css" text="-x" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                   <Button id="button-calculator-less" mnemonicParsing="false" onAction="#clickclear" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="AC" GridPane.columnIndex="4" />
                   <Button id="button-calculator-less" mnemonicParsing="false" onAction="#clickswap" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="swap" />
                   <Button id="button-calculator-less" mnemonicParsing="false" onAction="#clickover" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="over" GridPane.columnIndex="1" />
@@ -120,13 +120,33 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <MenuButton contentDisplay="RIGHT" layoutX="404.0" layoutY="12.0" mnemonicParsing="false" text="CustomOperation">
-        <items>
-          <MenuItem mnemonicParsing="false" onAction="#clickCustom" text="Add" />
-          <MenuItem mnemonicParsing="false" onAction="#clickRemoveOperation" text="Modify/Remove" />
-            <MenuItem mnemonicParsing="false" onAction="#saveoperations" text="Save" />
-            <MenuItem mnemonicParsing="false" onAction="#getoperations" text="Open" />
-        </items>
-      </MenuButton>
+      <AnchorPane />
+      <AnchorPane layoutX="281.0" layoutY="66.0">
+         <children>
+            <GridPane prefHeight="30.0" prefWidth="245.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" prefWidth="110.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="140.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <MenuButton id="button-calculator-custom-op" alignment="CENTER" contentDisplay="RIGHT" maxHeight="35.0" mnemonicParsing="false" prefHeight="33.0" stylesheets="@Style/button.css" text="CustomOperation" GridPane.columnIndex="1">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#clickCustom" text="Add" />
+                      <MenuItem mnemonicParsing="false" onAction="#clickRemoveOperation" text="Modify/Remove" />
+                        <MenuItem mnemonicParsing="false" onAction="#saveoperations" text="Save" />
+                        <MenuItem mnemonicParsing="false" onAction="#getoperations" text="Open" />
+                    </items>
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </MenuButton>
+                  <Button id="button-calculator-custom-op" alignment="CENTER" mnemonicParsing="false" onAction="#addvariableclick" prefHeight="30.0" prefWidth="106.0" stylesheets="@Style/button.css" text="Show variables" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+               </children>
+            </GridPane>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
