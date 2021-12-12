@@ -12,11 +12,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="AnchorPane" onKeyPressed="#controlZ" prefHeight="359.0" prefWidth="546.0" style="-fx-background-color: #f8f8f8;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se_project_g9.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="AnchorPane" onKeyPressed="#controlZ" prefHeight="359.0" prefWidth="592.0" style="-fx-background-color: #f8f8f8;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se_project_g9.FXMLDocumentController">
    <children>
-      <ListView fx:id="stackview" layoutX="23.0" layoutY="13.0" prefHeight="338.0" prefWidth="241.0" />
-      <TextField fx:id="tfInput" layoutX="277.0" layoutY="16.0" onKeyReleased="#keyReleased" prefHeight="33.0" prefWidth="254.0" />
-      <AnchorPane layoutX="258.0" layoutY="91.0" prefHeight="250.0" prefWidth="273.0">
+      <ListView fx:id="stackview" layoutX="10.0" layoutY="13.0" prefHeight="338.0" prefWidth="302.0" />
+      <TextField fx:id="tfInput" layoutX="325.0" layoutY="16.0" onKeyReleased="#keyReleased" prefHeight="33.0" prefWidth="254.0" />
+      <AnchorPane layoutX="306.0" layoutY="91.0" prefHeight="250.0" prefWidth="273.0">
          <children>
             <GridPane layoutX="20.0" layoutY="45.0">
               <columnConstraints>
@@ -121,7 +121,7 @@
          </children>
       </AnchorPane>
       <AnchorPane />
-      <AnchorPane layoutX="277.0" layoutY="61.0" prefHeight="30.0" prefWidth="260.0">
+      <AnchorPane layoutX="325.0" layoutY="61.0" prefHeight="30.0" prefWidth="260.0">
          <children>
             <GridPane prefHeight="30.0" prefWidth="255.0">
                <columnConstraints>
