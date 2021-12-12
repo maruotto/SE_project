@@ -18,6 +18,7 @@ public class InterpreterTest {
     private Operation op;
     public InterpreterTest() {
         op = Operation.getInstance();
+        Interpreter.setOperation(op);
     }
     
     @Before
@@ -191,8 +192,8 @@ public class InterpreterTest {
     public void testTranslateInput() throws Exception {
         System.out.println("translate_input");
         String input = "abcd";
-        Interpreter instance = new Interpreter(op);
-        instance.translateInput(input, false);
+        Interpreter.setOperation(op);
+        Interpreter.translateInput(input, false);
 
     }
 

@@ -37,31 +37,9 @@ import se_project_g9.exceptions.TooManyNumbersException;
  */
 public class Interpreter {
 
-    private final PersonalizedStack<ComplexNumber> numberStack;
-    private final Variables variables;
-    private final UDAllOp operations;
-
-    /**
-     *
-     * @param ope the operation object
-     */
-    public Interpreter(ApplicationOperation ope) {
-        numberStack = ope.getNumberStack();
-        variables = ope.getVariables();
-        operations = ope.getOperations();
-    }
-
-    /**
-     *
-     * @param numberStack the number stack
-     * @param variables the set of variables 
-     * @param operations the operations
-     */
-    protected Interpreter(NumberStack<ComplexNumber> numberStack, Variables variables, UDAllOp operations) {
-        this.numberStack = numberStack;
-        this.variables = variables;
-        this.operations = operations;
-    }
+    private static PersonalizedStack<ComplexNumber> numberStack = null;
+    private static Variables variables = null;
+    private static UDAllOp operations = null;
 
     /**
      *
@@ -70,7 +48,7 @@ public class Interpreter {
      * @return the Command to execute
      * @throws CalculatorException
      */
-    protected Command translateInput(String input, boolean operation) throws CalculatorException {
+    protected static Command translateInput(String input, boolean operation) throws CalculatorException {
         if (numberStack == null || variables == null || operations == null) {
             input = input.trim();
         }
@@ -239,6 +217,16 @@ public class Interpreter {
         return n;
 
     }
+    
+    public static void setOperation(ApplicationOperation ope) {
+        if(numberStack == null && variables == null && operations == null){
+            numberStack = ope.getNumberStack();
+            variables = ope.getVariables();
+            operations = ope.getOperations();
+        }
+    }
+    
+    
     
     
 }

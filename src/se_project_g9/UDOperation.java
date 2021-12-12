@@ -15,8 +15,6 @@ import se_project_g9.exceptions.CalculatorException;
  */
 public class UDOperation<Command> extends ArrayList<Command> {
 
-    static private Interpreter i;
-
     /**
      *
      * @return the iterator of UDOperation
@@ -55,7 +53,7 @@ public class UDOperation<Command> extends ArrayList<Command> {
         String[] splittedInput = input.split(" +");
         for (String s : splittedInput) {
             if (s.length() > 0) {
-                this.add((Command) i.translateInput(s, true)); //if exception thrown the execution is blocked
+                this.add((Command) Interpreter.translateInput(s, true)); //if exception thrown the execution is blocked
             }
         }
     }
@@ -74,18 +72,11 @@ public class UDOperation<Command> extends ArrayList<Command> {
         String[] splittedInput = input.split(" +");
         for (String s : splittedInput) {
             if (s.length() > 0) {
-                this.add((Command) in.translateInput(s, true)); //if exception thrown the execution is blocked
+                this.add((Command) Interpreter.translateInput(s, true)); //if exception thrown the execution is blocked
             }
         }
     }
 
-    /**
-     *
-     * @param i interpreter
-     */
-    public static void addInterpreter(Interpreter i) {
-        UDOperation.i = i;
-    }
 
     /**
      *

@@ -35,8 +35,9 @@ public class UDAllOpTest {
         System.out.println("addOperation");
         String name = "tris";
         String input = "+ +";
-        UDAllOp instance = new UDAllOp();
-        UDOperation.addInterpreter(new Interpreter(new NumberStack(),new Variables(),instance));
+        ApplicationOperation ope = Operation.getInstance();
+        UDAllOp instance = ope.getOperations();
+        Interpreter.setOperation(ope);
         instance.addOperation(name, input);
         assertTrue(instance.containsKey(name));
     }

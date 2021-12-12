@@ -20,7 +20,6 @@ public class Operation implements ApplicationOperation {
     private final Variables variables;
     private final UDAllOp operations;
     private final Stack<Command> operationsPerformed;
-    private final Interpreter i;
     private static Operation instance = null;
 
     /**
@@ -31,8 +30,7 @@ public class Operation implements ApplicationOperation {
         this.variables = new Variables();
         this.operationsPerformed = new Stack<>();
         this.operations = new UDAllOp();
-        this.i = new Interpreter(numberStack, variables, operations);
-        UDOperation.addInterpreter(i);
+        Interpreter.setOperation(this);
 
     }
 
@@ -117,7 +115,7 @@ public class Operation implements ApplicationOperation {
      * @throws CalculatorException
      */
     public void performOperation(String input) throws CalculatorException {
-        performCommand(i.translateInput(input, false));
+        performCommand(Interpreter.translateInput(input, false));
     }
 
     /**
