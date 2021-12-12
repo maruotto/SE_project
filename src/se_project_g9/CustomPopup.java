@@ -92,7 +92,7 @@ public class CustomPopup {
         Parent parent;
         try {
             parent = loader.load();
-            OperationSelectionController pc = loader.getController();
+            ShowVariablesFXMLController pc = loader.getController();
             Stage stage = new Stage();
             stage.setScene(new Scene(parent));
             stage.setAlwaysOnTop(true);

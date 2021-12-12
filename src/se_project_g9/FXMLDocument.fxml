@@ -91,12 +91,12 @@
                   <Button id="button-calculator-var" mnemonicParsing="false" onAction="#pushvariableclick" prefHeight="33.0" prefWidth="48.0" stylesheets="@Style/button.css" text="&lt;x" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
                   <Button id="button-calculator-var" alignment="CENTER" mnemonicParsing="false" onAction="#addvariableclick" prefHeight="33.0" prefWidth="48.0" stylesheets="@Style/button.css" text="+x" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                   <Button id="button-calculator-var" mnemonicParsing="false" onAction="#subvariableclick" prefHeight="33.0" prefWidth="48.0" stylesheets="@Style/button.css" text="-x" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                  <Button id="button-calculator-less" mnemonicParsing="false" onAction="#clickclear" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="AC" GridPane.columnIndex="4" />
-                  <Button id="button-calculator-less" mnemonicParsing="false" onAction="#clickswap" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="swap" />
-                  <Button id="button-calculator-less" mnemonicParsing="false" onAction="#clickover" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="over" GridPane.columnIndex="1" />
-                  <Button id="button-calculator-less" mnemonicParsing="false" onAction="#clickdrop" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="drop" GridPane.columnIndex="2" />
-                  <Button id="button-calculator-less" mnemonicParsing="false" onAction="#clickdup" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="dup" GridPane.columnIndex="3" />
-                  <Button id="button-calculator-less" mnemonicParsing="false" onAction="#clickmod" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="mod" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button id="button-calculator-less" mnemonicParsing="false" onAction="#clickActionButton" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="AC" GridPane.columnIndex="4" />
+                  <Button id="button-calculator-less" mnemonicParsing="false" onAction="#clickActionButton" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="swap" />
+                  <Button id="button-calculator-less" mnemonicParsing="false" onAction="#clickActionButton" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="over" GridPane.columnIndex="1" />
+                  <Button id="button-calculator-less" mnemonicParsing="false" onAction="#clickActionButton" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="drop" GridPane.columnIndex="2" />
+                  <Button id="button-calculator-less" mnemonicParsing="false" onAction="#clickActionButton" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="dup" GridPane.columnIndex="3" />
+                  <Button id="button-calculator-less" mnemonicParsing="false" onAction="#clickActionButton" prefHeight="33.0" prefWidth="50.0" stylesheets="@Style/button.css" text="mod" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <AnchorPane layoutX="20.0" layoutY="12.0" prefHeight="50.0" prefWidth="250.0">
@@ -143,7 +143,7 @@
                         <Font name="Arial" size="14.0" />
                      </font>
                   </MenuButton>
-                  <Button id="button-calculator-custom-op" alignment="CENTER" mnemonicParsing="false" onAction="#addvariableclick" prefHeight="30.0" prefWidth="106.0" stylesheets="@Style/button.css" text="Show variables" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Button id="button-calculator-custom-op" alignment="CENTER" mnemonicParsing="false" onAction="#showvariableclick" prefHeight="30.0" prefWidth="106.0" stylesheets="@Style/button.css" text="Show variables" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                </children>
             </GridPane>
          </children>

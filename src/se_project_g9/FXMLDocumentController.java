@@ -238,113 +238,8 @@ public class FXMLDocumentController implements Initializable {
             CustomPopup.errorPopup(message);
         }
     }
-
-    @FXML
-    private void clickclear(ActionEvent event) {
-        clickActionButton(event);
-        /*try {
-            ope.clear();
-        } catch (Exception ex) {
-            String message = "";
-            if (ex.getMessage() == null) {
-                message = "An error has occurred";
-            } else {
-                message = ex.getMessage();
-            }
-
-            CustomPopup.errorPopup(message);
-        }*/
-    }
-
-    @FXML
-    private void clickdrop(ActionEvent event) {
-        clickActionButton(event);
-        /*try {
-            ope.drop();
-        } catch (Exception ex) {
-            String message = "";
-            if (ex.getMessage() == null) {
-                message = "An error has occurred";
-            } else {
-                message = ex.getMessage();
-            }
-
-            CustomPopup.errorPopup(message);
-        }*/
-
-    }
-
-    @FXML
-    private void clickover(ActionEvent event) {
-        clickActionButton(event);
-        /*try {
-            ope.over();
-        } catch (Exception ex) {
-            String message = "";
-            if (ex.getMessage() == null) {
-                message = "An error has occurred";
-            } else {
-                message = ex.getMessage();
-            }
-
-            CustomPopup.errorPopup(message);
-        }*/
-
-    }
-
-    @FXML
-    private void clickswap(ActionEvent event) {
-        clickActionButton(event);
-        /*try {
-            ope.swap();
-        } catch (Exception ex) {
-            String message = "";
-            if (ex.getMessage() == null) {
-                message = "An error has occurred";
-            } else {
-                message = ex.getMessage();
-            }
-
-            CustomPopup.errorPopup(message);
-        }*/
-
-    }
-
-    @FXML
-    private void clickdup(ActionEvent event) {
-        clickActionButton(event);
-        /*try {
-            ope.dup();
-        } catch (Exception ex) {
-            String message = "";
-            if (ex.getMessage() == null) {
-                message = "An error has occurred";
-            } else {
-                message = ex.getMessage();
-            }
-
-            CustomPopup.errorPopup(message);
-        }*/
-
-    }
-
-    @FXML
-    private void clickmod(ActionEvent event) {
-        clickActionButton(event);
-        /*try {
-            ope.mod();
-        } catch (Exception ex) {
-            String message = "";
-            if (ex.getMessage() == null) {
-                message = "An error has occurred";
-            } else {
-                message = ex.getMessage();
-            }
-
-            CustomPopup.errorPopup(message);
-        }*/
-    }
     
+    @FXML
     private void clickActionButton(ActionEvent event){
 
         try {
@@ -420,6 +315,13 @@ public class FXMLDocumentController implements Initializable {
             CustomPopup.errorPopup(e.getMessage());
         }
         undoBtn.disableProperty().set(false);
+    }
+
+   
+    @FXML
+    private void showvariableclick(ActionEvent event) {
+        CustomPopup.variablesView();
+        
     }
 
     
