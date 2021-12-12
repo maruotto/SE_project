@@ -27,7 +27,7 @@ public class ModifyOperationCommandTest {
     
     
     public ModifyOperationCommandTest() {
-        UDOperation.addInterpreter(new Interpreter(new Operation()));
+        UDOperation.addInterpreter(new Interpreter(Operation.getInstance()));
         UDOperation op = new UDOperation();
         map = new UDAllOp();
         map.put(key, op);

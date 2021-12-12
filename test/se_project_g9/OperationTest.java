@@ -30,7 +30,7 @@ public class OperationTest {
     private Operation op;
     
     public OperationTest() {
-        op = new Operation();
+        op = Operation.getInstance();
     }
 
 
