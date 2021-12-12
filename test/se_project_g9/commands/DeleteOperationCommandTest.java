@@ -21,7 +21,7 @@ import se_project_g9.UDOperation;
  *
  * @author luigi
  */
-public class DeleteCommandTest {
+public class DeleteOperationCommandTest {
     
     private String key;
     private UDAllOp map;
@@ -29,7 +29,7 @@ public class DeleteCommandTest {
     private NumberStack<ComplexNumber> stack;
     
     
-    public DeleteCommandTest() {
+    public DeleteOperationCommandTest() {
         
         UDOperation op = new UDOperation();
         map = new UDAllOp();
@@ -39,12 +39,12 @@ public class DeleteCommandTest {
     }
 
     /**
-     * Test of execute method, of class DeleteCommand.
+     * Test of execute method, of class DeleteOperationCommand.
      */
     @Test
     public void testExecute() throws Exception {
         System.out.println("Delete execute");
-        Command cm = new DeleteCommand(map,key);
+        Command cm = new DeleteOperationCommand(map,key);
         oldValue = map.get(key);
         System.out.println(oldValue.toString());
         cm.execute();
@@ -52,12 +52,12 @@ public class DeleteCommandTest {
     }
 
     /**
-     * Test of undo method, of class DeleteCommand.
+     * Test of undo method, of class DeleteOperationCommand.
      */
     @Test
     public void testUndo() throws Exception {
         System.out.println("Delete undo");
-        Command cm = new DeleteCommand(map,key);
+        Command cm = new DeleteOperationCommand(map,key);
         oldValue = map.get(key);
         cm.execute();
         cm.undo();

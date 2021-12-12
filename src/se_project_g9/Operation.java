@@ -184,7 +184,7 @@ public class Operation implements ApplicationOperation {
      * @throws CalculatorException
      */
     public void removeOperation(String key) throws CalculatorException {
-        performCommand(new DeleteCommand(operations, key));
+        performCommand(new DeleteOperationCommand(operations, key));
     }
 
     /**
@@ -213,7 +213,7 @@ public class Operation implements ApplicationOperation {
             throw new OperationException("Choose another key, the new key already exists");
         }
         Command cmA = new AddOperationCommand(operations, newKey, operations.get(key));
-        Command cmR = new DeleteCommand(operations, key);
+        Command cmR = new DeleteOperationCommand(operations, key);
         op.add(cmR);
         op.add(cmA);
         Command cm = new OperationCommand(op, variables, numberStack);

@@ -11,7 +11,7 @@ import se_project_g9.UDOperation;
  *
  * @author group 9
  */
-public class DeleteCommand implements Command{
+public class DeleteOperationCommand implements Command{
     
     private UDAllOp map;
     private String key;
@@ -23,13 +23,13 @@ public class DeleteCommand implements Command{
      * @param map the reference UDAllOp that contains all the commands
      * @param key the reference String that contains the label of command
      */
-    public DeleteCommand(UDAllOp map,String key){
+    public DeleteOperationCommand(UDAllOp map,String key){
         this.map = map;
         this.key = key;
     }
 
     /**
-     * Execute of the DeleteCommand
+     * Execute of the DeleteOperationCommand
      */
     @Override
     public void execute(){
@@ -38,7 +38,7 @@ public class DeleteCommand implements Command{
     }
 
     /**
-     * Undo of the DeleteCommand
+     * Undo of the DeleteOperationCommand
      */
     @Override
     public void undo(){
@@ -46,7 +46,7 @@ public class DeleteCommand implements Command{
     }
 
     /**
-     * Returns a string representation of DeleteCommand
+     * Returns a string representation of DeleteOperationCommand
      * @return
      */ 
     @Override
