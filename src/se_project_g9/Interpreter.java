@@ -15,6 +15,8 @@ import se_project_g9.commands.MultiplyCommand;
 import se_project_g9.commands.OperationCommand;
 import se_project_g9.commands.OverCommand;
 import se_project_g9.commands.PushCommand;
+import se_project_g9.commands.RestoreVariablesCommand;
+import se_project_g9.commands.SaveVariablesCommand;
 import se_project_g9.commands.SqrtCommand;
 import se_project_g9.commands.SubCommand;
 import se_project_g9.commands.SumCommand;
@@ -125,6 +127,12 @@ public class Interpreter {
                 case "mod":
                     ret = new ModCommand(numberStack);
                     break;
+                case "restore":
+                    ret = new RestoreVariablesCommand(variables);
+                    break;
+                case "save":
+                    ret = new SaveVariablesCommand(variables);
+                    break;
                 default:
                     throw new OperationNotPresentException("This operation is not supported: " + input);
             }
@@ -231,4 +239,6 @@ public class Interpreter {
         return n;
 
     }
+    
+    
 }
