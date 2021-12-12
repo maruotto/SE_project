@@ -291,12 +291,22 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void clicksavevariables(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "save");
+        try {
+            ope.saveVariables();
+            CustomPopup.errorPopup("Saved");
+        } catch (CalculatorException ex) {
+            CustomPopup.errorPopup(ex.getMessage());
+        }
     }
 
     @FXML
     private void clickrestorevariables(ActionEvent event) {
-        tfInput.setText(tfInput.getText() + "restore");
+        try {
+            ope.restoreVariables();
+            CustomPopup.errorPopup("Restored");
+        } catch (CalculatorException ex) {
+            CustomPopup.errorPopup(ex.getMessage());
+        }
     }
 
     @FXML

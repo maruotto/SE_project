@@ -247,4 +247,12 @@ public class Operation implements ApplicationOperation {
         performCommand(new SqrtCommand(numberStack));
     }
 
+    void saveVariables() throws CalculatorException {
+        performCommand(new SaveVariablesCommand(variables));
+    }
+
+    void restoreVariables() throws CalculatorException {
+        performCommand(new RestoreVariablesCommand(variables));
+    }
+
 }
