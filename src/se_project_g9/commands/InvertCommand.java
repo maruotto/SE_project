@@ -4,10 +4,12 @@
  */
 package se_project_g9.commands;
 
+import java.util.EmptyStackException;
 import se_project_g9.BasicOperation;
 import se_project_g9.ComplexNumber;
 import se_project_g9.NumberStack;
 import se_project_g9.PersonalizedStack;
+import se_project_g9.exceptions.NotEnoughNumbersException;
 
 /**
  *
@@ -32,9 +34,15 @@ public class InvertCommand implements Command {
      * @throws NotEnoughNumbersException
      */
     @Override
-    public void execute() {
-        n1 = numberStack.pop();
-        numberStack.push(BasicOperation.invert(n1));
+    public void execute() throws NotEnoughNumbersException {
+        try{
+            n1 = numberStack.pop();
+            numberStack.push(BasicOperation.invert(n1));
+        }  catch (EmptyStackException e) {
+            throw new NotEnoughNumbersException("Not enough number to perform operation");
+        } catch (RuntimeException e) {
+            throw new NotEnoughNumbersException("Error in invert number");
+        }
     }
 
     /**

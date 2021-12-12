@@ -4,9 +4,11 @@
  */
 package se_project_g9.commands;
 
+import java.util.EmptyStackException;
 import se_project_g9.BasicOperation;
 import se_project_g9.ComplexNumber;
 import se_project_g9.PersonalizedStack;
+import se_project_g9.exceptions.NotEnoughNumbersException;
 
 /**
  *
@@ -15,8 +17,8 @@ import se_project_g9.PersonalizedStack;
 public class SubCommand implements Command {
 
     private PersonalizedStack<ComplexNumber> numberStack;
-    private se_project_g9.ComplexNumber n1;
-    private se_project_g9.ComplexNumber n2;
+    private ComplexNumber n1;
+    private ComplexNumber n2;
 
     /**
      * Constructs a new SubCommand
@@ -31,10 +33,15 @@ public class SubCommand implements Command {
      * Execute of the SubCommand
      */
     @Override
-    public void execute() {
-        n1 = numberStack.pop();
+    public void execute() throws NotEnoughNumbersException {
+        try{ n1 = numberStack.pop();
         n2 = numberStack.pop();
         numberStack.push(BasicOperation.sub(n2, n1));
+        } catch (EmptyStackException e) {
+            throw new NotEnoughNumbersException("Not enough number to perform operation");
+        } catch (RuntimeException e) {
+            throw new NotEnoughNumbersException("Error in subtracting to a variable");
+        }
     }
 
     /**

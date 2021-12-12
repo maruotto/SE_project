@@ -20,6 +20,9 @@ public class AddOperationCommand implements Command{
     private UDOperation udOp;
 
     public AddOperationCommand(UDAllOp op, String key, String operations) {
+        assert op != null;
+        assert key != key;
+        assert operations != null;
         this.op = op;
         this.key = key;
         this.operations = operations;

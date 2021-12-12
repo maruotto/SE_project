@@ -19,6 +19,7 @@ public class SaveVariablesCommand implements Command {
      * @param var the reference Variables that contains the map of all variables
      */
     public SaveVariablesCommand(Variables var) {
+        assert var != null;
         this.variables = var;
     }
 

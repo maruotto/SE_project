@@ -4,14 +4,13 @@
  */
 package se_project_g9.commands;
 
+import java.util.EmptyStackException;
 import java.util.Iterator;
 import se_project_g9.PersonalizedStack;
-import se_project_g9.UDAllOp;
 import se_project_g9.exceptions.InputNumberException;
 import se_project_g9.UDOperation;
 import se_project_g9.Variables;
 import se_project_g9.exceptions.CalculatorException;
-import se_project_g9.exceptions.OperationException;
 
 /**
  *
@@ -33,6 +32,9 @@ public class OperationCommand implements Command {
      * @param stack the reference PersonalizedStack taht contains all the ComplexNumber
      */
     public OperationCommand(UDOperation op, Variables vars, PersonalizedStack stack) {
+        assert op != null;
+        assert stack != null;
+        assert vars != null;
         this.op = op;
         this.stack = stack;
         this.vars = vars;
@@ -50,7 +52,7 @@ public class OperationCommand implements Command {
         for (Command c : op) {
             try {
                 c.execute();
-            } catch (Exception e) {
+        } catch (Exception e) {
                 this.stack.clear();
                 this.stack.addAll(backupStack);
                 this.vars.clear();

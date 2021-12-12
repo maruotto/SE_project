@@ -4,8 +4,10 @@
  */
 package se_project_g9.commands;
 
+import java.util.EmptyStackException;
 import se_project_g9.ComplexNumber;
 import se_project_g9.PersonalizedStack;
+import se_project_g9.exceptions.NotEnoughNumbersException;
 
 /**
  *
@@ -18,7 +20,9 @@ public class DropCommand implements Command {
 
     /**
      * Constructs a new DropCommand
-     * @param numberStack the reference PersonalizedStack that contains all the ComplexNumber
+     *
+     * @param numberStack the reference PersonalizedStack that contains all the
+     * ComplexNumber
      */
     public DropCommand(PersonalizedStack<ComplexNumber> numberStack) {
         assert numberStack != null;
@@ -27,11 +31,19 @@ public class DropCommand implements Command {
 
     /**
      * Execute of the DropCommand
+     *
      * @throws NotEnoughNumbersException
      */
     @Override
-    public void execute() {
-        n1 = numberStack.peek();
+    public void execute() throws NotEnoughNumbersException {
+        try {
+            n1 = numberStack.peek();
+        } catch (EmptyStackException e) {
+            throw new NotEnoughNumbersException("Not enough number to perform operation");
+        } catch (RuntimeException e) {
+            throw new NotEnoughNumbersException("Error in dropping");
+        }
+
         numberStack.drop();
     }
 
@@ -47,8 +59,9 @@ public class DropCommand implements Command {
 
     /**
      * Returns a string representation of DropCommand
+     *
      * @return
-     */ 
+     */
     @Override
     public String toString() {
         return "drop";

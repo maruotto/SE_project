@@ -20,7 +20,7 @@ import se_project_g9.exceptions.CalculatorException;
  */
 public class ModifyOperationCommandTest {
     
-    private String key;
+    private String key = "nome";
     private UDAllOp map;
     private UDOperation value;
     private UDOperation oldValue;

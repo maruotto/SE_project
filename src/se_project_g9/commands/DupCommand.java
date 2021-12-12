@@ -4,6 +4,7 @@
  */
 package se_project_g9.commands;
 
+import java.util.EmptyStackException;
 import se_project_g9.ComplexNumber;
 import se_project_g9.NumberStack;
 import se_project_g9.PersonalizedStack;
@@ -31,8 +32,14 @@ public class DupCommand implements Command {
      * @throws NotEnoughNumbersException
      */
     @Override
-    public void execute() throws NotEnoughNumbersException {
-        numberStack.dup();
+    public void execute() throws NotEnoughNumbersException{
+        try{
+            numberStack.dup();
+        } catch (EmptyStackException e) {
+            throw new NotEnoughNumbersException("Not enough number to perform operation");
+        } catch (RuntimeException e) {
+            throw new NotEnoughNumbersException("Error in duplicating the elements");
+        }
     }
 
     /**

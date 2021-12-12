@@ -8,18 +8,22 @@ import java.util.EmptyStackException;
 import se_project_g9.BasicOperation;
 import se_project_g9.ComplexNumber;
 import se_project_g9.PersonalizedStack;
+import se_project_g9.exceptions.NotEnoughNumbersException;
 
 /**
  *
  * @author lucia
  */
-public class ModCommand implements Command{
+public class ModCommand implements Command {
+
     private PersonalizedStack<ComplexNumber> numberStack;
     private se_project_g9.ComplexNumber module; //we could have performed the square operation to make undo, but decimal digits could be problematic
 
     /**
      * Constructs a new ModCommand
-     * @param numberStack the reference PersonalizedStack that contains all the ComplexNumber
+     *
+     * @param numberStack the reference PersonalizedStack that contains all the
+     * ComplexNumber
      */
     public ModCommand(PersonalizedStack<ComplexNumber> numberStack) {
         assert numberStack != null;
@@ -28,14 +32,23 @@ public class ModCommand implements Command{
 
     /**
      * Execute of the ModCommand
+     *
      * @throws EmptyStackException
      */
     @Override
-    public void execute() throws EmptyStackException {
-        se_project_g9.ComplexNumber top = numberStack.pop(); //throws empty stackException
-        se_project_g9.ComplexNumber mod = BasicOperation.mod(top);
-        module = top;
-        numberStack.push(mod);
+    public void execute() throws NotEnoughNumbersException {
+        
+        try {
+            ComplexNumber top = numberStack.pop();
+            ComplexNumber mod = BasicOperation.mod(top);
+            module = top;
+            numberStack.push(mod);
+        } catch (EmptyStackException e) {
+            throw new NotEnoughNumbersException("Not enough number to perform operation");
+        } catch (RuntimeException e) {
+            throw new NotEnoughNumbersException("Error in divide");
+        }
+
     }
 
     /**
@@ -49,8 +62,9 @@ public class ModCommand implements Command{
 
     /**
      * Returns a string representation of ModCommand
+     *
      * @return
-     */ 
+     */
     @Override
     public String toString() {
         return "mod";

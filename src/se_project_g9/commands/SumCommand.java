@@ -4,9 +4,11 @@
  */
 package se_project_g9.commands;
 
+import java.util.EmptyStackException;
 import se_project_g9.BasicOperation;
 import se_project_g9.ComplexNumber;
 import se_project_g9.PersonalizedStack;
+import se_project_g9.exceptions.NotEnoughNumbersException;
 
 /**
  *
@@ -20,7 +22,9 @@ public class SumCommand implements Command {
 
     /**
      * Constructs a new SumCommand
-     * @param numberStack the reference PersonalizedStack taht contains all the ComplexNumber
+     *
+     * @param numberStack the reference PersonalizedStack taht contains all the
+     * ComplexNumber
      */
     public SumCommand(PersonalizedStack<ComplexNumber> numberStack) {
         assert numberStack != null;
@@ -31,10 +35,16 @@ public class SumCommand implements Command {
      * Execute of the SumCommand
      */
     @Override
-    public void execute() {
-        n1 = numberStack.pop();
-        n2 = numberStack.pop();
-        numberStack.push(BasicOperation.sum(n2, n1));
+    public void execute() throws NotEnoughNumbersException {
+        try {
+            n1 = numberStack.pop();
+            n2 = numberStack.pop();
+            numberStack.push(BasicOperation.sum(n2, n1));
+        } catch (EmptyStackException e) {
+            throw new NotEnoughNumbersException("Not enough number to perform operation");
+        } catch (RuntimeException e) {
+            throw new NotEnoughNumbersException("Error in summing the numbers");
+        }
     }
 
     /**
@@ -53,8 +63,9 @@ public class SumCommand implements Command {
 
     /**
      * Returns a string representation of SumCommand
+     *
      * @return
-     */ 
+     */
     @Override
     public String toString() {
         return "+";

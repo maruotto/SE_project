@@ -62,7 +62,7 @@ public interface PersonalizedStack<E> extends ObservableList<E>{
      * @throws NotEnoughNumbersException
      * @throws EmptyStackException
      */
-    public void dup() throws EmptyStackException, NotEnoughNumbersException;;
+    public void dup() throws EmptyStackException, NotEnoughNumbersException;
 
     /**
      * this method swaps the stack first two elements

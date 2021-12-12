@@ -24,6 +24,8 @@ public class DeleteOperationCommand implements Command{
      * @param key the reference String that contains the label of command
      */
     public DeleteOperationCommand(UDAllOp map,String key){
+        assert map != null;
+        assert key != null;
         this.map = map;
         this.key = key;
     }

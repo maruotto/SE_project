@@ -4,10 +4,11 @@
  */
 package se_project_g9.commands;
 
+import java.util.EmptyStackException;
 import se_project_g9.BasicOperation;
 import se_project_g9.ComplexNumber;
-import se_project_g9.NumberStack;
 import se_project_g9.PersonalizedStack;
+import se_project_g9.exceptions.NotEnoughNumbersException;
 
 /**
  *
@@ -15,13 +16,15 @@ import se_project_g9.PersonalizedStack;
  */
 public class MultiplyCommand implements Command {
 
-    private PersonalizedStack<ComplexNumber> numberStack;
+    private final PersonalizedStack<ComplexNumber> numberStack;
     private se_project_g9.ComplexNumber n1;
     private se_project_g9.ComplexNumber n2;
 
     /**
      * Constructs a new MultiplyCommand
-     * @param numberStack the reference PersonalizedStack that contains all the ComplexNumber
+     *
+     * @param numberStack the reference PersonalizedStack that contains all the
+     * ComplexNumber
      */
     public MultiplyCommand(PersonalizedStack<ComplexNumber> numberStack) {
         assert numberStack != null;
@@ -32,10 +35,16 @@ public class MultiplyCommand implements Command {
      * Execute of the MultiplyCommand
      */
     @Override
-    public void execute() {
-        n1 = numberStack.pop();
-        n2 = numberStack.pop();
-        numberStack.push(BasicOperation.multiply(n2, n1));
+    public void execute() throws NotEnoughNumbersException {
+        try {
+            n1 = numberStack.pop();
+            n2 = numberStack.pop();
+            numberStack.push(BasicOperation.multiply(n2, n1));
+        } catch (EmptyStackException e) {
+            throw new NotEnoughNumbersException("Not enough number to perform operation");
+        } catch (RuntimeException e) {
+            throw new NotEnoughNumbersException("Error in multiplication");
+        }
     }
 
     /**
@@ -54,8 +63,9 @@ public class MultiplyCommand implements Command {
 
     /**
      * Returns a string representation of MultiplyCommand
+     *
      * @return
-     */ 
+     */
     @Override
     public String toString() {
         return "*";

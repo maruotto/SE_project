@@ -4,12 +4,6 @@
  */
 package se_project_g9.commands;
 
-import java.util.HashMap;
-import java.util.Stack;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import se_project_g9.ComplexNumber;
@@ -23,7 +17,7 @@ import se_project_g9.UDOperation;
  */
 public class DeleteOperationCommandTest {
     
-    private String key;
+    private String key = "key";
     private UDAllOp map;
     private UDOperation oldValue;
     private NumberStack<ComplexNumber> stack;
