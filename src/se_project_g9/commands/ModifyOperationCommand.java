@@ -26,7 +26,9 @@ public class ModifyOperationCommand implements Command {
      * @param newValue the reference UDOperation that contains the list of all commands of an operation
      */
     public ModifyOperationCommand(UDAllOp operations, String key, UDOperation newValue) {
-        
+        assert operations != null;
+        assert key != null;
+        assert newValue != null;
         this.key = key;
         this.operations = operations;
         this.newValue = newValue;

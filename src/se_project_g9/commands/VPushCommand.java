@@ -30,6 +30,9 @@ public class VPushCommand implements Command {
      * @param stack the reference PersonalizedStack taht contains all the ComplexNumber
      */
     public VPushCommand(Variables vars, Character key, PersonalizedStack<ComplexNumber> stack) {
+        assert vars != null;
+        assert stack != null;
+        assert key != null;
         this.vars = vars;
         this.key = key;
         this.stack = stack;

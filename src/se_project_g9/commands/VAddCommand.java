@@ -28,11 +28,17 @@ public class VAddCommand implements Command {
 
     /**
      * Constructs a new VAddCommand
-     * @param vars the reference Variables that contains the map of all variables
+     *
+     * @param vars the reference Variables that contains the map of all
+     * variables
      * @param key the reference Character that represent the label of variable
-     * @param stack the reference PersonalizedStack taht contains all the ComplexNumber
+     * @param stack the reference PersonalizedStack taht contains all the
+     * ComplexNumber
      */
     public VAddCommand(Variables vars, Character key, PersonalizedStack<ComplexNumber> stack) {
+        assert vars != null;
+        assert key != null;
+        assert stack != null;
         this.vars = vars;
         this.key = key;
         this.stack = stack;
@@ -40,6 +46,7 @@ public class VAddCommand implements Command {
 
     /**
      * Execute of the VAddCommand
+     *
      * @throws InputNumberException
      */
     @Override
@@ -52,9 +59,9 @@ public class VAddCommand implements Command {
 
         } catch (NullPointerException ex) {
             throw new NullPointerException("key not specified");
-        } catch(EmptyStackException e){
+        } catch (EmptyStackException e) {
             throw new NotEnoughNumbersException("Stack is empty");
-        } catch(RuntimeException e){
+        } catch (RuntimeException e) {
             throw new NotEnoughNumbersException("Error in add");
         } catch (Exception ex) {
             throw new NotEnoughNumbersException("Error in add");
@@ -64,10 +71,11 @@ public class VAddCommand implements Command {
 
     /**
      * Undo of the VAddCommand
+     *
      * @throws InputNumberException
      */
     @Override
-    public void undo() throws InputNumberException{
+    public void undo() throws InputNumberException {
 
         try {
             stack.push(elem);
@@ -77,10 +85,12 @@ public class VAddCommand implements Command {
         }
 
     }
+
     /**
      * Returns a string representation of VAddCommand
+     *
      * @return
-     */  
+     */
     @Override
     public String toString() {
         return "+" + key;

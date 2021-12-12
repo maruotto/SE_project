@@ -4,6 +4,7 @@
  */
 package se_project_g9.commands;
 
+import java.util.EmptyStackException;
 import se_project_g9.ComplexNumber;
 import se_project_g9.PersonalizedStack;
 import se_project_g9.exceptions.NotEnoughNumbersException;
@@ -31,7 +32,14 @@ public class OverCommand implements Command {
      */
     @Override
     public void execute() throws NotEnoughNumbersException {
-        numberStack.over();
+        try{
+            numberStack.over();
+        } catch (EmptyStackException e) {
+            throw new NotEnoughNumbersException("Not enough number to perform operation");
+        } catch (RuntimeException e) {
+            throw new NotEnoughNumbersException("Error in executing over");
+        }
+        
     }
 
     /**

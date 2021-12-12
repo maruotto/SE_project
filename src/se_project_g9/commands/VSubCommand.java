@@ -12,6 +12,7 @@ import se_project_g9.PersonalizedStack;
 import se_project_g9.Variables;
 import se_project_g9.exceptions.InputNumberException;
 import se_project_g9.BasicOperation;
+import se_project_g9.exceptions.NotEnoughNumbersException;
 
 /**
  *
@@ -26,11 +27,17 @@ public class VSubCommand implements Command {
 
     /**
      * Constructs a new VSubCommand
-     * @param vars the reference Variables that contains the map of all variables
+     *
+     * @param vars the reference Variables that contains the map of all
+     * variables
      * @param key the reference Character that represent the label of variable
-     * @param stack the reference PersonalizedStack taht contains all the ComplexNumber
+     * @param stack the reference PersonalizedStack taht contains all the
+     * ComplexNumber
      */
     public VSubCommand(Variables vars, Character key, PersonalizedStack<ComplexNumber> stack) {
+        assert vars != null;
+        assert stack != null;
+        assert key != null;
         this.vars = vars;
         this.key = key;
         this.stack = stack;
@@ -38,6 +45,7 @@ public class VSubCommand implements Command {
 
     /**
      * Execute of the VSubCommand
+     *
      * @throws InputNumberException
      */
     @Override
@@ -50,6 +58,10 @@ public class VSubCommand implements Command {
 
         } catch (NullPointerException ex) {
             throw new NullPointerException("key not specified");
+        } catch (EmptyStackException e) {
+            throw new NotEnoughNumbersException("Stack is empty");
+        } catch (RuntimeException e) {
+            throw new NotEnoughNumbersException("Error in add");
         } catch (Exception ex) {
             throw new EmptyStackException();
         }
@@ -58,6 +70,7 @@ public class VSubCommand implements Command {
 
     /**
      * Undo of the VSubCommand
+     *
      * @throws InputNumberException
      */
     @Override
@@ -72,6 +85,7 @@ public class VSubCommand implements Command {
 
     /**
      * Returns a string representation of VSubCommand
+     *
      * @return
      */
     @Override

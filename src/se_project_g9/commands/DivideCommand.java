@@ -4,9 +4,11 @@
  */
 package se_project_g9.commands;
 
+import java.util.EmptyStackException;
 import se_project_g9.BasicOperation;
 import se_project_g9.ComplexNumber;
 import se_project_g9.PersonalizedStack;
+import se_project_g9.exceptions.NotEnoughNumbersException;
 import se_project_g9.exceptions.ZeroDivisionException;
 
 /**
@@ -21,7 +23,9 @@ public class DivideCommand implements Command {
 
     /**
      * Constructs a new DivideCommand
-     * @param numberStack the reference PersonalizedStack that contains all the ComplexNumber
+     *
+     * @param numberStack the reference PersonalizedStack that contains all the
+     * ComplexNumber
      */
     public DivideCommand(PersonalizedStack<ComplexNumber> numberStack) {
         assert numberStack != null;
@@ -30,13 +34,20 @@ public class DivideCommand implements Command {
 
     /**
      * Execute of the DivideCommand
+     *
      * @throws ZeroDivisionException
      */
     @Override
-    public void execute() throws ZeroDivisionException {
-        n1 = numberStack.pop();
-        n2 = numberStack.pop();
-        numberStack.push(BasicOperation.divide(n2, n1));
+    public void execute() throws ZeroDivisionException, NotEnoughNumbersException {
+        try {
+            n1 = numberStack.pop();
+            n2 = numberStack.pop();
+            numberStack.push(BasicOperation.divide(n2, n1));
+        } catch (EmptyStackException e) {
+            throw new NotEnoughNumbersException("Not enough number to perform operation");
+        } catch (RuntimeException e) {
+            throw new NotEnoughNumbersException("Error in division");
+        }
     }
 
     /**
@@ -55,8 +66,9 @@ public class DivideCommand implements Command {
 
     /**
      * Returns a string representation of DivideCommand
+     *
      * @return
-     */ 
+     */
     @Override
     public String toString() {
         return "/";

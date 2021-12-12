@@ -11,6 +11,7 @@ import se_project_g9.ComplexNumber;
 import se_project_g9.PersonalizedStack;
 import se_project_g9.Variables;
 import se_project_g9.exceptions.InputNumberException;
+import se_project_g9.exceptions.NotEnoughNumbersException;
 
 /**
  *
@@ -31,6 +32,9 @@ public class VInsertCommand implements Command {
      * @param stack the reference PersonalizedStack taht contains all the ComplexNumber
      */
     public VInsertCommand(Variables vars, PersonalizedStack<ComplexNumber> stack, Character key) {
+        assert vars != null;
+        assert stack != null;
+        assert key != null;
         this.vars = vars;
         this.stack = stack;
         this.key = key;
@@ -55,6 +59,10 @@ public class VInsertCommand implements Command {
 
         } catch (NullPointerException ex) {
             throw new NullPointerException("value to add not defined..");
+        } catch (EmptyStackException e) {
+            throw new NotEnoughNumbersException("Not enough number to perform operation");
+        } catch (RuntimeException e) {
+            throw new NotEnoughNumbersException("Error in inserting the number in the variable");
         } catch (Exception ex) {
             throw new InputNumberException("Empty stack");
         }
