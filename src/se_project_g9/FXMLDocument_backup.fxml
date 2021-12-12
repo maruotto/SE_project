@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="AnchorPane" onKeyPressed="#controlZ" prefHeight="465.0" prefWidth="621.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se_project_g9.FXMLDocumentController">
+   <children>
+      <ListView fx:id="stackview" layoutX="23.0" layoutY="69.0" prefHeight="354.0" prefWidth="241.0" />
+      <TextField fx:id="tfInput" layoutX="279.0" layoutY="84.0" onKeyReleased="#keyReleased" prefHeight="34.0" prefWidth="263.0" />
+      <Button layoutX="327.0" layoutY="131.0" mnemonicParsing="false" onAction="#click" text="1" />
+      <Button layoutX="384.0" layoutY="170.0" mnemonicParsing="false" onAction="#click" text="5" />
+      <Button layoutX="384.0" layoutY="131.0" mnemonicParsing="false" onAction="#click" text="2" />
+      <Button layoutX="439.0" layoutY="131.0" mnemonicParsing="false" onAction="#click" text="3" />
+      <Button layoutX="326.0" layoutY="170.0" mnemonicParsing="false" onAction="#click" text="4" />
+      <Button layoutX="439.0" layoutY="207.0" mnemonicParsing="false" onAction="#click" text="9" />
+      <Button layoutX="384.0" layoutY="207.0" mnemonicParsing="false" onAction="#click" text="8" />
+      <Button layoutX="326.0" layoutY="207.0" mnemonicParsing="false" onAction="#click" text="7" />
+      <Button layoutX="439.0" layoutY="170.0" mnemonicParsing="false" onAction="#click" text="6" />
+      <Button layoutX="384.0" layoutY="246.0" mnemonicParsing="false" onAction="#click" text="0" />
+      <Button layoutX="502.0" layoutY="131.0" mnemonicParsing="false" onAction="#click" text="+" />
+      <Button fx:id="btnSend" layoutX="554.0" layoutY="88.0" mnemonicParsing="false" onAction="#handleInsertAction" text="Send" />
+      <Button layoutX="328.0" layoutY="246.0" mnemonicParsing="false" onAction="#click" text="i" />
+      <Button layoutX="503.0" layoutY="170.0" mnemonicParsing="false" onAction="#click" text="*" />
+      <Button layoutX="565.0" layoutY="131.0" mnemonicParsing="false" onAction="#click" text="-" />
+      <Button layoutX="567.0" layoutY="170.0" mnemonicParsing="false" onAction="#click" text="/" />
+      <Button layoutX="495.0" layoutY="207.0" mnemonicParsing="false" onAction="#click" text="sqrt" />
+      <Button layoutX="562.0" layoutY="207.0" mnemonicParsing="false" onAction="#clickplusminus" text="+-" />
+      <Button layoutX="375.0" layoutY="313.0" mnemonicParsing="false" onAction="#clickclear" text="clear" />
+      <Button layoutX="435.0" layoutY="313.0" mnemonicParsing="false" onAction="#clickdrop" text="drop" />
+      <Button layoutX="319.0" layoutY="313.0" mnemonicParsing="false" onAction="#clickdup" text="dup" />
+      <Button layoutX="553.0" layoutY="313.0" mnemonicParsing="false" onAction="#clickswap" text="swap" />
+      <Button layoutX="496.0" layoutY="313.0" mnemonicParsing="false" onAction="#clickover" text="over" />
+      <Button layoutX="442.0" layoutY="246.0" mnemonicParsing="false" onAction="#click" text="." />
+      <Button layoutX="380.0" layoutY="397.0" mnemonicParsing="false" onAction="#savevariableclick" text="&gt;x" />
+      <Button layoutX="323.0" layoutY="397.0" mnemonicParsing="false" onAction="#pushvariableclick" text="&lt;x" />
+      <Button layoutX="501.0" layoutY="397.0" mnemonicParsing="false" onAction="#addvariableclick" text="+x" />
+      <Button layoutX="560.0" layoutY="397.0" mnemonicParsing="false" onAction="#subvariableclick" prefHeight="25.0" prefWidth="30.0" text="-x" />
+      <SplitMenuButton fx:id="variablesMenù" layoutX="428.0" layoutY="397.0" maxHeight="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="a">
+        <items>
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="a" />
+          <MenuItem mnemonicParsing="false" onAction="#clickv" text="b" />
+          <MenuItem mnemonicParsing="false" onAction="#clickv" text="c" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="d" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="e" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="f" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="g" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="h" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="i" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="j" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="k" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="l" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="m" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="n" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="o" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="p" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="q" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="r" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="s" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="t" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="u" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="v" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="w" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="x" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="y" />
+            <MenuItem mnemonicParsing="false" onAction="#clickv" text="z" />
+        </items>
+      </SplitMenuButton>
+      <Button fx:id="undoBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#undoclick" text="Undo" />
+      <MenuButton contentDisplay="RIGHT" layoutX="83.0" layoutY="14.0" mnemonicParsing="false" text="CustomOperation">
+        <items>
+          <MenuItem mnemonicParsing="false" onAction="#clickCustom" text="Add" />
+          <MenuItem mnemonicParsing="false" onAction="#clickRemoveOperation" text="Modify/Remove" />
+            <MenuItem mnemonicParsing="false" onAction="#saveoperations" text="Save" />
+            <MenuItem mnemonicParsing="false" onAction="#getoperations" text="Open" />
+        </items>
+      </MenuButton>
+      <Button layoutX="316.0" layoutY="353.0" mnemonicParsing="false" onAction="#clicksavevariables" prefHeight="25.0" prefWidth="67.0" text="SaveVar" />
+      <Button layoutX="395.0" layoutY="353.0" mnemonicParsing="false" onAction="#clickrestorevariables" prefHeight="25.0" prefWidth="87.0" text="RestoreVar" />
+      <Button layoutX="495.0" layoutY="353.0" mnemonicParsing="false" onAction="#clickmod" text="mod" />
+   </children>
+</AnchorPane>
