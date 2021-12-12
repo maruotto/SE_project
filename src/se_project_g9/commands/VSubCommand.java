@@ -61,9 +61,9 @@ public class VSubCommand implements Command {
         } catch (EmptyStackException e) {
             throw new NotEnoughNumbersException("Stack is empty");
         } catch (RuntimeException e) {
-            throw new NotEnoughNumbersException("Error in add");
+            throw new NotEnoughNumbersException("Error in sub");
         } catch (Exception ex) {
-            throw new EmptyStackException();
+            throw new NotEnoughNumbersException("Error in sub");
         }
 
     }

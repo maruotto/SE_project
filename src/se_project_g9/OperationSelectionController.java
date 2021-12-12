@@ -120,5 +120,6 @@ public class OperationSelectionController implements Initializable {
             tableView.refresh();
         }
     }
+    
 
 }

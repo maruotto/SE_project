@@ -57,7 +57,7 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      *
-     * @param url 
+     * @param url
      * @param rb
      */
     @Override
@@ -93,150 +93,10 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void clickplusminus(ActionEvent event) {
-        try {
-            ope.invert();
-        } catch (Exception ex) {
-            String message = "";
-            if (ex.getMessage() == null) {
-                message = "An error has occurred";
-            } else {
-                message = ex.getMessage();
-            }
-
-            CustomPopup.errorPopup(message);
-        }
-    }
-
-    @FXML
-    private void clickclear(ActionEvent event) {
-        try {
-            ope.clear();
-        } catch (Exception ex) {
-            String message = "";
-            if (ex.getMessage() == null) {
-                message = "An error has occurred";
-            } else {
-                message = ex.getMessage();
-            }
-
-            CustomPopup.errorPopup(message);
-        }
-    }
-
-    @FXML
-    private void clickdrop(ActionEvent event) {
-        try {
-            ope.drop();
-        } catch (Exception ex) {
-            String message = "";
-            if (ex.getMessage() == null) {
-                message = "An error has occurred";
-            } else {
-                message = ex.getMessage();
-            }
-
-            CustomPopup.errorPopup(message);
-        }
-
-    }
-
-    @FXML
-    private void clickover(ActionEvent event) {
-        try {
-            ope.over();
-        } catch (Exception ex) {
-            String message = "";
-            if (ex.getMessage() == null) {
-                message = "An error has occurred";
-            } else {
-                message = ex.getMessage();
-            }
-
-            CustomPopup.errorPopup(message);
-        }
-
-    }
-
-    @FXML
-    private void clickswap(ActionEvent event) {
-        try {
-            ope.swap();
-        } catch (Exception ex) {
-            String message = "";
-            if (ex.getMessage() == null) {
-                message = "An error has occurred";
-            } else {
-                message = ex.getMessage();
-            }
-
-            CustomPopup.errorPopup(message);
-        }
-
-    }
-
-    @FXML
-    private void clickdup(ActionEvent event) {
-        try {
-            ope.dup();
-        } catch (Exception ex) {
-            String message = "";
-            if (ex.getMessage() == null) {
-                message = "An error has occurred";
-            } else {
-                message = ex.getMessage();
-            }
-
-            CustomPopup.errorPopup(message);
-        }
-
-    }
-
-    @FXML
     private void keyReleased(KeyEvent event) {
         if (KeyCode.ENTER == event.getCode()) {
             enterInput();
         }
-    }
-
-    @FXML
-    private void savevariableclick(ActionEvent event) throws Exception {
-        try {
-            ope.addToVariable(Character.valueOf(variablesMenù.getText().charAt(0)));
-        }catch (CalculatorException ex) {
-            CustomPopup.errorPopup(ex.getMessage());
-        }
-        undoBtn.disableProperty().set(false);
-    }
-
-    @FXML
-    private void addvariableclick(ActionEvent event) throws Exception {
-        try{
-            ope.addToValue(Character.valueOf(variablesMenù.getText().charAt(0)));
-        } catch (CalculatorException e) {
-            CustomPopup.errorPopup(e.getMessage());
-        }
-        undoBtn.disableProperty().set(false);
-    }
-
-    @FXML
-    private void subvariableclick(ActionEvent event) throws Exception {
-        try{
-            ope.subToValue(Character.valueOf(variablesMenù.getText().charAt(0)));
-        } catch (CalculatorException e) {
-            CustomPopup.errorPopup(e.getMessage());
-        }
-        undoBtn.disableProperty().set(false);
-    }
-
-    @FXML
-    private void pushvariableclick(ActionEvent event) throws Exception {
-        try {
-            ope.pushValueOf(Character.valueOf(variablesMenù.getText().charAt(0)));
-        } catch (CalculatorException e) {
-            CustomPopup.errorPopup(e.getMessage());
-        }
-        undoBtn.disableProperty().set(false);
     }
 
     @FXML
@@ -262,7 +122,7 @@ public class FXMLDocumentController implements Initializable {
             CustomPopup.errorPopup(ex.getMessage());
         } catch (EmptyStackException e) {
             CustomPopup.errorPopup("Operation not allowed!");
-        }catch (Exception e) {
+        } catch (Exception e) {
             CustomPopup.errorPopup("Operation not allowed");
         } finally {
             tfInput.clear();
@@ -348,9 +208,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void clickmod(ActionEvent event) {
-       try {
-            ope.mod();
+    private void clickplusminus(ActionEvent event) {
+        try {
+            ope.invert();
         } catch (Exception ex) {
             String message = "";
             if (ex.getMessage() == null) {
@@ -378,4 +238,190 @@ public class FXMLDocumentController implements Initializable {
             CustomPopup.errorPopup(message);
         }
     }
+
+    @FXML
+    private void clickclear(ActionEvent event) {
+        clickActionButton(event);
+        /*try {
+            ope.clear();
+        } catch (Exception ex) {
+            String message = "";
+            if (ex.getMessage() == null) {
+                message = "An error has occurred";
+            } else {
+                message = ex.getMessage();
+            }
+
+            CustomPopup.errorPopup(message);
+        }*/
+    }
+
+    @FXML
+    private void clickdrop(ActionEvent event) {
+        clickActionButton(event);
+        /*try {
+            ope.drop();
+        } catch (Exception ex) {
+            String message = "";
+            if (ex.getMessage() == null) {
+                message = "An error has occurred";
+            } else {
+                message = ex.getMessage();
+            }
+
+            CustomPopup.errorPopup(message);
+        }*/
+
+    }
+
+    @FXML
+    private void clickover(ActionEvent event) {
+        clickActionButton(event);
+        /*try {
+            ope.over();
+        } catch (Exception ex) {
+            String message = "";
+            if (ex.getMessage() == null) {
+                message = "An error has occurred";
+            } else {
+                message = ex.getMessage();
+            }
+
+            CustomPopup.errorPopup(message);
+        }*/
+
+    }
+
+    @FXML
+    private void clickswap(ActionEvent event) {
+        clickActionButton(event);
+        /*try {
+            ope.swap();
+        } catch (Exception ex) {
+            String message = "";
+            if (ex.getMessage() == null) {
+                message = "An error has occurred";
+            } else {
+                message = ex.getMessage();
+            }
+
+            CustomPopup.errorPopup(message);
+        }*/
+
+    }
+
+    @FXML
+    private void clickdup(ActionEvent event) {
+        clickActionButton(event);
+        /*try {
+            ope.dup();
+        } catch (Exception ex) {
+            String message = "";
+            if (ex.getMessage() == null) {
+                message = "An error has occurred";
+            } else {
+                message = ex.getMessage();
+            }
+
+            CustomPopup.errorPopup(message);
+        }*/
+
+    }
+
+    @FXML
+    private void clickmod(ActionEvent event) {
+        clickActionButton(event);
+        /*try {
+            ope.mod();
+        } catch (Exception ex) {
+            String message = "";
+            if (ex.getMessage() == null) {
+                message = "An error has occurred";
+            } else {
+                message = ex.getMessage();
+            }
+
+            CustomPopup.errorPopup(message);
+        }*/
+    }
+    
+    private void clickActionButton(ActionEvent event){
+
+        try {
+            Button btn = (Button) event.getSource();
+            switch (btn.getText()) {
+                case "mod": 
+                    ope.mod();
+                    break;
+                case "dup":
+                    ope.dup();
+                    break;
+                case "swap":
+                    ope.swap();
+                    break;
+                case "over":
+                    ope.over();
+                    break;
+                case "drop":
+                    ope.drop();
+                    break;   
+                case "clear":
+                    ope.clear();
+                    break;
+                    
+            } 
+        } catch (Exception ex) {
+            String message = "";
+            if (ex.getMessage() == null) {
+                message = "An error has occurred";
+            } else {
+                message = ex.getMessage();
+            }
+
+            CustomPopup.errorPopup(message);
+        }
+    }
+
+    @FXML
+    private void savevariableclick(ActionEvent event) throws Exception {
+        try {
+            ope.addToVariable(Character.valueOf(variablesMenù.getText().charAt(0)));
+        } catch (CalculatorException ex) {
+            CustomPopup.errorPopup(ex.getMessage());
+        }
+        undoBtn.disableProperty().set(false);
+    }
+
+    @FXML
+    private void addvariableclick(ActionEvent event) throws Exception {
+        try {
+            ope.addToValue(Character.valueOf(variablesMenù.getText().charAt(0)));
+        } catch (CalculatorException e) {
+            CustomPopup.errorPopup(e.getMessage());
+        }
+        undoBtn.disableProperty().set(false);
+    }
+
+    @FXML
+    private void subvariableclick(ActionEvent event) throws Exception {
+        try {
+            ope.subToValue(Character.valueOf(variablesMenù.getText().charAt(0)));
+        } catch (CalculatorException e) {
+            CustomPopup.errorPopup(e.getMessage());
+        }
+        undoBtn.disableProperty().set(false);
+    }
+
+    @FXML
+    private void pushvariableclick(ActionEvent event) throws Exception {
+        try {
+            ope.pushValueOf(Character.valueOf(variablesMenù.getText().charAt(0)));
+        } catch (CalculatorException e) {
+            CustomPopup.errorPopup(e.getMessage());
+        }
+        undoBtn.disableProperty().set(false);
+    }
+
+    
+
 }

@@ -6,8 +6,6 @@ package se_project_g9.commands;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-import se_project_g9.ComplexNumber;
-import se_project_g9.NumberStack;
 import se_project_g9.UDAllOp;
 import se_project_g9.UDOperation;
 
@@ -20,7 +18,6 @@ public class DeleteOperationCommandTest {
     private String key = "key";
     private UDAllOp map;
     private UDOperation oldValue;
-    private NumberStack<ComplexNumber> stack;
     
     
     public DeleteOperationCommandTest() {

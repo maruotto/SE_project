@@ -85,4 +85,24 @@ public class CustomPopup {
         }
         
     }
+    
+    @FXML
+    static void variablesView() {
+        FXMLLoader loader = new FXMLLoader(FXMLDocumentController.class.getResource("ShowVariablesFXML.fxml"));
+        Parent parent;
+        try {
+            parent = loader.load();
+            OperationSelectionController pc = loader.getController();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(parent));
+            stage.setAlwaysOnTop(true);
+            pc.setVariables(ope);
+            stage.showAndWait();
+            //stage.show();
+            
+        }  catch (IOException ex) {
+            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
 }
