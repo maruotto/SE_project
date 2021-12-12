@@ -174,7 +174,7 @@ public class FXMLDocumentController implements Initializable {
         FileChooser chooser = new FileChooser();
         File file = chooser.showSaveDialog(null);
         if (file != null) {
-            FileOperations.writeIn(file, ope.getOperations());
+            ope.writeIn(file);
         }
 
     }
@@ -184,7 +184,7 @@ public class FXMLDocumentController implements Initializable {
         FileChooser chooser = new FileChooser();
         File file = chooser.showOpenDialog(null);
         if (file != null) {
-            FileOperations.loadFrom(file, ope); //l'oggetto ObservableListWrapper non è serializabile
+            ope.loadFrom(file); //l'oggetto ObservableListWrapper non è serializabile
         }
     }
 

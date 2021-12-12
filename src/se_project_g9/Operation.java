@@ -4,6 +4,15 @@
  */
 package se_project_g9;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
 import java.util.Stack;
 import se_project_g9.commands.*;
 import se_project_g9.exceptions.ImpossibleUndo;
@@ -288,6 +297,48 @@ public class Operation implements ApplicationOperation {
 
     void restoreVariables() throws CalculatorException {
         performCommand(new RestoreVariablesCommand(variables));
+    }
+    
+    /**
+     *
+     * @param filename the file object.
+     * @param map the operations to save
+     * @throws IOException 
+     */
+    public void writeIn(File filename) throws IOException {
+
+        try ( PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(filename)))) {
+            for (String key : this.operations.keySet()) {
+                writer.print(key + " : " + this.operations.get(key).toString() + '\n');
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    /**
+     *
+     * @param filename the file object
+     * @param ope the operation class to load a command
+     * @throws FileNotFoundException
+     */
+    public void loadFrom(File filename) throws FileNotFoundException {
+
+        String key;
+
+        try ( Scanner scanner = new Scanner(new BufferedReader(new FileReader(filename)))) {
+            scanner.useDelimiter("\n");
+            while (scanner.hasNext()) {
+                String line = scanner.nextLine();
+                String[] splitted = line.split(" : ");
+                key = splitted[0];
+                try {
+                    this.addUDOperation(key, splitted[splitted.length - 1]);
+                } catch (CalculatorException ex) {
+                    System.out.println("operation " + key + " already exists");
+                }
+            }
+        }
     }
 
 }
