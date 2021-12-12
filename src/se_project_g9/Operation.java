@@ -21,23 +21,34 @@ public class Operation implements ApplicationOperation {
     private final UDAllOp operations;
     private final Stack<Command> operationsPerformed;
     private final Interpreter i;
+    private static Operation instance = null;
 
     /**
-     * 
+     *
      */
-    public Operation() {
+    private Operation() {
         this.numberStack = new NumberStack<>();
-        this.variables = new Variables();      
+        this.variables = new Variables();
         this.operationsPerformed = new Stack<>();
         this.operations = new UDAllOp();
         this.i = new Interpreter(numberStack, variables, operations);
         UDOperation.addInterpreter(i);
-                
-        
+
+    }
+
+    public static Operation getInstance() {
+
+        if (instance == null) {
+            instance = new Operation();
+        }
+
+        return instance;
+
     }
 
     /**
      * this method returns the operations performed
+     *
      * @return
      */
     protected Stack<Command> getOperationsPerfomed() {
@@ -46,6 +57,7 @@ public class Operation implements ApplicationOperation {
 
     /**
      * this method returns the number stack
+     *
      * @return
      */
     @Override
@@ -55,6 +67,7 @@ public class Operation implements ApplicationOperation {
 
     /**
      * this method returns the variables
+     *
      * @return
      */
     @Override
@@ -64,6 +77,7 @@ public class Operation implements ApplicationOperation {
 
     /**
      * this methods returns the operations
+     *
      * @return
      */
     @Override
@@ -78,11 +92,12 @@ public class Operation implements ApplicationOperation {
      * @throws CalculatorException
      */
     public void addUDOperation(String name, String input) throws CalculatorException {
-        performCommand(new AddOperationCommand(operations,name,input));
+        performCommand(new AddOperationCommand(operations, name, input));
     }
 
     /**
      * this methods allows to revoke the last operation done.
+     *
      * @throws ImpossibleUndo
      */
     public void undo() throws ImpossibleUndo {
@@ -97,15 +112,17 @@ public class Operation implements ApplicationOperation {
 
     /**
      * this method translate the input and execute the operation
-     * @param input the operation name 
+     *
+     * @param input the operation name
      * @throws CalculatorException
      */
     public void performOperation(String input) throws CalculatorException {
         performCommand(i.translateInput(input, false));
     }
-    
+
     /**
      * this method execute the command passed as parameter
+     *
      * @param op the command to execute
      * @throws CalculatorException
      */
@@ -116,6 +133,7 @@ public class Operation implements ApplicationOperation {
 
     /**
      * this method takes the stack first element and add it into variable
+     *
      * @param variable the variable name
      * @throws CalculatorException
      */
@@ -128,6 +146,7 @@ public class Operation implements ApplicationOperation {
 
     /**
      * this method takes the variable value and push it into the stack
+     *
      * @param variable the variable name
      * @throws CalculatorException
      */
@@ -136,7 +155,9 @@ public class Operation implements ApplicationOperation {
     }
 
     /**
-     * this method takes the stack first element and sums it with the variable value
+     * this method takes the stack first element and sums it with the variable
+     * value
+     *
      * @param variable the variable name
      * @throws CalculatorException
      */
@@ -145,7 +166,9 @@ public class Operation implements ApplicationOperation {
     }
 
     /**
-     * this method takes the stack first element and subtracts it with the variable value
+     * this method takes the stack first element and subtracts it with the
+     * variable value
+     *
      * @param variable the variable name
      * @throws CalculatorException
      */
@@ -156,15 +179,18 @@ public class Operation implements ApplicationOperation {
 
     /**
      * this method remove a defined operation
+     *
      * @param key the operation name
      * @throws CalculatorException
      */
     public void removeOperation(String key) throws CalculatorException {
-        performCommand(new DeleteCommand(operations, key));
+        performCommand(new DeleteOperationCommand(operations, key));
     }
-    
+
     /**
-     * this method takes in input the operation name and the new operation sequence and modifies it
+     * this method takes in input the operation name and the new operation
+     * sequence and modifies it
+     *
      * @param key the operation name
      * @param newValue the new sequence of operations to do
      * @throws CalculatorException
@@ -172,36 +198,41 @@ public class Operation implements ApplicationOperation {
     public void modifyOperation(String key, String newValue) throws CalculatorException {
         performCommand(new ModifyOperationCommand(operations, key, new UDOperation(newValue)));
     }
-    
+
     /**
-     * this method takes in input the operation name and the new name and modifies it
+     * this method takes in input the operation name and the new name and
+     * modifies it
+     *
      * @param key the operation name
      * @param newKey the new operation name
      * @throws OperationException
      */
-    public void modifyOperationName(String key, String newKey) throws CalculatorException {   
+    public void modifyOperationName(String key, String newKey) throws CalculatorException {
         UDOperation op = new UDOperation();
-        if(this.operations.containsKey(newKey))
+        if (this.operations.containsKey(newKey)) {
             throw new OperationException("Choose another key, the new key already exists");
+        }
         Command cmA = new AddOperationCommand(operations, newKey, operations.get(key));
-        Command cmR = new DeleteCommand(operations, key);
+        Command cmR = new DeleteOperationCommand(operations, key);
         op.add(cmR);
         op.add(cmA);
         Command cm = new OperationCommand(op, variables, numberStack);
-        
+
         performCommand(cm);
     }
-    
+
     /**
      * this method executes the drop operation
+     *
      * @throws CalculatorException
      */
-    public void drop() throws CalculatorException{
+    public void drop() throws CalculatorException {
         performCommand(new DropCommand(numberStack));
     }
 
     /**
      * this method executes the dup operation
+     *
      * @throws CalculatorException
      */
     public void dup() throws CalculatorException {
@@ -210,6 +241,7 @@ public class Operation implements ApplicationOperation {
 
     /**
      * this method executes the swap operation
+     *
      * @throws CalculatorException
      */
     public void swap() throws CalculatorException {
@@ -218,33 +250,46 @@ public class Operation implements ApplicationOperation {
 
     /**
      * this method executes the clear operation
+     *
      * @throws CalculatorException
      */
     public void clear() throws CalculatorException {
         performCommand(new ClearCommand(numberStack));
     }
+
     /**
      * this method executes the over operation
-     * @throws CalculatorException 
+     *
+     * @throws CalculatorException
      */
-    
+
     void over() throws CalculatorException {
         performCommand(new OverCommand(numberStack));
     }
+
     /**
      * this method executes the invert operation
-     * @throws CalculatorException 
+     *
+     * @throws CalculatorException
      */
     void invert() throws CalculatorException {
         performCommand(new InvertCommand(numberStack));
     }
 
     void mod() throws CalculatorException {
-       performCommand(new ModCommand(numberStack));
+        performCommand(new ModCommand(numberStack));
     }
 
     void sqrt() throws CalculatorException {
         performCommand(new SqrtCommand(numberStack));
+    }
+
+    void saveVariables() throws CalculatorException {
+        performCommand(new SaveVariablesCommand(variables));
+    }
+
+    void restoreVariables() throws CalculatorException {
+        performCommand(new RestoreVariablesCommand(variables));
     }
 
 }

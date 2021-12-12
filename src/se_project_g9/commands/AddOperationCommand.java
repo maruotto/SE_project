@@ -4,12 +4,9 @@
  */
 package se_project_g9.commands;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import se_project_g9.UDAllOp;
 import se_project_g9.UDOperation;
 import se_project_g9.exceptions.CalculatorException;
-import se_project_g9.exceptions.InputNumberException;
 import se_project_g9.exceptions.OperationException;
 
 /**

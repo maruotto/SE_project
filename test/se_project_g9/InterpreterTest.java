@@ -17,7 +17,7 @@ public class InterpreterTest {
     
     private Operation op;
     public InterpreterTest() {
-        op = new Operation();
+        op = Operation.getInstance();
     }
     
     @Before
