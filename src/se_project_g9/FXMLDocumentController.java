@@ -260,7 +260,7 @@ public class FXMLDocumentController implements Initializable {
                 case "drop":
                     ope.drop();
                     break;   
-                case "clear":
+                case "AC":
                     ope.clear();
                     break;
                     
