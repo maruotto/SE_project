@@ -263,7 +263,6 @@ public class FXMLDocumentController implements Initializable {
                 case "AC":
                     ope.clear();
                     break;
-                    
             } 
             
         } catch (Exception ex) {
