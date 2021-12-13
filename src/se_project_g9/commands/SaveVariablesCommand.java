@@ -6,6 +6,7 @@ package se_project_g9.commands;
 
 import java.util.EmptyStackException;
 import se_project_g9.Variables;
+import se_project_g9.exceptions.NotEnoughNumbersException;
 
 /**
  *
@@ -33,10 +34,10 @@ public class SaveVariablesCommand implements Command {
 
     /**
      * Undo of the SaveVariablesCommand
-     * @throws EmptyStackException
+     * @throws NotEnoughNumbersException
      */
     @Override
-    public void undo() throws EmptyStackException{
+    public void undo() throws NotEnoughNumbersException{
         this.variables.restoreVar();
     }
 
